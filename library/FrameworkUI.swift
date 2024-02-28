@@ -1311,8 +1311,16 @@ extension NSView {
         }
         
         
-      
+        var contentsDumpa = "empty"
+        let eraa = "\(myClassDumped)".matches(for: "sublayers = <[a-zA-Z].*")
+        if eraa.count > 0 {
+            print("Why not sub? \(eraa[0])")
+            contentsDumpa = eraa[0]
+        }
         
+        if (contentsDumpa != "empty"){
+            Storage.formatted += "\n Sublayers: \(contentsDumpa) \n" // FIX HERE BEFORE PROD
+        }
         
         
         Storage.formatted += "\(String(describing: type(of: self))): \(superclass)\n"
@@ -1323,7 +1331,7 @@ extension NSView {
         
         
         if (contentsDump != "empty"){
-            Storage.formatted += "\n Contents: \(contentsDump) \n"
+            Storage.formatted += "\n Contents: \(contentsDump) \n" // FIX HERE BEFORE PROD
         }
         
         
@@ -1348,6 +1356,19 @@ extension NSView {
         self.wantsLayer = true
         self.layer?.borderWidth = 0.5
         self.layer?.borderColor = Storage.colors[Storage.idx].cgColor
+        
+        
+        if self.layer != nil {
+            print("SUBSA")
+            if(self.layer!.sublayers != nil){
+                var rt = ""
+                self.layer!.sublayers!.map {rt += $0.description ?? ""}
+                Storage.formatted += "Sublayers: " + rt
+            }
+             
+           
+        }
+      
         
         for subview in self.subviews {
             subview.dumpSubviews(depth + 1)
