@@ -351,7 +351,7 @@ struct ListInspectablea<Content: View>: View {
 
 
 extension View {
-    func dump(into: String) -> some View {
+    func bone(into: String) -> some View {
         ListInspectablea(name: into) {
             self
         }
@@ -1665,7 +1665,7 @@ extension NSView {
 
 
 extension View {
-    func dump(into: String) -> some View {
+    func bone(into: String) -> some View {
         ListInspectable(name: into) {
             self
         }
