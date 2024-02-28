@@ -5,5 +5,5 @@ Library that dumps underlying UIKit views from SwiftUI views.
  List {
   Text("A")
 }
-.bone(into: "test.txt")
+.bone(into: "output.txt")
 ```
