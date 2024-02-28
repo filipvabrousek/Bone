@@ -1,0 +1,13 @@
+{
+  "images" : [
+    {
+      "filename" : "1024-bone-icon.png",
+      "idiom" : "vision",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
