@@ -185,6 +185,7 @@ struct BestView: View {
             Button("Show data sources \(Storagea.dataSources.count)"){
                 self.showDataSources.toggle()
             }.padding(.bottom, 12)
+             .padding(.top, 12)
             }
             
             Button("Legend"){
@@ -268,7 +269,13 @@ struct NewOnSheet: View {
             
             VStack {
                 Text("Made with ❤️ by").bold()
-                Text("Filip Vabrousek").bold()
+                Text("Filip Vabrousek").bold().padding(.bottom, 12)
+                
+                Link("twitter.com/filipvabrousek", destination: URL(string: "https://twitter.com/filipvabrousek")!)
+                    .bold()
+                    .padding(.bottom, 12)
+                
+                Link("filipvabrousek.com", destination: URL(string: "http://filipvabrousek.com")!).bold()
             }.foregroundStyle(.gray)
             .padding()
             
@@ -464,7 +471,7 @@ extension UIView {
         let mainh = 600
         #else
         let mainw = UIScreen.main.bounds.size.width
-        let mainh =  UIScreen.main.bounds.height - 109
+        let mainh = UIScreen.main.bounds.height - 120
         #endif
         
         r.view.frame = CGRect(x: 0, y: 20, width: mainw, height: mainh)
@@ -1790,17 +1797,24 @@ struct LegendView: View {
             
             Spacer()
             
-            VStack {
-                Text("Made with ❤️ by").bold()
-                Text("Filip Vabrousek").bold()
-            }.foregroundStyle(.gray)
-                .padding()
+          
             
             
             // }.allowsHitTesting(false)
         }.padding()
         .frame(width: 230, height: 400)
         
+            VStack {
+                Text("Made with ❤️ by").bold()
+                Text("Filip Vabrousek").bold().padding(.bottom, 12)
+                
+                Link("twitter.com/filipvabrousek", destination: URL(string: "https://twitter.com/filipvabrousek")!).bold()
+                    .padding(.bottom, 12)
+                
+                Link("filipvabrousek.com", destination: URL(string: "http://filipvabrousek.com")!).bold()
+            }.foregroundStyle(.gray)
+                .padding()
+            
             Spacer()
         
     }
