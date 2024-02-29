@@ -182,16 +182,33 @@ struct BestView: View {
             if (dataSources.count > 0){
                 
             
-            Button("Show data sources \(Storagea.dataSources.count)"){
-                self.showDataSources.toggle()
-            }.padding(.bottom, 12)
-             .padding(.top, 12)
+         
+         
+                
+                Button {
+                    self.showDataSources.toggle()
+                } label: {
+                    Text("Show data sources")
+                        .frame(width: 160)
+                    
+                    //.frame(minWidth: 260, idealWidth: 260, maxWidth: 260)
+                }   .padding(.bottom, 12)
+                    .padding(.top, 12)
+                
+                
+                
             }
             
-            Button("Legend"){
+           
+            
+            Button {
                 self.showLegend.toggle()
+            } label: {
+                Text("Legend")
+                    .frame(width: 160)
+                //.frame(minWidth: 260, idealWidth: 260, maxWidth: 260)
             }
-            
+
             
             VStack(alignment: .leading){
                 
@@ -326,7 +343,7 @@ struct ListInspectablea<Content: View>: View {
 
                do {
                    try result.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
-                   print("WRITTEN TO \(filename)")
+                   print("OUTPUT FILE: \(filename)")
                    
                    //
                 //   WRITTEN TO file:///Users/filipvabrousek/Library/Developer/CoreSimulator/Devices/29654C3C-9705-4967-B487-FFDCC979EDFE/data/Containers/Data/Application/BDD84391-A2E3-4D0B-993B-FB20950F9E84/Documents/hello.txt
@@ -480,9 +497,18 @@ extension UIView {
         let wrapper = Wrapper()//UIView()
         wrapper.frame = CGRect(x: 0, y: 20, width: mainw, height: mainh)
        
+        var isHidden = false
         
-        let btn = Button("Show subviews"){
+        
+        let btn = Button {
             r.view.isHidden.toggle()
+            isHidden.toggle()
+        } label: {
+            Text("Toggle overlay")
+                .bold()
+                .frame(width: 160)
+            
+            //.frame(minWidth: 260, idealWidth: 260, maxWidth: 260)
         }
         
         let button = UIHostingController(rootView: btn)
