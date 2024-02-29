@@ -17,8 +17,9 @@ The library contains a single modifier:
 .bone(into: "output.txt")
 ```
 
-The dump of view above will be dumped into ```output.txt`` file, and the overlay will be shown.
-Search in Xcode console for ```OUTPUT FILE:``` string. 
+The dump of view above will be dumped into ```output.txt``` file, and the overlay will be shown.
+Search in Xcode console for ```OUTPUT FILE:``` string to find the location of the text file.
+
 You can the copy and paste the url and open in in terminal like this:
 
 ```sh
