@@ -10,12 +10,10 @@ import SwiftData
 
 struct ContentView: View {
     var body: some View {
-       // Text("Inspect")
-        List {Text("A")}
-            .bone(into: "hello.txt")
+        List {
+            Text("Bone")
+        }.bone(into: "output.txt")
     }
-
-    
 }
 
 #Preview {
