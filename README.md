@@ -5,6 +5,7 @@
 Swift library that dumps underlying UIKit views from SwiftUI views.
 The results are shown as overlay on the view.
 You can expand overlay to see layers, sublayers and superclasses of the views.
+It is also possible to output the code into text file.
 
 
 Consider this code:
