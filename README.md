@@ -19,4 +19,5 @@ Consider this code:
 The dump of view above will be dumped into output.txt file.
 
 
+![image](https://github.com/filipvabrousek/Bone/assets/18376136/20fb3241-6c4b-43fd-b7ce-088ebde65d2c)
 
