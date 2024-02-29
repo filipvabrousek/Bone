@@ -18,6 +18,9 @@ The library contains a single modifier:
 ```
 
 The dump of view above will be dumped into ```output.txt``` file, and the overlay will be shown.
+
+![image](https://github.com/filipvabrousek/Bone/assets/18376136/acf0014d-b594-4d50-b8f4-1d92489ded9e)
+
 Search in Xcode console for ```OUTPUT FILE:``` string to find the location of the text file.
 
 You can the copy and paste the url and open in in terminal like this:
@@ -36,7 +39,7 @@ Platform support:
 * watchOS (only some class names are shown) no UI reflection possible like on other platforms
 
 
-![image](https://github.com/filipvabrousek/Bone/assets/18376136/acf0014d-b594-4d50-b8f4-1d92489ded9e)
+
 
 
 
