@@ -8,7 +8,7 @@ You can expand overlay to see layers, sublayers and superclasses of the views.
 It is also possible to output the code into text file.
 
 
-Consider this code:
+The library contains a single modifier:
 
 ```swift
  List {
@@ -17,7 +17,13 @@ Consider this code:
 .bone(into: "output.txt")
 ```
 
-The dump of view above will be dumped into output.txt file, and the overlay will be show.
+The dump of view above will be dumped into ```output.txt`` file, and the overlay will be shown.
+Search in Xcode console for ```OUTPUT FILE:``` string. 
+You can the copy and paste the url and open in in terminal like this:
+
+```sh
+open file:///var/mobile/Containers/Data/Application/3013CC20-9A66-48C7-9880-5977FF7D072E/Documents/output.txt
+```
 
 Platform support:
 * iOS
