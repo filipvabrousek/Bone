@@ -796,13 +796,18 @@ extension UIView {
                 let r = ""
                 for layer in self.layer.sublayers! {
                     let ct = layer.contents.debugDescription.extractBrackets()
-                    print("E \(ct!)")
-                    contents = ct!
-                    
-                    if self.layer.sublayers!.count > 1 {
-                        Storagea.formatted +=  "\(ct!) / "
-                    } else {
-                        Storagea.formatted +=  "\(ct!) "
+                  
+                    if (ct != nil){
+                        
+                        
+                        print("E \(ct!)")
+                        contents = ct!
+                        
+                        if self.layer.sublayers!.count > 1 {
+                            Storagea.formatted +=  "\(ct!) / "
+                        } else {
+                            Storagea.formatted +=  "\(ct!) "
+                        }
                     }
                     
                     
