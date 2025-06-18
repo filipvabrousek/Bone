@@ -330,9 +330,10 @@ struct ListInspectablea<Content: View>: View {
                let os = ProcessInfo().operatingSystemVersion
                
                lines.append("-------------------------")
-               lines.append("OS: iOS\(os.majorVersion)")
+               lines.append("OS: \(UIDevice.current.systemName):\(os.majorVersion)")
+              // lines.append("OS: iOS\(os.majorVersion)")
                let result = lines.joined(separator: "\n")
-             
+               
                
                func getDocumentsDirectory() -> URL {
                    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
