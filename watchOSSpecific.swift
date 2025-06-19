@@ -177,7 +177,7 @@ extension View {
         
     }*/
     
-    func drawData() -> some View {
+    func drawData(name: String) -> some View {
         
     
         
@@ -189,7 +189,7 @@ extension View {
            // self
           
            // ScrollView {
-                ForEach(getUnderData(), id: \.self){ l in
+            ForEach(getUnderData(name: name), id: \.self){ l in
                     Text("\(l)").foregroundStyle(.yellow) // 221407
                 }
          //   }
@@ -204,7 +204,7 @@ extension View {
     
  
     
-    func getUnderData() -> [String] {
+    func getUnderData(name: String) -> [String] {
         
         var str = ""
         // 203703
@@ -254,6 +254,52 @@ extension View {
         print(filteredStrings)
         
         
+        
+        var lines = filteredStrings //Storagea.formatted.split(whereSeparator: \.isNewline)
+        
+        
+        let os = ProcessInfo().operatingSystemVersion
+        
+        lines.append("-------------------------")
+        lines.append("OS: watchOS\(os.majorVersion)")
+        let result = lines.joined(separator: "\n")
+      
+        
+        func getDocumentsDirectory() -> URL {
+            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            return paths[0]
+        }
+        
+        let filename = getDocumentsDirectory().appendingPathComponent(name)
+
+        do {
+            try result.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
+            print("OUTPUT FILE: \(filename)")
+            
+        } catch {
+            
+        }
+      //  return filteredStrings
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         return filteredStrings
     }
 }
@@ -261,11 +307,11 @@ extension View {
 
 
 extension View {
-    func dumpUI() -> some View { // 125433 14/06/23
+    func wbone(name: String) -> some View { // 125433 14/06/23
         self.getDataOverlay {
             // Code to fetch data
             //fetchData()
-            self.getUnderData() // 111530 WOW !!!
+            self.getUnderData(name: name) // 111530 WOW !!!
         }
     }
 }
