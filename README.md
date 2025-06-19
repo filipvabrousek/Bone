@@ -39,8 +39,6 @@ The modifier will give you class names though.
     }.wbone(into: "classes.txt")
 ```
 
-# Note: watch
-
 Platform support:
 * iOS
 * iPadOS
