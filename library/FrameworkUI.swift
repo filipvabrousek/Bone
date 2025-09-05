@@ -300,24 +300,49 @@ struct NewOnSheet: View {
         }
     }
 }
-
+/*
 struct ListInspectablea<Content: View>: View {
     let content: Content
     let name: String
+    let fromRoot: Bool
  
-    init(name: String, @ViewBuilder content: () -> Content) {
+    init(name: String, fromRoot: Bool = false, @ViewBuilder content: () -> Content) {
         self.name = name
+        self.fromRoot = fromRoot
         self.content = content()
     }
     
    
     struct All: UIViewRepresentable {
         var name: String
+        var fromRoot: Bool = false
         var content: Content?
         
        func makeUIView(context: Context) -> UIView {
-           let host = UIHostingController(rootView: self.content)
-           host._render(seconds: 1)
+     
+               
+               let scene = UIApplication.shared.connectedScenes.first as! UIWindowScene
+               let window = scene.windows.first!
+               print("Root view controller:", window.rootViewController ?? "nil")
+           
+           
+           
+         //  var host: Any? = nil
+           var host: UIViewController
+           
+           if fromRoot {
+                   host = window.rootViewController!
+               } else {
+                   host = UIHostingController(rootView: content)
+               }
+
+               if !fromRoot {
+                   // ✅ "poke" SwiftUI by reassigning rootView (forces a render pass)
+                   if let hosting = host as? UIHostingController<AnyView> {
+                       hosting.rootView = AnyView(content)
+                   }
+               }
+          
            
            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                host.view.dumpSubviewsa()
@@ -370,18 +395,111 @@ struct ListInspectablea<Content: View>: View {
    
     
     var body: some View {
-        All(name: name, content: content)
+        All(name: name, fromRoot: fromRoot, content: content)
+    }
+}*/
+
+struct ListInspectablea<Content: View>: View {
+    let content: Content
+    let name: String
+    let fromRoot: Bool
+
+    init(name: String, fromRoot: Bool = false, @ViewBuilder content: () -> Content) {
+        self.name = name
+        self.fromRoot = fromRoot
+        self.content = content()
+    }
+
+    struct All: UIViewRepresentable {
+        var name: String
+        var fromRoot: Bool = false
+        var content: Content?
+
+        func makeUIView(context: Context) -> UIView {
+            let container = UIView() // Always return a safe container
+            container.backgroundColor = .clear
+
+            DispatchQueue.main.async {
+                // Get the main window
+                guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                      let window = scene.windows.first else {
+                    print("No window found")
+                    return
+                }
+
+                let host: UIViewController
+
+                if fromRoot {
+                    // Use existing rootViewController for inspection only
+                    host = window.rootViewController!
+                } else {
+                    // Create a new hosting controller and embed into container
+                    let hosting = UIHostingController(rootView: content!)
+                    host = hosting
+
+                    container.addSubview(host.view)
+                    host.view.frame = container.bounds
+                    host.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                }
+
+                // Dump the view hierarchy
+                host.view.dumpSubviewsa()
+
+                // Overlay data (works for both cases)
+                host.view.addDataSwiftUI(
+                    data: Storagea.citems,
+                    dataSources: Storagea.dataSources,
+                    color: .orange
+                )
+
+                // Write dump to file
+                let lines = Storagea.formatted
+                    .split(whereSeparator: \.isNewline)
+                    .map { String($0) }   // convert Substring -> String
+                    + [
+                        "-------------------------",
+                        "OS: \(UIDevice.current.systemName):\(ProcessInfo().operatingSystemVersion.majorVersion)"
+                    ]
+
+                let result = lines.joined(separator: "\n")
+
+
+                do {
+                    let filename = getDocumentsDirectory().appendingPathComponent(self.name)
+                    try result.write(to: filename, atomically: true, encoding: .utf8)
+                    print("OUTPUT FILE: \(filename)")
+                } catch {
+                    print("Write failed: \(error.localizedDescription)")
+                }
+            }
+
+            return container
+        }
+
+        func updateUIView(_ uiView: UIView, context: Context) {
+            // Optional: handle updates if needed
+        }
+
+        private func getDocumentsDirectory() -> URL {
+            FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        }
+    }
+
+    var body: some View {
+        All(name: name, fromRoot: fromRoot, content: content)
     }
 }
 
 
+
 extension View {
-    func bone(into: String) -> some View {
-        ListInspectablea(name: into) {
+    func bone(into: String, fromRoot: Bool = false) -> some View {
+        ListInspectablea(name: into, fromRoot: fromRoot) {
             self
         }
     }
 }
+
 
 
 extension String {
