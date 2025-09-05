@@ -12,7 +12,7 @@ struct ContentView: View {
     var body: some View {
         List {
             Text("Bone")
-        }.bone(into: "output.txt")
+        }.bone(into: "output.txt", fromRoot: true)
     }
 }
 
