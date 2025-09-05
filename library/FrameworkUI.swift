@@ -398,7 +398,6 @@ struct ListInspectablea<Content: View>: View {
         All(name: name, fromRoot: fromRoot, content: content)
     }
 }*/
-
 struct ListInspectablea<Content: View>: View {
     let content: Content
     let name: String
@@ -413,14 +412,15 @@ struct ListInspectablea<Content: View>: View {
     struct All: UIViewRepresentable {
         var name: String
         var fromRoot: Bool = false
-        var content: Content?
+        var content: Content
 
         func makeUIView(context: Context) -> UIView {
-            let container = UIView() // Always return a safe container
+            let container = UIView()
             container.backgroundColor = .clear
 
-            DispatchQueue.main.async {
-                // Get the main window
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { // small delay
+                
+                print("ENO")
                 guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                       let window = scene.windows.first else {
                     print("No window found")
@@ -430,39 +430,45 @@ struct ListInspectablea<Content: View>: View {
                 let host: UIViewController
 
                 if fromRoot {
-                    // Use existing rootViewController for inspection only
+                    // Inspect the existing root view hierarchy
                     host = window.rootViewController!
                 } else {
-                    // Create a new hosting controller and embed into container
-                    let hosting = UIHostingController(rootView: content!)
+                    // New hosting controller for other SwiftUI content
+                    let hosting = UIHostingController(rootView: content)
                     host = hosting
 
                     container.addSubview(host.view)
                     host.view.frame = container.bounds
                     host.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+                    // Optional: attach to window temporarily if needed
+                    // window.addSubview(host.view)
                 }
 
-                // Dump the view hierarchy
+                // Force layout
+                host.view.setNeedsLayout()
+                host.view.layoutIfNeeded()
+
+                // Dump hierarchy
                 host.view.dumpSubviewsa()
 
-                // Overlay data (works for both cases)
+                // Overlay your data
                 host.view.addDataSwiftUI(
                     data: Storagea.citems,
                     dataSources: Storagea.dataSources,
                     color: .orange
                 )
 
-                // Write dump to file
+                // Write to file
                 let lines = Storagea.formatted
                     .split(whereSeparator: \.isNewline)
-                    .map { String($0) }   // convert Substring -> String
+                    .map { String($0) }
                     + [
                         "-------------------------",
                         "OS: \(UIDevice.current.systemName):\(ProcessInfo().operatingSystemVersion.majorVersion)"
                     ]
 
                 let result = lines.joined(separator: "\n")
-
 
                 do {
                     let filename = getDocumentsDirectory().appendingPathComponent(self.name)
@@ -476,9 +482,7 @@ struct ListInspectablea<Content: View>: View {
             return container
         }
 
-        func updateUIView(_ uiView: UIView, context: Context) {
-            // Optional: handle updates if needed
-        }
+        func updateUIView(_ uiView: UIView, context: Context) {}
 
         private func getDocumentsDirectory() -> URL {
             FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -489,7 +493,6 @@ struct ListInspectablea<Content: View>: View {
         All(name: name, fromRoot: fromRoot, content: content)
     }
 }
-
 
 
 extension View {
