@@ -30,6 +30,14 @@ You can the copy and paste the url and open in in terminal like this:
 open file:///var/mobile/Containers/Data/Application/3013CC20-9A66-48C7-9880-5977FF7D072E/Documents/output.txt
 ```
 
+To dump entire view hiearchym from root use:
+
+```swift
+List {
+Text("Hello")
+}.bone(into: "output.txt", fromRoot: true)
+```
+
 > [!WARNING]
 > Complete analysis of UI like on other platforms is not possible, please copy ```watchOSSpecific.swift``` file to your project and use the ```wbone``` modifier.
 The modifier will give you class names though.
