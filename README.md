@@ -8,6 +8,7 @@ You can expand overlay to see layers, sublayers and superclasses of the views.
 It is also possible to output the code into text file.  
 To get started, just copy/paste all files in library into folder in your project and add it to all targets.
 
+<img width="1304" height="736" alt="image" src="https://github.com/user-attachments/assets/1ebb7a79-d039-4a48-ad88-6ff5f5b5fc7c" />
 
 The library contains a single modifier:
 
@@ -19,8 +20,8 @@ The library contains a single modifier:
 ```
 
 The dump of view above will be dumped into ```output.txt``` file, and the overlay will be shown.
-
-![image](https://github.com/filipvabrousek/Bone/assets/18376136/acf0014d-b594-4d50-b8f4-1d92489ded9e)
+<!--
+![image](https://github.com/filipvabrousek/Bone/assets/18376136/acf0014d-b594-4d50-b8f4-1d92489ded9e)--->
 
 ## Modifiers
 
@@ -48,6 +49,9 @@ List { Text("Hello") }.bone3D()                    // live 3D hierarchy, no file
 List { Text("Hello") }.bone3D(into: "ssu.json")    // + deep JSON dump
 List { Text("Hello") }.bone3D(into: "dump.txt")    // + brief text dump
 ```
+
+<img width="1304" height="736" alt="image" src="https://github.com/user-attachments/assets/1ebb7a79-d039-4a48-ad88-6ff5f5b5fc7c" />
+
 
 Captures the live UIKit hierarchy of the wrapped view and renders it as an
 unbounded 3D tree in a volumetric window. Tap a slab for details
