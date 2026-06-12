@@ -22,39 +22,82 @@ The dump of view above will be dumped into ```output.txt``` file, and the overla
 
 ![image](https://github.com/filipvabrousek/Bone/assets/18376136/acf0014d-b594-4d50-b8f4-1d92489ded9e)
 
-Search in Xcode console for ```OUTPUT FILE:``` string to find the location of the text file.
+## Modifiers
 
-You can the copy and paste the url and open in in terminal like this:
-
-```sh
-open file:///var/mobile/Containers/Data/Application/3013CC20-9A66-48C7-9880-5977FF7D072E/Documents/output.txt
-```
-
-To dump entire view hiearchym from root use:
+### `.bone(into:)` — iOS, visionOS, macOS
 
 ```swift
-List {
-Text("Hello")
-}.bone(into: "output.txt", fromRoot: true)
+List { Text("WOW") }.bone(into: "output.txt")      // classic brief text dump
+List { Text("WOW") }.bone(into: "structure.json")  // deep SwiftUI dump (JSON)
 ```
 
-> [!WARNING]
-> Complete analysis of UI like on other platforms is not possible, please copy ```watchOSSpecific.swift``` file to your project and use the ```wbone``` modifier.
-The modifier will give you class names though.
+The **extension decides the format**:
+- `.txt` (or anything non-JSON) → classic brief dump: class, superclass, layer, sublayers per view
+- `.json` → deep dump: Mirror of the SwiftUI value tree, hosting view → ViewGraph/renderer,
+  `recursiveDescription`, `_autolayoutTrace`, and the full per-node tree with `_ivarDescription`
+
+Also adds colored debug borders + a tappable overlay inspector.
+On iOS 27+ each run additionally writes `briefoutput.txt` and timestamped
+deep captures (`<name>_capture_<OS>_<timestamp>.txt/.json`) to Documents
+**and** `<project>/captures/` (simulator).
+
+### `.bone3D(into:)` — visionOS
+
 ```swift
- List {
-     Text("Hello")
-    }.wbone(into: "classes.txt")
+List { Text("Hello") }.bone3D()                    // live 3D hierarchy, no file
+List { Text("Hello") }.bone3D(into: "ssu.json")    // + deep JSON dump
+List { Text("Hello") }.bone3D(into: "dump.txt")    // + brief text dump
 ```
 
-Platform support:
-* iOS
-* iPadOS
-* visionOS
-* macOS
-* tvOS
-  
-* watchOS (only some class names are shown) no UI reflection possible like on other platforms
+Captures the live UIKit hierarchy of the wrapped view and renders it as an
+unbounded 3D tree in a volumetric window. Tap a slab for details
+(superclass, layer, sublayers, ivars). Optional `into:` writes the dump
+(same extension rule as `.bone`).
+
+### `.bone3DFrom(_:)` — visionOS
+
+```swift
+List { Text("Hello") }.bone3DFrom("briefoutput.txt")   // brief text dump
+List { Text("Hello") }.bone3DFrom("structure.json")    // deep JSON dump
+```
+
+Builds the 3D graph from a dump file instead of a live capture — including
+the `output_capture_*.json` files. Resolution order: absolute path →
+`<project>/captures/` (simulator) → app Documents. Lets you view an
+iOS/macOS-captured hierarchy on visionOS and compare platforms.
+
+## Configuration
+
+```swift
+BoneCapture.maxIvarLength = 20_000              // chars of ivar dump per node
+BoneCapture.maxMirrorDepth = 7                  // Mirror recursion depth
+BoneCapture.captureIvarDescriptions = true
+BoneCapture.captureRecursiveDescription = true
+BoneCapture.captureAutolayoutTrace = true
+BoneCapture.ivarDenylist                        // class-name prefixes to skip
+```
+
+If a capture crashes (EXC_BAD_ACCESS in a private selector), the last
+`BONE introspecting …` console line names the class — add its prefix to
+`ivarDenylist`. Known broken: `_UIHostingView` on iOS 26, all
+`_TtGC7SwiftUI…` generic classes on visionOS 27 (defaults handle both).
+
+## Where files land
+
+- App's **Documents** folder (always; path printed as `OUTPUT FILE:`)
+- **`<project>/captures/`** — iOS/visionOS *simulator* and native macOS
+  (macOS needs App Sandbox disabled). Located via `#filePath`, so rebuild
+  after moving the project.
+
+## Cross-OS diffing
+
+```bash
+cd captures
+diff <(jq -S . output_capture_iOS26_0_*.json) <(jq -S . output_capture_iOS27_0_*.json)
+```
+
+Renamed private classes, hierarchy changes, and ivar-layout differences
+between OS releases fall out automatically.
 
 
 
