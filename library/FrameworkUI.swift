@@ -449,6 +449,26 @@ struct ListInspectablea<Content: View>: View {
                 host.view.setNeedsLayout()
                 host.view.layoutIfNeeded()
 
+                // Deep SwiftUI dump (BoneCapture schema, same as the
+                // output_capture_*.json files) for .bone(into: "*.json") —
+                // captured BEFORE the debug borders and overlay pollute
+                // the tree.
+                var jsonDumpData: Data? = nil
+                if self.name.lowercased().hasSuffix(".json") {
+                    jsonDumpData = try? BoneCapture.encodedDump(host: host, swiftUIRoot: content)
+                }
+
+                // Structured capture (BoneCapture.swift):
+                // _ivarDescription / recursiveDescription / _autolayoutTrace
+                // + Mirror of the SwiftUI root value and the hosting view (ViewGraph).
+                // Runs BEFORE dumpSubviewsa so the colored debug borders
+                // don't pollute the captured layer state.
+                // iOS 27+ only — below that, .bone() behaves exactly as it
+                // always did (classic dump + overlay + output.txt).
+                if #available(iOS 27.0, *) {
+                    BoneCapture.run(named: name, host: host, swiftUIRoot: content)
+                }
+
                 // Dump hierarchy
                 host.view.dumpSubviewsa()
 
@@ -472,10 +492,22 @@ struct ListInspectablea<Content: View>: View {
 
                 do {
                     let filename = getDocumentsDirectory().appendingPathComponent(self.name)
-                    try result.write(to: filename, atomically: true, encoding: .utf8)
+                    if let jsonDumpData {
+                        // .json -> deep SwiftUI dump (BoneCapture schema)
+                        try jsonDumpData.write(to: filename)
+                    } else {
+                        // anything else -> classic brief text dump
+                        try result.write(to: filename, atomically: true, encoding: .utf8)
+                    }
                     print("OUTPUT FILE: \(filename)")
                 } catch {
                     print("Write failed: \(error.localizedDescription)")
+                }
+
+                // iOS 27+: also mirror the classic brief dump as
+                // briefoutput.txt (Documents + <project>/captures/).
+                if #available(iOS 27.0, *) {
+                    BoneCapture.writeBrief(result)
                 }
             }
 
@@ -1580,12 +1612,21 @@ struct ListInspectable<Content: View>: View {
            host._render(seconds: 1)
            
            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+
+               // Deep SwiftUI dump (BoneCapture schema) for
+               // .bone(into: "*.json") — captured BEFORE dumpSubviews
+               // adds the debug borders.
+               var jsonDumpData: Data? = nil
+               if self.name.lowercased().hasSuffix(".json") {
+                   jsonDumpData = try? BoneCapture.encodedDump(host: host, swiftUIRoot: self.content as Any)
+               }
+
                host.view.dumpSubviews()
-               
-               
-               
-               
-             
+
+
+
+
+
               // let h = NSHostingView(rootView: Tap())//NSHostingView(rootView: OnlyButtonWithSheet(items: Storage.citems))
             //   host.view.addSubview(h)
                
@@ -1615,10 +1656,16 @@ struct ListInspectable<Content: View>: View {
                }
                
                let filename = getDocumentsDirectory().appendingPathComponent(self.name)
-               print("macOS written to \(filename)")
 
                do {
-                   try result.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
+                   if let jsonDumpData {
+                       // .json -> deep SwiftUI dump (BoneCapture schema)
+                       try jsonDumpData.write(to: filename)
+                   } else {
+                       // anything else -> classic brief text dump
+                       try result.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
+                   }
+                   print("OUTPUT FILE: \(filename)")
                } catch {
                    print("Write failed")
                    print(error.localizedDescription)
