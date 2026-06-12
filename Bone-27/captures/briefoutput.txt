@@ -1,0 +1,69 @@
+ 
+ 
+_UIHostingView<List<Never, Text>>:
+ superclass: UIView 
+ layer: <CALayer:0x10203bc30 
+ sublayers: <CALayer:0x104dd4300
+ 
+ 
+->UIKitPlatformViewHost<ListRepresentable<CollectionViewListDataSource<Never>, SelectionManagerBox<Never>>>:
+ superclass: UICorePlatformViewHost<ListRepresentable<CollectionViewListDataSource<Never>,SelectionManagerBox<Never>>> 
+ layer: <CALayer:0x104dd4300 
+ sublayers: <CALayer:0x1023a3d50
+ 
+ 
+-->UpdateCoalescingCollectionView:
+ superclass: UICollectionView 
+ layer: <CALayer:0x1023a3d50 
+ sublayers: <CALayer:0x104dd5560 / <CALayer:0x104dd4fc0 / <CALayer:0x104dd43f0
+ DataSource: SwiftUI.ShadowListDataSource<SwiftUI.CollectionViewListDataSource<Swift.Never>>
+Recorder: SwiftUI.ShadowListUpdateRecorder<SwiftUI.CollectionViewListDataSource<Swift.Never>>
+Base: SwiftUI.CollectionViewListDataSource<Swift.Never>
+Super: SwiftUI.UICollectionViewListCoordinatorBase<SwiftUI.CollectionViewListDataSource<Swift.Never>, 
+ 
+ 
+--->_UICollectionViewListLayoutSectionBackgroundColorDecorationView:
+ superclass: UICollectionReusableView 
+ layer: <CALayer:0x104dd5560
+ 
+ 
+--->ListCollectionViewCell:
+ superclass: ListCollectionViewCellBase<_ViewList_View> 
+ layer: <CALayer:0x104dd4fc0 
+ sublayers: <CALayer:0x104dd51a0 / <CALayer:0x104dd4ff0
+ 
+ 
+---->_UISystemBackgroundView:
+ superclass: UIView 
+ layer: <CALayer:0x104dd51a0 
+ sublayers: <CALayer:0x104dd51d0
+ 
+ 
+----->UIView:
+ superclass: UIResponder 
+ layer: <CALayer:0x104dd51d0
+ 
+ 
+---->_UICollectionViewListCellContentView:
+ superclass: UIView 
+ layer: <CALayer:0x104dd4ff0 
+ sublayers: <CALayer:0x104dd53b0
+ 
+ 
+----->CellHostingView<ModifiedContent<_ViewList_View, CollectionViewCellModifier>>:
+ superclass: UIItemHostingView<ModifiedContent<_ViewList_View,CollectionViewCellModifier>> 
+ layer: <CALayer:0x104dd53b0 
+ sublayers: <_TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer:0x104dcad00
+ 
+ 
+--->_UIScrollViewScrollIndicator:
+ superclass: UIView 
+ layer: <CALayer:0x104dd43f0 
+ sublayers: <CALayer:0x104dd4450
+ 
+ 
+---->UIView:
+ superclass: UIResponder 
+ layer: <CALayer:0x104dd4450
+-------------------------
+OS: iOS:27
