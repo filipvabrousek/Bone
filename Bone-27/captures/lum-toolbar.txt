@@ -1,0 +1,86 @@
+BONE · keyword probe
+keywords: lumin, hysteresis, adaptive
+OS: iOS 27.0 · captured: 2026-10-08 21:26:20
+scanned: 46 views, 61 layers, 10 CA filters, 4241 Swift mirror nodes
+hits: 13
+  objc-property: 1
+  swift-ivar: 1
+  swift-mirror: 11
+
+===== distinct names =====
+1×  $__lazy_storage_$_luminanceAggregator  [Swift.Optional<SwiftUI.MaterialLuminanceAggregator>]
+1×  _adaptiveHysteresisRange  [Swift.Optional<DesignLibrary.GlassMaterialProvider.HysteresisRange>]
+1×  _luminance  [AttributeGraph.WeakAttribute<Swift.Float>]
+1×  configuration  [SwiftUI.MaterialLuminanceAggregator.Configuration]
+1×  currentLuminance  [Swift.Float]
+1×  luminance  [DesignLibrary.GlassMaterialProvider.Configuration.Luminance]
+3×  luminance  [Swift.Optional<SwiftUI.ContainerBackgroundLuminance>]
+1×  luminanceAggregator  [Swift.Optional<SwiftUI.MaterialLuminanceAggregator>]
+1×  luminanceAggregatorObserver  [Swift.Optional<UIKit.(unknown context at $1c576c154).LuminanceAggregatorBridge>]
+1×  scrollHysteresis  [d]
+1×  some  [SwiftUI.MaterialLuminanceAggregator]
+
+===== Core Animation filters seen (context) =====
+1×  filters: colorMatrix
+4×  filters: gaussianBlur
+1×  filters: glassBackground
+1×  filters: sdrNormalize
+1×  filters: variableBlur
+2×  filters: vibrantColorMatrix
+
+===== filter classes and their methods (for discovering parameters) =====
+CAFilter: CAMLParser:setValue:forKey: CAMLTypeForKey: CA_copyRenderValue cachesInputImage copyWithZone: dealloc description enabled encodeWithCAMLWriter: encodeWithCoder: initWithCoder: initWithName: initWithType: isAccessibility isEnabled mutableCopyWithZone: name setAccessibility: setCachesInputImage: setDefaults setEnabled: setName: setValue:forKey: type valueForKey:
+
+===== all hits (path · source · name : type = value) =====
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>>.backgroundBridge
+   swift-mirror · luminance : Swift.Optional<SwiftUI.ContainerBackgroundLuminance>
+   = nil
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>> > [0]UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<NavigationStackRepresentable>> > [0]UILayoutContainerView > [0]UINavigationTransitionView > [0]UIViewControllerWrapperView > [0]HostingView.backgroundBridge
+   swift-mirror · luminance : Swift.Optional<SwiftUI.ContainerBackgroundLuminance>
+   = nil
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>> > [0]UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<NavigationStackRepresentable>> > [0]UILayoutContainerView > [0]UINavigationTransitionView > [0]UIViewControllerWrapperView > [0]HostingView > [0]PlatformContainer > [0]HostingScrollView
+   objc-property (UIScrollView) · scrollHysteresis : d
+   = (not read)
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>> > [0]UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<NavigationStackRepresentable>> > [0]UILayoutContainerView > [0]UINavigationTransitionView > [0]UIViewControllerWrapperView > [0]HostingView > [0]PlatformContainer > [0]HostingScrollView > [3]_UITouchPassthroughView > [0]ScrollEdgeEffectView.elementModel.barInteractions.storage.storage.[0].value.value.some
+   swift-mirror · luminanceAggregatorObserver : Swift.Optional<UIKit.(unknown context at $1c576c154).LuminanceAggregatorBridge>
+   = Optional(UIKit.(unknown context at $1c576c154).LuminanceAggregatorBridge)
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>> > [0]UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<NavigationStackRepresentable>> > [0]UILayoutContainerView > [0]UINavigationTransitionView > [0]UIViewControllerWrapperView > [0]HostingView > [0]PlatformContainer > [0]HostingScrollView > [3]_UITouchPassthroughView > [0]ScrollEdgeEffectView.elementModel.barInteractions.storage.storage.[0].value.value.some
+   swift-mirror · $__lazy_storage_$_luminanceAggregator : Swift.Optional<SwiftUI.MaterialLuminanceAggregator>
+   = Optional(SwiftUI.MaterialLuminanceAggregator)
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>> > [0]UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<NavigationStackRepresentable>> > [0]UILayoutContainerView > [1]UIKitNavigationBar > [2]NavigationBarContentView > [0]NavigationBarTransitionContainer > [2]NavigationBarPlatterContainer_v2 > [0]PlatterContainerHostingView<NavigationBarPlatterContent> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer>
+   swift-ivar (SwiftUI.SDFLayer) · currentLuminance : Swift.Float
+   = nan
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>> > [0]UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<NavigationStackRepresentable>> > [0]UILayoutContainerView > [1]UIKitNavigationBar > [2]NavigationBarContentView > [0]NavigationBarTransitionContainer > [2]NavigationBarPlatterContainer_v2 > [0]PlatterContainerHostingView<NavigationBarPlatterContent> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer>.backdropObserver.some
+   swift-mirror · _luminance : AttributeGraph.WeakAttribute<Swift.Float>
+   = #68252
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>> > [0]UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<NavigationStackRepresentable>> > [0]UILayoutContainerView > [1]UIKitNavigationBar > [2]NavigationBarContentView > [0]NavigationBarTransitionContainer > [2]NavigationBarPlatterContainer_v2 > [0]PlatterContainerHostingView<NavigationBarPlatterContent> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer>.backdropObserver.some
+   swift-mirror · luminanceAggregator : Swift.Optional<SwiftUI.MaterialLuminanceAggregator>
+   = Optional(SwiftUI.MaterialLuminanceAggregator)
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>> > [0]UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<NavigationStackRepresentable>> > [0]UILayoutContainerView > [1]UIKitNavigationBar > [2]NavigationBarContentView > [0]NavigationBarTransitionContainer > [2]NavigationBarPlatterContainer_v2 > [0]PlatterContainerHostingView<NavigationBarPlatterContent> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer>.backdropObserver.some.luminanceAggregator
+   swift-mirror · some : SwiftUI.MaterialLuminanceAggregator
+   = SwiftUI.MaterialLuminanceAggregator
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>> > [0]UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<NavigationStackRepresentable>> > [0]UILayoutContainerView > [1]UIKitNavigationBar > [2]NavigationBarContentView > [0]NavigationBarTransitionContainer > [2]NavigationBarPlatterContainer_v2 > [0]PlatterContainerHostingView<NavigationBarPlatterContent> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer>.backdropObserver.some.luminanceAggregator.some
+   swift-mirror · configuration : SwiftUI.MaterialLuminanceAggregator.Configuration
+   = Configuration(emaWeight: 0.7, settleDelay: 0.35, scheduleTimer: (Function))
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>> > [0]UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<NavigationStackRepresentable>> > [0]UILayoutContainerView > [1]UIKitNavigationBar > [2]NavigationBarContentView > [0]NavigationBarTransitionContainer > [2]NavigationBarPlatterContainer_v2 > [0]PlatterContainerHostingView<NavigationBarPlatterContent> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView.coreInteractions.interactions.[1].base.bridge.glass.variant2.config
+   swift-mirror · _adaptiveHysteresisRange : Swift.Optional<DesignLibrary.GlassMaterialProvider.HysteresisRange>
+   = nil
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>> > [0]UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<NavigationStackRepresentable>> > [0]UILayoutContainerView > [1]UIKitNavigationBar > [2]NavigationBarContentView > [0]NavigationBarTransitionContainer > [2]NavigationBarPlatterContainer_v2 > [0]PlatterContainerHostingView<NavigationBarPlatterContent> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView.coreInteractions.interactions.[1].base.bridge.glass.variant2.config
+   swift-mirror · luminance : DesignLibrary.GlassMaterialProvider.Configuration.Luminance
+   = automatic
+
+_UIHostingView<ModifiedContent<NavigationStack<NavigationPath, ModifiedContent<ModifiedContent<ModifiedContent<ScrollViewReader<ModifiedContent<ScrollView<VStack<TupleContent<Pack{ModifiedContent<Color, _FrameLayout>, IDView<ModifiedContent<Color, _FrameLayout>, String>}>>>, _AppearanceActionModifier>>, TransactionalPreferenceTransformModifier<NavigationTitleKey>>, _PreferenceTransformModifier<ToolbarKey>>, ToolbarModifier<(), ToolbarItem<(), Button<Text>>>>>, _FrameLayout>> > [0]UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<NavigationStackRepresentable>> > [0]UILayoutContainerView > [1]UIKitNavigationBar > [2]NavigationBarContentView > [0]NavigationBarTransitionContainer > [2]NavigationBarPlatterContainer_v2 > [0]PlatterContainerHostingView<NavigationBarPlatterContent> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView > [0]_UIInheritedView > [0]UICorePlatformViewHost<PlatformViewRepresentableAdaptor<NavigationBarPlatterRepresentable>> > [0]ItemWrapperView > [0]_UITAMICAdaptorView > [0]UIKitBarItemHost<BarItemView>.backgroundBridge
+   swift-mirror · luminance : Swift.Optional<SwiftUI.ContainerBackgroundLuminance>
+   = nil

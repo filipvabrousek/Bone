@@ -291,7 +291,7 @@ enum BoneCapture {
         return urls
     }
 
-    private static func writeData(_ data: Data, fileName: String) {
+    static func writeData(_ data: Data, fileName: String) {
         for url in destinations(for: fileName) {
             do {
                 try data.write(to: url)

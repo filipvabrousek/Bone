@@ -1,0 +1,15 @@
+BONE · keyword probe
+keywords: lumin
+OS: iOS 27.0 · captured: 2026-10-08 21:26:15
+scanned: 1 views, 2 layers, 0 CA filters, 749 Swift mirror nodes
+hits: 1
+  swift-mirror: 1
+
+===== distinct names =====
+1×  luminance  [Swift.Optional<SwiftUI.ContainerBackgroundLuminance>]
+
+===== all hits (path · source · name : type = value) =====
+
+_UIHostingView<Button<Text>>.backgroundBridge
+   swift-mirror · luminance : Swift.Optional<SwiftUI.ContainerBackgroundLuminance>
+   = nil

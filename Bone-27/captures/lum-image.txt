@@ -1,0 +1,254 @@
+BONE · keyword probe
+keywords: lumin, vibrant, glassbackground, backdrop
+OS: iOS 27.0 · captured: 2026-10-08 21:26:17
+scanned: 5 views, 17 layers, 3 CA filters, 1029 Swift mirror nodes
+hits: 54
+  ca-filters: 3
+  objc-ivar: 1
+  objc-property: 41
+  swift-ivar: 2
+  swift-mirror: 7
+
+===== distinct names =====
+5×  _backdropMaskViewForColorTint  [UIView]
+5×  _backdropMaskViewForFilters  [UIView]
+5×  _backdropMaskViewForGrayscaleTint  [UIView]
+5×  _backdropMaskViews  [NSArray]
+1×  _disablesOccludedBackdropBlurs  [B]
+1×  _luminance  [AttributeGraph.WeakAttribute<Swift.Float>]
+2×  allowsBackdropGroups  [B]
+1×  backdropGroupName  [Swift.Optional<Swift.String>]
+1×  backdropObserver  [Swift.Optional<SwiftUI.SDFShape.BackdropObserver>]
+1×  backdropRect  [{CGRect={CGPoint=dd}{CGSize=dd}}]
+1×  currentLuminance  [Swift.Float]
+1×  disablesOccludedBackdropBlurs  [B]
+1×  filters[0] glassBackground  [DLCAFilter]
+2×  filters[0] vibrantColorMatrix  [CAFilter]
+1×  layer  [CABackdropLayer]
+1×  luminance  [DesignLibrary.GlassMaterialProvider.Configuration.Luminance]
+1×  luminance  [Swift.Optional<SwiftUI.ContainerBackgroundLuminance>]
+1×  luminanceAggregator  [Swift.Optional<SwiftUI.MaterialLuminanceAggregator>]
+17×  rasterizationPrefersWindowServerAwareBackdrops  [B]
+1×  some  [SwiftUI.GlassEffectBackdropObserver]
+
+===== Core Animation filters seen (context) =====
+1×  filters: glassBackground
+2×  filters: vibrantColorMatrix
+
+===== all hits (path · source · name : type = value) =====
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>>
+   objc-property (UIView) · _backdropMaskViewForGrayscaleTint : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>>
+   objc-property (UIView) · _backdropMaskViewForColorTint : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>>
+   objc-property (UIView) · _backdropMaskViewForFilters : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>>
+   objc-property (UIView) · _backdropMaskViews : NSArray
+   = ( )
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>>.backgroundBridge
+   swift-mirror · luminance : Swift.Optional<SwiftUI.ContainerBackgroundLuminance>
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> ▸ layer<CALayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> ▸ layer<CALayer> ▹ [0]<CALayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> ▸ layer<CALayer> ▹ [0]<CALayer> ▹ [0]<ImageLayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView
+   objc-property (UIView) · _backdropMaskViewForGrayscaleTint : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView
+   objc-property (UIView) · _backdropMaskViewForColorTint : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView
+   objc-property (UIView) · _backdropMaskViewForFilters : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView
+   objc-property (UIView) · _backdropMaskViews : NSArray
+   = ( )
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView ▸ layer<CALayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView
+   objc-property (UIView) · _backdropMaskViewForGrayscaleTint : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView
+   objc-property (UIView) · _backdropMaskViewForColorTint : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView
+   objc-property (UIView) · _backdropMaskViewForFilters : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView
+   objc-property (UIView) · _backdropMaskViews : NSArray
+   = ( )
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer>
+   swift-ivar (SwiftUI.SDFLayer) · backdropObserver : Swift.Optional<SwiftUI.SDFShape.BackdropObserver>
+   = Optional(SwiftUI.GlassEffectBackdropObserver)
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer>
+   swift-ivar (SwiftUI.SDFLayer) · currentLuminance : Swift.Float
+   = nan
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer>.backdropObserver
+   swift-mirror · some : SwiftUI.GlassEffectBackdropObserver
+   = SwiftUI.GlassEffectBackdropObserver
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer>.backdropObserver.some
+   swift-mirror · _luminance : AttributeGraph.WeakAttribute<Swift.Float>
+   = #131028
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer>.backdropObserver.some
+   swift-mirror · luminanceAggregator : Swift.Optional<SwiftUI.MaterialLuminanceAggregator>
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer>.sdfEffects.[1]
+   swift-mirror · layer : CABackdropLayer
+   = <CABackdropLayer: 0x108ec85c0>
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [0]<CABackdropLayer>
+   objc-property (CABackdropLayer) · backdropRect : {CGRect={CGPoint=dd}{CGSize=dd}}
+   = NSRect: {{0, 0}, {0, 0}}
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [0]<CABackdropLayer>
+   objc-property (CABackdropLayer) · disablesOccludedBackdropBlurs : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [0]<CABackdropLayer>
+   objc-ivar (CABackdropLayer) · _disablesOccludedBackdropBlurs : B
+   = false
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [0]<CABackdropLayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [0]<CABackdropLayer>
+   ca-filters · filters[0] glassBackground : DLCAFilter
+   = inputBleedAmount=11.66666666666668 · inputBleedBlurRadius=0 · inputBleedColorMatrixBlack=0.9 · inputBleedColorMatrixSaturation=1.2 · inputBleedColorMatrixWhite=1 · inputBleedDarkenBlend=1 · inputBleedDistance0=1 · inputBleedDistance1=0 · inputBleedHeight=11.66666666666668 · inputBleedOpacity=0 · inputBlurDistance0=-16.66667 · inputBlurDistance1=-1 · inputBlurDistance2=0 · inputBlurDistance3=0 · inputBlurFillBlurRadius=8 · inputBlurFillDarkenOpacity=0 · inputBlurFillLightenOpacity=0.9 · inputBlurFillNormalOpacity=0.5 · inputBlurOpacity0=0 · inputBlurOpacity1=0 · inputBlurOpacity2=0.5 · inputBlurOpacity3=1 · inputBlurRadius=5 · inputClamp=1.06961 · inputClampPreserveHue=0 · inputFaceColorMatrixBlack=0.4 · inputFaceColorMatrixFillColor=<CGColor 0x108d4f020> [<CGColorSpace 0x105cc0b40> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1; extended range)] headroom unknown ( 1 1 1 0.2 ) · inputFaceColorMatrixMaxLuma=1 · inputFaceColorMatrixMaxLumaSDR=0.94 · inputFaceColorMatrixSaturation=1.2 · inputFaceColorMatrixWhite=1.03 · inputFaceOpacity=1 · inputInnerRefractionAmount=-16.66666666666669 · inputInnerRefractionHeight=8.333333333333343 · inputKeyFillHighlightAmount=0.4 · inputKeyFillHighlightAngle=1.570796326794897 · inputKeyFillHighlightColorBias=-0.3 · inputKeyFillHighlightEffectOffset=-0.5333333333333333 · inputKeyFillHighlightHeight=0.5333333333333333 · inputKeyFillHighlightSpread=1.675516081914556 · inputKeyFillHighlightSpreadSDR=1.850049007113989 · inputMaxHeadroom=9999 · inputOuterRefractionAmount=16 · inputOuterRefractionHeight=16 · inputRefractionDistance0=-1 · inputRefractionDistance1=0 · inputRefractionOpacity=0.6 · inputRingShadowBlurRadius=5 · inputRingShadowMask=1 · inputRingShadowOffset=8 · inputRingShadowOpacity=0.06 · inputRingShadowStrokeWidth=4 · inputSDRGradientDistance0=0 · inputSDRGradientDistance1=0 · inputSDRHoldingToneEnabled=0 · inputSDRHoldingToneWhite=1 · inputSDRShadowOpacity=0 · inputShadowAmount=0 · inputShadowBlurRadius=0 · inputShadowColorMatrixBlack=0 · inputShadowColorMatrixFillColor=<CGColor 0x108d4efb0> [<CGColorSpace 0x105cc0b40> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1; extended range)] headroom unknown ( 0 0 0 0.3 ) · inputShadowColorMatrixSaturation=1 · inputShadowColorMatrixWhite=1 · inputShadowDistanceOffset=0 · inputShadowHeight=0 · inputShadowOffset=NSSize: {0, 8} · inputShadowOpacity=0.04 · inputShadowRadius=4 · inputShadowVibrancyContribution=0 · inputSourceSublayerName=@0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [0]<CABackdropLayer> ▹ [0]<CASDFLayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [0]<CABackdropLayer> ▹ [0]<CASDFLayer> ▹ [0]<CALayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [0]<CABackdropLayer> ▹ [0]<CASDFLayer> ▹ [0]<CALayer> ▹ [0]<CASDFElementLayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [1]<SDFPortalLayer>
+   objc-property (CAPortalLayer) · allowsBackdropGroups : B
+   = 1
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [1]<SDFPortalLayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [2]<CASDFLayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [2]<CASDFLayer>
+   ca-filters · filters[0] vibrantColorMatrix : CAFilter
+   = inputClamp=1 · inputColorMatrix={length = 80, bytes = 0xb6628f3f 13f241be e3a59bbc 00000000 ... 0000803f 00000000 }
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [2]<CASDFLayer> ▹ [0]<SDFPortalLayer>
+   objc-property (CAPortalLayer) · allowsBackdropGroups : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<SDFLayer> ▹ [1]<CALayer> ▹ [2]<CASDFLayer> ▹ [0]<SDFPortalLayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView
+   objc-property (UIView) · _backdropMaskViewForGrayscaleTint : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView
+   objc-property (UIView) · _backdropMaskViewForColorTint : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView
+   objc-property (UIView) · _backdropMaskViewForFilters : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView
+   objc-property (UIView) · _backdropMaskViews : NSArray
+   = ( )
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView ▸ layer<CALayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView
+   objc-property (UIView) · _backdropMaskViewForGrayscaleTint : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView
+   objc-property (UIView) · _backdropMaskViewForColorTint : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView
+   objc-property (UIView) · _backdropMaskViewForFilters : UIView
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView
+   objc-property (UIView) · _backdropMaskViews : NSArray
+   = ( )
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView.coreInteractions.interactions.[1].base.bridge.glass
+   swift-mirror · backdropGroupName : Swift.Optional<Swift.String>
+   = nil
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView.coreInteractions.interactions.[1].base.bridge.glass.variant2.config
+   swift-mirror · luminance : DesignLibrary.GlassMaterialProvider.Configuration.Luminance
+   = automatic
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView ▸ layer<CALayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView ▸ layer<CALayer> ▹ [0]<CALayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView ▸ layer<CALayer> ▹ [0]<CALayer> ▹ [0]<CGDrawingLayer>
+   objc-property (CALayer) · rasterizationPrefersWindowServerAwareBackdrops : B
+   = 0
+
+_UIHostingView<ModifiedContent<ModifiedContent<ZStack<TupleContent<Pack{ModifiedContent<Image, _AspectRatioLayout>, ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<GlassButtonStyle>>}>>, _FrameLayout>, _ClipEffect<Rectangle>>> > [0]_UIInheritedView > [0]_UIInheritedView > [0]_UIInheritedView > [0]UIPlatformGlassInteractionView ▸ layer<CALayer> ▹ [0]<CALayer> ▹ [0]<CGDrawingLayer>
+   ca-filters · filters[0] vibrantColorMatrix : CAFilter
+   = inputBackdropAware=1 · inputClamp=1 · inputColorMatrix={length = 80, bytes = 0x0000803f 00000000 00000000 00000000 ... 0000803f 00000000 }
