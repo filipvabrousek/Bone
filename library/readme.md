@@ -64,22 +64,6 @@ If a capture crashes (EXC_BAD_ACCESS in a private selector), the last
 `ivarDenylist`. Known broken: `_UIHostingView` on iOS 26, all
 `_TtGC7SwiftUI…` generic classes on visionOS 27 (defaults handle both).
 
-### `.getLuminence(_:keywords:after:)` — iOS, visionOS
-
-```swift
-Button("Hello") {}.buttonStyle(.glass).getLuminence("lum.txt")
-Text("Hi").getLuminence("h.txt", keywords: ["hysteresis", "adaptive"], after: 5)
-```
-
-Lists every place in the rendered tree whose name matches a keyword (default
-`"lumin"`): Objective-C properties and ivars, Swift stored properties (via
-`Mirror`, including Swift CALayer subclasses like SwiftUI's `SDFLayer`), and
-Core Animation filter inputs (read from a keyed archive of each `CAFilter`).
-On iOS 27 this surfaces `GlassMaterialProvider.Configuration.Luminance`,
-`SDFLayer.currentLuminance`, `MaterialLuminanceAggregator(emaWeight: 0.7,
-settleDelay: 0.35)` and `GlassMaterialProvider.HysteresisRange` — see
-`captures/lum-*.txt`.
-
 ### `.tune(_:)` — Liquid Glass parameters, iOS
 
 ```swift
@@ -94,6 +78,18 @@ inputs with their iOS 27 values; presets: `.noShadow`, `.noLensing`, `.noBlur`,
 `.noHighlight`, `.noBleed`, `.flat`; `.raw([...])` for unknown keys. Values are
 re-applied a few times per second because SwiftUI rebuilds the filter on
 updates. Before/after: `captures/tune-comparison.jpg`.
+
+### `.dumpGlass(_:only:after:)` — Liquid Glass parameters, iOS
+
+```swift
+Button("Liquid") {}.glassEffect().dumpGlass("glass.txt")                                // all inputs
+Button("Liquid") {}.glassEffect().dumpGlass("glass.txt", only: [.blurRadius, .shadowOpacity])
+Button("Liquid") {}.glassEffect().tune(.noShadow).dumpGlass("tuned.txt", only: [.shadowOpacity])
+```
+
+Writes the current inputs of the glass filter, with the same `GlassInput` keys as `.tune`
+(`blurRadius  (inputBlurRadius) = 5`). Without `only:` it writes every input plus the other
+filters on the glass layers (e.g. `vibrantColorMatrix`). Put it after `.tune` to verify a tuning.
 
 Private Core Animation keys — research/simulator use only, never ship, and
 expect renames between OS releases.

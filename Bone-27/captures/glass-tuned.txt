@@ -1,0 +1,12 @@
+BONE · dumpGlass
+OS: iOS 27.0 · captured: 2026-10-08 21:45:24
+inputs: shadowOpacity, ringShadowOpacity, innerRefractionAmount, outerRefractionAmount, refractionOpacity, blurRadius
+glass filters: 1
+
+===== [0] glassBackground  (filters on CALayer ▹ [0]CALayer ▹ [0]CALayer ▹ [0]CALayer ▹ [0]SDFLayer ▹ [1]CALayer ▹ [0]CABackdropLayer) =====
+   blurRadius  (inputBlurRadius)                       = 5
+   innerRefractionAmount  (inputInnerRefractionAmount) = 0
+   outerRefractionAmount  (inputOuterRefractionAmount) = 0
+   refractionOpacity  (inputRefractionOpacity)         = 0
+   ringShadowOpacity  (inputRingShadowOpacity)         = 0
+   shadowOpacity  (inputShadowOpacity)                 = 0

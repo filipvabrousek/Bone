@@ -19,11 +19,15 @@ import Playgrounds
                 TuneRow(title: "default") {
                     Button("Liquid"){}.font(.largeTitle).padding(20)
                         .glassEffect()
+                        .dumpGlass("glass-default.txt")                    // all inputs
                 }
                 TuneRow(title: ".tune(.noShadow + .noLensing)") {
                     Button("Liquid"){}.font(.largeTitle).padding(20)
                         .glassEffect()
                         .tune(.noShadow + .noLensing, log: "tune.txt")
+                        .dumpGlass("glass-tuned.txt", only: [.shadowOpacity, .ringShadowOpacity,
+                                                             .innerRefractionAmount, .outerRefractionAmount,
+                                                             .refractionOpacity, .blurRadius])
                 }
                 TuneRow(title: "[.blurRadius: 0, .faceOpacity: 0.3, .keyFillHighlightAmount: 1]") {
                     Button("Liquid"){}.font(.largeTitle).padding(20)
@@ -37,50 +41,6 @@ import Playgrounds
                 }
             }
 
-            /* Luminance probes (.getLuminence) – see captures/lum-*.txt
-            VStack(spacing: 24) {
-                Button("Hello"){}.getLuminence("lum.txt")
-
-                // Glass over real content, so the backdrop luminance gets measured
-                ZStack {
-                    Image(uiImage: UIImage(named: "backdrop.jpg") ?? UIImage())
-                        .resizable().scaledToFill()
-                    Button("Image"){}.buttonStyle(.glass)
-                }
-                .frame(height: 180).clipped()
-                .getLuminence("lum-image.txt", keywords: ["lumin", "vibrant", "glassBackground", "backdrop"], after: 5)
-
-                ZStack {
-                    Color.black
-                    Button("Dark"){}.buttonStyle(.glass)
-                }
-                .frame(height: 150)
-                .getLuminence("lum-dark.txt", keywords: ["lumin", "vibrant", "glassBackground", "backdrop"], after: 5)
-
-                // Navigation bar glass adapts to the content scrolling under it
-                // (adaptive luminance with hysteresis) — unlike a plain button.
-                NavigationStack {
-                    ScrollViewReader { proxy in
-                        ScrollView {
-                            VStack(spacing: 0) {
-                                Color.white.frame(height: 600)
-                                Color.black.frame(height: 900).id("dark")
-                            }
-                        }
-                        .onAppear {
-                            // scroll white -> black under the bar so luminance changes
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                withAnimation(.easeInOut(duration: 1.5)) { proxy.scrollTo("dark", anchor: .top) }
-                            }
-                        }
-                    }
-                    .navigationTitle("Toolbar")
-                    .toolbar { ToolbarItem { Button("Done"){} } }
-                }
-                .frame(height: 260)
-                .getLuminence("lum-toolbar.txt", keywords: ["lumin", "hysteresis", "adaptive"], after: 6)
-            }
-            */
 
             Image("backdrop.jpg")
                // .bone(into: "output.txt")

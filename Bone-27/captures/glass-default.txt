@@ -1,0 +1,80 @@
+BONE · dumpGlass
+OS: iOS 27.0 · captured: 2026-10-08 21:45:24
+inputs: all
+glass filters: 1
+
+===== [0] glassBackground  (filters on CALayer ▹ [0]CALayer ▹ [0]SDFLayer ▹ [1]CALayer ▹ [0]CABackdropLayer) =====
+   bleedAmount  (inputBleedAmount)                                   = 27.8833
+   bleedBlurRadius  (inputBleedBlurRadius)                           = 27.8833
+   bleedColorMatrixBlack  (inputBleedColorMatrixBlack)               = 0.9000
+   bleedColorMatrixSaturation  (inputBleedColorMatrixSaturation)     = 1.2000
+   bleedColorMatrixWhite  (inputBleedColorMatrixWhite)               = 1
+   bleedDarkenBlend  (inputBleedDarkenBlend)                         = 1
+   bleedDistance0  (inputBleedDistance0)                             = 1
+   bleedDistance1  (inputBleedDistance1)                             = 0
+   bleedHeight  (inputBleedHeight)                                   = 27.8833
+   bleedOpacity  (inputBleedOpacity)                                 = 0.0816
+   blurDistance0  (inputBlurDistance0)                               = -39.8333
+   blurDistance1  (inputBlurDistance1)                               = -1
+   blurDistance2  (inputBlurDistance2)                               = 0
+   blurDistance3  (inputBlurDistance3)                               = 0
+   blurFillBlurRadius  (inputBlurFillBlurRadius)                     = 8
+   blurFillDarkenOpacity  (inputBlurFillDarkenOpacity)               = 0
+   blurFillLightenOpacity  (inputBlurFillLightenOpacity)             = 0.9000
+   blurFillNormalOpacity  (inputBlurFillNormalOpacity)               = 0.5000
+   blurOpacity0  (inputBlurOpacity0)                                 = 0.1306
+   blurOpacity1  (inputBlurOpacity1)                                 = 0.0653
+   blurOpacity2  (inputBlurOpacity2)                                 = 0.5000
+   blurOpacity3  (inputBlurOpacity3)                                 = 1
+   blurRadius  (inputBlurRadius)                                     = 5
+   clamp  (inputClamp)                                               = 1.0696
+   clampPreserveHue  (inputClampPreserveHue)                         = 0
+   faceColorMatrixBlack  (inputFaceColorMatrixBlack)                 = 0.4000
+   faceColorMatrixFillColor  (inputFaceColorMatrixFillColor)         = CGColor(1.000, 1.000, 1.000, 0.200)
+   faceColorMatrixMaxLuma  (inputFaceColorMatrixMaxLuma)             = 1
+   faceColorMatrixMaxLumaSDR  (inputFaceColorMatrixMaxLumaSDR)       = 0.9400
+   faceColorMatrixSaturation  (inputFaceColorMatrixSaturation)       = 1.2000
+   faceColorMatrixWhite  (inputFaceColorMatrixWhite)                 = 1.0300
+   faceOpacity  (inputFaceOpacity)                                   = 1
+   innerRefractionAmount  (inputInnerRefractionAmount)               = -39.8333
+   innerRefractionHeight  (inputInnerRefractionHeight)               = 19.9167
+   keyFillHighlightAmount  (inputKeyFillHighlightAmount)             = 0.4000
+   keyFillHighlightAngle  (inputKeyFillHighlightAngle)               = 1.5708
+   keyFillHighlightColorBias  (inputKeyFillHighlightColorBias)       = -0.3000
+   keyFillHighlightEffectOffset  (inputKeyFillHighlightEffectOffset) = -0.5333
+   keyFillHighlightHeight  (inputKeyFillHighlightHeight)             = 0.5333
+   keyFillHighlightSpread  (inputKeyFillHighlightSpread)             = 1.6755
+   keyFillHighlightSpreadSDR  (inputKeyFillHighlightSpreadSDR)       = 1.8500
+   maxHeadroom  (inputMaxHeadroom)                                   = 9999
+   outerRefractionAmount  (inputOuterRefractionAmount)               = 19.9167
+   outerRefractionHeight  (inputOuterRefractionHeight)               = 16
+   refractionDistance0  (inputRefractionDistance0)                   = -1
+   refractionDistance1  (inputRefractionDistance1)                   = 0
+   refractionOpacity  (inputRefractionOpacity)                       = 0.6000
+   ringShadowBlurRadius  (inputRingShadowBlurRadius)                 = 5
+   ringShadowMask  (inputRingShadowMask)                             = 1
+   ringShadowOffset  (inputRingShadowOffset)                         = 8
+   ringShadowOpacity  (inputRingShadowOpacity)                       = 0.0600
+   ringShadowStrokeWidth  (inputRingShadowStrokeWidth)               = 4
+   sdrGradientDistance0  (inputSDRGradientDistance0)                 = 0
+   sdrGradientDistance1  (inputSDRGradientDistance1)                 = 0
+   sdrHoldingToneEnabled  (inputSDRHoldingToneEnabled)               = 0
+   sdrHoldingToneWhite  (inputSDRHoldingToneWhite)                   = 1
+   sdrShadowOpacity  (inputSDRShadowOpacity)                         = 0
+   shadowAmount  (inputShadowAmount)                                 = 0
+   shadowBlurRadius  (inputShadowBlurRadius)                         = 0
+   shadowColorMatrixBlack  (inputShadowColorMatrixBlack)             = 0
+   shadowColorMatrixFillColor  (inputShadowColorMatrixFillColor)     = CGColor(0.000, 0.000, 0.000, 0.300)
+   shadowColorMatrixSaturation  (inputShadowColorMatrixSaturation)   = 1
+   shadowColorMatrixWhite  (inputShadowColorMatrixWhite)             = 1
+   shadowDistanceOffset  (inputShadowDistanceOffset)                 = 0
+   shadowHeight  (inputShadowHeight)                                 = 0
+   shadowOffset  (inputShadowOffset)                                 = size(0.0, 8.0)
+   shadowOpacity  (inputShadowOpacity)                               = 0.0988
+   shadowRadius  (inputShadowRadius)                                 = 7.2639
+   shadowVibrancyContribution  (inputShadowVibrancyContribution)     = 0
+   inputSourceSublayerName                                           = @0
+
+===== [1] vibrantColorMatrix  (filters on CALayer ▹ [0]CALayer ▹ [0]SDFLayer ▹ [1]CALayer ▹ [2]CASDFLayer) =====
+   clamp  (inputClamp) = 1
+   inputColorMatrix    = CAColorMatrix [ 1.1202 -0.1894 -0.0190  0.0000  0.1471 | -0.0563  0.9871 -0.0191  0.0000  0.1471 | -0.0563 -0.1893  1.1574  0.0000  0.1471 |  0.0000  0.0000  0.0000  1.0000  0.0000]

@@ -15,7 +15,7 @@
 //  How it works: Liquid Glass is drawn by a Core Animation filter of type
 //  "glassBackground" (DesignLibrary's DLCAFilter) on SwiftUI's SDFLayer.
 //  Its ~70 inputs (shadow, refraction, blur, highlight, ...) are the real
-//  parameters — see captures/lum-*.txt (`.getLuminence`) for the full list.
+//  parameters — `.dumpGlass("glass.txt")` writes the full list with values.
 //  `.tune` finds every layer carrying that filter and overwrites the chosen
 //  inputs through the layer's key path "filters.<name>.<input>".
 //  SwiftUI rebuilds the filter on updates (hover, press, state changes), so

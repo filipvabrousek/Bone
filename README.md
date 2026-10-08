@@ -6,7 +6,7 @@ Swift library that dumps underlying UIKit views from SwiftUI views.
 The results are shown as overlay on the view.
 You can expand overlay to see layers, sublayers and superclasses of the views.
 It is also possible to output the code into text file.  
-It can also list Liquid Glass internals (`.getLuminence`) and tune Liquid Glass rendering parameters (`.tune`).  
+It can also tune (`.tune`) and dump (`.dumpGlass`) Liquid Glass rendering parameters.  
 To get started, just copy/paste all files in library into folder in your project and add it to all targets.
 
 > Research / simulator use only: Bone uses private introspection selectors and private
@@ -76,25 +76,6 @@ iOS/macOS-captured hierarchy on visionOS and compare platforms.
 
 ## Liquid Glass
 
-### `.getLuminence(_:keywords:after:)` — iOS, visionOS
-
-```swift
-Button("Hello") {}.buttonStyle(.glass).getLuminence("lum.txt")
-Text("Hi").getLuminence("h.txt", keywords: ["hysteresis", "adaptive"], after: 5)
-```
-
-Lists every place in the rendered tree whose name matches a keyword (default `"lumin"`):
-Objective-C properties and ivars, Swift stored properties (via `Mirror`, including Swift
-`CALayer` subclasses such as SwiftUI's `SDFLayer`) and Core Animation filter inputs.
-`after:` sets how many seconds to wait before capturing.
-
-What it finds on iOS 27 (see `Bone-27/captures/lum-*.txt`):
-- a glass button: `GlassMaterialProvider.Configuration.Luminance = automatic` and `SDFLayer.currentLuminance`
-- a navigation-bar toolbar: `MaterialLuminanceAggregator(emaWeight: 0.7, settleDelay: 0.35)`,
-  UIKit's `LuminanceAggregatorBridge` and `GlassMaterialProvider.HysteresisRange` – the adaptive
-  light/dark switching of bar glass
-- the glass itself is drawn by a `glassBackground` Core Animation filter with ~70 inputs
-
 ### `.tune(_:)` — iOS
 
 ```swift
@@ -102,8 +83,6 @@ Button("Liquid") {}.glassEffect().tune(.noShadow + .noLensing)
 Button("Liquid") {}.glassEffect().tune([.blurRadius: 0, .faceOpacity: 0.3, .keyFillHighlightAmount: 1])
 Button("Liquid") {}.glassEffect().tune(.flat)
 ```
-
-![Liquid Glass tuning](Bone-27/captures/tune-comparison.jpg)
 
 Overrides inputs of the `glassBackground` filter that renders Liquid Glass.
 - **Typed keys:** `GlassInput` (generated in `BoneGlassInputs.swift`) lists all 69 inputs –
@@ -118,6 +97,29 @@ Overrides inputs of the `glassBackground` filter that renders Liquid Glass.
 
 `.tune(excludeShadow: true, contentLensing: false)` still works as a shortcut for
 `.tune(.noShadow + .noLensing)`.
+
+![Liquid Glass tuning](Bone-27/captures/tune-comparison.jpg)
+
+### `.dumpGlass(_:only:after:)` — iOS
+
+```swift
+Button("Liquid") {}.glassEffect().dumpGlass("glass.txt")                                  // all inputs
+Button("Liquid") {}.glassEffect().dumpGlass("glass.txt", only: [.blurRadius, .shadowOpacity])
+Button("Liquid") {}.glassEffect().tune(.noShadow).dumpGlass("tuned.txt", only: [.shadowOpacity])
+```
+
+Writes the current inputs of the glass filter to a text file, with the same `GlassInput` keys
+as `.tune`:
+
+```
+blurRadius  (inputBlurRadius)                       = 5
+faceColorMatrixFillColor  (inputFaceColorMatrixFillColor) = CGColor(1.000, 1.000, 1.000, 0.200)
+shadowOffset  (inputShadowOffset)                   = size(0.0, 8.0)
+```
+
+Without `only:` it writes every input, plus the other filters on the glass layers
+(e.g. `vibrantColorMatrix` with its 4×5 colour matrix). Put it after `.tune` to verify a
+tuning. `after:` (default 1.5 s) waits for the glass to render.
 
 ## Configuration
 
