@@ -1,5 +1,5 @@
 BONE · dumpGlass
-OS: iOS 27.0 · captured: 2026-10-08 21:45:24
+OS: iOS 27.0 · captured: 2026-10-08 23:01:45
 inputs: shadowOpacity, ringShadowOpacity, innerRefractionAmount, outerRefractionAmount, refractionOpacity, blurRadius
 glass filters: 1
 

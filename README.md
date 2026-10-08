@@ -6,7 +6,8 @@ Swift library that dumps underlying UIKit views from SwiftUI views.
 The results are shown as overlay on the view.
 You can expand overlay to see layers, sublayers and superclasses of the views.
 It is also possible to output the code into text file.  
-It can also tune (`.tune`) and dump (`.dumpGlass`) Liquid Glass rendering parameters.  
+It can also tune (`.tune`), dump (`.dumpGlass`), probe (`.probeGlass`) and live-edit (`.glassPanel`) Liquid Glass,  
+and tune the layers of any SwiftUI view – Text, shapes, buttons (`.tuneLayers`).  
 To get started, just copy/paste all files in library into folder in your project and add it to all targets.
 
 > Research / simulator use only: Bone uses private introspection selectors and private
@@ -85,13 +86,15 @@ Button("Liquid") {}.glassEffect().tune(.flat)
 ```
 
 Overrides inputs of the `glassBackground` filter that renders Liquid Glass.
-- **Typed keys:** `GlassInput` (generated in `BoneGlassInputs.swift`) lists all 69 inputs –
-  shadow, refraction (lensing), blur, face colour matrix, key-light highlight, bleed, HDR headroom –
-  with the values iOS 27 used, so Xcode autocompletes them.
+- **Typed keys:** `GlassInput` (generated in `BoneGlassInputs.swift`) lists the 69 inputs SwiftUI
+  sets – shadow, refraction (lensing), blur, face colour matrix, key-light highlight, bleed, HDR
+  headroom – with the values iOS 27 used, plus 5 hidden ones `.probeGlass` found live:
+  `.aberrationAmount` (chromatic dispersion), `.aberrationHeight/Offset/Angle`, `.bleedColorMatrixFillColor`.
 - **Presets**, combined with `+` (right side wins): `.noShadow`, `.noLensing`, `.noBlur`,
-  `.noHighlight`, `.noBleed`, `.flat`.
+  `.noHighlight`, `.noBleed`, `.flat`, `.aberration`.
 - **Values:** plain literals (`0`, `0.4`, `true`), `.color(UIColor)`, `.size(w, h)`;
-  `.raw(["inputSomethingNew": 1])` for keys a newer OS adds.
+  `.raw(["inputSomethingNew": 1])` for any other key – prefix it to reach another filter of the
+  glass: `.raw(["vibrantColorMatrix.inputColorMatrix": BoneColorMatrix.value(BoneColorMatrix.invert)])`.
 - `log: "tune.txt"` writes what changed (before → after).
 - SwiftUI rebuilds the filter on every update, so the values are re-applied a few times per second.
 
@@ -99,6 +102,14 @@ Overrides inputs of the `glassBackground` filter that renders Liquid Glass.
 `.tune(.noShadow + .noLensing)`.
 
 ![Liquid Glass tuning](Bone-27/captures/tune-comparison.jpg)
+
+```swift
+Button("Liquid") {}.glassEffect().tune(file: "glass-panel.json")
+```
+
+`.tune(file:)` loads overrides from JSON (what `.glassPanel` saves). In the simulator the file is
+`<project>/captures/<name>` and is re-read whenever it changes – edit it on the Mac and watch the
+glass, no rebuild.
 
 ### `.dumpGlass(_:only:after:)` — iOS
 
@@ -120,6 +131,109 @@ shadowOffset  (inputShadowOffset)                   = size(0.0, 8.0)
 Without `only:` it writes every input, plus the other filters on the glass layers
 (e.g. `vibrantColorMatrix` with its 4×5 colour matrix). Put it after `.tune` to verify a
 tuning. `after:` (default 1.5 s) waits for the glass to render.
+
+### `.probeGlass(_:after:)` — which glass inputs are live, iOS
+
+```swift
+Button("Liquid") {}.glassEffect().probeGlass("glass-probe.txt")
+```
+
+Finds out which filter inputs actually change the rendered glass. For every input
+name the SDK exports (`kCAFilterInput…`, 136 on iOS 27, list in
+`BoneFilterInputNames.swift`) and every key already on the filter, it sets test
+values (numbers 0, 1, 10, 50, −10; toggles; red/green; two colour matrices),
+captures the composited screen and counts changed pixels around the glass.
+Inputs that changed nothing are tried again with the live hidden inputs switched
+on (pass 2) – some only modulate another one. Writes `glass-probe.txt` (report),
+`glass-probe.json` and `glass-probe.png` (contact sheet of every live input).
+Takes ~3 min for both filters of a glass button. The demo runs it when launched
+with `-probe`. Use a structured backdrop: over a flat colour refraction, blur and
+aberration are invisible.
+
+![Probe contact sheet](Bone-27/captures/glass-probe.png)
+
+iOS 27 simulator, glass button over black/yellow stripes (`Bone-27/captures/glass-probe.*`),
+two runs, identical verdicts for all 270 inputs:
+![Hidden knobs](Bone-27/captures/hidden-knobs.png)
+
+- **hidden but live** (never set by SwiftUI): `inputAberrationAmount` – chromatic
+  dispersion –, `inputBleedColorMatrixFillColor` – a bleed tint; on
+  `vibrantColorMatrix`: `inputBackdropAware`, `inputClampPreserveHue` (tiny)
+- **only with aberration on**: `inputAberrationHeight`, `inputAberrationOffset`,
+  `inputAberrationAngle`
+- 44 of the inputs SwiftUI sets change the image; the rest of the 136 names do
+  nothing on this filter (they belong to other Core Animation filters)
+
+How it measures, and why:
+- `drawHierarchy` does not reproduce Liquid Glass; UIKit's private
+  `_UICreateScreenUIImage` matches `simctl io screenshot` pixel for pixel.
+- Right after `CATransaction.flush()` the screen sometimes still shows the previous
+  commit, so every capture waits two frames and must agree with the next one
+  (runs differ by ≤ 10 px of 201 075).
+- Inputs are restored in place – `setValue(nil, forKeyPath:)` removes a key. Putting
+  a filter object back takes the render server about a frame, so that is only the
+  fallback; every restore is checked against the baseline.
+
+### `.glassPanel()` — live editor for any glass, iOS
+
+```swift
+WindowGroup { ContentView().glassPanel() }
+```
+
+Adds a floating pink drop. Tap it, then tap any glass on screen – your own
+`.glassEffect()` views and system bars alike. Every input of the glass filters
+(`glassBackground`, `vibrantColorMatrix`) gets a control: slider plus typed value
+(⇔ widens the range), toggle, colour picker, size, 4×5 colour-matrix editor.
+Hidden inputs are listed first, in purple. Changes go to the real glass at once
+and are re-applied when SwiftUI rebuilds it; on a view that also has `.tune`, the
+panel wins for the inputs it holds.
+
+- **Probe** – `.probeGlass` on the picked glass and filter (the panel hides itself
+  meanwhile); inputs it finds live are added to the list.
+- **Copy Swift** – `.tune([...])` code for the current changes, to the clipboard.
+- **Save JSON** – `captures/glass-panel.json`, for `.tune(file:)`.
+- presets, Reset all, per-input reset, move the panel up/down.
+
+## Any SwiftUI view
+
+### `.tuneLayers(_:where:)` / `.dumpLayers(_:)` — iOS
+
+```swift
+Text("Hello").tuneLayers([.rotationY: 35, .shadowOpacity: 1, .shadowRadius: 8], where: .text)
+Button("Go") {}.buttonStyle(.borderedProminent).tuneLayers([.filters: .filters([.colorHueRotate(2.2)])])
+Image(systemName: "star.fill").tuneLayers([.blendMode: .blend(.difference)], where: .shape)
+Text("Hi").tuneLayers([.contents: .image(UIImage(named: "photo")!)], where: .text)
+VStack { … }.tuneLayers(.outline, where: .all)      // pink border on every layer
+VStack { … }.dumpLayers("layers.txt")                 // what is there, and which targets match
+```
+
+On iOS 27 SwiftUI draws most primitives into bare CALayers without a UIView
+(`Text("Hello").bone(into:)` → `_UIHostingView<Text>` › `CGDrawingLayer (layer)`):
+Text and button labels are `CGDrawingLayer` bitmaps, SF Symbols and filled shapes
+`ColorShapeLayer`, gradient fills `GradientLayer`; glass keeps real views. Every one
+of them takes:
+- `LayerProperty`: opacity, hidden, cornerRadius, masksToBounds, backgroundColor, border,
+  shadow, 3D transform about the centre (rotation, rotationX/Y + perspective, scale,
+  translation – composed with SwiftUI's own), `blendMode` (22 Core Animation blend
+  modes), `filters`, `contents` (replace the bitmap), `contentsGravity`; `.raw([...])`
+  for any other key or key path
+- `BoneFilter`: gaussianBlur, colorMatrix, colorInvert, colorSaturate, colorHueRotate,
+  colorBrightness, colorContrast, colorMonochrome, multiplyColor, luminanceToAlpha,
+  `.raw(type, inputs)` for any other `kCAFilter…` type – all verified on a Text layer
+  in the iOS 27 simulator; added after SwiftUI's own filters
+- `LayerTarget`: `.leaves` (default – every drawn element), `.text`, `.shape`,
+  `.gradient`, `.glass`, `.all`, `.className("…")`, `.custom`, combined with `||`
+
+Layers are SwiftUI's choice – it may merge or recreate them – so targets are layer
+kinds and values are re-applied a few times per second. Text stays a bitmap: you can
+filter, warp, mask or replace it, not edit glyphs.
+
+![Layer tuning](Bone-27/captures/layers-demo.jpg)
+
+The glass panel has a **Layer** mode (switch in the pick hint): tap any element, edit
+its layer live (sliders, colours, blend picker, filter controls, ↑/↓ to the parent or
+a sublayer), Copy Swift gives the `.tuneLayers` line. The demo shows all of it when
+launched with `-layers`.
 
 ## Configuration
 

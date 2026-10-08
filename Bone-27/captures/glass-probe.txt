@@ -1,0 +1,303 @@
+BONE · probeGlass
+OS: iOS 27.0 · captured: 2026-10-08 23:01:35 · 192.3 s
+element: CALayer · region 113,383 174×127 pt (element ±24 pt) = 201075 px
+capture: _UICreateScreenUIImage, settled (2 frames, then two identical captures in a row) · noise 0 px · restores in place (nil removes a key) · LIVE = ≥ 50 px changed (channel difference > 8)
+candidates: 136 SDK input names (kCAFilterInput…) + keys already on the filter
+numbers tried: 0, 1, 10, 50, -10 · toggles flipped · colours red, green · matrices swapRedBlue, invert
+backdrop matters: refraction, blur and aberration only show over structure –
+an input with no visible effect here can still do something over another backdrop.
+pass 2 context (hidden inputs switched on): aberrationAmount = 50, bleedColorMatrixFillColor = green, inputBackdropAware = 1, clampPreserveHue = 1
+
+===== [0] glassBackground  (filters on CABackdropLayer) =====
+
+-- LIVE – hidden: not set when the probe started (SwiftUI never sets it) (2)
+   aberrationAmount  (inputAberrationAmount)                  number  0: 0.0% · 1: 0.3% · 10: 3.7% · 50: 9.8% · -10: 3.7%
+   bleedColorMatrixFillColor  (inputBleedColorMatrixFillColor)color   red: 3.9% · green: 13.2%
+
+-- LIVE – only together with the hidden inputs (pass 2) (8)
+   aberrationAngle  (inputAberrationAngle)                    number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 10.6% · 10 +ctx: 10.9% · 50 +ctx: 3.2% · -10 +ctx: 11.6%
+   aberrationHeight  (inputAberrationHeight)                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 9.8% · 1 +ctx: 9.7% · 10 +ctx: 8.7% · 50 +ctx: 21.0% · -10 +ctx: 26.9%
+   aberrationOffset  (inputAberrationOffset)                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 4.6% · 10 +ctx: 18.5% · 50 +ctx: 26.9% · -10 +ctx: 9.9%
+   bleedBlurRadius  (inputBleedBlurRadius)                    number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.3% · 1 +ctx: 0.3% · 10 +ctx: 0.3% · 50 +ctx: 0.1% · -10 +ctx: 0.3%
+   bleedDarkenBlend  (inputBleedDarkenBlend)                  number  0: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 3.6% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedDistance0  (inputBleedDistance0)                      number  0: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 3.8% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 3.7%
+   bleedDistance1  (inputBleedDistance1)                      number  1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 1 +ctx: 3.8% · 10 +ctx: 3.8% · 50 +ctx: 3.8% · -10 +ctx: 0.0%
+   blurOpacity3  (inputBlurOpacity3)                          number  0: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 10 +ctx: 0.3% · 50 +ctx: 2.0% · -10 +ctx: 0.0%
+
+-- LIVE – already set (by SwiftUI, or by .tune / the panel) (43)
+   bleedColorMatrixBlack  (inputBleedColorMatrixBlack)        number  0: 0.0% · 1: 0.0% · 10: 36.4% · 50: 36.7% · -10: 36.5%
+   bleedColorMatrixSaturation  (inputBleedColorMatrixSaturation)number  0: 0.0% · 1: 0.0% · 10: 36.2% · 50: 36.6% · -10: 36.3%
+   bleedColorMatrixWhite  (inputBleedColorMatrixWhite)        number  0: 0.0% · 10: 36.2% · 50: 36.7% · -10: 36.3%
+   bleedOpacity  (inputBleedOpacity)                          number  0: 0.0% · 1: 36.2% · 10: 36.2% · 50: 36.2% · -10: 0.0%
+   blurDistance1  (inputBlurDistance1)                        number  0: 0.6% · 1: 16.9% · 10: 17.1% · 50: 16.9% · -10: 0.0%
+   blurDistance2  (inputBlurDistance2)                        number  1: 17.2% · 10: 17.2% · 50: 17.2% · -10: 16.4%
+   blurDistance3  (inputBlurDistance3)                        number  1: 0.6% · 10: 0.6% · 50: 0.0% · -10: 17.2%
+   blurFillBlurRadius  (inputBlurFillBlurRadius)              number  0: 36.3% · 1: 34.2% · 10: 0.0% · 50: 9.2% · -10: 36.3%
+   blurFillDarkenOpacity  (inputBlurFillDarkenOpacity)        number  1: 33.5% · 10: 33.5% · 50: 33.5% · -10: 0.0%
+   blurFillLightenOpacity  (inputBlurFillLightenOpacity)      number  0: 17.6% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 17.6%
+   blurFillNormalOpacity  (inputBlurFillNormalOpacity)        number  0: 17.5% · 1: 17.5% · 10: 17.5% · 50: 17.5% · -10: 17.5%
+   blurOpacity0  (inputBlurOpacity0)                          number  0: 0.7% · 1: 13.6% · 10: 18.5% · 50: 17.5% · -10: 1.9%
+   blurOpacity1  (inputBlurOpacity1)                          number  0: 0.0% · 1: 14.6% · 10: 21.3% · 50: 17.5% · -10: 1.9%
+   blurOpacity2  (inputBlurOpacity2)                          number  0: 0.6% · 1: 0.6% · 10: 0.9% · 50: 0.9% · -10: 0.6%
+   blurRadius  (inputBlurRadius)                              number  0: 2.5% · 1: 1.7% · 10: 1.4% · 50: 18.0% · -10: 2.5%
+   faceColorMatrixBlack  (inputFaceColorMatrixBlack)          number  0: 36.5% · 1: 36.6% · 10: 36.8% · 50: 36.8% · -10: 37.3%
+   faceColorMatrixFillColor  (inputFaceColorMatrixFillColor)  color   red: 37.1% · green: 37.2%
+   faceColorMatrixMaxLumaSDR  (inputFaceColorMatrixMaxLumaSDR)number  0: 36.8% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 36.8%
+   faceColorMatrixSaturation  (inputFaceColorMatrixSaturation)number  0: 36.9% · 1: 36.1% · 10: 36.8% · 50: 37.0% · -10: 37.2%
+   faceColorMatrixWhite  (inputFaceColorMatrixWhite)          number  0: 37.1% · 1: 0.0% · 10: 36.8% · 50: 36.8% · -10: 37.2%
+   faceOpacity  (inputFaceOpacity)                            number  0: 36.6% · 10: 0.0% · 50: 0.0% · -10: 36.6%
+   innerRefractionAmount  (inputInnerRefractionAmount)        number  0: 7.6% · 1: 7.7% · 10: 8.7% · 50: 10.4% · -10: 6.4%
+   innerRefractionHeight  (inputInnerRefractionHeight)        number  0: 7.6% · 1: 7.7% · 10: 4.8% · 50: 9.3% · -10: 17.7%
+   keyFillHighlightAmount  (inputKeyFillHighlightAmount)      number  0: 0.8% · 1: 1.0% · 10: 1.0% · 50: 1.0% · -10: 1.0%
+   keyFillHighlightAngle  (inputKeyFillHighlightAngle)        number  0: 0.6% · 1: 0.4% · 10: 0.5% · 50: 0.6% · -10: 0.5%
+   keyFillHighlightColorBias  (inputKeyFillHighlightColorBias)number  0: 1.2% · 1: 1.3% · 10: 1.4% · 50: 1.4% · -10: 1.0%
+   keyFillHighlightEffectOffset  (inputKeyFillHighlightEffectOffset)number  0: 1.2% · 1: 1.6% · 10: 1.5% · 50: 0.8% · -10: 1.3%
+   keyFillHighlightHeight  (inputKeyFillHighlightHeight)      number  0: 0.8% · 1: 0.6% · 10: 12.9% · 50: 36.4% · -10: 0.8%
+   keyFillHighlightSpreadSDR  (inputKeyFillHighlightSpreadSDR)number  0: 0.8% · 1: 0.5% · 10: 0.3% · 50: 0.7% · -10: 0.3%
+   maxHeadroom  (inputMaxHeadroom)                            number  0: 0.1% · 1: 0.1% · 10: 0.0% · 50: 0.0% · -10: 0.1%
+   outerRefractionAmount  (inputOuterRefractionAmount)        number  0: 0.9% · 1: 0.8% · 10: 0.4% · 50: 0.9% · -10: 1.1%
+   outerRefractionHeight  (inputOuterRefractionHeight)        number  0: 0.8% · 1: 0.6% · 10: 0.0% · 50: 0.0% · -10: 0.2%
+   refractionDistance0  (inputRefractionDistance0)            number  0: 0.8% · 1: 32.9% · 10: 32.9% · 50: 32.9% · -10: 7.7%
+   refractionDistance1  (inputRefractionDistance1)            number  1: 0.5% · 10: 0.8% · 50: 0.8% · -10: 29.6%
+   refractionOpacity  (inputRefractionOpacity)                number  0: 0.8% · 1: 0.6% · 10: 1.6% · 50: 1.7% · -10: 0.8%
+   ringShadowBlurRadius  (inputRingShadowBlurRadius)          number  0: 2.5% · 1: 0.6% · 10: 0.0% · 50: 0.0% · -10: 2.5%
+   ringShadowOpacity  (inputRingShadowOpacity)                number  0: 0.0% · 1: 17.1% · 10: 17.1% · 50: 17.1% · -10: 0.0%
+   ringShadowStrokeWidth  (inputRingShadowStrokeWidth)        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 26.7% · -10: 0.0%
+   sdrShadowOpacity  (inputSDRShadowOpacity)                  number  1: 3.2% · 10: 7.6% · 50: 9.0% · -10: 0.0%
+   shadowColorMatrixBlack  (inputShadowColorMatrixBlack)      number  1: 0.4% · 10: 1.1% · 50: 1.4% · -10: 0.7%
+   shadowColorMatrixFillColor  (inputShadowColorMatrixFillColor)color   red: 4.8% · green: 5.5%
+   shadowOpacity  (inputShadowOpacity)                        number  0: 0.0% · 1: 5.2% · 10: 5.2% · 50: 5.2% · -10: 0.0%
+   shadowVibrancyContribution  (inputShadowVibrancyContribution)number  1: 0.0% · 10: 0.5% · 50: 4.3% · -10: 0.0%
+
+-- no visible effect (73)
+   inputAdaptive                                              toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputAddWhite                                              number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputAllowsGroup                                           toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputAmount                                                number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputAngle                                                 number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputAspectRatio                                           number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputBackColor0                                            color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   inputBackColor1                                            color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   inputBackEnabled                                           toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputBackdropAware                                         toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputBias                                                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedAmount  (inputBleedAmount)                            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedHeight  (inputBleedHeight)                            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputBleedOffset                                           number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputBleedSaturation                                       number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputBlueOffset                                            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurDistance0  (inputBlurDistance0)                        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputBlurDistance4                                         number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputBlurOpacity4                                          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   clamp  (inputClamp)                                        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   clampPreserveHue  (inputClampPreserveHue)                  toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputColor                                                 color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   inputColor0                                                color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   inputColor1                                                color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   inputColorMatrix                                           matrix  swapRedBlue: 0.0% · invert: 0.0% · swapRedBlue +ctx: 0.0% · invert +ctx: 0.0%
+   inputDither                                                toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputEdgeEnd                                               number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputEdgeOpacityEnd                                        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputEdgeOpacityStart                                      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputEdgeStart                                             number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputEnd                                                   number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputEndAngle                                              number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputExtendEdges                                           toggle  1: 0.0% · 1 +ctx: 0.0%
+   faceColorMatrixMaxLuma  (inputFaceColorMatrixMaxLuma)      number  0: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputFade                                                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputFrontColor                                            color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   inputFrontEnabled                                          toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputGreenOffset                                           number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputHSVSpace                                              toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputHardEdges                                             toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputIntermediateBitDepth                                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   keyFillHighlightSpread  (inputKeyFillHighlightSpread)      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputLinear                                                toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputNormalizeEdges                                        toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputOffset                                                number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputOverlayOpacity                                        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputPremultipliedValues                                   toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputQuality                                               number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputRadius                                                number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputRedOffset                                             number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputRefractionAmount                                      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputRefractionHeight                                      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputRefractionOffset                                      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputReversed                                              toggle  1: 0.0% · 1 +ctx: 0.0%
+   ringShadowMask  (inputRingShadowMask)                      toggle  0: 0.0% · 0 +ctx: 0.0%
+   ringShadowOffset  (inputRingShadowOffset)                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   sdrGradientDistance0  (inputSDRGradientDistance0)          number  1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   sdrGradientDistance1  (inputSDRGradientDistance1)          number  1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   sdrHoldingToneEnabled  (inputSDRHoldingToneEnabled)        toggle  1: 0.0% · 1 +ctx: 0.0%
+   sdrHoldingToneWhite  (inputSDRHoldingToneWhite)            number  0: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputScale                                                 number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowAmount  (inputShadowAmount)                          number  1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowBlurRadius  (inputShadowBlurRadius)                  number  1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputShadowColor                                           color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   shadowColorMatrixSaturation  (inputShadowColorMatrixSaturation)number  0: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowColorMatrixWhite  (inputShadowColorMatrixWhite)      number  0: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowDistanceOffset  (inputShadowDistanceOffset)          number  1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowHeight  (inputShadowHeight)                          number  1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowOffset  (inputShadowOffset)                          size    size(0, 0): 0.0% · size(20, 20): 0.0% · size(0, 0) +ctx: 0.0% · size(20, 20) +ctx: 0.0%
+   shadowRadius  (inputShadowRadius)                          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputStart                                                 number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputStartAngle                                            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputTime                                                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+
+-- skipped (9)
+   inputAlphaValues                                           array   array value – not tried
+   inputBlueValues                                            array   array value – not tried
+   inputBounds                                                rect    rect value – not tried
+   inputColorMap                                              image   image value – not tried
+   inputGreenValues                                           array   array value – not tried
+   inputMaskImage                                             image   image value – not tried
+   inputRedValues                                             array   array value – not tried
+   inputShadowBounds                                          rect    rect value – not tried
+   inputValues                                                array   array value – not tried
+
+===== [1] vibrantColorMatrix  (filters on CASDFLayer) =====
+
+-- LIVE – hidden: not set when the probe started (SwiftUI never sets it) (2)
+   inputBackdropAware                                         toggle  1: 0.1%
+   clampPreserveHue  (inputClampPreserveHue)                  toggle  1: 0.1%
+
+-- LIVE – already set (by SwiftUI, or by .tune / the panel) (1)
+   inputColorMatrix                                           matrix  swapRedBlue: 4.0% · invert: 4.5%
+
+-- no visible effect (123)
+   aberrationAmount  (inputAberrationAmount)                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   aberrationAngle  (inputAberrationAngle)                    number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   aberrationHeight  (inputAberrationHeight)                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   aberrationOffset  (inputAberrationOffset)                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputAdaptive                                              toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputAddWhite                                              number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputAllowsGroup                                           toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputAmount                                                number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputAngle                                                 number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputAspectRatio                                           number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputBackColor0                                            color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   inputBackColor1                                            color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   inputBackEnabled                                           toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputBias                                                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedAmount  (inputBleedAmount)                            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedBlurRadius  (inputBleedBlurRadius)                    number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedColorMatrixBlack  (inputBleedColorMatrixBlack)        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedColorMatrixFillColor  (inputBleedColorMatrixFillColor)color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   bleedColorMatrixSaturation  (inputBleedColorMatrixSaturation)number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedColorMatrixWhite  (inputBleedColorMatrixWhite)        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedDarkenBlend  (inputBleedDarkenBlend)                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedDistance0  (inputBleedDistance0)                      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedDistance1  (inputBleedDistance1)                      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedHeight  (inputBleedHeight)                            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputBleedOffset                                           number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   bleedOpacity  (inputBleedOpacity)                          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputBleedSaturation                                       number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputBlueOffset                                            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurDistance0  (inputBlurDistance0)                        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurDistance1  (inputBlurDistance1)                        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurDistance2  (inputBlurDistance2)                        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurDistance3  (inputBlurDistance3)                        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputBlurDistance4                                         number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurFillBlurRadius  (inputBlurFillBlurRadius)              number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurFillDarkenOpacity  (inputBlurFillDarkenOpacity)        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurFillLightenOpacity  (inputBlurFillLightenOpacity)      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurFillNormalOpacity  (inputBlurFillNormalOpacity)        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurOpacity0  (inputBlurOpacity0)                          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurOpacity1  (inputBlurOpacity1)                          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurOpacity2  (inputBlurOpacity2)                          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurOpacity3  (inputBlurOpacity3)                          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputBlurOpacity4                                          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   blurRadius  (inputBlurRadius)                              number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   clamp  (inputClamp)                                        number  0: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputColor                                                 color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   inputColor0                                                color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   inputColor1                                                color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   inputDither                                                toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputEdgeEnd                                               number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputEdgeOpacityEnd                                        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputEdgeOpacityStart                                      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputEdgeStart                                             number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputEnd                                                   number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputEndAngle                                              number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputExtendEdges                                           toggle  1: 0.0% · 1 +ctx: 0.0%
+   faceColorMatrixBlack  (inputFaceColorMatrixBlack)          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   faceColorMatrixFillColor  (inputFaceColorMatrixFillColor)  color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   faceColorMatrixMaxLuma  (inputFaceColorMatrixMaxLuma)      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   faceColorMatrixMaxLumaSDR  (inputFaceColorMatrixMaxLumaSDR)number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   faceColorMatrixSaturation  (inputFaceColorMatrixSaturation)number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   faceColorMatrixWhite  (inputFaceColorMatrixWhite)          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   faceOpacity  (inputFaceOpacity)                            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputFade                                                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputFrontColor                                            color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   inputFrontEnabled                                          toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputGreenOffset                                           number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputHSVSpace                                              toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputHardEdges                                             toggle  1: 0.0% · 1 +ctx: 0.0%
+   innerRefractionAmount  (inputInnerRefractionAmount)        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   innerRefractionHeight  (inputInnerRefractionHeight)        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputIntermediateBitDepth                                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   keyFillHighlightAmount  (inputKeyFillHighlightAmount)      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   keyFillHighlightAngle  (inputKeyFillHighlightAngle)        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   keyFillHighlightColorBias  (inputKeyFillHighlightColorBias)number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   keyFillHighlightEffectOffset  (inputKeyFillHighlightEffectOffset)number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   keyFillHighlightHeight  (inputKeyFillHighlightHeight)      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   keyFillHighlightSpread  (inputKeyFillHighlightSpread)      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   keyFillHighlightSpreadSDR  (inputKeyFillHighlightSpreadSDR)number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputLinear                                                toggle  1: 0.0% · 1 +ctx: 0.0%
+   maxHeadroom  (inputMaxHeadroom)                            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputNormalizeEdges                                        toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputOffset                                                number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   outerRefractionAmount  (inputOuterRefractionAmount)        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   outerRefractionHeight  (inputOuterRefractionHeight)        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputOverlayOpacity                                        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputPremultipliedValues                                   toggle  1: 0.0% · 1 +ctx: 0.0%
+   inputQuality                                               number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputRadius                                                number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputRedOffset                                             number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputRefractionAmount                                      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   refractionDistance0  (inputRefractionDistance0)            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   refractionDistance1  (inputRefractionDistance1)            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputRefractionHeight                                      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputRefractionOffset                                      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   refractionOpacity  (inputRefractionOpacity)                number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputReversed                                              toggle  1: 0.0% · 1 +ctx: 0.0%
+   ringShadowBlurRadius  (inputRingShadowBlurRadius)          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   ringShadowMask  (inputRingShadowMask)                      toggle  1: 0.0% · 1 +ctx: 0.0%
+   ringShadowOffset  (inputRingShadowOffset)                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   ringShadowOpacity  (inputRingShadowOpacity)                number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   ringShadowStrokeWidth  (inputRingShadowStrokeWidth)        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   sdrGradientDistance0  (inputSDRGradientDistance0)          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   sdrGradientDistance1  (inputSDRGradientDistance1)          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   sdrHoldingToneEnabled  (inputSDRHoldingToneEnabled)        toggle  1: 0.0% · 1 +ctx: 0.0%
+   sdrHoldingToneWhite  (inputSDRHoldingToneWhite)            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   sdrShadowOpacity  (inputSDRShadowOpacity)                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputScale                                                 number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowAmount  (inputShadowAmount)                          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowBlurRadius  (inputShadowBlurRadius)                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputShadowColor                                           color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   shadowColorMatrixBlack  (inputShadowColorMatrixBlack)      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowColorMatrixFillColor  (inputShadowColorMatrixFillColor)color   red: 0.0% · green: 0.0% · red +ctx: 0.0% · green +ctx: 0.0%
+   shadowColorMatrixSaturation  (inputShadowColorMatrixSaturation)number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowColorMatrixWhite  (inputShadowColorMatrixWhite)      number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowDistanceOffset  (inputShadowDistanceOffset)          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowHeight  (inputShadowHeight)                          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowOffset  (inputShadowOffset)                          size    size(0, 0): 0.0% · size(20, 20): 0.0% · size(0, 0) +ctx: 0.0% · size(20, 20) +ctx: 0.0%
+   shadowOpacity  (inputShadowOpacity)                        number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowRadius  (inputShadowRadius)                          number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   shadowVibrancyContribution  (inputShadowVibrancyContribution)number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputStart                                                 number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputStartAngle                                            number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+   inputTime                                                  number  0: 0.0% · 1: 0.0% · 10: 0.0% · 50: 0.0% · -10: 0.0% · 0 +ctx: 0.0% · 1 +ctx: 0.0% · 10 +ctx: 0.0% · 50 +ctx: 0.0% · -10 +ctx: 0.0%
+
+-- skipped (9)
+   inputAlphaValues                                           array   array value – not tried
+   inputBlueValues                                            array   array value – not tried
+   inputBounds                                                rect    rect value – not tried
+   inputColorMap                                              image   image value – not tried
+   inputGreenValues                                           array   array value – not tried
+   inputMaskImage                                             image   image value – not tried
+   inputRedValues                                             array   array value – not tried
+   inputShadowBounds                                          rect    rect value – not tried
+   inputValues                                                array   array value – not tried
+
+summary: 4 hidden live · 8 live in combination · 44 already-set live · 196 no effect · 18 skipped

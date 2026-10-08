@@ -12,6 +12,13 @@
 //          .glassEffect()
 //          .tune(overrides: ["inputBlurRadius": 0, "inputFaceOpacity": 0.2])
 //
+//      Button("Liquid") {}
+//          .glassEffect()
+//          .tune(file: "glass-panel.json")   // saved by .glassPanel; re-read when it changes
+//
+//  Raw keys reach other filters of the glass with a prefix:
+//  .tune(.raw(["vibrantColorMatrix.inputColorMatrix": BoneColorMatrix.value(BoneColorMatrix.invert)]))
+//
 //  How it works: Liquid Glass is drawn by a Core Animation filter of type
 //  "glassBackground" (DesignLibrary's DLCAFilter) on SwiftUI's SDFLayer.
 //  Its ~70 inputs (shadow, refraction, blur, highlight, ...) are the real
@@ -87,6 +94,8 @@ struct GlassTuning: ExpressibleByDictionaryLiteral {
     static let noBlur: GlassTuning = [.blurRadius: 0, .blurFillBlurRadius: 0]
     static let noHighlight: GlassTuning = [.keyFillHighlightAmount: 0]
     static let noBleed: GlassTuning = [.bleedOpacity: 0, .bleedAmount: 0]
+    /// Hidden input SwiftUI never sets: chromatic dispersion (rainbow fringes).
+    static let aberration: GlassTuning = [.aberrationAmount: 12, .aberrationHeight: 20]
     /// Everything off: a flat, clear pane – handy as a baseline.
     static let flat: GlassTuning = .noShadow + .noLensing + .noBlur + .noHighlight + .noBleed
 
@@ -110,6 +119,15 @@ extension View {
         BoneTuneHost(values: tuning.caValues, log: log) { self }
     }
 
+    /// Overrides from a JSON file – the format `.glassPanel()` saves:
+    /// `{"glassBackground": {"blurRadius": 0}, "vibrantColorMatrix": {"inputColorMatrix": {"matrix": [...]}}}`.
+    /// In the simulator the file is `<project>/captures/<fileName>` and is re-read
+    /// whenever it changes, so you can edit it on the Mac and watch the glass.
+    /// (A key you delete keeps its last value until SwiftUI rebuilds the glass.)
+    func tune(file fileName: String, log: String? = nil) -> some View {
+        BoneTuneHost(values: [:], log: log, file: fileName) { self }
+    }
+
     /// Shortcut kept for the first version of the API:
     /// `.tune(excludeShadow: true, contentLensing: false)` == `.tune(.noShadow + .noLensing)`.
     func tune(excludeShadow: Bool = false,
@@ -128,11 +146,13 @@ extension View {
 struct BoneTuneHost<Content: View>: UIViewControllerRepresentable {
     let values: [String: Any]
     let log: String?
+    let file: String?
     let content: Content
 
-    init(values: [String: Any], log: String?, @ViewBuilder content: () -> Content) {
+    init(values: [String: Any], log: String?, file: String? = nil, @ViewBuilder content: () -> Content) {
         self.values = values
         self.log = log
+        self.file = file
         self.content = content()
     }
 
@@ -140,13 +160,18 @@ struct BoneTuneHost<Content: View>: UIViewControllerRepresentable {
         let hosting = UIHostingController(rootView: content)
         hosting.view.backgroundColor = .clear
         hosting.sizingOptions = [.intrinsicContentSize]
-        context.coordinator.start(on: hosting.view, values: values, log: log)
+        context.coordinator.start(on: hosting.view, values: values, log: log, file: file)
         return hosting
     }
 
     func updateUIViewController(_ hosting: UIHostingController<Content>, context: Context) {
         hosting.rootView = content
-        context.coordinator.values = values
+        if file == nil { context.coordinator.values = values }
+    }
+
+    /// Size of the content, not of the space offered (keeps stacks tight).
+    func sizeThatFits(_ proposal: ProposedViewSize, uiViewController: UIHostingController<Content>, context: Context) -> CGSize? {
+        uiViewController.sizeThatFits(in: CGSize(width: proposal.width ?? .infinity, height: proposal.height ?? .infinity))
     }
 
     func makeCoordinator() -> BoneGlassTuner { BoneGlassTuner() }
@@ -165,13 +190,20 @@ final class BoneGlassTuner: NSObject {
     private var link: CADisplayLink?
     private var log: String?
     private var logged = false
+    private var fileURL: URL?
+    private var fileStamp: Date?
+    private var ticks = 0
     private(set) var appliedCount = 0
 
-    func start(on view: UIView, values: [String: Any], log: String?) {
+    func start(on view: UIView, values: [String: Any], log: String?, file: String? = nil) {
         self.root = view
         self.values = values
         self.log = log
-        guard !values.isEmpty else { return }
+        if let file {
+            fileURL = BoneCapture.readableURL(for: file)
+            reloadIfChanged()
+        }
+        guard !values.isEmpty || fileURL != nil else { return }
         let l = CADisplayLink(target: self, selector: #selector(tick))
         l.preferredFrameRateRange = CAFrameRateRange(minimum: 4, maximum: 10, preferred: 8)
         l.add(to: .main, forMode: .common)
@@ -183,8 +215,21 @@ final class BoneGlassTuner: NSObject {
         link = nil
     }
 
+    /// `.tune(file:)`: re-reads the JSON when its modification date changes.
+    private func reloadIfChanged() {
+        guard let url = fileURL else { return }
+        let stamp = (try? FileManager.default.attributesOfItem(atPath: url.path))?[.modificationDate] as? Date
+        guard stamp != fileStamp else { return }
+        fileStamp = stamp
+        guard let data = try? Data(contentsOf: url), let v = BoneGlassJSON.tunerValues(from: data) else { return }
+        values = v
+        logged = false
+    }
+
     @objc private func tick() {
         guard let root else { stop(); return }
+        ticks += 1
+        if fileURL != nil, ticks % 4 == 0 { reloadIfChanged() }
         var changes: [String] = []
         apply(to: root.layer, changes: &changes)
         if !changes.isEmpty { appliedCount += 1 }
@@ -199,27 +244,27 @@ final class BoneGlassTuner: NSObject {
 
     /// Walks the whole layer tree and patches every glass filter it finds.
     private func apply(to layer: CALayer, changes: inout [String]) {
-        for slot in ["filters", "backgroundFilters"] {
-            guard let filters = layer.value(forKey: slot) as? [NSObject] else { continue }
-            for f in filters {
-                let filterType = (f.value(forKey: "type") as? String) ?? ""
-                guard filterType.lowercased().contains("glass") else { continue }
-                let name = (f.value(forKey: "name") as? String) ?? filterType
-                for (key, newValue) in values {
-                    let path = "\(slot).\(name).\(key)"
-                    let current = layer.value(forKeyPath: path)
-                    if let current, Self.same(current, newValue) { continue }
-                    layer.setValue(newValue, forKeyPath: path)
-                    changes.append("\(type(of: layer)) \(path): \(current.map { "\($0)" } ?? "nil") → \(newValue)")
-                }
+        for ref in BoneGlassLayers.filters(on: layer) {
+            for (key, newValue) in values {
+                guard let input = Self.input(key, for: ref) else { continue }
+                if BoneGlassPanelModel.shared.holds(layer, filter: ref.name, key: input) { continue }
+                let path = ref.path(input)
+                let current = layer.value(forKeyPath: path)
+                if let current, BoneGlassLayers.same(current, newValue) { continue }
+                layer.setValue(newValue, forKeyPath: path)
+                changes.append("\(type(of: layer)) \(path): \(current.map { "\($0)" } ?? "nil") → \(newValue)")
             }
         }
         for sub in layer.sublayers ?? [] { apply(to: sub, changes: &changes) }
     }
 
-    private static func same(_ a: Any, _ b: Any) -> Bool {
-        if let x = a as? NSNumber, let y = b as? NSNumber { return x.doubleValue == y.doubleValue }
-        return (a as AnyObject).isEqual(b)
+    /// "inputBlurRadius" → every glass filter; "vibrantColorMatrix.inputColorMatrix" → that filter only.
+    static func input(_ key: String, for ref: BoneFilterRef) -> String? {
+        if let dot = key.firstIndex(of: ".") {
+            let target = key[..<dot]
+            return target == ref.name || target == ref.type ? String(key[key.index(after: dot)...]) : nil
+        }
+        return ref.isGlass ? key : nil
     }
 }
 

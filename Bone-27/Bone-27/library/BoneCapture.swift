@@ -291,6 +291,13 @@ enum BoneCapture {
         return urls
     }
 
+    /// Where to read a file Bone wrote (or you edit): <project>/captures/ in
+    /// the simulator, so it can be changed on the Mac, else Documents.
+    static func readableURL(for fileName: String) -> URL {
+        if let proj = projectCaptureDirectory { return proj.appendingPathComponent(fileName) }
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(fileName)
+    }
+
     static func writeData(_ data: Data, fileName: String) {
         for url in destinations(for: fileName) {
             do {

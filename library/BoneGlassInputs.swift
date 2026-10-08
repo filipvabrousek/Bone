@@ -3,7 +3,8 @@
 //  Bone-27
 //
 //  GENERATED from captures/lum-dark.txt (glass button, iOS 27 simulator) –
-//  every input of the Liquid Glass "glassBackground" Core Animation filter.
+//  every input of the Liquid Glass "glassBackground" Core Animation filter,
+//  plus the hidden ones .probeGlass found live (SwiftUI never sets them).
 //  The value in each comment is what the system used for that button; it
 //  differs per size/variant (refraction scales with the shape).
 //
@@ -182,6 +183,19 @@ enum GlassInput: String, CaseIterable, Hashable {
     case shadowRadius = "inputShadowRadius"
     /// number · iOS 27 button: 0
     case shadowVibrancyContribution = "inputShadowVibrancyContribution"
+
+    // MARK: Hidden – not set by SwiftUI on iOS 27, verified live by .probeGlass
+    // (glass button over black/yellow stripes, iOS 27 simulator, 8 Oct 2026)
+    /// number · hidden – SwiftUI never sets it · probe: 50 → 9.8% of pixels changed
+    case aberrationAmount = "inputAberrationAmount"
+    /// color · hidden – SwiftUI never sets it · probe: green → 13.2% of pixels changed
+    case bleedColorMatrixFillColor = "inputBleedColorMatrixFillColor"
+    /// number · hidden – SwiftUI never sets it · only together with the other hidden inputs (probe pass 2) · probe: -10 → 11.6% of pixels changed
+    case aberrationAngle = "inputAberrationAngle"
+    /// number · hidden – SwiftUI never sets it · only together with the other hidden inputs (probe pass 2) · probe: -10 → 26.9% of pixels changed
+    case aberrationHeight = "inputAberrationHeight"
+    /// number · hidden – SwiftUI never sets it · only together with the other hidden inputs (probe pass 2) · probe: 50 → 26.9% of pixels changed
+    case aberrationOffset = "inputAberrationOffset"
 }
 
 extension GlassInput {
@@ -190,6 +204,7 @@ extension GlassInput {
         switch self {
         case .faceColorMatrixFillColor: return "color"
         case .shadowColorMatrixFillColor: return "color"
+        case .bleedColorMatrixFillColor: return "color"
         case .shadowOffset: return "size"
         default: return "number"
         }

@@ -67,6 +67,11 @@ struct BoneGlassDumpHost<Content: View>: UIViewControllerRepresentable {
     func updateUIViewController(_ hosting: UIHostingController<Content>, context: Context) {
         hosting.rootView = content
     }
+
+    /// Size of the content, not of the space offered (keeps stacks tight).
+    func sizeThatFits(_ proposal: ProposedViewSize, uiViewController: UIHostingController<Content>, context: Context) -> CGSize? {
+        uiViewController.sizeThatFits(in: CGSize(width: proposal.width ?? .infinity, height: proposal.height ?? .infinity))
+    }
 }
 
 // MARK: - Dumper
