@@ -143,13 +143,19 @@ How it measures, and why:
   a filter object back takes the render server about a frame, so that is only the
   fallback; every restore is checked against the baseline.
 
-### `.glassPanel()` — live editor for any glass, iOS
+### `.boneInspector()` / `.glassPanel()` — visual inspector, iOS
 
 ```swift
-WindowGroup { ContentView().glassPanel() }
+WindowGroup { ContentView().boneInspector() }   // same as .glassPanel()
 ```
 
-Adds a floating pink drop. Tap it, then tap any glass on screen – your own
+Adds a floating pink drop. Tap it, then tap text, glass or any element – no mode to
+choose (Auto; Glass and Layer force one kind). Glass opens the glass inputs, anything
+else the layer it is drawn into, all on sliders. **Aa** on a glass card jumps to the
+text drawn on that glass, the **drop** on a layer card back to the glass around it.
+Auto outlines glass and text; every other element is still tappable.
+
+For glass – your own
 `.glassEffect()` views and system bars alike. Every input of the glass filters
 (`glassBackground`, `vibrantColorMatrix`) gets a control: slider plus typed value
 (⇔ widens the range), toggle, colour picker, size, 4×5 colour-matrix editor.

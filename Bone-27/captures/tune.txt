@@ -2,8 +2,8 @@ BONE · tune
 OS: iOS 27.0
 requested: inputInnerRefractionAmount=0, inputOuterRefractionAmount=0, inputRefractionOpacity=0, inputRingShadowOpacity=0, inputSDRShadowOpacity=0, inputShadowAmount=0, inputShadowOpacity=0
 
-CABackdropLayer filters.glassBackground.inputRingShadowOpacity: 0.06 → 0
+CABackdropLayer filters.glassBackground.inputInnerRefractionAmount: -39.83333333333334 → 0
 CABackdropLayer filters.glassBackground.inputOuterRefractionAmount: 19.91666666666667 → 0
 CABackdropLayer filters.glassBackground.inputShadowOpacity: 0.09875 → 0
-CABackdropLayer filters.glassBackground.inputInnerRefractionAmount: -39.83333333333334 → 0
+CABackdropLayer filters.glassBackground.inputRingShadowOpacity: 0.06 → 0
 CABackdropLayer filters.glassBackground.inputRefractionOpacity: 0.6 → 0

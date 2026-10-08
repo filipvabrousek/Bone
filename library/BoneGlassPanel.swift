@@ -34,6 +34,12 @@ extension View {
     func glassPanel() -> some View {
         background(BoneGlassPanelAnchor())
     }
+
+    /// The visual inspector: tap the drop, then tap text, glass or any element
+    /// and adjust it with on-screen sliders. (Same as `.glassPanel()`.)
+    func boneInspector() -> some View {
+        glassPanel()
+    }
 }
 
 /// Finds the window scene and installs the panel's overlay window there.
@@ -124,7 +130,9 @@ final class BoneGlassPanelModel: ObservableObject {
         .grouping(.never).precision(.fractionLength(0...4))
 
     @Published var picking = false
-    @Published var mode = BonePanelMode.glass
+    @Published var mode = BonePanelMode.auto
+    /// Which card is open: the glass inputs or the layer.
+    @Published var showing = BonePanelMode.glass
     @Published var isOpen = false
     @Published var probing = false
     @Published var atTop = false
@@ -196,31 +204,74 @@ final class BoneGlassPanelModel: ObservableObject {
     }
 
     func refreshOutlines() {
-        if mode == .layer {
-            outlines = BoneLayerEditor.leaves(in: scene, excluding: panelWindow).map { $0.frame }
+        let glass = candidates().map { $0.frame }
+        let all = BoneLayerEditor.leaves(in: scene, excluding: panelWindow)
+        let leaves = all.map { $0.frame }
+        switch mode {
+        case .auto:   // outline what you most likely want; every element is still tappable
+            outlines = glass + all.filter { LayerTarget.text.matches($0.layer) }.map { $0.frame }
+            status = "Tap text, glass or any element."
+        case .glass:
+            outlines = glass
+            status = glass.isEmpty ? "No Liquid Glass on screen." : "Tap a glass element."
+        case .layer:
+            outlines = leaves
             status = "Tap any element."
-        } else {
-            outlines = candidates().map { $0.frame }
-            status = outlines.isEmpty ? "No Liquid Glass on screen." : "Tap a glass element."
         }
     }
 
+    private var lastPoint = CGPoint.zero
+
     func pick(at point: CGPoint) {
         picking = false
-        if mode == .layer {
-            guard let hit = BoneLayerEditor.leaves(in: scene, excluding: panelWindow).last(where: { $0.frame.contains(point) }) else {
-                status = "No layer at that point."
-                return
-            }
-            layerEditor.select(hit.layer, in: hit.window, scene: scene, excluding: panelWindow)
-            open()
-            return
+        lastPoint = point
+        let glass = candidates().last { $0.frame.contains(point) }
+        let leaf = leafAt(point)
+        switch mode {
+        case .glass where glass != nil, .auto where glass != nil:
+            showGlass(glass!)
+        case .layer where leaf != nil, .auto where leaf != nil:
+            showLayer(leaf!)
+        default:
+            status = "Nothing to inspect at that point."
         }
-        guard let hit = candidates().last(where: { $0.frame.contains(point) }) else {
-            status = "No glass at that point."
-            return
-        }
+    }
+
+    /// The frontmost drawn layer at a point – text first, so a tap on a glass
+    /// button's label finds the label.
+    private func leafAt(_ point: CGPoint) -> (layer: CALayer, frame: CGRect, window: UIWindow)? {
+        let hits = BoneLayerEditor.leaves(in: scene, excluding: panelWindow).filter { $0.frame.contains(point) }
+        return hits.last(where: { LayerTarget.text.matches($0.layer) }) ?? hits.last
+    }
+
+    private func showGlass(_ hit: (layer: CALayer, frame: CGRect, window: UIWindow)) {
+        showing = .glass
         select(hit.layer, in: hit.window)
+    }
+
+    private func showLayer(_ hit: (layer: CALayer, frame: CGRect, window: UIWindow)) {
+        showing = .layer
+        layerEditor.select(hit.layer, in: hit.window, scene: scene, excluding: panelWindow)
+        open()
+    }
+
+    /// Glass card → its label (the text drawn on the glass), else whatever is at its centre.
+    func switchToLayer() {
+        let leaves = BoneLayerEditor.leaves(in: scene, excluding: panelWindow)
+        let label = leaves.last { LayerTarget.text.matches($0.layer) && selection.contains(CGPoint(x: $0.frame.midX, y: $0.frame.midY)) }
+        if let hit = label ?? leafAt(CGPoint(x: selection.midX, y: selection.midY)) { showLayer(hit) }
+    }
+
+    /// Layer card → the glass around it.
+    func switchToGlass() {
+        let p = layerEditor.frame.isNull ? lastPoint : CGPoint(x: layerEditor.frame.midX, y: layerEditor.frame.midY)
+        if let hit = candidates().last(where: { $0.frame.contains(p) }) { showGlass(hit) }
+    }
+
+    /// Is there glass under the layer being edited?
+    var glassAtPoint: Bool {
+        let p = layerEditor.frame.isNull ? lastPoint : CGPoint(x: layerEditor.frame.midX, y: layerEditor.frame.midY)
+        return candidates().contains { $0.frame.contains(p) }
     }
 
     private func open() {
@@ -584,7 +635,7 @@ struct BoneGlassPanelView: View {
                         ForEach(BonePanelMode.allCases, id: \.self) { Text($0.rawValue).tag($0) }
                     }
                     .pickerStyle(.segmented)
-                    .frame(width: 200)
+                    .frame(width: 270)
                     .onChange(of: model.mode) { model.refreshOutlines() }
                     Text(model.status).font(.callout.bold())
                     Button("Cancel") { model.cancelPicking() }.buttonStyle(.borderedProminent).tint(.pink)
@@ -594,7 +645,7 @@ struct BoneGlassPanelView: View {
                 .frame(maxHeight: .infinity, alignment: .top)
                 .padding(.top, 8)
             } else if model.isOpen {
-                if model.mode == .layer {
+                if model.showing == .layer {
                     BoneLayerOutline(editor: model.layerEditor)
                 } else if !model.probing {
                     outlines([model.selection], dash: [6, 4])
@@ -602,7 +653,7 @@ struct BoneGlassPanelView: View {
                 VStack(spacing: 0) {
                     if !model.atTop { Spacer(minLength: 0) }
                     Group {
-                        if model.mode == .layer {
+                        if model.showing == .layer {
                             BoneLayerCard(model: model, editor: model.layerEditor)
                         } else {
                             BoneGlassCard(model: model)
@@ -654,6 +705,7 @@ struct BoneGlassCard: View {
                     Text(model.status).font(.caption2).foregroundStyle(.secondary).lineLimit(2)
                 }
                 Spacer(minLength: 0)
+                Button { model.switchToLayer() } label: { Image(systemName: "textformat") }
                 Button { model.startPicking() } label: { Image(systemName: "scope") }
                 Button { model.atTop.toggle() } label: {
                     Image(systemName: model.atTop ? "rectangle.bottomhalf.inset.filled" : "rectangle.tophalf.inset.filled")

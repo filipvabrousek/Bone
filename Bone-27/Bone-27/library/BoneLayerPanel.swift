@@ -17,6 +17,8 @@ import SwiftUI
 import UIKit
 
 enum BonePanelMode: String, CaseIterable {
+    /// Glass under the finger → glass inputs, anything else → its layer.
+    case auto = "Auto"
     case glass = "Glass"
     case layer = "Layer"
 }
@@ -318,6 +320,9 @@ struct BoneLayerCard: View {
                     Text(editor.title).font(.caption2.monospaced()).foregroundStyle(.secondary).lineLimit(2)
                 }
                 Spacer(minLength: 0)
+                if model.glassAtPoint {
+                    Button { model.switchToGlass() } label: { Image(systemName: "drop.halffull") }
+                }
                 Button { editor.up() } label: { Image(systemName: "arrow.up.square") }
                 Button { editor.down() } label: { Image(systemName: "arrow.down.square") }
                 Button { model.startPicking() } label: { Image(systemName: "scope") }

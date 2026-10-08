@@ -4,78 +4,106 @@ import Playgrounds
 @main struct MyApp: App {
     var body: some Scene {
         WindowGroup {
-           /* Button("Bone"){ // 235715 , 235739 cool!!!
-                
-            }.bone(into: "output.txt")*/ // Same
+           // ContentView()
+            Text("Hello")
+                .tuneLayers([.rotationY: 35,
+                             .shadowOpacity: 1,
+                             .shadowRadius: 8],
+                            where: .text)
+                .dumpLayers("layers.txt")     
+        }
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+       /* Button("Bone"){ // 235715 , 235739 cool!!!
             
-            /*List {
-                Text("WOW")
-            }.bone(into: "output.txt")*/ // 001626 UPdateCoalescinCollectionView
-            // 01700 ListCollectinViewCellBase new ??? 11/06/26
+        }.bone(into: "output.txt")*/ // Same
+        
+        /*List {
+            Text("WOW")
+        }.bone(into: "output.txt")*/ // 001626 UPdateCoalescinCollectionView
+        // 01700 ListCollectinViewCellBase new ??? 11/06/26
 
-            // Which glass inputs change the rendering? Launch with -probe
-            // (Edit Scheme ▸ Arguments) → captures/glass-probe.txt/.json/.png
-            // Any SwiftUI view: tune the layers it is drawn into. Launch with -layers.
-            if CommandLine.arguments.contains("-layers") {
-                VStack(spacing: 28) {
-                    Text("Hello Text").font(.largeTitle.bold()).foregroundStyle(.orange)
-                        .tuneLayers([.rotationY: 35, .shadowOpacity: 1, .shadowRadius: 8,
-                                     .shadowColor: .color(.systemPink)], where: .text)
-                    Button("Bordered") {}.buttonStyle(.borderedProminent)
-                        .tuneLayers([.filters: .filters([.colorHueRotate(2.2)])])
-                    Image(systemName: "star.fill").font(.system(size: 60)).foregroundStyle(.yellow)
-                        .tuneLayers([.rotation: 15, .filters: .filters([.gaussianBlur(1.5)])], where: .shape)
-                    RoundedRectangle(cornerRadius: 16).fill(.blue.gradient).frame(width: 200, height: 60)
-                        .tuneLayers([.blendMode: .blend(.difference), .rotationX: 40], where: .gradient)
-                    Text("outline shows every layer").font(.headline)
-                        .tuneLayers(.outline, where: .all)
-                }
-                .dumpLayers("layers.txt")
-                .glassPanel()
-            } else if CommandLine.arguments.contains("-probe") {
-                TuneRow(title: ".probeGlass()") {
-                    Button("Liquid"){}.font(.largeTitle).padding(20)
-                        .glassEffect()
-                        .probeGlass("glass-probe.txt")
-                }
-            } else {
+        // Launch arguments (Edit Scheme ▸ Arguments):
+        //   -layers  any SwiftUI view: tune the layers it is drawn into
+        //   -probe   which glass inputs change the rendering → captures/glass-probe.txt/.json/.png
+        if CommandLine.arguments.contains("-layers") {
+            LayersDemo()
+        } else if CommandLine.arguments.contains("-probe") {
+            ProbeDemo()
+        } else {
+            GlassDemo()
+        }
 
-            // Liquid Glass tuning: same button, three settings, over stripes
-            // so the shadow and the lensing (refraction) are easy to see.
-            // The pink drop (.glassPanel) edits any of them live.
-            VStack(spacing: 18) {
-                TuneRow(title: "default") {
-                    Button("Liquid"){}.font(.largeTitle).padding(20)
-                        .glassEffect()
-                        .dumpGlass("glass-default.txt")                    // all inputs
-                }
-                TuneRow(title: ".tune(.noShadow + .noLensing)") {
-                    Button("Liquid"){}.font(.largeTitle).padding(20)
-                        .glassEffect()
-                        .tune(.noShadow + .noLensing, log: "tune.txt")
-                        .dumpGlass("glass-tuned.txt", only: [.shadowOpacity, .ringShadowOpacity,
-                                                             .innerRefractionAmount, .outerRefractionAmount,
-                                                             .refractionOpacity, .blurRadius])
-                }
-                TuneRow(title: "[.blurRadius: 0, .faceOpacity: 0.3, .keyFillHighlightAmount: 1]") {
-                    Button("Liquid"){}.font(.largeTitle).padding(20)
-                        .glassEffect()
-                        .tune([.blurRadius: 0, .faceOpacity: 0.3, .keyFillHighlightAmount: 1])
-                }
-                TuneRow(title: ".tune(.flat)") {
-                    Button("Liquid"){}.font(.largeTitle).padding(20)
-                        .glassEffect()
-                        .tune(.flat)
-                }
+        Image("backdrop.jpg")
+           // .bone(into: "output.txt")
+    }
+}
+
+/// Liquid Glass tuning: same button, three settings, over stripes so the
+/// shadow and the lensing (refraction) are easy to see. The pink drop
+/// (.boneInspector) edits any of them live.
+struct GlassDemo: View {
+    var body: some View {
+        VStack(spacing: 18) {
+            TuneRow(title: "default") {
+                Button("Liquid"){}.font(.largeTitle).padding(20)
+                    .glassEffect()
+                    .dumpGlass("glass-default.txt")                    // all inputs
             }
-            .glassPanel()
+            TuneRow(title: ".tune(.noShadow + .noLensing)") {
+                Button("Liquid"){}.font(.largeTitle).padding(20)
+                    .glassEffect()
+                    .tune(.noShadow + .noLensing, log: "tune.txt")
+                    .dumpGlass("glass-tuned.txt", only: [.shadowOpacity, .ringShadowOpacity,
+                                                         .innerRefractionAmount, .outerRefractionAmount,
+                                                         .refractionOpacity, .blurRadius])
             }
+            TuneRow(title: "[.blurRadius: 0, .faceOpacity: 0.3, .keyFillHighlightAmount: 1]") {
+                Button("Liquid"){}.font(.largeTitle).padding(20)
+                    .glassEffect()
+                    .tune([.blurRadius: 0, .faceOpacity: 0.3, .keyFillHighlightAmount: 1])
+            }
+            TuneRow(title: ".tune(.flat)") {
+                Button("Liquid"){}.font(.largeTitle).padding(20)
+                    .glassEffect()
+                    .tune(.flat)
+            }
+        }
+        .boneInspector()
+    }
+}
 
+/// Any SwiftUI view: tune the layers it is drawn into.
+struct LayersDemo: View {
+    var body: some View {
+        VStack(spacing: 28) {
+            Text("Hello Text").font(.largeTitle.bold()).foregroundStyle(.orange)
+                .tuneLayers([.rotationY: 35, .shadowOpacity: 1, .shadowRadius: 8,
+                             .shadowColor: .color(.systemPink)], where: .text)
+            Button("Bordered") {}.buttonStyle(.borderedProminent)
+                .tuneLayers([.filters: .filters([.colorHueRotate(2.2)])])
+            Image(systemName: "star.fill").font(.system(size: 60)).foregroundStyle(.yellow)
+                .tuneLayers([.rotation: 15, .filters: .filters([.gaussianBlur(1.5)])], where: .shape)
+            RoundedRectangle(cornerRadius: 16).fill(.blue.gradient).frame(width: 200, height: 60)
+                .tuneLayers([.blendMode: .blend(.difference), .rotationX: 40], where: .gradient)
+            Text("outline shows every layer").font(.headline)
+                .tuneLayers(.outline, where: .all)
+        }
+        .dumpLayers("layers.txt")
+        .boneInspector()
+    }
+}
 
-            Image("backdrop.jpg")
-               // .bone(into: "output.txt")
-            
-            
+/// Which glass inputs change the rendering? → captures/glass-probe.*
+struct ProbeDemo: View {
+    var body: some View {
+        TuneRow(title: ".probeGlass()") {
+            Button("Liquid"){}.font(.largeTitle).padding(20)
+                .glassEffect()
+                .probeGlass("glass-probe.txt")
         }
     }
 }
@@ -96,13 +124,6 @@ struct TuneRow<Content: View>: View {
                 .background(.white).frame(maxHeight: .infinity, alignment: .top)
         }
         .frame(height: 150)
-    }
-}
-
-struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
     }
 }
 

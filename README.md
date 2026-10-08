@@ -6,7 +6,7 @@ Swift library that dumps underlying UIKit views from SwiftUI views.
 The results are shown as overlay on the view.
 You can expand overlay to see layers, sublayers and superclasses of the views.
 It is also possible to output the code into text file.  
-It can also tune (`.tune`), dump (`.dumpGlass`), probe (`.probeGlass`) and live-edit (`.glassPanel`) Liquid Glass,  
+It can also tune (`.tune`), dump (`.dumpGlass`), probe (`.probeGlass`) and live-edit Liquid Glass with a visual inspector (`.boneInspector`),  
 and tune the layers of any SwiftUI view – Text, shapes, buttons (`.tuneLayers`).  
 To get started, just copy/paste all files in library into folder in your project and add it to all targets.
 
@@ -174,13 +174,19 @@ How it measures, and why:
   a filter object back takes the render server about a frame, so that is only the
   fallback; every restore is checked against the baseline.
 
-### `.glassPanel()` — live editor for any glass, iOS
+### `.boneInspector()` / `.glassPanel()` — visual inspector, iOS
 
 ```swift
-WindowGroup { ContentView().glassPanel() }
+WindowGroup { ContentView().boneInspector() }   // same as .glassPanel()
 ```
 
-Adds a floating pink drop. Tap it, then tap any glass on screen – your own
+Adds a floating pink drop. Tap it, then tap text, glass or any element – no mode to
+choose (Auto; Glass and Layer force one kind). Glass opens the glass inputs, anything
+else the layer it is drawn into, all on sliders. **Aa** on a glass card jumps to the
+text drawn on that glass, the **drop** on a layer card back to the glass around it.
+Auto outlines glass and text; every other element is still tappable.
+
+For glass – your own
 `.glassEffect()` views and system bars alike. Every input of the glass filters
 (`glassBackground`, `vibrantColorMatrix`) gets a control: slider plus typed value
 (⇔ widens the range), toggle, colour picker, size, 4×5 colour-matrix editor.

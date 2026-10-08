@@ -2,21 +2,7 @@ BONE · dumpLayers
 OS: iOS 27.0
 targets: .text = CGDrawingLayer · .shape = *ShapeLayer · .gradient = GradientLayer · .glass · leaf = no sublayers
 
-CALayer  delegate=_UIHostingView<VStack<TupleContent<Pack{BoneLayerTuneHost<Text>, BoneLayerTuneHost<ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<BorderedProminentButtonStyle>>>, BoneLayerTuneHost<ModifiedContent<ModifiedContent<Image, _EnvironmentKeyWritingModifier<Optional<Font>>>, _ForegroundStyleModifier<Color>>>, BoneLayerTuneHost<ModifiedContent<_ShapeView<RoundedRectangle, AnyGradient>, _FrameLayout>>, BoneLayerTuneHost<Text>}>>>  101,278 200×337
-  CALayer  delegate=UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<BoneLayerTuneHost<Text>>>  125,278 150×39
-    CALayer  delegate=_UIHostingView<Text>  125,278 150×39
-      CGDrawingLayer  delegate=_SwiftUILayerDelegate  140,278 111×43  transform  shadow=1.0  contents=CABackingStore  → .text .leaves
-  CALayer  delegate=UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<BoneLayerTuneHost<ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<BorderedProminentButtonStyle>>>>>  155,346 91×33
-    CALayer  delegate=_UIHostingView<ModifiedContent<Button<Text>, PrimitiveButtonStyleContainerModifier<BorderedProminentButtonStyle>>>  155,346 91×33
-      CALayer  delegate=_SwiftUILayerDelegate  155,346 91×33
-        CALayer  delegate=_SwiftUILayerDelegate  155,346 91×33  cornerRadius=16.666666666666664  filters=[colorHueRotate]  → .leaves
-      CGDrawingLayer  delegate=_SwiftUILayerDelegate  167,353 67×19  contents=CABackingStore  filters=[colorHueRotate]  → .text .leaves
-  CALayer  delegate=UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<BoneLayerTuneHost<ModifiedContent<ModifiedContent<Image, _EnvironmentKeyWritingModifier<Optional<Font>>>, _ForegroundStyleModifier<Color>>>>>  162,407 77×73
-    CALayer  delegate=_UIHostingView<ModifiedContent<ModifiedContent<Image, _EnvironmentKeyWritingModifier<Optional<Font>>>, _ForegroundStyleModifier<Color>>>  162,407 77×73
-      ColorShapeLayer  delegate=_SwiftUILayerDelegate  161,404 79×77  transform  filters=[gaussianBlur]  → .shape .leaves
-  CALayer  delegate=UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<BoneLayerTuneHost<ModifiedContent<_ShapeView<RoundedRectangle, AnyGradient>, _FrameLayout>>>>  101,508 200×60
-    CALayer  delegate=_UIHostingView<ModifiedContent<_ShapeView<RoundedRectangle, AnyGradient>, _FrameLayout>>  101,508 200×60
-      GradientLayer  delegate=_SwiftUILayerDelegate  100,515 208×48  transform  cornerRadius=16.0  compositing=differenceBlendMode  → .gradient .leaves
-  CALayer  delegate=UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<BoneLayerTuneHost<Text>>>  105,596 190×19
-    CALayer  delegate=_UIHostingView<Text>  105,596 190×19
-      CGDrawingLayer  delegate=_SwiftUILayerDelegate  105,596 190×19  border=1.0  contents=CABackingStore  → .text .leaves
+CALayer  delegate=_UIHostingView<BoneLayerTuneHost<Text>>  182,441 37×19
+  CALayer  delegate=UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<BoneLayerTuneHost<Text>>>  182,441 37×19
+    CALayer  delegate=_UIHostingView<Text>  182,441 37×19
+      CGDrawingLayer  delegate=_SwiftUILayerDelegate  186,441 29×19  transform  shadow=1.0  contents=CABackingStore  → .text .leaves
