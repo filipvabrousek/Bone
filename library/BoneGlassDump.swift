@@ -15,8 +15,11 @@
 //
 //  Same keys as .tune (GlassInput). Without `only:` every input of every
 //  glass filter is written, plus the other filters on the same layers
-//  (e.g. vibrantColorMatrix). Output: Documents and, in the simulator,
-//  <project>/captures/.
+//  (e.g. vibrantColorMatrix). `full: true` adds the glass element's layer
+//  tree and the glass shaders' own parameters (see BoneShaderDump).
+//  Output: Documents and, in the simulator, <project>/captures/.
+//
+//      Button("Liquid") {}.glassEffect().dumpGlass("glass-full.txt", full: true)
 //
 //  Research / simulator use only — private Core Animation keys, never ship it.
 //
@@ -32,8 +35,9 @@ extension View {
     /// - Parameters:
     ///   - only: just these inputs; `nil` (default) writes all of them.
     ///   - after: seconds to wait, so the glass has rendered (and `.tune` has applied).
-    func dumpGlass(_ fileName: String, only: [GlassInput]? = nil, after delay: Double = 1.5) -> some View {
-        BoneGlassDumpHost(fileName: fileName, only: only, delay: delay) { self }
+    ///   - full: also the layer tree of the glass and the parameters of the glass shaders themselves.
+    func dumpGlass(_ fileName: String, only: [GlassInput]? = nil, after delay: Double = 1.5, full: Bool = false) -> some View {
+        BoneGlassDumpHost(fileName: fileName, only: only, delay: delay, full: full) { self }
     }
 }
 
@@ -43,12 +47,14 @@ struct BoneGlassDumpHost<Content: View>: UIViewControllerRepresentable {
     let fileName: String
     let only: [GlassInput]?
     let delay: Double
+    var full = false
     let content: Content
 
-    init(fileName: String, only: [GlassInput]?, delay: Double, @ViewBuilder content: () -> Content) {
+    init(fileName: String, only: [GlassInput]?, delay: Double, full: Bool = false, @ViewBuilder content: () -> Content) {
         self.fileName = fileName
         self.only = only
         self.delay = delay
+        self.full = full
         self.content = content()
     }
 
@@ -56,10 +62,15 @@ struct BoneGlassDumpHost<Content: View>: UIViewControllerRepresentable {
         let hosting = UIHostingController(rootView: content)
         hosting.view.backgroundColor = .clear
         hosting.sizingOptions = [.intrinsicContentSize]
+        let full = full
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak view = hosting.view] in
             guard let view else { return }
-            let text = BoneGlassDumper(only: only).dump(view)
-            BoneCapture.writeData(Data(text.utf8), fileName: fileName)
+            var text = BoneGlassDumper(only: only).dump(view)
+            guard full else { BoneCapture.writeData(Data(text.utf8), fileName: fileName); return }
+            text += "\n\n" + BoneLayerDump.text(for: view.layer, in: view.window)
+            BoneShaderDump.text(matching: "glass") { shaders in
+                BoneCapture.writeData(Data((text + "\n\n" + shaders).utf8), fileName: fileName)
+            }
         }
         return hosting
     }

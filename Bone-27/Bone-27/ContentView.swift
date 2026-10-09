@@ -4,13 +4,20 @@ import Playgrounds
 @main struct MyApp: App {
     var body: some Scene {
         WindowGroup {
-           // ContentView()
+            #if DEBUG
+            ContentView()
+                .boneInspector()   // glass debug UI: tap the pink drop – glass, text, any layer, 3D
+            #else
+            ContentView()
+            #endif
+            /*
             Text("Hello")
                 .tuneLayers([.rotationY: 35,
                              .shadowOpacity: 1,
                              .shadowRadius: 8],
                             where: .text)
-                .dumpLayers("layers.txt")     
+                .dumpLayers("layers.txt")
+            */
         }
     }
 }
@@ -52,6 +59,7 @@ struct GlassDemo: View {
                 Button("Liquid"){}.font(.largeTitle).padding(20)
                     .glassEffect()
                     .dumpGlass("glass-default.txt")                    // all inputs
+                    .dumpGlass("glass-full.txt", full: true)           // + layer tree + shader parameters
             }
             TuneRow(title: ".tune(.noShadow + .noLensing)") {
                 Button("Liquid"){}.font(.largeTitle).padding(20)
@@ -72,7 +80,6 @@ struct GlassDemo: View {
                     .tune(.flat)
             }
         }
-        .boneInspector()
     }
 }
 
@@ -93,7 +100,6 @@ struct LayersDemo: View {
                 .tuneLayers(.outline, where: .all)
         }
         .dumpLayers("layers.txt")
-        .boneInspector()
     }
 }
 

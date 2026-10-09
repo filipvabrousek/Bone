@@ -105,6 +105,31 @@ Writes the current inputs of the glass filter, with the same `GlassInput` keys a
 (`blurRadius  (inputBlurRadius) = 5`). Without `only:` it writes every input plus the other
 filters on the glass layers (e.g. `vibrantColorMatrix`). Put it after `.tune` to verify a tuning.
 
+**Full dump** – `.dumpGlass("glass-full.txt", full: true)` adds the glass element's layer tree
+and the **glass shaders' own parameters**, all in one text file (`captures/glass-full.txt`).
+`.dumpShaders("shaders.txt", matching: "glass")` writes just the shader part, for any
+QuartzCore shader family (`"blur"`, `"vibrant"`, …).
+
+Bone loads QuartzCore's `default.metallib` with Metal (228 functions on iOS 27, 36 glass), and
+reflects each glass shader by building a render pipeline with QuartzCore's own vertex function
+(the reflection-only API is not implemented in the simulator). One variant per family is
+reflected (`reflectAll: true` for all, slower); takes ~0.5 s. You get every buffer, texture and
+uniform struct the shader reads – field, byte offset, type – and which filter input feeds it:
+
+```
+-- S1: 63 fields, 320 bytes · bound as u in glass_background_all_lpf.u
+     16      inner_refraction_amount     float     ← innerRefractionAmount
+     20      inner_refraction_inv_height float     ← 1 / innerRefractionHeight
+     80      face_cm0                    half4     ← faceColorMatrix{Black, FillColor, MaxLuma, …} (derived)
+     160     blur_alpha0                 float     ← blurOpacity0
+     312     aberration_dir              float2    ← aberrationAngle (as a direction)
+     32      refraction_threshold0       float     –        (no input – set by the render server)
+```
+
+Five structs on iOS 27: `glassBackground` (63 fields), its SDF variant (66), the shared
+extension block (`u_ext`: `preserve_hue`, `stroke_mode`, `highlight_extension`, …), and
+`glassForeground` (13) with its SDF variant (16).
+
 ### `.probeGlass(_:after:)` — which glass inputs are live, iOS
 
 ```swift
@@ -154,6 +179,14 @@ choose (Auto; Glass and Layer force one kind). Glass opens the glass inputs, any
 else the layer it is drawn into, all on sliders. **Aa** on a glass card jumps to the
 text drawn on that glass, the **drop** on a layer card back to the glass around it.
 Auto outlines glass and text; every other element is still tappable.
+
+**3D** (button in the pick hint) – an exploded view of what SwiftUI drew: every drawn layer
+(text, shapes, gradients, glass) becomes a plane at its screen position, pushed back by its
+depth in the layer tree. Drag to orbit, two fingers to move, pinch to zoom, double-tap to
+reset, slider for the spacing. Tap a plane to tune that layer with the same sliders (glass
+planes open the glass inputs); the edit goes to the real layer and is previewed on the plane.
+Hold the eye to peek at the real app, ↻ to re-freeze it after tuning glass. Planes are Core
+Animation layers in a `CATransformLayer`; taps are picked by projecting each plane's corners.
 
 For glass – your own
 `.glassEffect()` views and system bars alike. Every input of the glass filters

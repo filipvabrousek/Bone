@@ -60,7 +60,7 @@ final class BoneLayerEditor: ObservableObject {
     private var center = CGPoint.zero
     private var className = ""
     private var snapshot: [String: Any] = [:]
-    private var generation = 0
+    private(set) var generation = 0
     private var link: CADisplayLink?
     private var ticks = 0
 

@@ -65,7 +65,7 @@ final class BonePanelWindow: UIWindow {
 
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         guard let m = model else { return nil }
-        guard m.picking || m.buttonRect.contains(point) || m.cardRect.contains(point) else { return nil }
+        guard m.picking || m.exploded || m.buttonRect.contains(point) || m.cardRect.contains(point) else { return nil }
         if !isKeyWindow {
             m.rememberKeyWindow()
             makeKey()
@@ -133,6 +133,13 @@ final class BoneGlassPanelModel: ObservableObject {
     @Published var mode = BonePanelMode.auto
     /// Which card is open: the glass inputs or the layer.
     @Published var showing = BonePanelMode.glass
+    /// 3D exploded view (BoneExploded.swift).
+    @Published var exploded = false
+    @Published var peeking = false
+    @Published var explodeSpacing = 30.0
+    @Published var explodeInfo = ""
+    weak var explodedView: BoneExplodedView?
+    private var explodeShot: CGImage?
     @Published var isOpen = false
     @Published var probing = false
     @Published var atTop = false
@@ -253,6 +260,78 @@ final class BoneGlassPanelModel: ObservableObject {
         showing = .layer
         layerEditor.select(hit.layer, in: hit.window, scene: scene, excluding: panelWindow)
         open()
+    }
+
+    // MARK: 3D exploded view
+
+    /// Takes a screenshot without the panel (glass is cut from it), then opens the 3D view.
+    func openExploded() {
+        picking = false
+        code = nil
+        captureWithoutPanel { shot in
+            self.explodeShot = shot
+            self.exploded = true
+            self.rememberKeyWindow()
+            self.panelWindow?.makeKey()
+        }
+    }
+
+    func buildExploded() {
+        explodedView?.build(scene: scene, excluding: panelWindow, screenshot: explodeShot)
+        explodeInfo = "\(explodedView?.nodes.count ?? 0) layers"
+    }
+
+    /// Re-freezes the app as it is now (e.g. after tuning glass).
+    func refreshExploded() {
+        captureWithoutPanel { shot in
+            self.explodeShot = shot
+            self.buildExploded()
+        }
+    }
+
+    func closeExploded() {
+        exploded = false
+        peeking = false
+        isOpen = false
+        explodeShot = nil
+        previousKey?.makeKey()
+    }
+
+    func pickExploded(_ node: BoneExplodedNode) {
+        guard let l = node.source, let w = node.window else { return }
+        lastPoint = CGPoint(x: node.frame.midX, y: node.frame.midY)
+        if node.isGlass { showGlass((layer: l, frame: node.frame, window: w)) }
+        else { showLayer((layer: l, frame: node.frame, window: w)) }
+    }
+
+    /// What to preview on the selected plane.
+    func explodedTuning() -> (LayerTuning, Int)? {
+        guard isOpen, showing == .layer, let sel = explodedView?.selected, sel.source === layerEditor.layer else { return nil }
+        return (layerEditor.tuning, layerEditor.generation)
+    }
+
+    /// Screenshot without the panel – and without the text on glass, so glass planes
+    /// show only the glass (its label gets a plane of its own).
+    private func captureWithoutPanel(_ done: @escaping (CGImage?) -> Void) {
+        let glass = candidates().map { $0.frame }
+        let labels = BoneLayerEditor.leaves(in: scene, excluding: panelWindow)
+            .filter { hit in LayerTarget.text.matches(hit.layer) && glass.contains { $0.contains(CGPoint(x: hit.frame.midX, y: hit.frame.midY)) } }
+            .map { $0.layer }
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        labels.forEach { $0.isHidden = true }
+        CATransaction.commit()
+        panelWindow?.isHidden = true
+        CATransaction.flush()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {   // let the render server drop the panel
+            let shot = BoneScreen.capture()
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            labels.forEach { $0.isHidden = false }
+            CATransaction.commit()
+            self.panelWindow?.isHidden = false
+            done(shot)
+        }
     }
 
     /// Glass card → its label (the text drawn on the glass), else whatever is at its centre.
@@ -624,7 +703,9 @@ struct BoneGlassPanelView: View {
 
     var body: some View {
         ZStack {
-            if model.picking {
+            if model.exploded {
+                BoneExplodedScreen(model: model)
+            } else if model.picking {
                 Color.black.opacity(0.18)
                     .ignoresSafeArea()
                     .contentShape(Rectangle())
@@ -638,7 +719,11 @@ struct BoneGlassPanelView: View {
                     .frame(width: 270)
                     .onChange(of: model.mode) { model.refreshOutlines() }
                     Text(model.status).font(.callout.bold())
-                    Button("Cancel") { model.cancelPicking() }.buttonStyle(.borderedProminent).tint(.pink)
+                    HStack {
+                        Button { model.openExploded() } label: { Label("3D", systemImage: "square.3.layers.3d") }
+                            .buttonStyle(.bordered)
+                        Button("Cancel") { model.cancelPicking() }.buttonStyle(.borderedProminent).tint(.pink)
+                    }
                 }
                 .padding(14)
                 .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))

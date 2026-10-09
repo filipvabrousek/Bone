@@ -1,0 +1,336 @@
+BONE · dumpGlass
+OS: iOS 27.0 · captured: 2026-10-09 16:29:36
+inputs: all
+glass filters: 1
+
+===== [0] glassBackground  (filters on CALayer ▹ [0]CALayer ▹ [0]CALayer ▹ [0]CALayer ▹ [0]SDFLayer ▹ [1]CALayer ▹ [0]CABackdropLayer) =====
+   bleedAmount  (inputBleedAmount)                                   = 27.8833
+   bleedBlurRadius  (inputBleedBlurRadius)                           = 27.8833
+   bleedColorMatrixBlack  (inputBleedColorMatrixBlack)               = 0.9000
+   bleedColorMatrixSaturation  (inputBleedColorMatrixSaturation)     = 1.2000
+   bleedColorMatrixWhite  (inputBleedColorMatrixWhite)               = 1
+   bleedDarkenBlend  (inputBleedDarkenBlend)                         = 1
+   bleedDistance0  (inputBleedDistance0)                             = 1
+   bleedDistance1  (inputBleedDistance1)                             = 0
+   bleedHeight  (inputBleedHeight)                                   = 27.8833
+   bleedOpacity  (inputBleedOpacity)                                 = 0.0816
+   blurDistance0  (inputBlurDistance0)                               = -39.8333
+   blurDistance1  (inputBlurDistance1)                               = -1
+   blurDistance2  (inputBlurDistance2)                               = 0
+   blurDistance3  (inputBlurDistance3)                               = 0
+   blurFillBlurRadius  (inputBlurFillBlurRadius)                     = 8
+   blurFillDarkenOpacity  (inputBlurFillDarkenOpacity)               = 0
+   blurFillLightenOpacity  (inputBlurFillLightenOpacity)             = 0.9000
+   blurFillNormalOpacity  (inputBlurFillNormalOpacity)               = 0.5000
+   blurOpacity0  (inputBlurOpacity0)                                 = 0.1306
+   blurOpacity1  (inputBlurOpacity1)                                 = 0.0653
+   blurOpacity2  (inputBlurOpacity2)                                 = 0.5000
+   blurOpacity3  (inputBlurOpacity3)                                 = 1
+   blurRadius  (inputBlurRadius)                                     = 5
+   clamp  (inputClamp)                                               = 1.0696
+   clampPreserveHue  (inputClampPreserveHue)                         = 0
+   faceColorMatrixBlack  (inputFaceColorMatrixBlack)                 = 0.4000
+   faceColorMatrixFillColor  (inputFaceColorMatrixFillColor)         = CGColor(1.000, 1.000, 1.000, 0.200)
+   faceColorMatrixMaxLuma  (inputFaceColorMatrixMaxLuma)             = 1
+   faceColorMatrixMaxLumaSDR  (inputFaceColorMatrixMaxLumaSDR)       = 0.9400
+   faceColorMatrixSaturation  (inputFaceColorMatrixSaturation)       = 1.2000
+   faceColorMatrixWhite  (inputFaceColorMatrixWhite)                 = 1.0300
+   faceOpacity  (inputFaceOpacity)                                   = 1
+   innerRefractionAmount  (inputInnerRefractionAmount)               = -39.8333
+   innerRefractionHeight  (inputInnerRefractionHeight)               = 19.9167
+   keyFillHighlightAmount  (inputKeyFillHighlightAmount)             = 0.4000
+   keyFillHighlightAngle  (inputKeyFillHighlightAngle)               = 1.5708
+   keyFillHighlightColorBias  (inputKeyFillHighlightColorBias)       = -0.3000
+   keyFillHighlightEffectOffset  (inputKeyFillHighlightEffectOffset) = -0.5333
+   keyFillHighlightHeight  (inputKeyFillHighlightHeight)             = 0.5333
+   keyFillHighlightSpread  (inputKeyFillHighlightSpread)             = 1.6755
+   keyFillHighlightSpreadSDR  (inputKeyFillHighlightSpreadSDR)       = 1.8500
+   maxHeadroom  (inputMaxHeadroom)                                   = 9999
+   outerRefractionAmount  (inputOuterRefractionAmount)               = 19.9167
+   outerRefractionHeight  (inputOuterRefractionHeight)               = 16
+   refractionDistance0  (inputRefractionDistance0)                   = -1
+   refractionDistance1  (inputRefractionDistance1)                   = 0
+   refractionOpacity  (inputRefractionOpacity)                       = 0.6000
+   ringShadowBlurRadius  (inputRingShadowBlurRadius)                 = 5
+   ringShadowMask  (inputRingShadowMask)                             = 1
+   ringShadowOffset  (inputRingShadowOffset)                         = 8
+   ringShadowOpacity  (inputRingShadowOpacity)                       = 0.0600
+   ringShadowStrokeWidth  (inputRingShadowStrokeWidth)               = 4
+   sdrGradientDistance0  (inputSDRGradientDistance0)                 = 0
+   sdrGradientDistance1  (inputSDRGradientDistance1)                 = 0
+   sdrHoldingToneEnabled  (inputSDRHoldingToneEnabled)               = 0
+   sdrHoldingToneWhite  (inputSDRHoldingToneWhite)                   = 1
+   sdrShadowOpacity  (inputSDRShadowOpacity)                         = 0
+   shadowAmount  (inputShadowAmount)                                 = 0
+   shadowBlurRadius  (inputShadowBlurRadius)                         = 0
+   shadowColorMatrixBlack  (inputShadowColorMatrixBlack)             = 0
+   shadowColorMatrixFillColor  (inputShadowColorMatrixFillColor)     = CGColor(0.000, 0.000, 0.000, 0.300)
+   shadowColorMatrixSaturation  (inputShadowColorMatrixSaturation)   = 1
+   shadowColorMatrixWhite  (inputShadowColorMatrixWhite)             = 1
+   shadowDistanceOffset  (inputShadowDistanceOffset)                 = 0
+   shadowHeight  (inputShadowHeight)                                 = 0
+   shadowOffset  (inputShadowOffset)                                 = size(0.0, 8.0)
+   shadowOpacity  (inputShadowOpacity)                               = 0.0988
+   shadowRadius  (inputShadowRadius)                                 = 7.2639
+   shadowVibrancyContribution  (inputShadowVibrancyContribution)     = 0
+   inputSourceSublayerName                                           = @0
+
+===== [1] vibrantColorMatrix  (filters on CALayer ▹ [0]CALayer ▹ [0]CALayer ▹ [0]CALayer ▹ [0]SDFLayer ▹ [1]CALayer ▹ [2]CASDFLayer) =====
+   clamp  (inputClamp) = 1
+   inputColorMatrix    = CAColorMatrix [ 1.1202 -0.1894 -0.0190  0.0000  0.1471 | -0.0563  0.9871 -0.0191  0.0000  0.1471 | -0.0563 -0.1893  1.1574  0.0000  0.1471 |  0.0000  0.0000  0.0000  1.0000  0.0000]
+
+
+BONE · dumpLayers
+OS: iOS 27.0
+targets: .text = CGDrawingLayer · .shape = *ShapeLayer · .gradient = GradientLayer · .glass · leaf = no sublayers
+
+CALayer  delegate=_UIHostingView<BoneGlassDumpHost<ModifiedContent<ModifiedContent<ModifiedContent<Button<Text>, _EnvironmentKeyWritingModifier<Optional<Font>>>, _PaddingLayout>, StaticIf<GlassEnabledPredicate, GlassEffectModifier, EmptyModifier>>>>  137,155 126×79
+  CALayer  delegate=UIKitPlatformViewHost<PlatformViewControllerRepresentableAdaptor<BoneGlassDumpHost<ModifiedContent<ModifiedContent<ModifiedContent<Button<Text>, _EnvironmentKeyWritingModifier<Optional<Font>>>, _PaddingLayout>, StaticIf<GlassEnabledPredicate, GlassEffectModifier, EmptyModifier>>>>>  137,155 126×79
+    CALayer  delegate=_UIHostingView<ModifiedContent<ModifiedContent<ModifiedContent<Button<Text>, _EnvironmentKeyWritingModifier<Optional<Font>>>, _PaddingLayout>, StaticIf<GlassEnabledPredicate, GlassEffectModifier, EmptyModifier>>>  137,155 126×79
+      CALayer  delegate=_UIInheritedView  137,155 126×79
+        SDFLayer  delegate=_UIInheritedView  137,155 126×79
+          CALayer  delegate=_UIInheritedView  137,155 0×0
+            CALayer  delegate=UIPlatformGlassInteractionView  137,155 126×79
+              CALayer  delegate=_SwiftUILayerDelegate  137,155 126×79
+                CGDrawingLayer  delegate=_SwiftUILayerDelegate  157,175 87×39  contents=CABackingStore  → .text .leaves
+          CALayer  delegate=_NoAnimationDelegate  137,155 126×79
+            CABackdropLayer  delegate=SDFLayer  137,155 126×79  filters=[glassBackground]  → .glass
+              CASDFLayer  delegate=_NoAnimationDelegate  137,155 126×79
+                CALayer  delegate=_NoAnimationDelegate  137,155 0×0
+                  CASDFElementLayer  delegate=_SwiftUISDFLayerDelegate  137,155 126×79  cornerRadius=39.83333333333333  → .leaves
+            SDFPortalLayer  delegate=_NoAnimationDelegate  137,155 126×79  → .leaves
+            CASDFLayer  delegate=_NoAnimationDelegate  137,155 126×79  filters=[vibrantColorMatrix]
+              SDFPortalLayer  delegate=_NoAnimationDelegate  137,155 0×0
+
+
+BONE · dumpShaders "glass"
+library: /var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.Eob9l5/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/QuartzCore.framework/default.metallib
+device: Apple iOS simulator GPU · 228 functions, 36 match
+reflected via render pipelines with QuartzCore's own vertex function: sdf_filter_vert_lpf (2×), variable_blur_vert_lpf (2×)
+one variant per family reflected ("all", float precision); the others are marked – reflectAll: true for each
+took 0.4 s
+
+-- functions
+   glass_background_all_lpf           fragment  REFLECTED
+      u (buffer 1 → S1) · source_texture (texture 3) · sdf_texture (texture 4) · edr_scale (buffer 6) · u_ext (buffer 9 → S2)
+   glass_background_all_lph           fragment  (variant of glass_background_all_lpf)
+   glass_background_c_lpf             fragment  (variant of glass_background_all_lpf)
+   glass_background_c_lph             fragment  (variant of glass_background_all_lpf)
+   glass_background_ce_lpf            fragment  (variant of glass_background_all_lpf)
+   glass_background_ce_lph            fragment  (variant of glass_background_all_lpf)
+   glass_background_cr_lpf            fragment  (variant of glass_background_all_lpf)
+   glass_background_cr_lph            fragment  (variant of glass_background_all_lpf)
+   glass_background_e_lpf             fragment  (variant of glass_background_all_lpf)
+   glass_background_e_lph             fragment  (variant of glass_background_all_lpf)
+   glass_background_minimal_lpf       fragment  (variant of glass_background_all_lpf)
+   glass_background_minimal_lph       fragment  (variant of glass_background_all_lpf)
+   glass_background_r_lpf             fragment  (variant of glass_background_all_lpf)
+   glass_background_r_lph             fragment  (variant of glass_background_all_lpf)
+   glass_background_re_lpf            fragment  (variant of glass_background_all_lpf)
+   glass_background_re_lph            fragment  (variant of glass_background_all_lpf)
+   glass_background_sdf_all_lpf       fragment  REFLECTED
+      u (buffer 1 → S3) · source_texture (texture 3) · edr_scale (buffer 6) · u_ext (buffer 9 → S2)
+   glass_background_sdf_all_lph       fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_c_lpf         fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_c_lph         fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_ce_lpf        fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_ce_lph        fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_cr_lpf        fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_cr_lph        fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_e_lpf         fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_e_lph         fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_minimal_lpf   fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_minimal_lph   fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_r_lpf         fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_r_lph         fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_re_lpf        fragment  (variant of glass_background_sdf_all_lpf)
+   glass_background_sdf_re_lph        fragment  (variant of glass_background_sdf_all_lpf)
+   glass_foreground_lpf               fragment  REFLECTED
+      u (buffer 1 → S4) · source_texture (texture 3) · sdf_texture (texture 4) · edr_scale (buffer 6)
+   glass_foreground_lph               fragment  (variant of glass_foreground_lpf)
+   glass_foreground_sdf_lpf           fragment  REFLECTED
+      u (buffer 1 → S5) · source_texture (texture 3) · edr_scale (buffer 6)
+   glass_foreground_sdf_lph           fragment  (variant of glass_foreground_sdf_lpf)
+
+-- S1: 63 fields, 320 bytes · bound as u in glass_background_all_lpf.u
+     offset  field                                     type      fed by
+     0       displacement_mat                          float4    –
+     16      inner_refraction_amount                   float     ← innerRefractionAmount
+     20      inner_refraction_inv_height               float     ← 1 / innerRefractionHeight
+     24      outer_refraction_amount                   float     ← outerRefractionAmount
+     28      outer_refraction_inv_height               float     ← 1 / outerRefractionHeight
+     32      refraction_threshold0                     float     –
+     36      refraction_threshold1                     float     –
+     40      blur_radius                               float     ← blurRadius
+     44      edge_bleed_blur_radius                    float     ← bleedBlurRadius
+     48      edge_bleed_amount                         float     ← bleedAmount
+     52      edge_bleed_inv_height                     float     ← 1 / bleedHeight
+     56      shadow_amount                             float     ← shadowAmount
+     60      shadow_inv_height                         float     ← 1 / shadowHeight
+     64      shadow_offset                             float2    ← shadowOffset
+     72      shadow_blur_radius                        float     ← shadowBlurRadius
+     76      shadow_inv_radius                         float     ← 1 / shadowRadius
+     80      face_cm0                                  half4     ← faceColorMatrix{Black, FillColor, MaxLuma, MaxLumaSDR, Saturation, White} (derived)
+     88      face_cm1                                  half4     ← faceColorMatrix{Black, FillColor, MaxLuma, MaxLumaSDR, Saturation, White} (derived)
+     96      face_cm2                                  half4     ← faceColorMatrix{Black, FillColor, MaxLuma, MaxLumaSDR, Saturation, White} (derived)
+     104     bleed_cm0                                 half4     ← bleedColorMatrix{Black, FillColor, Saturation, White} (derived)
+     112     bleed_cm1                                 half4     ← bleedColorMatrix{Black, FillColor, Saturation, White} (derived)
+     120     bleed_cm2                                 half4     ← bleedColorMatrix{Black, FillColor, Saturation, White} (derived)
+     128     shadow_cm0                                half4     ← shadowColorMatrix{Black, FillColor, Saturation, White} (derived)
+     136     shadow_cm1                                half4     ← shadowColorMatrix{Black, FillColor, Saturation, White} (derived)
+     144     shadow_cm2                                half4     ← shadowColorMatrix{Black, FillColor, Saturation, White} (derived)
+     152     shadow_contribution                       float     ← shadowVibrancyContribution  (probed: strong shadow → 10 changes 39 k px)
+     156     shadow_face_opacity                       float     –
+     160     blur_alpha0                               float     ← blurOpacity0
+     164     blur_alpha1                               float     ← blurOpacity1
+     168     blur_alpha2                               float     ← blurOpacity2
+     172     blur_alpha3                               float     ← blurOpacity3
+     176     blur_dist0                                float     ← blurDistance0
+     180     blur_dist1                                float     ← blurDistance1
+     184     blur_dist2                                float     ← blurDistance2
+     188     blur_dist3                                float     ← blurDistance3
+     192     edge_bleed_dist0                          float     ← bleedDistance0
+     196     edge_bleed_dist1                          float     ← bleedDistance1
+     200     edge_bleed_opacity                        float     ← bleedOpacity
+     204     face_opacity                              float     ← faceOpacity
+     208     bleed_darken                              float2    ← bleedDarkenBlend
+     216     shadow_dist_offset                        float     ← shadowDistanceOffset
+     220     shadow_opacity                            float     ← shadowOpacity
+     224     refraction_opacity                        float     ← refractionOpacity
+     228     holding_tone_opacity                      float     ← sdrHoldingToneEnabled  (likely: no effect alone, switches sdrHoldingToneWhite on)
+     232     sdr_shadow_dist0                          float     –
+     236     sdr_shadow_inv                            float     –
+     240     ring_shadow_offset                        float2    ← ringShadowOffset
+     248     ring_shadow_stroke_width                  float     ← ringShadowStrokeWidth
+     252     ring_shadow_radius                        float     –
+     256     ring_shadow_opacity                       float     ← ringShadowOpacity
+     260     ring_shadow_mask                          float     ← ringShadowMask
+     264     key_fill_highlight_dir                    float2    ← keyFillHighlightAngle (as a direction)
+     272     key_fill_highlight_height                 float     ← keyFillHighlightHeight
+     276     key_fill_highlight_spread                 float     ← keyFillHighlightSpread
+     280     key_fill_highlight_amount                 float     ← keyFillHighlightAmount
+     284     key_fill_highlight_effect_offset          float     ← keyFillHighlightEffectOffset
+     288     key_fill_highlight_color_bias             float     ← keyFillHighlightColorBias
+     292     blur_fill_blur_radius                     float     ← blurFillBlurRadius
+     296     blur_fill_lighten_opacity                 float     ← blurFillLightenOpacity
+     300     blur_fill_darken_opacity                  float     ← blurFillDarkenOpacity
+     304     blur_fill_normal_opacity                  float     ← blurFillNormalOpacity
+     308     aberration_amount                         float     ← aberrationAmount
+     312     aberration_dir                            float2    ← aberrationAngle (as a direction)
+
+-- S2: 10 fields, 28 bytes · bound as u_ext in glass_background_all_lpf.u_ext, glass_background_sdf_all_lpf.u_ext
+     offset  field                                     type      fed by
+     0       inv_aberration_height                     float     ← 1 / aberrationHeight
+     4       aberration_offset                         float     ← aberrationOffset
+     8       sdr_white_value                           float     ← sdrHoldingToneWhite  (probed: only with sdrHoldingToneEnabled = 1 → 73 k px)
+     12      clamp_limit                               float     ← clamp  (probed: face over-bright → clamp 0.3 changes 74 k px, ≈1.07 (default) ~0)
+     16      face_color_matrix_max_luma_complement     float     –
+     20      preserve_hue                              bool      ← clampPreserveHue  (probed: over-bright + clamp 0.6 → 73 k px)
+     21      blur_fill_enabled                         bool      –
+     22      stroke_mode                               bool      –
+     23      highlight_extension                       bool      –
+     24      wants_highlight_bias_correction           bool      –
+
+-- S3: 66 fields, 368 bytes · bound as u in glass_background_sdf_all_lpf.u
+     offset  field                                     type      fed by
+     0       sdf.arg                                   float4    –
+     16      sdf.tr                                    float4    –
+     32      sdf.arg2                                  float4    –
+     48      glass.displacement_mat                    float4    –
+     64      glass.inner_refraction_amount             float     ← innerRefractionAmount
+     68      glass.inner_refraction_inv_height         float     ← 1 / innerRefractionHeight
+     72      glass.outer_refraction_amount             float     ← outerRefractionAmount
+     76      glass.outer_refraction_inv_height         float     ← 1 / outerRefractionHeight
+     80      glass.refraction_threshold0               float     –
+     84      glass.refraction_threshold1               float     –
+     88      glass.blur_radius                         float     ← blurRadius
+     92      glass.edge_bleed_blur_radius              float     ← bleedBlurRadius
+     96      glass.edge_bleed_amount                   float     ← bleedAmount
+     100     glass.edge_bleed_inv_height               float     ← 1 / bleedHeight
+     104     glass.shadow_amount                       float     ← shadowAmount
+     108     glass.shadow_inv_height                   float     ← 1 / shadowHeight
+     112     glass.shadow_offset                       float2    ← shadowOffset
+     120     glass.shadow_blur_radius                  float     ← shadowBlurRadius
+     124     glass.shadow_inv_radius                   float     ← 1 / shadowRadius
+     128     glass.face_cm0                            half4     ← faceColorMatrix{Black, FillColor, MaxLuma, MaxLumaSDR, Saturation, White} (derived)
+     136     glass.face_cm1                            half4     ← faceColorMatrix{Black, FillColor, MaxLuma, MaxLumaSDR, Saturation, White} (derived)
+     144     glass.face_cm2                            half4     ← faceColorMatrix{Black, FillColor, MaxLuma, MaxLumaSDR, Saturation, White} (derived)
+     152     glass.bleed_cm0                           half4     ← bleedColorMatrix{Black, FillColor, Saturation, White} (derived)
+     160     glass.bleed_cm1                           half4     ← bleedColorMatrix{Black, FillColor, Saturation, White} (derived)
+     168     glass.bleed_cm2                           half4     ← bleedColorMatrix{Black, FillColor, Saturation, White} (derived)
+     176     glass.shadow_cm0                          half4     ← shadowColorMatrix{Black, FillColor, Saturation, White} (derived)
+     184     glass.shadow_cm1                          half4     ← shadowColorMatrix{Black, FillColor, Saturation, White} (derived)
+     192     glass.shadow_cm2                          half4     ← shadowColorMatrix{Black, FillColor, Saturation, White} (derived)
+     200     glass.shadow_contribution                 float     ← shadowVibrancyContribution  (probed: strong shadow → 10 changes 39 k px)
+     204     glass.shadow_face_opacity                 float     –
+     208     glass.blur_alpha0                         float     ← blurOpacity0
+     212     glass.blur_alpha1                         float     ← blurOpacity1
+     216     glass.blur_alpha2                         float     ← blurOpacity2
+     220     glass.blur_alpha3                         float     ← blurOpacity3
+     224     glass.blur_dist0                          float     ← blurDistance0
+     228     glass.blur_dist1                          float     ← blurDistance1
+     232     glass.blur_dist2                          float     ← blurDistance2
+     236     glass.blur_dist3                          float     ← blurDistance3
+     240     glass.edge_bleed_dist0                    float     ← bleedDistance0
+     244     glass.edge_bleed_dist1                    float     ← bleedDistance1
+     248     glass.edge_bleed_opacity                  float     ← bleedOpacity
+     252     glass.face_opacity                        float     ← faceOpacity
+     256     glass.bleed_darken                        float2    ← bleedDarkenBlend
+     264     glass.shadow_dist_offset                  float     ← shadowDistanceOffset
+     268     glass.shadow_opacity                      float     ← shadowOpacity
+     272     glass.refraction_opacity                  float     ← refractionOpacity
+     276     glass.holding_tone_opacity                float     ← sdrHoldingToneEnabled  (likely: no effect alone, switches sdrHoldingToneWhite on)
+     280     glass.sdr_shadow_dist0                    float     –
+     284     glass.sdr_shadow_inv                      float     –
+     288     glass.ring_shadow_offset                  float2    ← ringShadowOffset
+     296     glass.ring_shadow_stroke_width            float     ← ringShadowStrokeWidth
+     300     glass.ring_shadow_radius                  float     –
+     304     glass.ring_shadow_opacity                 float     ← ringShadowOpacity
+     308     glass.ring_shadow_mask                    float     ← ringShadowMask
+     312     glass.key_fill_highlight_dir              float2    ← keyFillHighlightAngle (as a direction)
+     320     glass.key_fill_highlight_height           float     ← keyFillHighlightHeight
+     324     glass.key_fill_highlight_spread           float     ← keyFillHighlightSpread
+     328     glass.key_fill_highlight_amount           float     ← keyFillHighlightAmount
+     332     glass.key_fill_highlight_effect_offset    float     ← keyFillHighlightEffectOffset
+     336     glass.key_fill_highlight_color_bias       float     ← keyFillHighlightColorBias
+     340     glass.blur_fill_blur_radius               float     ← blurFillBlurRadius
+     344     glass.blur_fill_lighten_opacity           float     ← blurFillLightenOpacity
+     348     glass.blur_fill_darken_opacity            float     ← blurFillDarkenOpacity
+     352     glass.blur_fill_normal_opacity            float     ← blurFillNormalOpacity
+     356     glass.aberration_amount                   float     ← aberrationAmount
+     360     glass.aberration_dir                      float2    ← aberrationAngle (as a direction)
+
+-- S4: 13 fields, 80 bytes · bound as u in glass_foreground_lpf.u
+     offset  field                                     type      fed by
+     0       displacement_mat                          float4    –
+     16      refraction_amount                         float     ← inputRefractionAmount
+     20      inv_refraction_height                     float     ← 1 / inputRefractionHeight
+     24      refraction_offset                         float     ← inputRefractionOffset
+     28      aberration_amount                         float     ← aberrationAmount
+     32      inv_aberration_height                     float     ← 1 / aberrationHeight
+     36      aberration_offset                         float     ← aberrationOffset
+     40      aberration_dir                            float2    ← aberrationAngle (as a direction)
+     48      edge_start                                float     ← inputEdgeStart
+     52      edge_end                                  float     ← inputEdgeEnd
+     56      edge_opacity_start                        float     ← inputEdgeOpacityStart
+     60      edge_opacity_end                          float     ← inputEdgeOpacityEnd
+     64      refraction_dir                            float2    –
+
+-- S5: 16 fields, 128 bytes · bound as u in glass_foreground_sdf_lpf.u
+     offset  field                                     type      fed by
+     0       sdf.arg                                   float4    –
+     16      sdf.tr                                    float4    –
+     32      sdf.arg2                                  float4    –
+     48      glass.displacement_mat                    float4    –
+     64      glass.refraction_amount                   float     ← inputRefractionAmount
+     68      glass.inv_refraction_height               float     ← 1 / inputRefractionHeight
+     72      glass.refraction_offset                   float     ← inputRefractionOffset
+     76      glass.aberration_amount                   float     ← aberrationAmount
+     80      glass.inv_aberration_height               float     ← 1 / aberrationHeight
+     84      glass.aberration_offset                   float     ← aberrationOffset
+     88      glass.aberration_dir                      float2    ← aberrationAngle (as a direction)
+     96      glass.edge_start                          float     ← inputEdgeStart
+     100     glass.edge_end                            float     ← inputEdgeEnd
+     104     glass.edge_opacity_start                  float     ← inputEdgeOpacityStart
+     108     glass.edge_opacity_end                    float     ← inputEdgeOpacityEnd
+     112     glass.refraction_dir                      float2    –
