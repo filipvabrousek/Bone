@@ -36,7 +36,10 @@ struct ContentView: View {
         // Launch arguments (Edit Scheme ▸ Arguments):
         //   -layers  any SwiftUI view: tune the layers it is drawn into
         //   -probe   which glass inputs change the rendering → captures/glass-probe.txt/.json/.png
-        if CommandLine.arguments.contains("-layers") {
+        //   -list    List + NavigationStack: rows, controls, glass in rows, toolbar glass
+        if CommandLine.arguments.contains("-list") {
+            ListDemo()
+        } else if CommandLine.arguments.contains("-layers") {
             LayersDemo()
         } else if CommandLine.arguments.contains("-probe") {
             ProbeDemo()
@@ -100,6 +103,40 @@ struct LayersDemo: View {
                 .tuneLayers(.outline, where: .all)
         }
         .dumpLayers("layers.txt")
+    }
+}
+
+/// The same tools inside a List: tuning in rows, glass in rows, the system
+/// toolbar glass. In 3D (pink drop → 3D) the planes are clipped like the List
+/// clips them – only the rows on screen.
+struct ListDemo: View {
+    @State private var on = true
+    @State private var value = 0.4
+    var body: some View {
+        NavigationStack {
+            List {
+                Section("Rows") {
+                    Text("Plain row")
+                    Text("Tuned row")
+                        .tuneLayers([.rotationY: 35, .shadowOpacity: 1, .shadowRadius: 6,
+                                     .shadowColor: .color(.systemPink)], where: .text)
+                    Toggle("Toggle", isOn: $on)
+                    Slider(value: $value)
+                }
+                Section("Glass in a row") {
+                    Button("Glass") {}.font(.title).padding(12).glassEffect()
+                    Button("Flat glass") {}.font(.title).padding(12).glassEffect().tune(.flat)
+                }
+                Section("More rows") {
+                    ForEach(0..<20) { i in Text("Row \(i)") }
+                }
+            }
+            .navigationTitle("List")
+            .toolbar {
+                Button("Edit") {}
+                Button {} label: { Image(systemName: "plus") }
+            }
+        }
     }
 }
 

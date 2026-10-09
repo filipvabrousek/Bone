@@ -185,8 +185,13 @@ Auto outlines glass and text; every other element is still tappable.
 depth in the layer tree. Drag to orbit, two fingers to move, pinch to zoom, double-tap to
 reset, slider for the spacing. Tap a plane to tune that layer with the same sliders (glass
 planes open the glass inputs); the edit goes to the real layer and is previewed on the plane.
-Hold the eye to peek at the real app, ↻ to re-freeze it after tuning glass. Planes are Core
-Animation layers in a `CATransformLayer`; taps are picked by projecting each plane's corners.
+Hold the eye to peek at the real app, ↻ to re-freeze it after tuning glass or scrolling. Planes
+are Core Animation layers in a `CATransformLayer`; taps are picked by projecting each plane's
+corners. Glass stays glass: its layer tree is cloned (`NSKeyedArchiver`) with its current
+inputs, so it refracts the planes behind it in 3D and glass edits preview live. Planes are
+clipped like the app clips them (scroll views, `List`, anything with `masksToBounds`), so a
+`List` shows its visible rows; launch with `-list` for a List with controls, glass in rows
+and the toolbar glass.
 
 For glass – your own
 `.glassEffect()` views and system bars alike. Every input of the glass filters

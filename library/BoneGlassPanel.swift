@@ -312,6 +312,13 @@ final class BoneGlassPanelModel: ObservableObject {
 
     /// Screenshot without the panel – and without the text on glass, so glass planes
     /// show only the glass (its label gets a plane of its own).
+    /// Glass overrides to preview on the selected glass plane (its glass filter only).
+    func explodedGlassValues() -> [String: Any]? {
+        guard isOpen, showing == .glass, let sel = explodedView?.selected, sel.isGlass,
+              sel.source?.superlayer === element, let i = filters.firstIndex(where: \.isGlass) else { return nil }
+        return overrides[i] ?? [:]
+    }
+
     private func captureWithoutPanel(_ done: @escaping (CGImage?) -> Void) {
         let glass = candidates().map { $0.frame }
         let labels = BoneLayerEditor.leaves(in: scene, excluding: panelWindow)

@@ -13,9 +13,14 @@
 //  Planes are Core Animation layers in a CATransformLayer (real perspective,
 //  GPU-composited); taps are picked by projecting each plane's corners with
 //  the same matrix. Text, shapes and gradients are rendered on their own
-//  (sublayers hidden for the render, nothing on screen changes); glass and
-//  anything only the render server draws is cut from a screenshot taken
-//  just before the view opens.
+//  (sublayers hidden for the render, nothing on screen changes). Glass stays
+//  glass: its layer tree (backdrop, glassBackground filter, SDF shape) is
+//  cloned through NSKeyedArchiver with its current values, so it refracts the
+//  planes behind it in 3D and glass edits preview live. Anything else only the
+//  render server draws is cut from a screenshot taken before the view opens.
+//  Planes are clipped like the app clips them (scroll views, List, anything
+//  with masksToBounds), so a List shows its visible rows, not the whole
+//  scroll content hanging off the screen.
 //
 //  Research / simulator use only — private API, never ship it.
 //
@@ -29,17 +34,22 @@ import UIKit
 final class BoneExplodedNode {
     weak var source: CALayer?
     weak var window: UIWindow?
-    let frame: CGRect          // screen points
+    let frame: CGRect          // screen points, the part left visible by clipping ancestors
+    let full: CGRect           // screen points, the whole layer
     let depth: Int             // depth in the layer tree
     let order: Int             // drawing order
     let isGlass: Bool
     let container = CALayer()  // placed in 3D
     let content = CALayer()    // the image; tuning previews go here
+    var glass: CALayer?        // live clone of the glass, when cloning worked
+    var glassApplied = Set<String>()
+    var glassOriginal: [String: Any] = [:]
 
-    init(source: CALayer, window: UIWindow, frame: CGRect, depth: Int, order: Int, isGlass: Bool) {
+    init(source: CALayer, window: UIWindow, frame: CGRect, full: CGRect, depth: Int, order: Int, isGlass: Bool) {
         self.source = source
         self.window = window
         self.frame = frame
+        self.full = full
         self.depth = depth
         self.order = order
         self.isGlass = isGlass
@@ -51,6 +61,8 @@ final class BoneExplodedView: UIView {
     var onPick: ((BoneExplodedNode) -> Void)?
     /// The tuning to preview on the selected plane (nil = none).
     var tuningSource: (() -> (LayerTuning, Int)?)?
+    /// Glass input overrides to preview on the selected glass plane.
+    var glassSource: (() -> [String: Any]?)?
     private(set) var nodes: [BoneExplodedNode] = []
     weak var selected: BoneExplodedNode? {
         didSet {
@@ -121,20 +133,25 @@ final class BoneExplodedView: UIView {
         let windows = scene.windows.filter { $0 !== panel && !$0.isHidden }
             .sorted { $0.windowLevel.rawValue < $1.windowLevel.rawValue }
         for w in windows {
-            func walk(_ l: CALayer, _ depth: Int) {
+            // `clip`: what the ancestors leave visible (screen points) – the window,
+            // narrowed by every masksToBounds layer on the way down (scroll views, cells)
+            func walk(_ l: CALayer, _ depth: Int, _ clip: CGRect) {
                 guard !l.isHidden, l.opacity > 0.01, nodes.count < 600 else { return }
+                let f = BoneGlassLayers.screenFrame(of: l, in: w)
                 if l !== w.layer, Self.draws(l) {
-                    let f = BoneGlassLayers.screenFrame(of: l, in: w)
-                    if f.width >= 1, f.height >= 1, f.intersects(w.frame) {
-                        nodes.append(BoneExplodedNode(source: l, window: w, frame: f, depth: depth, order: order,
-                                                      isGlass: Self.isGlass(l)))
+                    let visible = f.intersection(clip)
+                    if !visible.isNull, visible.width >= 1, visible.height >= 1 {
+                        nodes.append(BoneExplodedNode(source: l, window: w, frame: visible, full: f, depth: depth,
+                                                      order: order, isGlass: Self.isGlass(l)))
                         order += 1
                     }
                 }
                 if Self.isGlass(l) { return }     // the glass plane already shows its insides
-                l.sublayers?.forEach { walk($0, depth + 1) }
+                let inner = l.masksToBounds ? f.intersection(clip) : clip
+                guard !inner.isNull, inner.width >= 1, inner.height >= 1 else { return }   // clipped away
+                l.sublayers?.forEach { walk($0, depth + 1, inner) }
             }
-            walk(w.layer, 0)
+            walk(w.layer, 0, w.frame)
         }
 
         CATransaction.begin()
@@ -144,10 +161,23 @@ final class BoneExplodedView: UIView {
             n.container.position = CGPoint(x: n.frame.midX, y: n.frame.midY)
             n.container.borderWidth = 0.5
             n.container.borderColor = Self.edge
+            n.container.masksToBounds = n.frame != n.full    // clipped in the app → clipped here
             n.content.frame = n.container.bounds
             n.content.contentsGravity = .resize
-            n.content.contents = snapshot(n, screenshot: screenshot)
             n.container.addSublayer(n.content)
+            if n.isGlass, let clone = Self.cloneGlass(n.source) {
+                clone.transform = CATransform3DIdentity
+                clone.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                // the whole glass, placed so only the part the app shows is inside the plane
+                clone.frame = n.full.offsetBy(dx: -n.frame.minX, dy: -n.frame.minY)
+                n.container.addSublayer(clone)
+                n.glass = clone
+                if let ref = BoneGlassLayers.filters(on: clone).first(where: \.isGlass) {
+                    for k in ref.keys { if let v = ref.value(k) { n.glassOriginal[k] = v } }
+                }
+            } else {
+                n.content.contents = snapshot(n, screenshot: screenshot)
+            }
             world.addSublayer(n.container)
         }
         CATransaction.commit()
@@ -172,6 +202,16 @@ final class BoneExplodedView: UIView {
 
     static func isGlass(_ l: CALayer) -> Bool { BoneGlassLayers.filters(on: l).contains(where: \.isGlass) }
 
+    /// A detached copy of a glass layer tree – backdrop, glass filter with its
+    /// current inputs, SDF shape – via its NSCoding support.
+    static func cloneGlass(_ layer: CALayer?) -> CALayer? {
+        guard let layer, let data = try? NSKeyedArchiver.archivedData(withRootObject: layer, requiringSecureCoding: false),
+              let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data) else { return nil }
+        unarchiver.requiresSecureCoding = false
+        let clone = unarchiver.decodeObject(forKey: NSKeyedArchiveRootObjectKey) as? CALayer
+        return clone.flatMap { isGlass($0) ? $0 : nil }
+    }
+
     /// Layers that draw something of their own (containers and glass internals are skipped).
     static func draws(_ l: CALayer) -> Bool {
         let name = String(describing: type(of: l))
@@ -184,8 +224,12 @@ final class BoneExplodedView: UIView {
     private func snapshot(_ n: BoneExplodedNode, screenshot: CGImage?) -> CGImage? {
         guard let l = n.source else { return nil }
         if n.isGlass { return crop(screenshot, n.frame, n.window) }
-        let size = l.bounds.size
-        guard size.width * size.height < 6_000_000 else { return crop(screenshot, n.frame, n.window) }
+        // only the visible part, in the layer's own coordinates
+        guard let w = n.window else { return nil }
+        let inWindow = n.frame.offsetBy(dx: -w.frame.minX, dy: -w.frame.minY)
+        let local = n.frame == n.full ? l.bounds : l.convert(inWindow, from: w.layer).intersection(l.bounds)
+        let size = local.size
+        guard !local.isNull, size.width * size.height < 6_000_000 else { return crop(screenshot, n.frame, n.window) }
         // render just this layer: hide its sublayers for the render (same transaction, nothing hits the screen)
         let subs = l.sublayers ?? []
         let wasHidden = subs.map(\.isHidden)
@@ -196,7 +240,7 @@ final class BoneExplodedView: UIView {
         format.scale = 2
         format.opaque = false
         let image = UIGraphicsImageRenderer(size: size, format: format).image { ctx in
-            ctx.cgContext.translateBy(x: -l.bounds.minX, y: -l.bounds.minY)
+            ctx.cgContext.translateBy(x: -local.minX, y: -local.minY)
             l.render(in: ctx.cgContext)
         }
         for (s, h) in zip(subs, wasHidden) { s.isHidden = h }
@@ -290,15 +334,18 @@ final class BoneExplodedView: UIView {
     }
 
     /// The frontmost plane under a point – each plane's corners projected with the world matrix.
+    /// The planes are parallel, so along the tap ray the front one is the highest z when the
+    /// camera looks at their front, the lowest z when it has orbited round to the back.
     func node(at p: CGPoint) -> BoneExplodedNode? {
         let m = world.transform
         let anchor = CGPoint(x: world.bounds.midX, y: world.bounds.midY)
         let origin = world.position
-        var best: (node: BoneExplodedNode, w: CGFloat)?
+        let facing: CGFloat = CATransform3DConcat(CATransform3DMakeRotation(yaw, 0, 1, 0),
+                                                  CATransform3DMakeRotation(pitch, 1, 0, 0)).m33 >= 0 ? 1 : -1
+        var best: (node: BoneExplodedNode, depth: CGFloat)?
         for n in nodes {
             let f = n.frame, z = n.container.zPosition
             var corners: [CGPoint] = []
-            var wSum: CGFloat = 0
             for c in [CGPoint(x: f.minX, y: f.minY), CGPoint(x: f.maxX, y: f.minY),
                       CGPoint(x: f.maxX, y: f.maxY), CGPoint(x: f.minX, y: f.maxY)] {
                 let x = c.x - anchor.x, y = c.y - anchor.y
@@ -307,10 +354,9 @@ final class BoneExplodedView: UIView {
                 let W = x * m.m14 + y * m.m24 + z * m.m34 + m.m44
                 guard W > 0.01 else { corners = []; break }
                 corners.append(CGPoint(x: X / W + origin.x, y: Y / W + origin.y))
-                wSum += W
             }
             guard corners.count == 4, Self.inside(p, corners) else { continue }
-            if best == nil || wSum < best!.w { best = (n, wSum) }     // smaller w = closer to the eye
+            if best == nil || z * facing > best!.depth { best = (n, z * facing) }
         }
         return best?.node
     }
@@ -329,8 +375,22 @@ final class BoneExplodedView: UIView {
     // MARK: Preview
 
     private func tick() {
-        guard let sel = selected, !sel.isGlass, let (tuning, generation) = tuningSource?() else { return }
-        BoneLayerApplier.apply(tuning, to: sel.content, generation: generation)
+        guard let sel = selected else { return }
+        if sel.isGlass {
+            // glass edits on the live clone; inputs that were reset go back to the clone's own values
+            guard let clone = sel.glass, let ref = BoneGlassLayers.filters(on: clone).first(where: \.isGlass) else { return }
+            let values = glassSource?() ?? [:]
+            for (k, v) in values {
+                if let cur = ref.value(k), BoneGlassLayers.same(cur, v) { continue }
+                ref.set(k, v)
+            }
+            for k in sel.glassApplied.subtracting(values.keys) {
+                if let original = sel.glassOriginal[k] { ref.set(k, original) } else { ref.remove(k) }
+            }
+            sel.glassApplied = Set(values.keys)
+        } else if let (tuning, generation) = tuningSource?() {
+            BoneLayerApplier.apply(tuning, to: sel.content, generation: generation)
+        }
     }
 }
 
@@ -344,6 +404,7 @@ struct BoneExplodedRepresentable: UIViewRepresentable {
         let model = model
         v.onPick = { [weak model] node in model?.pickExploded(node) }
         v.tuningSource = { [weak model] in model?.explodedTuning() }
+        v.glassSource = { [weak model] in model?.explodedGlassValues() }
         v.spacing = CGFloat(model.explodeSpacing)
         model.explodedView = v
         DispatchQueue.main.async { model.buildExploded() }
