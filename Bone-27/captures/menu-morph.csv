@@ -1,0 +1,1552 @@
+frame,time,progress,layer,key,component,value
+1,0.016667,0.0250,blob 1,bounds,x,0.000000
+1,0.016667,0.0250,blob 1,bounds,y,0.000000
+1,0.016667,0.0250,blob 1,bounds,width,250.000000
+1,0.016667,0.0250,blob 1,bounds,height,235.487559
+1,0.016667,0.0250,blob 1,cornerRadii,size1.width,117.743779
+1,0.016667,0.0250,blob 1,cornerRadii,size1.height,117.743779
+1,0.016667,0.0250,blob 1,cornerRadii,size2.width,117.743779
+1,0.016667,0.0250,blob 1,cornerRadii,size2.height,117.743779
+1,0.016667,0.0250,blob 1,cornerRadii,size3.width,117.743779
+1,0.016667,0.0250,blob 1,cornerRadii,size3.height,117.743779
+1,0.016667,0.0250,blob 1,cornerRadii,size4.width,117.743779
+1,0.016667,0.0250,blob 1,cornerRadii,size4.height,117.743779
+1,0.016667,0.0250,blob 1,position,x,125.000000
+1,0.016667,0.0250,blob 1,position,y,117.743779
+1,0.016667,0.0250,blob 2,bounds,x,0.000000
+1,0.016667,0.0250,blob 2,bounds,y,0.000000
+1,0.016667,0.0250,blob 2,bounds,width,132.880805
+1,0.016667,0.0250,blob 2,bounds,height,55.333333
+1,0.016667,0.0250,blob 2,cornerRadii,size1.width,27.666667
+1,0.016667,0.0250,blob 2,cornerRadii,size1.height,27.666667
+1,0.016667,0.0250,blob 2,cornerRadii,size2.width,27.666667
+1,0.016667,0.0250,blob 2,cornerRadii,size2.height,27.666667
+1,0.016667,0.0250,blob 2,cornerRadii,size3.width,27.666667
+1,0.016667,0.0250,blob 2,cornerRadii,size3.height,27.666667
+1,0.016667,0.0250,blob 2,cornerRadii,size4.width,27.666667
+1,0.016667,0.0250,blob 2,cornerRadii,size4.height,27.666667
+1,0.016667,0.0250,blob 2,position,x,66.440403
+1,0.016667,0.0250,blob 2,position,y,27.666667
+1,0.016667,0.0250,LensingLayer,filters.displacementMap.inputAmount,,-3.902517
+1,0.016667,0.0250,LensingLayer,filters.gaussianBlur.inputRadius,,0.802979
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m11,1.130484
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m12,0.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m13,0.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m14,0.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m21,0.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m22,1.130484
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m23,0.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m24,0.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m31,0.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m32,0.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m33,1.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m34,0.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m41,0.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m42,0.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m43,0.000000
+1,0.016667,0.0250,LensingPortalContainer,sublayerTransform,m44,1.000000
+2,0.033333,0.0500,blob 1,bounds,x,0.000000
+2,0.033333,0.0500,blob 1,bounds,y,0.000000
+2,0.033333,0.0500,blob 1,bounds,width,250.000000
+2,0.033333,0.0500,blob 1,bounds,height,222.090938
+2,0.033333,0.0500,blob 1,cornerRadii,size1.width,111.045469
+2,0.033333,0.0500,blob 1,cornerRadii,size1.height,111.045469
+2,0.033333,0.0500,blob 1,cornerRadii,size2.width,111.045469
+2,0.033333,0.0500,blob 1,cornerRadii,size2.height,111.045469
+2,0.033333,0.0500,blob 1,cornerRadii,size3.width,111.045469
+2,0.033333,0.0500,blob 1,cornerRadii,size3.height,111.045469
+2,0.033333,0.0500,blob 1,cornerRadii,size4.width,111.045469
+2,0.033333,0.0500,blob 1,cornerRadii,size4.height,111.045469
+2,0.033333,0.0500,blob 1,position,x,125.000000
+2,0.033333,0.0500,blob 1,position,y,111.045469
+2,0.033333,0.0500,blob 2,bounds,x,0.000000
+2,0.033333,0.0500,blob 2,bounds,y,0.000000
+2,0.033333,0.0500,blob 2,bounds,width,122.001125
+2,0.033333,0.0500,blob 2,bounds,height,55.333333
+2,0.033333,0.0500,blob 2,cornerRadii,size1.width,27.666667
+2,0.033333,0.0500,blob 2,cornerRadii,size1.height,27.666667
+2,0.033333,0.0500,blob 2,cornerRadii,size2.width,27.666667
+2,0.033333,0.0500,blob 2,cornerRadii,size2.height,27.666667
+2,0.033333,0.0500,blob 2,cornerRadii,size3.width,27.666667
+2,0.033333,0.0500,blob 2,cornerRadii,size3.height,27.666667
+2,0.033333,0.0500,blob 2,cornerRadii,size4.width,27.666667
+2,0.033333,0.0500,blob 2,cornerRadii,size4.height,27.666667
+2,0.033333,0.0500,blob 2,position,x,61.000563
+2,0.033333,0.0500,blob 2,position,y,27.666667
+2,0.033333,0.0500,LensingLayer,filters.displacementMap.inputAmount,,-5.099758
+2,0.033333,0.0500,LensingLayer,filters.gaussianBlur.inputRadius,,0.995311
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m11,1.161738
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m12,0.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m13,0.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m14,0.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m21,0.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m22,1.161738
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m23,0.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m24,0.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m31,0.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m32,0.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m33,1.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m34,0.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m41,0.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m42,0.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m43,0.000000
+2,0.033333,0.0500,LensingPortalContainer,sublayerTransform,m44,1.000000
+3,0.050000,0.0750,blob 1,bounds,x,0.000000
+3,0.050000,0.0750,blob 1,bounds,y,0.000000
+3,0.050000,0.0750,blob 1,bounds,width,250.000000
+3,0.050000,0.0750,blob 1,bounds,height,207.661439
+3,0.050000,0.0750,blob 1,cornerRadii,size1.width,103.830720
+3,0.050000,0.0750,blob 1,cornerRadii,size1.height,103.830720
+3,0.050000,0.0750,blob 1,cornerRadii,size2.width,103.830720
+3,0.050000,0.0750,blob 1,cornerRadii,size2.height,103.830720
+3,0.050000,0.0750,blob 1,cornerRadii,size3.width,103.830720
+3,0.050000,0.0750,blob 1,cornerRadii,size3.height,103.830720
+3,0.050000,0.0750,blob 1,cornerRadii,size4.width,103.830720
+3,0.050000,0.0750,blob 1,cornerRadii,size4.height,103.830720
+3,0.050000,0.0750,blob 1,position,x,125.000000
+3,0.050000,0.0750,blob 1,position,y,103.830720
+3,0.050000,0.0750,blob 2,bounds,x,0.000000
+3,0.050000,0.0750,blob 2,bounds,y,0.000000
+3,0.050000,0.0750,blob 2,bounds,width,110.282623
+3,0.050000,0.0750,blob 2,bounds,height,55.333333
+3,0.050000,0.0750,blob 2,cornerRadii,size1.width,27.666667
+3,0.050000,0.0750,blob 2,cornerRadii,size1.height,27.666667
+3,0.050000,0.0750,blob 2,cornerRadii,size2.width,27.666667
+3,0.050000,0.0750,blob 2,cornerRadii,size2.height,27.666667
+3,0.050000,0.0750,blob 2,cornerRadii,size3.width,27.666667
+3,0.050000,0.0750,blob 2,cornerRadii,size3.height,27.666667
+3,0.050000,0.0750,blob 2,cornerRadii,size4.width,27.666667
+3,0.050000,0.0750,blob 2,cornerRadii,size4.height,27.666667
+3,0.050000,0.0750,blob 2,position,x,55.141312
+3,0.050000,0.0750,blob 2,position,y,27.666667
+3,0.050000,0.0750,LensingLayer,filters.displacementMap.inputAmount,,-5.578584
+3,0.050000,0.0750,LensingLayer,filters.gaussianBlur.inputRadius,,1.023771
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m11,1.166363
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m12,0.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m13,0.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m14,0.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m21,0.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m22,1.166363
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m23,0.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m24,0.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m31,0.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m32,0.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m33,1.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m34,0.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m41,0.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m42,0.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m43,0.000000
+3,0.050000,0.0750,LensingPortalContainer,sublayerTransform,m44,1.000000
+4,0.066667,0.1000,blob 1,bounds,x,0.000000
+4,0.066667,0.1000,blob 1,bounds,y,0.000000
+4,0.066667,0.1000,blob 1,bounds,width,250.000000
+4,0.066667,0.1000,blob 1,bounds,height,193.605615
+4,0.066667,0.1000,blob 1,cornerRadii,size1.width,96.802808
+4,0.066667,0.1000,blob 1,cornerRadii,size1.height,96.802808
+4,0.066667,0.1000,blob 1,cornerRadii,size2.width,96.802808
+4,0.066667,0.1000,blob 1,cornerRadii,size2.height,96.802808
+4,0.066667,0.1000,blob 1,cornerRadii,size3.width,96.802808
+4,0.066667,0.1000,blob 1,cornerRadii,size3.height,96.802808
+4,0.066667,0.1000,blob 1,cornerRadii,size4.width,96.802808
+4,0.066667,0.1000,blob 1,cornerRadii,size4.height,96.802808
+4,0.066667,0.1000,blob 1,position,x,125.000000
+4,0.066667,0.1000,blob 1,position,y,96.802808
+4,0.066667,0.1000,blob 2,bounds,x,0.000000
+4,0.066667,0.1000,blob 2,bounds,y,0.000000
+4,0.066667,0.1000,blob 2,bounds,width,98.867591
+4,0.066667,0.1000,blob 2,bounds,height,55.333333
+4,0.066667,0.1000,blob 2,cornerRadii,size1.width,27.666667
+4,0.066667,0.1000,blob 2,cornerRadii,size1.height,27.666667
+4,0.066667,0.1000,blob 2,cornerRadii,size2.width,27.666667
+4,0.066667,0.1000,blob 2,cornerRadii,size2.height,27.666667
+4,0.066667,0.1000,blob 2,cornerRadii,size3.width,27.666667
+4,0.066667,0.1000,blob 2,cornerRadii,size3.height,27.666667
+4,0.066667,0.1000,blob 2,cornerRadii,size4.width,27.666667
+4,0.066667,0.1000,blob 2,cornerRadii,size4.height,27.666667
+4,0.066667,0.1000,blob 2,position,x,49.433795
+4,0.066667,0.1000,blob 2,position,y,27.666667
+4,0.066667,0.1000,LensingLayer,filters.displacementMap.inputAmount,,-5.597770
+4,0.066667,0.1000,LensingLayer,filters.gaussianBlur.inputRadius,,0.953544
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m11,1.154951
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m12,0.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m13,0.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m14,0.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m21,0.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m22,1.154951
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m23,0.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m24,0.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m31,0.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m32,0.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m33,1.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m34,0.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m41,0.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m42,0.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m43,0.000000
+4,0.066667,0.1000,LensingPortalContainer,sublayerTransform,m44,1.000000
+5,0.083333,0.1250,blob 1,bounds,x,0.000000
+5,0.083333,0.1250,blob 1,bounds,y,0.000000
+5,0.083333,0.1250,blob 1,bounds,width,250.000000
+5,0.083333,0.1250,blob 1,bounds,height,180.794647
+5,0.083333,0.1250,blob 1,cornerRadii,size1.width,90.397323
+5,0.083333,0.1250,blob 1,cornerRadii,size1.height,90.397323
+5,0.083333,0.1250,blob 1,cornerRadii,size2.width,90.397323
+5,0.083333,0.1250,blob 1,cornerRadii,size2.height,90.397323
+5,0.083333,0.1250,blob 1,cornerRadii,size3.width,90.397323
+5,0.083333,0.1250,blob 1,cornerRadii,size3.height,90.397323
+5,0.083333,0.1250,blob 1,cornerRadii,size4.width,90.397323
+5,0.083333,0.1250,blob 1,cornerRadii,size4.height,90.397323
+5,0.083333,0.1250,blob 1,position,x,125.000000
+5,0.083333,0.1250,blob 1,position,y,90.397323
+5,0.083333,0.1250,blob 2,bounds,x,0.000000
+5,0.083333,0.1250,blob 2,bounds,y,0.000000
+5,0.083333,0.1250,blob 2,bounds,width,88.463531
+5,0.083333,0.1250,blob 2,bounds,height,55.333333
+5,0.083333,0.1250,blob 2,cornerRadii,size1.width,27.666667
+5,0.083333,0.1250,blob 2,cornerRadii,size1.height,27.666667
+5,0.083333,0.1250,blob 2,cornerRadii,size2.width,27.666667
+5,0.083333,0.1250,blob 2,cornerRadii,size2.height,27.666667
+5,0.083333,0.1250,blob 2,cornerRadii,size3.width,27.666667
+5,0.083333,0.1250,blob 2,cornerRadii,size3.height,27.666667
+5,0.083333,0.1250,blob 2,cornerRadii,size4.width,27.666667
+5,0.083333,0.1250,blob 2,cornerRadii,size4.height,27.666667
+5,0.083333,0.1250,blob 2,position,x,44.231766
+5,0.083333,0.1250,blob 2,position,y,27.666667
+5,0.083333,0.1250,LensingLayer,filters.displacementMap.inputAmount,,-5.336863
+5,0.083333,0.1250,LensingLayer,filters.gaussianBlur.inputRadius,,0.831302
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m11,1.135087
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m12,0.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m13,0.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m14,0.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m21,0.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m22,1.135087
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m23,0.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m24,0.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m31,0.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m32,0.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m33,1.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m34,0.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m41,0.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m42,0.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m43,0.000000
+5,0.083333,0.1250,LensingPortalContainer,sublayerTransform,m44,1.000000
+6,0.100000,0.1500,blob 1,bounds,x,0.000000
+6,0.100000,0.1500,blob 1,bounds,y,0.000000
+6,0.100000,0.1500,blob 1,bounds,width,250.000000
+6,0.100000,0.1500,blob 1,bounds,height,169.695568
+6,0.100000,0.1500,blob 1,cornerRadii,size1.width,79.114981
+6,0.100000,0.1500,blob 1,cornerRadii,size1.height,79.114981
+6,0.100000,0.1500,blob 1,cornerRadii,size2.width,79.114981
+6,0.100000,0.1500,blob 1,cornerRadii,size2.height,79.114981
+6,0.100000,0.1500,blob 1,cornerRadii,size3.width,79.114981
+6,0.100000,0.1500,blob 1,cornerRadii,size3.height,79.114981
+6,0.100000,0.1500,blob 1,cornerRadii,size4.width,79.114981
+6,0.100000,0.1500,blob 1,cornerRadii,size4.height,79.114981
+6,0.100000,0.1500,blob 1,position,x,125.000000
+6,0.100000,0.1500,blob 1,position,y,84.847784
+6,0.100000,0.1500,blob 2,bounds,x,0.000000
+6,0.100000,0.1500,blob 2,bounds,y,0.000000
+6,0.100000,0.1500,blob 2,bounds,width,79.449734
+6,0.100000,0.1500,blob 2,bounds,height,55.333333
+6,0.100000,0.1500,blob 2,cornerRadii,size1.width,27.666667
+6,0.100000,0.1500,blob 2,cornerRadii,size1.height,27.666667
+6,0.100000,0.1500,blob 2,cornerRadii,size2.width,27.666667
+6,0.100000,0.1500,blob 2,cornerRadii,size2.height,27.666667
+6,0.100000,0.1500,blob 2,cornerRadii,size3.width,27.666667
+6,0.100000,0.1500,blob 2,cornerRadii,size3.height,27.666667
+6,0.100000,0.1500,blob 2,cornerRadii,size4.width,27.666667
+6,0.100000,0.1500,blob 2,cornerRadii,size4.height,27.666667
+6,0.100000,0.1500,blob 2,position,x,39.724867
+6,0.100000,0.1500,blob 2,position,y,27.666667
+6,0.100000,0.1500,LensingLayer,filters.displacementMap.inputAmount,,-4.918550
+6,0.100000,0.1500,LensingLayer,filters.gaussianBlur.inputRadius,,0.688886
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m11,1.111944
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m12,0.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m13,0.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m14,0.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m21,0.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m22,1.111944
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m23,0.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m24,0.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m31,0.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m32,0.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m33,1.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m34,0.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m41,0.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m42,0.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m43,0.000000
+6,0.100000,0.1500,LensingPortalContainer,sublayerTransform,m44,1.000000
+7,0.116667,0.1750,blob 1,bounds,x,0.000000
+7,0.116667,0.1750,blob 1,bounds,y,0.000000
+7,0.116667,0.1750,blob 1,bounds,width,250.000000
+7,0.116667,0.1750,blob 1,bounds,height,160.483971
+7,0.116667,0.1750,blob 1,cornerRadii,size1.width,67.584453
+7,0.116667,0.1750,blob 1,cornerRadii,size1.height,67.584453
+7,0.116667,0.1750,blob 1,cornerRadii,size2.width,67.584453
+7,0.116667,0.1750,blob 1,cornerRadii,size2.height,67.584453
+7,0.116667,0.1750,blob 1,cornerRadii,size3.width,67.584453
+7,0.116667,0.1750,blob 1,cornerRadii,size3.height,67.584453
+7,0.116667,0.1750,blob 1,cornerRadii,size4.width,67.584453
+7,0.116667,0.1750,blob 1,cornerRadii,size4.height,67.584453
+7,0.116667,0.1750,blob 1,position,x,125.000000
+7,0.116667,0.1750,blob 1,position,y,80.241986
+7,0.116667,0.1750,blob 2,bounds,x,0.000000
+7,0.116667,0.1750,blob 2,bounds,y,0.000000
+7,0.116667,0.1750,blob 2,bounds,width,71.968801
+7,0.116667,0.1750,blob 2,bounds,height,55.333333
+7,0.116667,0.1750,blob 2,cornerRadii,size1.width,27.666667
+7,0.116667,0.1750,blob 2,cornerRadii,size1.height,27.666667
+7,0.116667,0.1750,blob 2,cornerRadii,size2.width,27.666667
+7,0.116667,0.1750,blob 2,cornerRadii,size2.height,27.666667
+7,0.116667,0.1750,blob 2,cornerRadii,size3.width,27.666667
+7,0.116667,0.1750,blob 2,cornerRadii,size3.height,27.666667
+7,0.116667,0.1750,blob 2,cornerRadii,size4.width,27.666667
+7,0.116667,0.1750,blob 2,cornerRadii,size4.height,27.666667
+7,0.116667,0.1750,blob 2,position,x,35.984401
+7,0.116667,0.1750,blob 2,position,y,27.666667
+7,0.116667,0.1750,LensingLayer,filters.displacementMap.inputAmount,,-4.425010
+7,0.116667,0.1750,LensingLayer,filters.gaussianBlur.inputRadius,,0.546713
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m11,1.088841
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m12,0.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m13,0.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m14,0.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m21,0.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m22,1.088841
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m23,0.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m24,0.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m31,0.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m32,0.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m33,1.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m34,0.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m41,0.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m42,0.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m43,0.000000
+7,0.116667,0.1750,LensingPortalContainer,sublayerTransform,m44,1.000000
+8,0.133333,0.2000,blob 1,bounds,x,0.000000
+8,0.133333,0.2000,blob 1,bounds,y,0.000000
+8,0.133333,0.2000,blob 1,bounds,width,250.000000
+8,0.133333,0.2000,blob 1,bounds,height,153.136822
+8,0.133333,0.2000,blob 1,cornerRadii,size1.width,57.675816
+8,0.133333,0.2000,blob 1,cornerRadii,size1.height,57.675816
+8,0.133333,0.2000,blob 1,cornerRadii,size2.width,57.675816
+8,0.133333,0.2000,blob 1,cornerRadii,size2.height,57.675816
+8,0.133333,0.2000,blob 1,cornerRadii,size3.width,57.675816
+8,0.133333,0.2000,blob 1,cornerRadii,size3.height,57.675816
+8,0.133333,0.2000,blob 1,cornerRadii,size4.width,57.675816
+8,0.133333,0.2000,blob 1,cornerRadii,size4.height,57.675816
+8,0.133333,0.2000,blob 1,position,x,125.000000
+8,0.133333,0.2000,blob 1,position,y,76.568411
+8,0.133333,0.2000,blob 2,bounds,x,0.000000
+8,0.133333,0.2000,blob 2,bounds,y,0.000000
+8,0.133333,0.2000,blob 2,bounds,width,66.002025
+8,0.133333,0.2000,blob 2,bounds,height,55.333333
+8,0.133333,0.2000,blob 2,cornerRadii,size1.width,27.666667
+8,0.133333,0.2000,blob 2,cornerRadii,size1.height,27.666667
+8,0.133333,0.2000,blob 2,cornerRadii,size2.width,27.666667
+8,0.133333,0.2000,blob 2,cornerRadii,size2.height,27.666667
+8,0.133333,0.2000,blob 2,cornerRadii,size3.width,27.666667
+8,0.133333,0.2000,blob 2,cornerRadii,size3.height,27.666667
+8,0.133333,0.2000,blob 2,cornerRadii,size4.width,27.666667
+8,0.133333,0.2000,blob 2,cornerRadii,size4.height,27.666667
+8,0.133333,0.2000,blob 2,position,x,33.001013
+8,0.133333,0.2000,blob 2,position,y,27.666667
+8,0.133333,0.2000,LensingLayer,filters.displacementMap.inputAmount,,-3.909817
+8,0.133333,0.2000,LensingLayer,filters.gaussianBlur.inputRadius,,0.416757
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m11,1.067723
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m12,0.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m13,0.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m14,0.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m21,0.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m22,1.067723
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m23,0.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m24,0.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m31,0.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m32,0.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m33,1.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m34,0.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m41,0.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m42,0.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m43,0.000000
+8,0.133333,0.2000,LensingPortalContainer,sublayerTransform,m44,1.000000
+9,0.150000,0.2250,blob 1,bounds,x,0.000000
+9,0.150000,0.2250,blob 1,bounds,y,0.000000
+9,0.150000,0.2250,blob 1,bounds,width,250.000000
+9,0.150000,0.2250,blob 1,bounds,height,147.505933
+9,0.150000,0.2250,blob 1,cornerRadii,size1.width,49.511978
+9,0.150000,0.2250,blob 1,cornerRadii,size1.height,49.511978
+9,0.150000,0.2250,blob 1,cornerRadii,size2.width,49.511978
+9,0.150000,0.2250,blob 1,cornerRadii,size2.height,49.511978
+9,0.150000,0.2250,blob 1,cornerRadii,size3.width,49.511978
+9,0.150000,0.2250,blob 1,cornerRadii,size3.height,49.511978
+9,0.150000,0.2250,blob 1,cornerRadii,size4.width,49.511978
+9,0.150000,0.2250,blob 1,cornerRadii,size4.height,49.511978
+9,0.150000,0.2250,blob 1,position,x,125.000000
+9,0.150000,0.2250,blob 1,position,y,73.752966
+9,0.150000,0.2250,blob 2,bounds,x,0.000000
+9,0.150000,0.2250,blob 2,bounds,y,0.000000
+9,0.150000,0.2250,blob 2,bounds,width,61.429061
+9,0.150000,0.2250,blob 2,bounds,height,55.333333
+9,0.150000,0.2250,blob 2,cornerRadii,size1.width,27.666667
+9,0.150000,0.2250,blob 2,cornerRadii,size1.height,27.666667
+9,0.150000,0.2250,blob 2,cornerRadii,size2.width,27.666667
+9,0.150000,0.2250,blob 2,cornerRadii,size2.height,27.666667
+9,0.150000,0.2250,blob 2,cornerRadii,size3.width,27.666667
+9,0.150000,0.2250,blob 2,cornerRadii,size3.height,27.666667
+9,0.150000,0.2250,blob 2,cornerRadii,size4.width,27.666667
+9,0.150000,0.2250,blob 2,cornerRadii,size4.height,27.666667
+9,0.150000,0.2250,blob 2,position,x,30.714530
+9,0.150000,0.2250,blob 2,position,y,27.666667
+9,0.150000,0.2250,LensingLayer,filters.displacementMap.inputAmount,,-3.406562
+9,0.150000,0.2250,LensingLayer,filters.gaussianBlur.inputRadius,,0.305015
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m11,1.049565
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m12,0.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m13,0.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m14,0.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m21,0.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m22,1.049565
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m23,0.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m24,0.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m31,0.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m32,0.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m33,1.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m34,0.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m41,0.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m42,0.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m43,0.000000
+9,0.150000,0.2250,LensingPortalContainer,sublayerTransform,m44,1.000000
+10,0.166667,0.2500,blob 1,bounds,x,0.000000
+10,0.166667,0.2500,blob 1,bounds,y,0.000000
+10,0.166667,0.2500,blob 1,bounds,width,250.000000
+10,0.166667,0.2500,blob 1,bounds,height,143.373829
+10,0.166667,0.2500,blob 1,cornerRadii,size1.width,43.046487
+10,0.166667,0.2500,blob 1,cornerRadii,size1.height,43.046487
+10,0.166667,0.2500,blob 1,cornerRadii,size2.width,43.046487
+10,0.166667,0.2500,blob 1,cornerRadii,size2.height,43.046487
+10,0.166667,0.2500,blob 1,cornerRadii,size3.width,43.046487
+10,0.166667,0.2500,blob 1,cornerRadii,size3.height,43.046487
+10,0.166667,0.2500,blob 1,cornerRadii,size4.width,43.046487
+10,0.166667,0.2500,blob 1,cornerRadii,size4.height,43.046487
+10,0.166667,0.2500,blob 1,position,x,125.000000
+10,0.166667,0.2500,blob 1,position,y,71.686915
+10,0.166667,0.2500,blob 2,bounds,x,0.000000
+10,0.166667,0.2500,blob 2,bounds,y,0.000000
+10,0.166667,0.2500,blob 2,bounds,width,58.073292
+10,0.166667,0.2500,blob 2,bounds,height,55.333333
+10,0.166667,0.2500,blob 2,cornerRadii,size1.width,27.666667
+10,0.166667,0.2500,blob 2,cornerRadii,size1.height,27.666667
+10,0.166667,0.2500,blob 2,cornerRadii,size2.width,27.666667
+10,0.166667,0.2500,blob 2,cornerRadii,size2.height,27.666667
+10,0.166667,0.2500,blob 2,cornerRadii,size3.width,27.666667
+10,0.166667,0.2500,blob 2,cornerRadii,size3.height,27.666667
+10,0.166667,0.2500,blob 2,cornerRadii,size4.width,27.666667
+10,0.166667,0.2500,blob 2,cornerRadii,size4.height,27.666667
+10,0.166667,0.2500,blob 2,position,x,29.036646
+10,0.166667,0.2500,blob 2,position,y,27.666667
+10,0.166667,0.2500,LensingLayer,filters.displacementMap.inputAmount,,-2.935066
+10,0.166667,0.2500,LensingLayer,filters.gaussianBlur.inputRadius,,0.213464
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m11,1.034688
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m12,0.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m13,0.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m14,0.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m21,0.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m22,1.034688
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m23,0.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m24,0.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m31,0.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m32,0.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m33,1.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m34,0.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m41,0.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m42,0.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m43,0.000000
+10,0.166667,0.2500,LensingPortalContainer,sublayerTransform,m44,1.000000
+11,0.183333,0.2750,blob 1,bounds,x,0.000000
+11,0.183333,0.2750,blob 1,bounds,y,0.000000
+11,0.183333,0.2750,blob 1,bounds,width,250.000000
+11,0.183333,0.2750,blob 1,bounds,height,140.494374
+11,0.183333,0.2750,blob 1,cornerRadii,size1.width,38.128098
+11,0.183333,0.2750,blob 1,cornerRadii,size1.height,38.128098
+11,0.183333,0.2750,blob 1,cornerRadii,size2.width,38.128098
+11,0.183333,0.2750,blob 1,cornerRadii,size2.height,38.128098
+11,0.183333,0.2750,blob 1,cornerRadii,size3.width,38.128098
+11,0.183333,0.2750,blob 1,cornerRadii,size3.height,38.128098
+11,0.183333,0.2750,blob 1,cornerRadii,size4.width,38.128098
+11,0.183333,0.2750,blob 1,cornerRadii,size4.height,38.128098
+11,0.183333,0.2750,blob 1,position,x,125.000000
+11,0.183333,0.2750,blob 1,position,y,70.247187
+11,0.183333,0.2750,blob 2,bounds,x,0.000000
+11,0.183333,0.2750,blob 2,bounds,y,0.000000
+11,0.183333,0.2750,blob 2,bounds,width,55.734825
+11,0.183333,0.2750,blob 2,bounds,height,55.333333
+11,0.183333,0.2750,blob 2,cornerRadii,size1.width,27.666667
+11,0.183333,0.2750,blob 2,cornerRadii,size1.height,27.666667
+11,0.183333,0.2750,blob 2,cornerRadii,size2.width,27.666667
+11,0.183333,0.2750,blob 2,cornerRadii,size2.height,27.666667
+11,0.183333,0.2750,blob 2,cornerRadii,size3.width,27.666667
+11,0.183333,0.2750,blob 2,cornerRadii,size3.height,27.666667
+11,0.183333,0.2750,blob 2,cornerRadii,size4.width,27.666667
+11,0.183333,0.2750,blob 2,cornerRadii,size4.height,27.666667
+11,0.183333,0.2750,blob 2,position,x,27.867412
+11,0.183333,0.2750,blob 2,position,y,27.666667
+11,0.183333,0.2750,LensingLayer,filters.displacementMap.inputAmount,,-2.505820
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m11,1.023002
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m12,0.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m13,0.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m14,0.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m21,0.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m22,1.023002
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m23,0.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m24,0.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m31,0.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m32,0.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m33,1.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m34,0.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m41,0.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m42,0.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m43,0.000000
+11,0.183333,0.2750,LensingPortalContainer,sublayerTransform,m44,1.000000
+12,0.200000,0.3000,blob 1,bounds,x,0.000000
+12,0.200000,0.3000,blob 1,bounds,y,0.000000
+12,0.200000,0.3000,blob 1,bounds,width,250.000000
+12,0.200000,0.3000,blob 1,bounds,height,138.620751
+12,0.200000,0.3000,blob 1,cornerRadii,size1.width,34.549495
+12,0.200000,0.3000,blob 1,cornerRadii,size1.height,34.549495
+12,0.200000,0.3000,blob 1,cornerRadii,size2.width,34.549495
+12,0.200000,0.3000,blob 1,cornerRadii,size2.height,34.549495
+12,0.200000,0.3000,blob 1,cornerRadii,size3.width,34.549495
+12,0.200000,0.3000,blob 1,cornerRadii,size3.height,34.549495
+12,0.200000,0.3000,blob 1,cornerRadii,size4.width,34.549495
+12,0.200000,0.3000,blob 1,cornerRadii,size4.height,34.549495
+12,0.200000,0.3000,blob 1,position,x,125.000000
+12,0.200000,0.3000,blob 1,position,y,69.310376
+12,0.200000,0.3000,blob 2,bounds,x,0.000000
+12,0.200000,0.3000,blob 2,bounds,y,0.000000
+12,0.200000,0.3000,blob 2,bounds,width,54.213216
+12,0.200000,0.3000,blob 2,bounds,height,55.333333
+12,0.200000,0.3000,blob 2,cornerRadii,size1.width,27.106608
+12,0.200000,0.3000,blob 2,cornerRadii,size1.height,27.106608
+12,0.200000,0.3000,blob 2,cornerRadii,size2.width,27.106608
+12,0.200000,0.3000,blob 2,cornerRadii,size2.height,27.106608
+12,0.200000,0.3000,blob 2,cornerRadii,size3.width,27.106608
+12,0.200000,0.3000,blob 2,cornerRadii,size3.height,27.106608
+12,0.200000,0.3000,blob 2,cornerRadii,size4.width,27.106608
+12,0.200000,0.3000,blob 2,cornerRadii,size4.height,27.106608
+12,0.200000,0.3000,blob 2,position,x,27.106608
+12,0.200000,0.3000,blob 2,position,y,27.666667
+12,0.200000,0.3000,LensingLayer,filters.displacementMap.inputAmount,,-2.123138
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m11,1.014183
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m12,0.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m13,0.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m14,0.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m21,0.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m22,1.014183
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m23,0.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m24,0.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m31,0.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m32,0.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m33,1.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m34,0.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m41,0.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m42,0.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m43,0.000000
+12,0.200000,0.3000,LensingPortalContainer,sublayerTransform,m44,1.000000
+13,0.216667,0.3250,blob 1,bounds,x,0.000000
+13,0.216667,0.3250,blob 1,bounds,y,0.000000
+13,0.216667,0.3250,blob 1,bounds,width,250.000000
+13,0.216667,0.3250,blob 1,bounds,height,137.523386
+13,0.216667,0.3250,blob 1,cornerRadii,size1.width,32.082407
+13,0.216667,0.3250,blob 1,cornerRadii,size1.height,32.082407
+13,0.216667,0.3250,blob 1,cornerRadii,size2.width,32.082407
+13,0.216667,0.3250,blob 1,cornerRadii,size2.height,32.082407
+13,0.216667,0.3250,blob 1,cornerRadii,size3.width,32.082407
+13,0.216667,0.3250,blob 1,cornerRadii,size3.height,32.082407
+13,0.216667,0.3250,blob 1,cornerRadii,size4.width,32.082407
+13,0.216667,0.3250,blob 1,cornerRadii,size4.height,32.082407
+13,0.216667,0.3250,blob 1,position,x,125.000000
+13,0.216667,0.3250,blob 1,position,y,68.761693
+13,0.216667,0.3250,blob 2,bounds,x,0.000000
+13,0.216667,0.3250,blob 2,bounds,y,0.000000
+13,0.216667,0.3250,blob 2,bounds,width,53.322023
+13,0.216667,0.3250,blob 2,bounds,height,55.333333
+13,0.216667,0.3250,blob 2,cornerRadii,size1.width,26.661011
+13,0.216667,0.3250,blob 2,cornerRadii,size1.height,26.661011
+13,0.216667,0.3250,blob 2,cornerRadii,size2.width,26.661011
+13,0.216667,0.3250,blob 2,cornerRadii,size2.height,26.661011
+13,0.216667,0.3250,blob 2,cornerRadii,size3.width,26.661011
+13,0.216667,0.3250,blob 2,cornerRadii,size3.height,26.661011
+13,0.216667,0.3250,blob 2,cornerRadii,size4.width,26.661011
+13,0.216667,0.3250,blob 2,cornerRadii,size4.height,26.661011
+13,0.216667,0.3250,blob 2,position,x,26.661011
+13,0.216667,0.3250,blob 2,position,y,27.666667
+13,0.216667,0.3250,LensingLayer,filters.displacementMap.inputAmount,,-1.787373
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m11,1.007798
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m12,0.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m13,0.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m14,0.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m21,0.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m22,1.007798
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m23,0.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m24,0.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m31,0.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m32,0.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m33,1.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m34,0.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m41,0.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m42,0.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m43,0.000000
+13,0.216667,0.3250,LensingPortalContainer,sublayerTransform,m44,1.000000
+14,0.233333,0.3500,blob 1,bounds,x,0.000000
+14,0.233333,0.3500,blob 1,bounds,y,0.000000
+14,0.233333,0.3500,blob 1,bounds,width,250.000000
+14,0.233333,0.3500,blob 1,bounds,height,137.000144
+14,0.233333,0.3500,blob 1,cornerRadii,size1.width,30.501532
+14,0.233333,0.3500,blob 1,cornerRadii,size1.height,30.501532
+14,0.233333,0.3500,blob 1,cornerRadii,size2.width,30.501532
+14,0.233333,0.3500,blob 1,cornerRadii,size2.height,30.501532
+14,0.233333,0.3500,blob 1,cornerRadii,size3.width,30.501532
+14,0.233333,0.3500,blob 1,cornerRadii,size3.height,30.501532
+14,0.233333,0.3500,blob 1,cornerRadii,size4.width,30.501532
+14,0.233333,0.3500,blob 1,cornerRadii,size4.height,30.501532
+14,0.233333,0.3500,blob 1,position,x,125.000000
+14,0.233333,0.3500,blob 1,position,y,68.500072
+14,0.233333,0.3500,blob 2,bounds,x,0.000000
+14,0.233333,0.3500,blob 2,bounds,y,0.000000
+14,0.233333,0.3500,blob 2,bounds,width,52.897086
+14,0.233333,0.3500,blob 2,bounds,height,55.333333
+14,0.233333,0.3500,blob 2,cornerRadii,size1.width,26.448543
+14,0.233333,0.3500,blob 2,cornerRadii,size1.height,26.448543
+14,0.233333,0.3500,blob 2,cornerRadii,size2.width,26.448543
+14,0.233333,0.3500,blob 2,cornerRadii,size2.height,26.448543
+14,0.233333,0.3500,blob 2,cornerRadii,size3.width,26.448543
+14,0.233333,0.3500,blob 2,cornerRadii,size3.height,26.448543
+14,0.233333,0.3500,blob 2,cornerRadii,size4.width,26.448543
+14,0.233333,0.3500,blob 2,cornerRadii,size4.height,26.448543
+14,0.233333,0.3500,blob 2,position,x,26.448543
+14,0.233333,0.3500,blob 2,position,y,27.666667
+14,0.233333,0.3500,LensingLayer,filters.displacementMap.inputAmount,,-1.496454
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m11,1.003384
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m12,0.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m13,0.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m14,0.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m21,0.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m22,1.003384
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m23,0.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m24,0.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m31,0.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m32,0.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m33,1.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m34,0.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m41,0.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m42,0.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m43,0.000000
+14,0.233333,0.3500,LensingPortalContainer,sublayerTransform,m44,1.000000
+15,0.250000,0.3750,blob 1,bounds,x,0.000000
+15,0.250000,0.3750,blob 1,bounds,y,0.000000
+15,0.250000,0.3750,blob 1,bounds,width,250.000000
+15,0.250000,0.3750,blob 1,bounds,height,136.880878
+15,0.250000,0.3750,blob 1,cornerRadii,size1.width,29.599591
+15,0.250000,0.3750,blob 1,cornerRadii,size1.height,29.599591
+15,0.250000,0.3750,blob 1,cornerRadii,size2.width,29.599591
+15,0.250000,0.3750,blob 1,cornerRadii,size2.height,29.599591
+15,0.250000,0.3750,blob 1,cornerRadii,size3.width,29.599591
+15,0.250000,0.3750,blob 1,cornerRadii,size3.height,29.599591
+15,0.250000,0.3750,blob 1,cornerRadii,size4.width,29.599591
+15,0.250000,0.3750,blob 1,cornerRadii,size4.height,29.599591
+15,0.250000,0.3750,blob 1,position,x,125.000000
+15,0.250000,0.3750,blob 1,position,y,68.440439
+15,0.250000,0.3750,blob 2,bounds,x,0.000000
+15,0.250000,0.3750,blob 2,bounds,y,0.000000
+15,0.250000,0.3750,blob 2,bounds,width,52.800228
+15,0.250000,0.3750,blob 2,bounds,height,55.333333
+15,0.250000,0.3750,blob 2,cornerRadii,size1.width,26.400114
+15,0.250000,0.3750,blob 2,cornerRadii,size1.height,26.400114
+15,0.250000,0.3750,blob 2,cornerRadii,size2.width,26.400114
+15,0.250000,0.3750,blob 2,cornerRadii,size2.height,26.400114
+15,0.250000,0.3750,blob 2,cornerRadii,size3.width,26.400114
+15,0.250000,0.3750,blob 2,cornerRadii,size3.height,26.400114
+15,0.250000,0.3750,blob 2,cornerRadii,size4.width,26.400114
+15,0.250000,0.3750,blob 2,cornerRadii,size4.height,26.400114
+15,0.250000,0.3750,blob 2,position,x,26.400114
+15,0.250000,0.3750,blob 2,position,y,27.666667
+15,0.250000,0.3750,LensingLayer,filters.displacementMap.inputAmount,,-1.246940
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m11,1.000504
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m12,0.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m13,0.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m14,0.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m21,0.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m22,1.000504
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m23,0.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m24,0.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m31,0.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m32,0.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m33,1.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m34,0.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m41,0.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m42,0.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m43,0.000000
+15,0.250000,0.3750,LensingPortalContainer,sublayerTransform,m44,1.000000
+16,0.266667,0.4000,blob 1,bounds,x,0.000000
+16,0.266667,0.4000,blob 1,bounds,y,0.000000
+16,0.266667,0.4000,blob 1,bounds,width,250.000000
+16,0.266667,0.4000,blob 1,bounds,height,137.028049
+16,0.266667,0.4000,blob 1,cornerRadii,size1.width,29.195650
+16,0.266667,0.4000,blob 1,cornerRadii,size1.height,29.195650
+16,0.266667,0.4000,blob 1,cornerRadii,size2.width,29.195650
+16,0.266667,0.4000,blob 1,cornerRadii,size2.height,29.195650
+16,0.266667,0.4000,blob 1,cornerRadii,size3.width,29.195650
+16,0.266667,0.4000,blob 1,cornerRadii,size3.height,29.195650
+16,0.266667,0.4000,blob 1,cornerRadii,size4.width,29.195650
+16,0.266667,0.4000,blob 1,cornerRadii,size4.height,29.195650
+16,0.266667,0.4000,blob 1,position,x,125.000000
+16,0.266667,0.4000,blob 1,position,y,68.514024
+16,0.266667,0.4000,blob 2,bounds,x,0.000000
+16,0.266667,0.4000,blob 2,bounds,y,0.000000
+16,0.266667,0.4000,blob 2,bounds,width,52.919749
+16,0.266667,0.4000,blob 2,bounds,height,55.333333
+16,0.266667,0.4000,blob 2,cornerRadii,size1.width,26.459874
+16,0.266667,0.4000,blob 2,cornerRadii,size1.height,26.459874
+16,0.266667,0.4000,blob 2,cornerRadii,size2.width,26.459874
+16,0.266667,0.4000,blob 2,cornerRadii,size2.height,26.459874
+16,0.266667,0.4000,blob 2,cornerRadii,size3.width,26.459874
+16,0.266667,0.4000,blob 2,cornerRadii,size3.height,26.459874
+16,0.266667,0.4000,blob 2,cornerRadii,size4.width,26.459874
+16,0.266667,0.4000,blob 2,cornerRadii,size4.height,26.459874
+16,0.266667,0.4000,blob 2,position,x,26.459874
+16,0.266667,0.4000,blob 2,position,y,27.666667
+16,0.266667,0.4000,LensingLayer,filters.displacementMap.inputAmount,,-1.034723
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m11,0.998769
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m12,0.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m13,0.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m14,0.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m21,0.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m22,0.998769
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m23,0.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m24,0.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m31,0.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m32,0.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m33,1.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m34,0.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m41,0.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m42,0.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m43,0.000000
+16,0.266667,0.4000,LensingPortalContainer,sublayerTransform,m44,1.000000
+17,0.283333,0.4250,blob 1,bounds,x,0.000000
+17,0.283333,0.4250,blob 1,bounds,y,0.000000
+17,0.283333,0.4250,blob 1,bounds,width,250.000000
+17,0.283333,0.4250,blob 1,bounds,height,137.334774
+17,0.283333,0.4250,blob 1,cornerRadii,size1.width,29.138550
+17,0.283333,0.4250,blob 1,cornerRadii,size1.height,29.138550
+17,0.283333,0.4250,blob 1,cornerRadii,size2.width,29.138550
+17,0.283333,0.4250,blob 1,cornerRadii,size2.height,29.138550
+17,0.283333,0.4250,blob 1,cornerRadii,size3.width,29.138550
+17,0.283333,0.4250,blob 1,cornerRadii,size3.height,29.138550
+17,0.283333,0.4250,blob 1,cornerRadii,size4.width,29.138550
+17,0.283333,0.4250,blob 1,cornerRadii,size4.height,29.138550
+17,0.283333,0.4250,blob 1,position,x,125.000000
+17,0.283333,0.4250,blob 1,position,y,68.667387
+17,0.283333,0.4250,blob 2,bounds,x,0.000000
+17,0.283333,0.4250,blob 2,bounds,y,0.000000
+17,0.283333,0.4250,blob 2,bounds,width,53.168846
+17,0.283333,0.4250,blob 2,bounds,height,55.333333
+17,0.283333,0.4250,blob 2,cornerRadii,size1.width,26.584423
+17,0.283333,0.4250,blob 2,cornerRadii,size1.height,26.584423
+17,0.283333,0.4250,blob 2,cornerRadii,size2.width,26.584423
+17,0.283333,0.4250,blob 2,cornerRadii,size2.height,26.584423
+17,0.283333,0.4250,blob 2,cornerRadii,size3.width,26.584423
+17,0.283333,0.4250,blob 2,cornerRadii,size3.height,26.584423
+17,0.283333,0.4250,blob 2,cornerRadii,size4.width,26.584423
+17,0.283333,0.4250,blob 2,cornerRadii,size4.height,26.584423
+17,0.283333,0.4250,blob 2,position,x,26.584423
+17,0.283333,0.4250,blob 2,position,y,27.666667
+17,0.283333,0.4250,LensingLayer,filters.displacementMap.inputAmount,,-0.855493
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m11,0.997854
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m12,0.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m13,0.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m14,0.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m21,0.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m22,0.997854
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m23,0.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m24,0.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m31,0.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m32,0.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m33,1.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m34,0.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m41,0.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m42,0.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m43,0.000000
+17,0.283333,0.4250,LensingPortalContainer,sublayerTransform,m44,1.000000
+18,0.300000,0.4500,blob 1,bounds,x,0.000000
+18,0.300000,0.4500,blob 1,bounds,y,0.000000
+18,0.300000,0.4500,blob 1,bounds,width,250.000000
+18,0.300000,0.4500,blob 1,bounds,height,137.721398
+18,0.300000,0.4500,blob 1,cornerRadii,size1.width,29.306958
+18,0.300000,0.4500,blob 1,cornerRadii,size1.height,29.306958
+18,0.300000,0.4500,blob 1,cornerRadii,size2.width,29.306958
+18,0.300000,0.4500,blob 1,cornerRadii,size2.height,29.306958
+18,0.300000,0.4500,blob 1,cornerRadii,size3.width,29.306958
+18,0.300000,0.4500,blob 1,cornerRadii,size3.height,29.306958
+18,0.300000,0.4500,blob 1,cornerRadii,size4.width,29.306958
+18,0.300000,0.4500,blob 1,cornerRadii,size4.height,29.306958
+18,0.300000,0.4500,blob 1,position,x,125.000000
+18,0.300000,0.4500,blob 1,position,y,68.860699
+18,0.300000,0.4500,blob 2,bounds,x,0.000000
+18,0.300000,0.4500,blob 2,bounds,y,0.000000
+18,0.300000,0.4500,blob 2,bounds,width,53.482832
+18,0.300000,0.4500,blob 2,bounds,height,55.333333
+18,0.300000,0.4500,blob 2,cornerRadii,size1.width,26.741416
+18,0.300000,0.4500,blob 2,cornerRadii,size1.height,26.741416
+18,0.300000,0.4500,blob 2,cornerRadii,size2.width,26.741416
+18,0.300000,0.4500,blob 2,cornerRadii,size2.height,26.741416
+18,0.300000,0.4500,blob 2,cornerRadii,size3.width,26.741416
+18,0.300000,0.4500,blob 2,cornerRadii,size3.height,26.741416
+18,0.300000,0.4500,blob 2,cornerRadii,size4.width,26.741416
+18,0.300000,0.4500,blob 2,cornerRadii,size4.height,26.741416
+18,0.300000,0.4500,blob 2,position,x,26.741416
+18,0.300000,0.4500,blob 2,position,y,27.666667
+18,0.300000,0.4500,LensingLayer,filters.displacementMap.inputAmount,,-0.705027
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m11,0.997499
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m12,0.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m13,0.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m14,0.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m21,0.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m22,0.997499
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m23,0.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m24,0.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m31,0.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m32,0.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m33,1.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m34,0.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m41,0.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m42,0.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m43,0.000000
+18,0.300000,0.4500,LensingPortalContainer,sublayerTransform,m44,1.000000
+19,0.316667,0.4750,blob 1,bounds,x,0.000000
+19,0.316667,0.4750,blob 1,bounds,y,0.000000
+19,0.316667,0.4750,blob 1,bounds,width,250.000000
+19,0.316667,0.4750,blob 1,bounds,height,138.131349
+19,0.316667,0.4750,blob 1,cornerRadii,size1.width,29.607273
+19,0.316667,0.4750,blob 1,cornerRadii,size1.height,29.607273
+19,0.316667,0.4750,blob 1,cornerRadii,size2.width,29.607273
+19,0.316667,0.4750,blob 1,cornerRadii,size2.height,29.607273
+19,0.316667,0.4750,blob 1,cornerRadii,size3.width,29.607273
+19,0.316667,0.4750,blob 1,cornerRadii,size3.height,29.607273
+19,0.316667,0.4750,blob 1,cornerRadii,size4.width,29.607273
+19,0.316667,0.4750,blob 1,cornerRadii,size4.height,29.607273
+19,0.316667,0.4750,blob 1,position,x,125.000000
+19,0.316667,0.4750,blob 1,position,y,69.065675
+19,0.316667,0.4750,blob 2,bounds,x,0.000000
+19,0.316667,0.4750,blob 2,bounds,y,0.000000
+19,0.316667,0.4750,blob 2,bounds,width,53.815762
+19,0.316667,0.4750,blob 2,bounds,height,55.333333
+19,0.316667,0.4750,blob 2,cornerRadii,size1.width,26.907881
+19,0.316667,0.4750,blob 2,cornerRadii,size1.height,26.907881
+19,0.316667,0.4750,blob 2,cornerRadii,size2.width,26.907881
+19,0.316667,0.4750,blob 2,cornerRadii,size2.height,26.907881
+19,0.316667,0.4750,blob 2,cornerRadii,size3.width,26.907881
+19,0.316667,0.4750,blob 2,cornerRadii,size3.height,26.907881
+19,0.316667,0.4750,blob 2,cornerRadii,size4.width,26.907881
+19,0.316667,0.4750,blob 2,cornerRadii,size4.height,26.907881
+19,0.316667,0.4750,blob 2,position,x,26.907881
+19,0.316667,0.4750,blob 2,position,y,27.666667
+19,0.316667,0.4750,LensingLayer,filters.displacementMap.inputAmount,,-0.579356
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m11,0.997503
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m12,0.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m13,0.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m14,0.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m21,0.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m22,0.997503
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m23,0.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m24,0.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m31,0.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m32,0.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m33,1.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m34,0.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m41,0.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m42,0.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m43,0.000000
+19,0.316667,0.4750,LensingPortalContainer,sublayerTransform,m44,1.000000
+20,0.333333,0.5000,blob 1,bounds,x,0.000000
+20,0.333333,0.5000,blob 1,bounds,y,0.000000
+20,0.333333,0.5000,blob 1,bounds,width,250.000000
+20,0.333333,0.5000,blob 1,bounds,height,138.526843
+20,0.333333,0.5000,blob 1,cornerRadii,size1.width,29.970296
+20,0.333333,0.5000,blob 1,cornerRadii,size1.height,29.970296
+20,0.333333,0.5000,blob 1,cornerRadii,size2.width,29.970296
+20,0.333333,0.5000,blob 1,cornerRadii,size2.height,29.970296
+20,0.333333,0.5000,blob 1,cornerRadii,size3.width,29.970296
+20,0.333333,0.5000,blob 1,cornerRadii,size3.height,29.970296
+20,0.333333,0.5000,blob 1,cornerRadii,size4.width,29.970296
+20,0.333333,0.5000,blob 1,cornerRadii,size4.height,29.970296
+20,0.333333,0.5000,blob 1,position,x,125.000000
+20,0.333333,0.5000,blob 1,position,y,69.263421
+20,0.333333,0.5000,blob 2,bounds,x,0.000000
+20,0.333333,0.5000,blob 2,bounds,y,0.000000
+20,0.333333,0.5000,blob 2,bounds,width,54.136951
+20,0.333333,0.5000,blob 2,bounds,height,55.333333
+20,0.333333,0.5000,blob 2,cornerRadii,size1.width,27.068476
+20,0.333333,0.5000,blob 2,cornerRadii,size1.height,27.068476
+20,0.333333,0.5000,blob 2,cornerRadii,size2.width,27.068476
+20,0.333333,0.5000,blob 2,cornerRadii,size2.height,27.068476
+20,0.333333,0.5000,blob 2,cornerRadii,size3.width,27.068476
+20,0.333333,0.5000,blob 2,cornerRadii,size3.height,27.068476
+20,0.333333,0.5000,blob 2,cornerRadii,size4.width,27.068476
+20,0.333333,0.5000,blob 2,cornerRadii,size4.height,27.068476
+20,0.333333,0.5000,blob 2,position,x,27.068476
+20,0.333333,0.5000,blob 2,position,y,27.666667
+20,0.333333,0.5000,LensingLayer,filters.displacementMap.inputAmount,,-0.474866
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m11,0.997717
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m12,0.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m13,0.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m14,0.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m21,0.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m22,0.997717
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m23,0.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m24,0.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m31,0.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m32,0.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m33,1.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m34,0.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m41,0.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m42,0.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m43,0.000000
+20,0.333333,0.5000,LensingPortalContainer,sublayerTransform,m44,1.000000
+21,0.350000,0.5250,blob 1,bounds,x,0.000000
+21,0.350000,0.5250,blob 1,bounds,y,0.000000
+21,0.350000,0.5250,blob 1,bounds,width,250.000000
+21,0.350000,0.5250,blob 1,bounds,height,138.884792
+21,0.350000,0.5250,blob 1,cornerRadii,size1.width,30.347361
+21,0.350000,0.5250,blob 1,cornerRadii,size1.height,30.347361
+21,0.350000,0.5250,blob 1,cornerRadii,size2.width,30.347361
+21,0.350000,0.5250,blob 1,cornerRadii,size2.height,30.347361
+21,0.350000,0.5250,blob 1,cornerRadii,size3.width,30.347361
+21,0.350000,0.5250,blob 1,cornerRadii,size3.height,30.347361
+21,0.350000,0.5250,blob 1,cornerRadii,size4.width,30.347361
+21,0.350000,0.5250,blob 1,cornerRadii,size4.height,30.347361
+21,0.350000,0.5250,blob 1,position,x,125.000000
+21,0.350000,0.5250,blob 1,position,y,69.442396
+21,0.350000,0.5250,blob 2,bounds,x,0.000000
+21,0.350000,0.5250,blob 2,bounds,y,0.000000
+21,0.350000,0.5250,blob 2,bounds,width,54.427650
+21,0.350000,0.5250,blob 2,bounds,height,55.333333
+21,0.350000,0.5250,blob 2,cornerRadii,size1.width,27.213825
+21,0.350000,0.5250,blob 2,cornerRadii,size1.height,27.213825
+21,0.350000,0.5250,blob 2,cornerRadii,size2.width,27.213825
+21,0.350000,0.5250,blob 2,cornerRadii,size2.height,27.213825
+21,0.350000,0.5250,blob 2,cornerRadii,size3.width,27.213825
+21,0.350000,0.5250,blob 2,cornerRadii,size3.height,27.213825
+21,0.350000,0.5250,blob 2,cornerRadii,size4.width,27.213825
+21,0.350000,0.5250,blob 2,cornerRadii,size4.height,27.213825
+21,0.350000,0.5250,blob 2,position,x,27.213825
+21,0.350000,0.5250,blob 2,position,y,27.666667
+21,0.350000,0.5250,LensingLayer,filters.displacementMap.inputAmount,,-0.388328
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m11,0.998037
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m12,0.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m13,0.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m14,0.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m21,0.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m22,0.998037
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m23,0.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m24,0.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m31,0.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m32,0.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m33,1.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m34,0.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m41,0.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m42,0.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m43,0.000000
+21,0.350000,0.5250,LensingPortalContainer,sublayerTransform,m44,1.000000
+22,0.366667,0.5500,blob 1,bounds,x,0.000000
+22,0.366667,0.5500,blob 1,bounds,y,0.000000
+22,0.366667,0.5500,blob 1,bounds,width,250.000000
+22,0.366667,0.5500,blob 1,bounds,height,139.193147
+22,0.366667,0.5500,blob 1,cornerRadii,size1.width,30.706395
+22,0.366667,0.5500,blob 1,cornerRadii,size1.height,30.706395
+22,0.366667,0.5500,blob 1,cornerRadii,size2.width,30.706395
+22,0.366667,0.5500,blob 1,cornerRadii,size2.height,30.706395
+22,0.366667,0.5500,blob 1,cornerRadii,size3.width,30.706395
+22,0.366667,0.5500,blob 1,cornerRadii,size3.height,30.706395
+22,0.366667,0.5500,blob 1,cornerRadii,size4.width,30.706395
+22,0.366667,0.5500,blob 1,cornerRadii,size4.height,30.706395
+22,0.366667,0.5500,blob 1,position,x,125.000000
+22,0.366667,0.5500,blob 1,position,y,69.596573
+22,0.366667,0.5500,blob 2,bounds,x,0.000000
+22,0.366667,0.5500,blob 2,bounds,y,0.000000
+22,0.366667,0.5500,blob 2,bounds,width,54.678071
+22,0.366667,0.5500,blob 2,bounds,height,55.333333
+22,0.366667,0.5500,blob 2,cornerRadii,size1.width,27.339035
+22,0.366667,0.5500,blob 2,cornerRadii,size1.height,27.339035
+22,0.366667,0.5500,blob 2,cornerRadii,size2.width,27.339035
+22,0.366667,0.5500,blob 2,cornerRadii,size2.height,27.339035
+22,0.366667,0.5500,blob 2,cornerRadii,size3.width,27.339035
+22,0.366667,0.5500,blob 2,cornerRadii,size3.height,27.339035
+22,0.366667,0.5500,blob 2,cornerRadii,size4.width,27.339035
+22,0.366667,0.5500,blob 2,cornerRadii,size4.height,27.339035
+22,0.366667,0.5500,blob 2,position,x,27.339035
+22,0.366667,0.5500,blob 2,position,y,27.666667
+22,0.366667,0.5500,LensingLayer,filters.displacementMap.inputAmount,,-0.316907
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m11,0.998392
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m12,0.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m13,0.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m14,0.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m21,0.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m22,0.998392
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m23,0.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m24,0.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m31,0.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m32,0.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m33,1.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m34,0.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m41,0.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m42,0.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m43,0.000000
+22,0.366667,0.5500,LensingPortalContainer,sublayerTransform,m44,1.000000
+23,0.383333,0.5750,blob 1,bounds,x,0.000000
+23,0.383333,0.5750,blob 1,bounds,y,0.000000
+23,0.383333,0.5750,blob 1,bounds,width,250.000000
+23,0.383333,0.5750,blob 1,bounds,height,139.447764
+23,0.383333,0.5750,blob 1,cornerRadii,size1.width,31.028214
+23,0.383333,0.5750,blob 1,cornerRadii,size1.height,31.028214
+23,0.383333,0.5750,blob 1,cornerRadii,size2.width,31.028214
+23,0.383333,0.5750,blob 1,cornerRadii,size2.height,31.028214
+23,0.383333,0.5750,blob 1,cornerRadii,size3.width,31.028214
+23,0.383333,0.5750,blob 1,cornerRadii,size3.height,31.028214
+23,0.383333,0.5750,blob 1,cornerRadii,size4.width,31.028214
+23,0.383333,0.5750,blob 1,cornerRadii,size4.height,31.028214
+23,0.383333,0.5750,blob 1,position,x,125.000000
+23,0.383333,0.5750,blob 1,position,y,69.723882
+23,0.383333,0.5750,blob 2,bounds,x,0.000000
+23,0.383333,0.5750,blob 2,bounds,y,0.000000
+23,0.383333,0.5750,blob 2,bounds,width,54.884851
+23,0.383333,0.5750,blob 2,bounds,height,55.333333
+23,0.383333,0.5750,blob 2,cornerRadii,size1.width,27.442425
+23,0.383333,0.5750,blob 2,cornerRadii,size1.height,27.442425
+23,0.383333,0.5750,blob 2,cornerRadii,size2.width,27.442425
+23,0.383333,0.5750,blob 2,cornerRadii,size2.height,27.442425
+23,0.383333,0.5750,blob 2,cornerRadii,size3.width,27.442425
+23,0.383333,0.5750,blob 2,cornerRadii,size3.height,27.442425
+23,0.383333,0.5750,blob 2,cornerRadii,size4.width,27.442425
+23,0.383333,0.5750,blob 2,cornerRadii,size4.height,27.442425
+23,0.383333,0.5750,blob 2,position,x,27.442425
+23,0.383333,0.5750,blob 2,position,y,27.666667
+23,0.383333,0.5750,LensingLayer,filters.displacementMap.inputAmount,,-0.258146
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m11,0.998736
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m12,0.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m13,0.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m14,0.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m21,0.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m22,0.998736
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m23,0.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m24,0.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m31,0.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m32,0.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m33,1.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m34,0.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m41,0.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m42,0.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m43,0.000000
+23,0.383333,0.5750,LensingPortalContainer,sublayerTransform,m44,1.000000
+24,0.400000,0.6000,blob 1,bounds,x,0.000000
+24,0.400000,0.6000,blob 1,bounds,y,0.000000
+24,0.400000,0.6000,blob 1,bounds,width,250.000000
+24,0.400000,0.6000,blob 1,bounds,height,139.649847
+24,0.400000,0.6000,blob 1,cornerRadii,size1.width,31.303235
+24,0.400000,0.6000,blob 1,cornerRadii,size1.height,31.303235
+24,0.400000,0.6000,blob 1,cornerRadii,size2.width,31.303235
+24,0.400000,0.6000,blob 1,cornerRadii,size2.height,31.303235
+24,0.400000,0.6000,blob 1,cornerRadii,size3.width,31.303235
+24,0.400000,0.6000,blob 1,cornerRadii,size3.height,31.303235
+24,0.400000,0.6000,blob 1,cornerRadii,size4.width,31.303235
+24,0.400000,0.6000,blob 1,cornerRadii,size4.height,31.303235
+24,0.400000,0.6000,blob 1,position,x,125.000000
+24,0.400000,0.6000,blob 1,position,y,69.824923
+24,0.400000,0.6000,blob 2,bounds,x,0.000000
+24,0.400000,0.6000,blob 2,bounds,y,0.000000
+24,0.400000,0.6000,blob 2,bounds,width,55.048966
+24,0.400000,0.6000,blob 2,bounds,height,55.333333
+24,0.400000,0.6000,blob 2,cornerRadii,size1.width,27.524483
+24,0.400000,0.6000,blob 2,cornerRadii,size1.height,27.524483
+24,0.400000,0.6000,blob 2,cornerRadii,size2.width,27.524483
+24,0.400000,0.6000,blob 2,cornerRadii,size2.height,27.524483
+24,0.400000,0.6000,blob 2,cornerRadii,size3.width,27.524483
+24,0.400000,0.6000,blob 2,cornerRadii,size3.height,27.524483
+24,0.400000,0.6000,blob 2,cornerRadii,size4.width,27.524483
+24,0.400000,0.6000,blob 2,cornerRadii,size4.height,27.524483
+24,0.400000,0.6000,blob 2,position,x,27.524483
+24,0.400000,0.6000,blob 2,position,y,27.666667
+24,0.400000,0.6000,LensingLayer,filters.displacementMap.inputAmount,,-0.209935
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m11,0.999046
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m12,0.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m13,0.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m14,0.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m21,0.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m22,0.999046
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m23,0.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m24,0.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m31,0.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m32,0.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m33,1.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m34,0.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m41,0.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m42,0.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m43,0.000000
+24,0.400000,0.6000,LensingPortalContainer,sublayerTransform,m44,1.000000
+25,0.416667,0.6250,blob 1,bounds,x,0.000000
+25,0.416667,0.6250,blob 1,bounds,y,0.000000
+25,0.416667,0.6250,blob 1,bounds,width,250.000000
+25,0.416667,0.6250,blob 1,bounds,height,139.803924
+25,0.416667,0.6250,blob 1,cornerRadii,size1.width,31.528691
+25,0.416667,0.6250,blob 1,cornerRadii,size1.height,31.528691
+25,0.416667,0.6250,blob 1,cornerRadii,size2.width,31.528691
+25,0.416667,0.6250,blob 1,cornerRadii,size2.height,31.528691
+25,0.416667,0.6250,blob 1,cornerRadii,size3.width,31.528691
+25,0.416667,0.6250,blob 1,cornerRadii,size3.height,31.528691
+25,0.416667,0.6250,blob 1,cornerRadii,size4.width,31.528691
+25,0.416667,0.6250,blob 1,cornerRadii,size4.height,31.528691
+25,0.416667,0.6250,blob 1,position,x,125.000000
+25,0.416667,0.6250,blob 1,position,y,69.901962
+25,0.416667,0.6250,blob 2,bounds,x,0.000000
+25,0.416667,0.6250,blob 2,bounds,y,0.000000
+25,0.416667,0.6250,blob 2,bounds,width,55.174096
+25,0.416667,0.6250,blob 2,bounds,height,55.333333
+25,0.416667,0.6250,blob 2,cornerRadii,size1.width,27.587048
+25,0.416667,0.6250,blob 2,cornerRadii,size1.height,27.587048
+25,0.416667,0.6250,blob 2,cornerRadii,size2.width,27.587048
+25,0.416667,0.6250,blob 2,cornerRadii,size2.height,27.587048
+25,0.416667,0.6250,blob 2,cornerRadii,size3.width,27.587048
+25,0.416667,0.6250,blob 2,cornerRadii,size3.height,27.587048
+25,0.416667,0.6250,blob 2,cornerRadii,size4.width,27.587048
+25,0.416667,0.6250,blob 2,cornerRadii,size4.height,27.587048
+25,0.416667,0.6250,blob 2,position,x,27.587048
+25,0.416667,0.6250,blob 2,position,y,27.666667
+25,0.416667,0.6250,LensingLayer,filters.displacementMap.inputAmount,,-0.170480
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m11,0.999309
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m12,0.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m13,0.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m14,0.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m21,0.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m22,0.999309
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m23,0.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m24,0.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m31,0.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m32,0.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m33,1.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m34,0.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m41,0.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m42,0.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m43,0.000000
+25,0.416667,0.6250,LensingPortalContainer,sublayerTransform,m44,1.000000
+26,0.433333,0.6500,blob 1,bounds,x,0.000000
+26,0.433333,0.6500,blob 1,bounds,y,0.000000
+26,0.433333,0.6500,blob 1,bounds,width,250.000000
+26,0.433333,0.6500,blob 1,bounds,height,139.916323
+26,0.433333,0.6500,blob 1,cornerRadii,size1.width,31.706363
+26,0.433333,0.6500,blob 1,cornerRadii,size1.height,31.706363
+26,0.433333,0.6500,blob 1,cornerRadii,size2.width,31.706363
+26,0.433333,0.6500,blob 1,cornerRadii,size2.height,31.706363
+26,0.433333,0.6500,blob 1,cornerRadii,size3.width,31.706363
+26,0.433333,0.6500,blob 1,cornerRadii,size3.height,31.706363
+26,0.433333,0.6500,blob 1,cornerRadii,size4.width,31.706363
+26,0.433333,0.6500,blob 1,cornerRadii,size4.height,31.706363
+26,0.433333,0.6500,blob 1,position,x,125.000000
+26,0.433333,0.6500,blob 1,position,y,69.958162
+26,0.433333,0.6500,blob 2,bounds,x,0.000000
+26,0.433333,0.6500,blob 2,bounds,y,0.000000
+26,0.433333,0.6500,blob 2,bounds,width,55.265378
+26,0.433333,0.6500,blob 2,bounds,height,55.333333
+26,0.433333,0.6500,blob 2,cornerRadii,size1.width,27.632689
+26,0.433333,0.6500,blob 2,cornerRadii,size1.height,27.632689
+26,0.433333,0.6500,blob 2,cornerRadii,size2.width,27.632689
+26,0.433333,0.6500,blob 2,cornerRadii,size2.height,27.632689
+26,0.433333,0.6500,blob 2,cornerRadii,size3.width,27.632689
+26,0.433333,0.6500,blob 2,cornerRadii,size3.height,27.632689
+26,0.433333,0.6500,blob 2,cornerRadii,size4.width,27.632689
+26,0.433333,0.6500,blob 2,cornerRadii,size4.height,27.632689
+26,0.433333,0.6500,blob 2,position,x,27.632689
+26,0.433333,0.6500,blob 2,position,y,27.666667
+26,0.433333,0.6500,LensingLayer,filters.displacementMap.inputAmount,,-0.138263
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m11,0.999523
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m12,0.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m13,0.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m14,0.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m21,0.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m22,0.999523
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m23,0.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m24,0.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m31,0.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m32,0.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m33,1.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m34,0.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m41,0.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m42,0.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m43,0.000000
+26,0.433333,0.6500,LensingPortalContainer,sublayerTransform,m44,1.000000
+27,0.450000,0.6750,blob 1,bounds,x,0.000000
+27,0.450000,0.6750,blob 1,bounds,y,0.000000
+27,0.450000,0.6750,blob 1,bounds,width,250.000000
+27,0.450000,0.6750,blob 1,bounds,height,139.994069
+27,0.450000,0.6750,blob 1,cornerRadii,size1.width,31.840811
+27,0.450000,0.6750,blob 1,cornerRadii,size1.height,31.840811
+27,0.450000,0.6750,blob 1,cornerRadii,size2.width,31.840811
+27,0.450000,0.6750,blob 1,cornerRadii,size2.height,31.840811
+27,0.450000,0.6750,blob 1,cornerRadii,size3.width,31.840811
+27,0.450000,0.6750,blob 1,cornerRadii,size3.height,31.840811
+27,0.450000,0.6750,blob 1,cornerRadii,size4.width,31.840811
+27,0.450000,0.6750,blob 1,cornerRadii,size4.height,31.840811
+27,0.450000,0.6750,blob 1,position,x,125.000000
+27,0.450000,0.6750,blob 1,position,y,69.997035
+27,0.450000,0.6750,blob 2,bounds,x,0.000000
+27,0.450000,0.6750,blob 2,bounds,y,0.000000
+27,0.450000,0.6750,blob 2,bounds,width,55.328517
+27,0.450000,0.6750,blob 2,bounds,height,55.333333
+27,0.450000,0.6750,blob 2,cornerRadii,size1.width,27.664258
+27,0.450000,0.6750,blob 2,cornerRadii,size1.height,27.664258
+27,0.450000,0.6750,blob 2,cornerRadii,size2.width,27.664258
+27,0.450000,0.6750,blob 2,cornerRadii,size2.height,27.664258
+27,0.450000,0.6750,blob 2,cornerRadii,size3.width,27.664258
+27,0.450000,0.6750,blob 2,cornerRadii,size3.height,27.664258
+27,0.450000,0.6750,blob 2,cornerRadii,size4.width,27.664258
+27,0.450000,0.6750,blob 2,cornerRadii,size4.height,27.664258
+27,0.450000,0.6750,blob 2,position,x,27.664258
+27,0.450000,0.6750,blob 2,position,y,27.666667
+27,0.450000,0.6750,LensingLayer,filters.displacementMap.inputAmount,,-0.112012
+28,0.466667,0.7000,blob 1,bounds,x,0.000000
+28,0.466667,0.7000,blob 1,bounds,y,0.000000
+28,0.466667,0.7000,blob 1,bounds,width,250.000000
+28,0.466667,0.7000,blob 1,bounds,height,140.044127
+28,0.466667,0.7000,blob 1,cornerRadii,size1.width,31.938038
+28,0.466667,0.7000,blob 1,cornerRadii,size1.height,31.938038
+28,0.466667,0.7000,blob 1,cornerRadii,size2.width,31.938038
+28,0.466667,0.7000,blob 1,cornerRadii,size2.height,31.938038
+28,0.466667,0.7000,blob 1,cornerRadii,size3.width,31.938038
+28,0.466667,0.7000,blob 1,cornerRadii,size3.height,31.938038
+28,0.466667,0.7000,blob 1,cornerRadii,size4.width,31.938038
+28,0.466667,0.7000,blob 1,cornerRadii,size4.height,31.938038
+28,0.466667,0.7000,blob 1,position,x,125.000000
+28,0.466667,0.7000,blob 1,position,y,70.022063
+28,0.466667,0.7000,blob 2,bounds,x,0.000000
+28,0.466667,0.7000,blob 2,bounds,y,0.000000
+28,0.466667,0.7000,blob 2,bounds,width,55.369170
+28,0.466667,0.7000,blob 2,bounds,height,55.333333
+28,0.466667,0.7000,blob 2,cornerRadii,size1.width,27.666667
+28,0.466667,0.7000,blob 2,cornerRadii,size1.height,27.666667
+28,0.466667,0.7000,blob 2,cornerRadii,size2.width,27.666667
+28,0.466667,0.7000,blob 2,cornerRadii,size2.height,27.666667
+28,0.466667,0.7000,blob 2,cornerRadii,size3.width,27.666667
+28,0.466667,0.7000,blob 2,cornerRadii,size3.height,27.666667
+28,0.466667,0.7000,blob 2,cornerRadii,size4.width,27.666667
+28,0.466667,0.7000,blob 2,cornerRadii,size4.height,27.666667
+28,0.466667,0.7000,blob 2,position,x,27.684585
+28,0.466667,0.7000,blob 2,position,y,27.666667
+28,0.466667,0.7000,LensingLayer,filters.displacementMap.inputAmount,,-0.090663
+29,0.483333,0.7250,blob 1,bounds,x,0.000000
+29,0.483333,0.7250,blob 1,bounds,y,0.000000
+29,0.483333,0.7250,blob 1,bounds,width,250.000000
+29,0.483333,0.7250,blob 1,bounds,height,140.072924
+29,0.483333,0.7250,blob 1,cornerRadii,size1.width,32.004544
+29,0.483333,0.7250,blob 1,cornerRadii,size1.height,32.004544
+29,0.483333,0.7250,blob 1,cornerRadii,size2.width,32.004544
+29,0.483333,0.7250,blob 1,cornerRadii,size2.height,32.004544
+29,0.483333,0.7250,blob 1,cornerRadii,size3.width,32.004544
+29,0.483333,0.7250,blob 1,cornerRadii,size3.height,32.004544
+29,0.483333,0.7250,blob 1,cornerRadii,size4.width,32.004544
+29,0.483333,0.7250,blob 1,cornerRadii,size4.height,32.004544
+29,0.483333,0.7250,blob 1,position,x,125.000000
+29,0.483333,0.7250,blob 1,position,y,70.036462
+29,0.483333,0.7250,blob 2,bounds,x,0.000000
+29,0.483333,0.7250,blob 2,bounds,y,0.000000
+29,0.483333,0.7250,blob 2,bounds,width,55.392556
+29,0.483333,0.7250,blob 2,bounds,height,55.333333
+29,0.483333,0.7250,blob 2,cornerRadii,size1.width,27.666667
+29,0.483333,0.7250,blob 2,cornerRadii,size1.height,27.666667
+29,0.483333,0.7250,blob 2,cornerRadii,size2.width,27.666667
+29,0.483333,0.7250,blob 2,cornerRadii,size2.height,27.666667
+29,0.483333,0.7250,blob 2,cornerRadii,size3.width,27.666667
+29,0.483333,0.7250,blob 2,cornerRadii,size3.height,27.666667
+29,0.483333,0.7250,blob 2,cornerRadii,size4.width,27.666667
+29,0.483333,0.7250,blob 2,cornerRadii,size4.height,27.666667
+29,0.483333,0.7250,blob 2,position,x,27.696278
+29,0.483333,0.7250,blob 2,position,y,27.666667
+29,0.483333,0.7250,LensingLayer,filters.displacementMap.inputAmount,,-0.073330
+30,0.500000,0.7500,blob 1,bounds,x,0.000000
+30,0.500000,0.7500,blob 1,bounds,y,0.000000
+30,0.500000,0.7500,blob 1,bounds,width,250.000000
+30,0.500000,0.7500,blob 1,bounds,height,140.086087
+30,0.500000,0.7500,blob 1,cornerRadii,size1.width,32.000000
+30,0.500000,0.7500,blob 1,cornerRadii,size1.height,32.000000
+30,0.500000,0.7500,blob 1,cornerRadii,size2.width,32.000000
+30,0.500000,0.7500,blob 1,cornerRadii,size2.height,32.000000
+30,0.500000,0.7500,blob 1,cornerRadii,size3.width,32.000000
+30,0.500000,0.7500,blob 1,cornerRadii,size3.height,32.000000
+30,0.500000,0.7500,blob 1,cornerRadii,size4.width,32.000000
+30,0.500000,0.7500,blob 1,cornerRadii,size4.height,32.000000
+30,0.500000,0.7500,blob 1,position,x,125.000000
+30,0.500000,0.7500,blob 1,position,y,70.043043
+30,0.500000,0.7500,blob 2,bounds,x,0.000000
+30,0.500000,0.7500,blob 2,bounds,y,0.000000
+30,0.500000,0.7500,blob 2,bounds,width,55.403246
+30,0.500000,0.7500,blob 2,bounds,height,55.333333
+30,0.500000,0.7500,blob 2,cornerRadii,size1.width,27.666667
+30,0.500000,0.7500,blob 2,cornerRadii,size1.height,27.666667
+30,0.500000,0.7500,blob 2,cornerRadii,size2.width,27.666667
+30,0.500000,0.7500,blob 2,cornerRadii,size2.height,27.666667
+30,0.500000,0.7500,blob 2,cornerRadii,size3.width,27.666667
+30,0.500000,0.7500,blob 2,cornerRadii,size3.height,27.666667
+30,0.500000,0.7500,blob 2,cornerRadii,size4.width,27.666667
+30,0.500000,0.7500,blob 2,cornerRadii,size4.height,27.666667
+30,0.500000,0.7500,blob 2,position,x,27.701623
+30,0.500000,0.7500,blob 2,position,y,27.666667
+30,0.500000,0.7500,LensingLayer,filters.displacementMap.inputAmount,,-0.059280
+31,0.516667,0.7750,blob 1,bounds,x,0.000000
+31,0.516667,0.7750,blob 1,bounds,y,0.000000
+31,0.516667,0.7750,blob 1,bounds,width,250.000000
+31,0.516667,0.7750,blob 1,bounds,height,140.088327
+31,0.516667,0.7750,blob 1,cornerRadii,size1.width,32.000000
+31,0.516667,0.7750,blob 1,cornerRadii,size1.height,32.000000
+31,0.516667,0.7750,blob 1,cornerRadii,size2.width,32.000000
+31,0.516667,0.7750,blob 1,cornerRadii,size2.height,32.000000
+31,0.516667,0.7750,blob 1,cornerRadii,size3.width,32.000000
+31,0.516667,0.7750,blob 1,cornerRadii,size3.height,32.000000
+31,0.516667,0.7750,blob 1,cornerRadii,size4.width,32.000000
+31,0.516667,0.7750,blob 1,cornerRadii,size4.height,32.000000
+31,0.516667,0.7750,blob 1,position,x,125.000000
+31,0.516667,0.7750,blob 1,position,y,70.044163
+31,0.516667,0.7750,blob 2,bounds,x,0.000000
+31,0.516667,0.7750,blob 2,bounds,y,0.000000
+31,0.516667,0.7750,blob 2,bounds,width,55.405065
+31,0.516667,0.7750,blob 2,bounds,height,55.333333
+31,0.516667,0.7750,blob 2,cornerRadii,size1.width,27.666667
+31,0.516667,0.7750,blob 2,cornerRadii,size1.height,27.666667
+31,0.516667,0.7750,blob 2,cornerRadii,size2.width,27.666667
+31,0.516667,0.7750,blob 2,cornerRadii,size2.height,27.666667
+31,0.516667,0.7750,blob 2,cornerRadii,size3.width,27.666667
+31,0.516667,0.7750,blob 2,cornerRadii,size3.height,27.666667
+31,0.516667,0.7750,blob 2,cornerRadii,size4.width,27.666667
+31,0.516667,0.7750,blob 2,cornerRadii,size4.height,27.666667
+31,0.516667,0.7750,blob 2,position,x,27.702533
+31,0.516667,0.7750,blob 2,position,y,27.666667
+31,0.516667,0.7750,LensingLayer,filters.displacementMap.inputAmount,,-0.047909
+32,0.533333,0.8000,blob 1,bounds,x,0.000000
+32,0.533333,0.8000,blob 1,bounds,y,0.000000
+32,0.533333,0.8000,blob 1,bounds,width,250.000000
+32,0.533333,0.8000,blob 1,bounds,height,140.083433
+32,0.533333,0.8000,blob 1,cornerRadii,size1.width,32.000000
+32,0.533333,0.8000,blob 1,cornerRadii,size1.height,32.000000
+32,0.533333,0.8000,blob 1,cornerRadii,size2.width,32.000000
+32,0.533333,0.8000,blob 1,cornerRadii,size2.height,32.000000
+32,0.533333,0.8000,blob 1,cornerRadii,size3.width,32.000000
+32,0.533333,0.8000,blob 1,cornerRadii,size3.height,32.000000
+32,0.533333,0.8000,blob 1,cornerRadii,size4.width,32.000000
+32,0.533333,0.8000,blob 1,cornerRadii,size4.height,32.000000
+32,0.533333,0.8000,blob 1,position,x,125.000000
+32,0.533333,0.8000,blob 1,position,y,70.041717
+32,0.533333,0.8000,blob 2,bounds,x,0.000000
+32,0.533333,0.8000,blob 2,bounds,y,0.000000
+32,0.533333,0.8000,blob 2,bounds,width,55.401091
+32,0.533333,0.8000,blob 2,bounds,height,55.333333
+32,0.533333,0.8000,blob 2,cornerRadii,size1.width,27.666667
+32,0.533333,0.8000,blob 2,cornerRadii,size1.height,27.666667
+32,0.533333,0.8000,blob 2,cornerRadii,size2.width,27.666667
+32,0.533333,0.8000,blob 2,cornerRadii,size2.height,27.666667
+32,0.533333,0.8000,blob 2,cornerRadii,size3.width,27.666667
+32,0.533333,0.8000,blob 2,cornerRadii,size3.height,27.666667
+32,0.533333,0.8000,blob 2,cornerRadii,size4.width,27.666667
+32,0.533333,0.8000,blob 2,cornerRadii,size4.height,27.666667
+32,0.533333,0.8000,blob 2,position,x,27.700546
+32,0.533333,0.8000,blob 2,position,y,27.666667
+32,0.533333,0.8000,LensingLayer,filters.displacementMap.inputAmount,,-0.038719
+33,0.550000,0.8250,blob 1,bounds,x,0.000000
+33,0.550000,0.8250,blob 1,bounds,y,0.000000
+33,0.550000,0.8250,blob 1,bounds,width,250.000000
+33,0.550000,0.8250,blob 1,bounds,height,140.074336
+33,0.550000,0.8250,blob 1,cornerRadii,size1.width,32.000000
+33,0.550000,0.8250,blob 1,cornerRadii,size1.height,32.000000
+33,0.550000,0.8250,blob 1,cornerRadii,size2.width,32.000000
+33,0.550000,0.8250,blob 1,cornerRadii,size2.height,32.000000
+33,0.550000,0.8250,blob 1,cornerRadii,size3.width,32.000000
+33,0.550000,0.8250,blob 1,cornerRadii,size3.height,32.000000
+33,0.550000,0.8250,blob 1,cornerRadii,size4.width,32.000000
+33,0.550000,0.8250,blob 1,cornerRadii,size4.height,32.000000
+33,0.550000,0.8250,blob 1,position,x,125.000000
+33,0.550000,0.8250,blob 1,position,y,70.037168
+33,0.550000,0.8250,blob 2,bounds,x,0.000000
+33,0.550000,0.8250,blob 2,bounds,y,0.000000
+33,0.550000,0.8250,blob 2,bounds,width,55.393703
+33,0.550000,0.8250,blob 2,bounds,height,55.333333
+33,0.550000,0.8250,blob 2,cornerRadii,size1.width,27.666667
+33,0.550000,0.8250,blob 2,cornerRadii,size1.height,27.666667
+33,0.550000,0.8250,blob 2,cornerRadii,size2.width,27.666667
+33,0.550000,0.8250,blob 2,cornerRadii,size2.height,27.666667
+33,0.550000,0.8250,blob 2,cornerRadii,size3.width,27.666667
+33,0.550000,0.8250,blob 2,cornerRadii,size3.height,27.666667
+33,0.550000,0.8250,blob 2,cornerRadii,size4.width,27.666667
+33,0.550000,0.8250,blob 2,cornerRadii,size4.height,27.666667
+33,0.550000,0.8250,blob 2,position,x,27.696852
+33,0.550000,0.8250,blob 2,position,y,27.666667
+33,0.550000,0.8250,LensingLayer,filters.displacementMap.inputAmount,,-0.031300
+34,0.566667,0.8500,blob 1,bounds,x,0.000000
+34,0.566667,0.8500,blob 1,bounds,y,0.000000
+34,0.566667,0.8500,blob 1,bounds,width,250.000000
+34,0.566667,0.8500,blob 1,bounds,height,140.063206
+34,0.566667,0.8500,blob 1,cornerRadii,size1.width,32.000000
+34,0.566667,0.8500,blob 1,cornerRadii,size1.height,32.000000
+34,0.566667,0.8500,blob 1,cornerRadii,size2.width,32.000000
+34,0.566667,0.8500,blob 1,cornerRadii,size2.height,32.000000
+34,0.566667,0.8500,blob 1,cornerRadii,size3.width,32.000000
+34,0.566667,0.8500,blob 1,cornerRadii,size3.height,32.000000
+34,0.566667,0.8500,blob 1,cornerRadii,size4.width,32.000000
+34,0.566667,0.8500,blob 1,cornerRadii,size4.height,32.000000
+34,0.566667,0.8500,blob 1,position,x,125.000000
+34,0.566667,0.8500,blob 1,position,y,70.031603
+34,0.566667,0.8500,blob 2,bounds,x,0.000000
+34,0.566667,0.8500,blob 2,bounds,y,0.000000
+34,0.566667,0.8500,blob 2,bounds,width,55.384664
+34,0.566667,0.8500,blob 2,bounds,height,55.333333
+34,0.566667,0.8500,blob 2,cornerRadii,size1.width,27.666667
+34,0.566667,0.8500,blob 2,cornerRadii,size1.height,27.666667
+34,0.566667,0.8500,blob 2,cornerRadii,size2.width,27.666667
+34,0.566667,0.8500,blob 2,cornerRadii,size2.height,27.666667
+34,0.566667,0.8500,blob 2,cornerRadii,size3.width,27.666667
+34,0.566667,0.8500,blob 2,cornerRadii,size3.height,27.666667
+34,0.566667,0.8500,blob 2,cornerRadii,size4.width,27.666667
+34,0.566667,0.8500,blob 2,cornerRadii,size4.height,27.666667
+34,0.566667,0.8500,blob 2,position,x,27.692332
+34,0.566667,0.8500,blob 2,position,y,27.666667
+35,0.583333,0.8750,blob 1,bounds,x,0.000000
+35,0.583333,0.8750,blob 1,bounds,y,0.000000
+35,0.583333,0.8750,blob 1,bounds,width,250.000000
+35,0.583333,0.8750,blob 1,bounds,height,140.051576
+35,0.583333,0.8750,blob 1,cornerRadii,size1.width,32.000000
+35,0.583333,0.8750,blob 1,cornerRadii,size1.height,32.000000
+35,0.583333,0.8750,blob 1,cornerRadii,size2.width,32.000000
+35,0.583333,0.8750,blob 1,cornerRadii,size2.height,32.000000
+35,0.583333,0.8750,blob 1,cornerRadii,size3.width,32.000000
+35,0.583333,0.8750,blob 1,cornerRadii,size3.height,32.000000
+35,0.583333,0.8750,blob 1,cornerRadii,size4.width,32.000000
+35,0.583333,0.8750,blob 1,cornerRadii,size4.height,32.000000
+35,0.583333,0.8750,blob 1,position,x,125.000000
+35,0.583333,0.8750,blob 1,position,y,70.025788
+35,0.583333,0.8750,blob 2,bounds,x,0.000000
+35,0.583333,0.8750,blob 2,bounds,y,0.000000
+35,0.583333,0.8750,blob 2,bounds,width,55.375219
+35,0.583333,0.8750,blob 2,bounds,height,55.333333
+35,0.583333,0.8750,blob 2,cornerRadii,size1.width,27.666667
+35,0.583333,0.8750,blob 2,cornerRadii,size1.height,27.666667
+35,0.583333,0.8750,blob 2,cornerRadii,size2.width,27.666667
+35,0.583333,0.8750,blob 2,cornerRadii,size2.height,27.666667
+35,0.583333,0.8750,blob 2,cornerRadii,size3.width,27.666667
+35,0.583333,0.8750,blob 2,cornerRadii,size3.height,27.666667
+35,0.583333,0.8750,blob 2,cornerRadii,size4.width,27.666667
+35,0.583333,0.8750,blob 2,cornerRadii,size4.height,27.666667
+35,0.583333,0.8750,blob 2,position,x,27.687610
+35,0.583333,0.8750,blob 2,position,y,27.666667
+36,0.600000,0.9000,blob 1,bounds,x,0.000000
+36,0.600000,0.9000,blob 1,bounds,y,0.000000
+36,0.600000,0.9000,blob 1,bounds,width,250.000000
+36,0.600000,0.9000,blob 1,bounds,height,140.040459
+36,0.600000,0.9000,blob 1,cornerRadii,size1.width,32.000000
+36,0.600000,0.9000,blob 1,cornerRadii,size1.height,32.000000
+36,0.600000,0.9000,blob 1,cornerRadii,size2.width,32.000000
+36,0.600000,0.9000,blob 1,cornerRadii,size2.height,32.000000
+36,0.600000,0.9000,blob 1,cornerRadii,size3.width,32.000000
+36,0.600000,0.9000,blob 1,cornerRadii,size3.height,32.000000
+36,0.600000,0.9000,blob 1,cornerRadii,size4.width,32.000000
+36,0.600000,0.9000,blob 1,cornerRadii,size4.height,32.000000
+36,0.600000,0.9000,blob 1,position,x,125.000000
+36,0.600000,0.9000,blob 1,position,y,70.020229
+36,0.600000,0.9000,blob 2,bounds,x,0.000000
+36,0.600000,0.9000,blob 2,bounds,y,0.000000
+36,0.600000,0.9000,blob 2,bounds,width,55.366191
+36,0.600000,0.9000,blob 2,bounds,height,55.333333
+36,0.600000,0.9000,blob 2,cornerRadii,size1.width,27.666667
+36,0.600000,0.9000,blob 2,cornerRadii,size1.height,27.666667
+36,0.600000,0.9000,blob 2,cornerRadii,size2.width,27.666667
+36,0.600000,0.9000,blob 2,cornerRadii,size2.height,27.666667
+36,0.600000,0.9000,blob 2,cornerRadii,size3.width,27.666667
+36,0.600000,0.9000,blob 2,cornerRadii,size3.height,27.666667
+36,0.600000,0.9000,blob 2,cornerRadii,size4.width,27.666667
+36,0.600000,0.9000,blob 2,cornerRadii,size4.height,27.666667
+36,0.600000,0.9000,blob 2,position,x,27.683095
+36,0.600000,0.9000,blob 2,position,y,27.666667
+37,0.616667,0.9250,blob 1,bounds,x,0.000000
+37,0.616667,0.9250,blob 1,bounds,y,0.000000
+37,0.616667,0.9250,blob 1,bounds,width,250.000000
+37,0.616667,0.9250,blob 1,bounds,height,140.030465
+37,0.616667,0.9250,blob 1,cornerRadii,size1.width,32.000000
+37,0.616667,0.9250,blob 1,cornerRadii,size1.height,32.000000
+37,0.616667,0.9250,blob 1,cornerRadii,size2.width,32.000000
+37,0.616667,0.9250,blob 1,cornerRadii,size2.height,32.000000
+37,0.616667,0.9250,blob 1,cornerRadii,size3.width,32.000000
+37,0.616667,0.9250,blob 1,cornerRadii,size3.height,32.000000
+37,0.616667,0.9250,blob 1,cornerRadii,size4.width,32.000000
+37,0.616667,0.9250,blob 1,cornerRadii,size4.height,32.000000
+37,0.616667,0.9250,blob 1,position,x,125.000000
+37,0.616667,0.9250,blob 1,position,y,70.015233
+37,0.616667,0.9250,blob 2,bounds,x,0.000000
+37,0.616667,0.9250,blob 2,bounds,y,0.000000
+37,0.616667,0.9250,blob 2,bounds,width,55.358075
+37,0.616667,0.9250,blob 2,bounds,height,55.333333
+37,0.616667,0.9250,blob 2,cornerRadii,size1.width,27.666667
+37,0.616667,0.9250,blob 2,cornerRadii,size1.height,27.666667
+37,0.616667,0.9250,blob 2,cornerRadii,size2.width,27.666667
+37,0.616667,0.9250,blob 2,cornerRadii,size2.height,27.666667
+37,0.616667,0.9250,blob 2,cornerRadii,size3.width,27.666667
+37,0.616667,0.9250,blob 2,cornerRadii,size3.height,27.666667
+37,0.616667,0.9250,blob 2,cornerRadii,size4.width,27.666667
+37,0.616667,0.9250,blob 2,cornerRadii,size4.height,27.666667
+37,0.616667,0.9250,blob 2,position,x,27.679037
+37,0.616667,0.9250,blob 2,position,y,27.666667
+38,0.633333,0.9500,blob 1,bounds,x,0.000000
+38,0.633333,0.9500,blob 1,bounds,y,0.000000
+38,0.633333,0.9500,blob 1,bounds,width,250.000000
+38,0.633333,0.9500,blob 1,bounds,height,140.021904
+38,0.633333,0.9500,blob 1,cornerRadii,size1.width,32.000000
+38,0.633333,0.9500,blob 1,cornerRadii,size1.height,32.000000
+38,0.633333,0.9500,blob 1,cornerRadii,size2.width,32.000000
+38,0.633333,0.9500,blob 1,cornerRadii,size2.height,32.000000
+38,0.633333,0.9500,blob 1,cornerRadii,size3.width,32.000000
+38,0.633333,0.9500,blob 1,cornerRadii,size3.height,32.000000
+38,0.633333,0.9500,blob 1,cornerRadii,size4.width,32.000000
+38,0.633333,0.9500,blob 1,cornerRadii,size4.height,32.000000
+38,0.633333,0.9500,blob 1,position,x,125.000000
+38,0.633333,0.9500,blob 1,position,y,70.010952
+38,0.633333,0.9500,blob 2,bounds,x,0.000000
+38,0.633333,0.9500,blob 2,bounds,y,0.000000
+38,0.633333,0.9500,blob 2,bounds,width,55.351122
+38,0.633333,0.9500,blob 2,bounds,height,55.333333
+38,0.633333,0.9500,blob 2,cornerRadii,size1.width,27.666667
+38,0.633333,0.9500,blob 2,cornerRadii,size1.height,27.666667
+38,0.633333,0.9500,blob 2,cornerRadii,size2.width,27.666667
+38,0.633333,0.9500,blob 2,cornerRadii,size2.height,27.666667
+38,0.633333,0.9500,blob 2,cornerRadii,size3.width,27.666667
+38,0.633333,0.9500,blob 2,cornerRadii,size3.height,27.666667
+38,0.633333,0.9500,blob 2,cornerRadii,size4.width,27.666667
+38,0.633333,0.9500,blob 2,cornerRadii,size4.height,27.666667
+38,0.633333,0.9500,blob 2,position,x,27.675561
+38,0.633333,0.9500,blob 2,position,y,27.666667
+39,0.650000,0.9750,blob 1,bounds,x,0.000000
+39,0.650000,0.9750,blob 1,bounds,y,0.000000
+39,0.650000,0.9750,blob 1,bounds,width,250.000000
+39,0.650000,0.9750,blob 1,bounds,height,140.014870
+39,0.650000,0.9750,blob 1,cornerRadii,size1.width,32.000000
+39,0.650000,0.9750,blob 1,cornerRadii,size1.height,32.000000
+39,0.650000,0.9750,blob 1,cornerRadii,size2.width,32.000000
+39,0.650000,0.9750,blob 1,cornerRadii,size2.height,32.000000
+39,0.650000,0.9750,blob 1,cornerRadii,size3.width,32.000000
+39,0.650000,0.9750,blob 1,cornerRadii,size3.height,32.000000
+39,0.650000,0.9750,blob 1,cornerRadii,size4.width,32.000000
+39,0.650000,0.9750,blob 1,cornerRadii,size4.height,32.000000
+39,0.650000,0.9750,blob 1,position,x,125.000000
+39,0.650000,0.9750,blob 1,position,y,70.007435
+39,0.650000,0.9750,blob 2,bounds,x,0.000000
+39,0.650000,0.9750,blob 2,bounds,y,0.000000
+39,0.650000,0.9750,blob 2,bounds,width,55.345410
+39,0.650000,0.9750,blob 2,bounds,height,55.333333
+39,0.650000,0.9750,blob 2,cornerRadii,size1.width,27.666667
+39,0.650000,0.9750,blob 2,cornerRadii,size1.height,27.666667
+39,0.650000,0.9750,blob 2,cornerRadii,size2.width,27.666667
+39,0.650000,0.9750,blob 2,cornerRadii,size2.height,27.666667
+39,0.650000,0.9750,blob 2,cornerRadii,size3.width,27.666667
+39,0.650000,0.9750,blob 2,cornerRadii,size3.height,27.666667
+39,0.650000,0.9750,blob 2,cornerRadii,size4.width,27.666667
+39,0.650000,0.9750,blob 2,cornerRadii,size4.height,27.666667
+39,0.650000,0.9750,blob 2,position,x,27.672705
+39,0.650000,0.9750,blob 2,position,y,27.666667

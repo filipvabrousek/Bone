@@ -62,7 +62,7 @@ struct GlassDemo: View {
     var body: some View {
         ScrollView {
         VStack(spacing: 18) {
-            MenuDemo()                                                 // glass Menu {} + .morphScrubber()
+            MenuDemo()                                                 // glass Menu {} + .dumpMorph()
             TuneRow(title: "default") {
                 Button("Liquid"){}.font(.largeTitle).padding(20)
                     .glassEffect()
@@ -151,7 +151,7 @@ struct ListDemo: View {
 /// not a CAAnimation. The inspector's Timeline pauses, steps and records it.
 struct MenuDemo: View {
     var body: some View {
-        TuneRow(title: "Menu {} · .morphScrubber()") {
+        TuneRow(title: "Menu {} · .dumpMorph()") {
             Menu {
                 Button("Copy", systemImage: "doc.on.doc") {}
                 Button("Paste", systemImage: "doc.on.clipboard") {}
@@ -160,7 +160,9 @@ struct MenuDemo: View {
                 Label("Options", systemImage: "ellipsis.circle").font(.title2).padding(8)
             }
             .buttonStyle(.glass)
-            .morphScrubber()          // opens by itself at launch: the morph is caught, recorded, then scrub 0.0–1.0
+            .dumpMorph("menu-morph.csv")   // opens by itself at launch: the morph is caught, recorded, scrub 0.0–1.0,
+                                           // and its values frame by frame → captures/menu-morph.csv
+                                           // (.morphScrubber() = the same without the CSV)
                                       // (.morphTimeline() = the full bar: pause, step, speed, record)
         }
     }

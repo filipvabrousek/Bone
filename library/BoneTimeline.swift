@@ -55,7 +55,10 @@ struct BoneTimelineAnchor: UIViewRepresentable {
     let speed: Double
     let scrubber: Bool
     let trigger: Bool
-    func makeUIView(context: Context) -> BoneTimelineAnchorView { BoneTimelineAnchorView(speed: speed, scrubber: scrubber, trigger: trigger) }
+    var csv: String? = nil
+    func makeUIView(context: Context) -> BoneTimelineAnchorView {
+        BoneTimelineAnchorView(speed: speed, scrubber: scrubber, trigger: trigger, csv: csv)
+    }
     func updateUIView(_ view: BoneTimelineAnchorView, context: Context) {}
 }
 
@@ -63,12 +66,14 @@ final class BoneTimelineAnchorView: UIView {
     private let speed: Double
     private let scrubber: Bool
     private let trigger: Bool
+    private let csv: String?
     private var opened = false
 
-    init(speed: Double, scrubber: Bool, trigger: Bool) {
+    init(speed: Double, scrubber: Bool, trigger: Bool, csv: String?) {
         self.speed = speed
         self.scrubber = scrubber
         self.trigger = trigger
+        self.csv = csv
         super.init(frame: .zero)
         isUserInteractionEnabled = false
     }
@@ -83,7 +88,8 @@ final class BoneTimelineAnchorView: UIView {
         model.install(on: scene)
         if !model.timelineOpen { model.openTimeline() }
         if speed != 1 { model.timeline.speed = speed }
-        if scrubber { model.timeline.startScrubber() }
+        if let csv { model.timeline.csvFile = csv }
+        if scrubber { model.timeline.startScrubber(autoTrigger: trigger) }
         if scrubber && trigger {
             // after the app's own launch animations (a glass button appearing is a morph too)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { [weak self] in
@@ -156,6 +162,8 @@ final class BoneTimeline: ObservableObject {
     @Published private(set) var capturing = false
     /// .morphScrubber(): armed for the next morph, recorded by itself, scrubber only.
     @Published private(set) var scrubberMode = false
+    /// .dumpMorph(_:): each take also writes the morph's values, frame by frame, to this CSV.
+    var csvFile: String?
     @Published private(set) var armed = false
     private var armGeneration = 0
     /// Set while .morphScrubber() waits: a touch on an app window calls it.
@@ -186,22 +194,40 @@ final class BoneTimeline: ObservableObject {
 
     // MARK: Scrubber (.morphScrubber)
 
-    func startScrubber() {
+    func startScrubber(autoTrigger: Bool = false) {
         scrubberMode = true
         // a finger on the app arms the clock; animations nobody touched (a glass button
         // appearing at launch is a morph too) are left alone
         BoneTouchWatch.install()
         Self.onAppTouch = { [weak self] in self?.touched() }
-        arm()
+        arm(capturingBefore: !autoTrigger)                 // auto: trigger(in:at:) captures it, right before
     }
 
     /// Waits for the next touch on the app; the morph it starts is recorded.
-    func arm() {
+    func arm(capturingBefore: Bool = true) {
         setTake(nil)
         status = ""
         if clock.isPaused { clock.resume() }
         paused = false
         armed = true
+        if capturingBefore { Task { await captureBefore() } }
+    }
+
+    /// The screen before the morph – frame 0 of the take, 0.0 on the scrubber. (The first
+    /// frame the clock catches is already a little way in: UIKit's first step, plus the
+    /// frame a device needs to draw it.) The bar is hidden for it.
+    private var before: (image: CGImage?, view: UIView?)?
+
+    private func captureBefore() async {
+        before = nil
+        capturing = true
+        try? await Task.sleep(nanoseconds: 60_000_000)          // the bar gone from the screen
+        if let shot = BoneScreen.capture(), Self.mean(Self.thumbnail(shot)) > 0.5 {
+            before = (shot, nil)
+        } else if let screen = windows.first?.windowScene?.screen {
+            before = (nil, screen.snapshotView(afterScreenUpdates: false))   // a device: pixels read back black
+        }
+        if !recording { capturing = false }
     }
 
     /// Runs the primary action of the control at `point` (a Menu: it opens), armed, so its
@@ -211,8 +237,11 @@ final class BoneTimeline: ObservableObject {
         var view = window.hitTest(point, with: nil)
         while let v = view, !(v is UIControl) { view = v.superview }
         guard let control = view as? UIControl else { status = "no control under the modified view: tap it"; return }
-        touched()
-        control.performPrimaryAction()
+        Task {
+            await captureBefore()
+            touched()
+            control.performPrimaryAction()
+        }
     }
 
     /// A finger came down on the app: the next animation that registers within ~2 s is taken.
@@ -324,6 +353,8 @@ final class BoneTimeline: ObservableObject {
         Task { @MainActor in
             var shots: [CGImage] = []
             var views: [UIView] = []
+            var values: [BoneMorphFrame] = []                      // .dumpMorph: one per frame, trimmed with them
+            var layerNames: [ObjectIdentifier: String] = [:]
             var log = "record: \(UIDevice.current.model) iOS \(UIDevice.current.systemVersion)\nbefore:\n" + clock.diagnostics
             var still = 0
             var previous: [UInt8]?
@@ -334,7 +365,14 @@ final class BoneTimeline: ObservableObject {
             // one take = one morph: it ends when UIKit removes the morph's own layers
             let morph = morphLayerCount() > 0
             clock.setAutoStep(false)
-            log += "screen readable: \(readable) · morph running: \(morph)\n"
+            log += "screen readable: \(readable) · morph running: \(morph) · frame before: \(before != nil)\n"
+            if let b = before {                                   // frame 0: the screen before the morph
+                if readable, let image = b.image { shots.append(image) }
+                if !readable, let view = b.view { views.append(view) }
+                let added = readable ? b.image != nil : b.view != nil
+                if csvFile != nil && added { values.append(BoneMorphFrame()) }   // no morph layers yet: no values
+                before = nil
+            }
             for i in 0..<(readable ? Self.maxFrames : Self.maxSnapshotFrames) {
                 let thumb: [UInt8]
                 if readable {
@@ -347,6 +385,7 @@ final class BoneTimeline: ObservableObject {
                     views.append(screen.snapshotView(afterScreenUpdates: false))
                     thumb = drawnThumbnail()                          // no glass, but enough to see it settle
                 }
+                if csvFile != nil { values.append(BoneMorphValues.sample(windows, names: &layerNames)) }
                 let stillBefore = still
                 if let p = previous, Self.same(p, thumb) { still += 1 } else { still = 0 }
                 let morphLayers = morphLayerCount()
@@ -361,11 +400,13 @@ final class BoneTimeline: ObservableObject {
                     let cut = (n - 1 - run)..<(n - 1)
                     if run > 0, cut.lowerBound > 0 {
                         if readable { shots.removeSubrange(cut) } else { views.removeSubrange(cut) }
+                        if values.count == n { values.removeSubrange(cut) }
                     }
                     break
                 }
                 if !morph && still >= 12 && i > 12 {                  // anything else: settled, keep one still frame
                     if readable { shots.removeLast(still) } else { views.removeLast(still) }
+                    if values.count > still { values.removeLast(still) }
                     break
                 }
                 clock.step(Self.frameStep)
@@ -373,6 +414,12 @@ final class BoneTimeline: ObservableObject {
             }
             capturing = false
             clock.setAutoStep(true)
+            var csvNote = ""
+            if let file = csvFile, !values.isEmpty {
+                BoneCapture.writeData(Data(BoneMorphValues.csv(values, step: Self.frameStep).utf8), fileName: file)
+                let rows = values.reduce(0) { $0 + $1.values.count }
+                csvNote = " · \(rows) values → \(file)"
+            }
             log += "after:\n" + clock.diagnostics
             BoneCapture.writeData(Data(log.utf8), fileName: "timeline-diag.txt")
             status = "encoding \(shots.count) frames…"
@@ -390,7 +437,7 @@ final class BoneTimeline: ObservableObject {
             }
             wlog += "  bar rect \(model?.timelineRect ?? .zero) · frameView \(frameView.map { "\(type(of: $0))" } ?? "nil")\n"
             BoneCapture.writeData(Data((log + wlog).utf8), fileName: "timeline-diag.txt")
-            status = "\(take!.count) frames · \(Self.seconds(take!.duration)) · recorded in \(String(format: "%.1f s", CACurrentMediaTime() - started))"
+            status = "\(take!.count) frames · \(Self.seconds(take!.duration)) · recorded in \(String(format: "%.1f s", CACurrentMediaTime() - started))" + csvNote
         }
     }
 
@@ -689,6 +736,14 @@ struct BoneScrubberBar: View {
                     Button("Again") { timeline.arm() }
                         .font(.caption.bold())
                     Button { model.closeTimeline() } label: { Image(systemName: "xmark.circle.fill") }
+                }
+                if !timeline.status.isEmpty {
+                    Text(timeline.status)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
             } else {
                 HStack(spacing: 8) {

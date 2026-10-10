@@ -214,13 +214,22 @@ primary action (`performPrimaryAction()` – a glass Menu opens), and the morph 
 caught on its first frame (the clock pauses on the very tick its manager
 wakes up or registers new animations), recorded frame by frame to its end (when UIKit removes
 the morph's own layers), and a 0.0–1.0 scrubber appears. "Again" waits for the next one;
-`.morphScrubber(trigger: false)` waits for a tap instead (a finger on the app arms the clock).
+`.morphScrubber(trigger: false)` waits for a tap instead (a finger on the app arms the clock). Frame 0 – 0.0 on the
+scrubber – is the screen captured just before the morph (the untouched button): the first frame
+the clock catches is already a little way in.
 
 ```swift
 Menu { Button("Copy") {} } label: { Label("Options", systemImage: "ellipsis.circle") }
     .buttonStyle(.glass)
     .morphScrubber()
 ```
+
+`.dumpMorph("menu-morph.csv")` is `.morphScrubber()` that also writes the morph's animated
+values, frame by frame, to a CSV (long format: `frame,time,progress,layer,key,component,value`).
+They are read from the CAPresentationModifiers through which AnimationKit hands the morph to the
+render server: the blob's `bounds` and `position` springing out, its `cornerRadii` (four CGSizes:
+size1…size4), the lensing layer's `filters.displacementMap.inputAmount` and
+`filters.gaussianBlur.inputRadius`, the lens container's `sublayerTransform` (m11…m44).
 
 The demo's first row is that menu (`-menu` shows only it). On a device the screen reads back
 black, so a take keeps system snapshot views (glass included, scrubbed instantly; Save is
