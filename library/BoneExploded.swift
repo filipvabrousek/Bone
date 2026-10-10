@@ -428,7 +428,7 @@ struct BoneExplodedScreen: View {
                 HStack(spacing: 12) {
                     Text("3D · \(model.explodeInfo)").font(.caption.bold())
                     Image(systemName: "square.3.layers.3d.down.right").font(.caption)
-                    Slider(value: $model.explodeSpacing, in: 0...120).frame(width: 100)
+                    BoneSlider(value: $model.explodeSpacing, in: 0...120).frame(width: 100)
                     Image(systemName: model.peeking ? "eye.fill" : "eye")
                         .onLongPressGesture(minimumDuration: 30, pressing: { model.peeking = $0 }, perform: {})
                     Button { model.refreshExploded() } label: { Image(systemName: "arrow.clockwise") }

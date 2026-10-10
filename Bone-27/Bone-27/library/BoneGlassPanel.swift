@@ -65,7 +65,8 @@ final class BonePanelWindow: UIWindow {
 
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         guard let m = model else { return nil }
-        guard m.picking || m.exploded || m.buttonRect.contains(point) || m.cardRect.contains(point) else { return nil }
+        guard m.picking || m.exploded || m.buttonRect.contains(point) || m.cardRect.contains(point)
+              || m.timelineRect.contains(point) || m.timelineCovers else { return nil }
         if !isKeyWindow {
             m.rememberKeyWindow()
             makeKey()
@@ -140,6 +141,9 @@ final class BoneGlassPanelModel: ObservableObject {
     @Published var explodeInfo = ""
     weak var explodedView: BoneExplodedView?
     private var explodeShot: CGImage?
+    /// Timeline bar (BoneTimeline.swift): pause, slow down, step and scrub animations.
+    @Published var timelineOpen = false
+    let timeline = BoneTimeline()
     @Published var isOpen = false
     @Published var probing = false
     @Published var atTop = false
@@ -155,6 +159,13 @@ final class BoneGlassPanelModel: ObservableObject {
     /// Window-space rects the overlay window takes touches in.
     var buttonRect: CGRect = .zero
     var cardRect: CGRect = .zero
+    var timelineRect: CGRect = .zero
+    /// A take on screen covers the app: the window takes every touch.
+    var timelineCovers: Bool { timelineOpen && !isOpen && !picking && !exploded && timeline.showsFrame }
+
+    /// The app's own windows (everything but the panel).
+    var appWindows: [UIWindow] { scene?.windows.filter { $0 !== panelWindow } ?? [] }
+    var panel: UIWindow? { panelWindow }
 
     /// Layer mode: the CALayer being edited.
     let layerEditor = BoneLayerEditor()
@@ -186,6 +197,25 @@ final class BoneGlassPanelModel: ObservableObject {
         w.isHidden = false
         panelWindow = w
         self.scene = scene
+        timeline.model = self
+    }
+
+    // MARK: Timeline
+
+    func openTimeline() {
+        picking = false
+        code = nil
+        timelineOpen = true
+        timeline.open()
+        rememberKeyWindow()
+        panelWindow?.makeKey()       // the bar's first touch would be dropped by a non-key window
+    }
+
+    func closeTimeline() {
+        timeline.close()
+        timelineOpen = false
+        timelineRect = .zero
+        previousKey?.makeKey()
     }
 
     // MARK: Picking
@@ -729,6 +759,8 @@ struct BoneGlassPanelView: View {
                     HStack {
                         Button { model.openExploded() } label: { Label("3D", systemImage: "square.3.layers.3d") }
                             .buttonStyle(.bordered)
+                        Button { model.openTimeline() } label: { Label("Timeline", systemImage: "timeline.selection") }
+                            .buttonStyle(.bordered)
                         Button("Cancel") { model.cancelPicking() }.buttonStyle(.borderedProminent).tint(.pink)
                     }
                 }
@@ -757,6 +789,8 @@ struct BoneGlassPanelView: View {
                     if model.atTop { Spacer(minLength: 0) }
                 }
                 .padding(.horizontal, 8)
+            } else if model.timelineOpen {
+                BoneTimelineScreen(model: model, timeline: model.timeline)
             } else {
                 Button { model.startPicking() } label: {
                     Image(systemName: "drop.halffull")
@@ -910,13 +944,13 @@ struct BoneKnobRow: View {
     @ViewBuilder private var control: some View {
         switch knob.kind {
         case .number:
-            Slider(value: model.number(knob), in: model.range(knob))
+            BoneSlider(value: model.number(knob), in: model.range(knob))
         case .size:
             HStack(spacing: 6) {
                 Text("w").font(.caption2)
-                Slider(value: model.size(knob, 0), in: -100...100)
+                BoneSlider(value: model.size(knob, 0), in: -100...100)
                 Text("h").font(.caption2)
-                Slider(value: model.size(knob, 1), in: -100...100)
+                BoneSlider(value: model.size(knob, 1), in: -100...100)
             }
         case .matrix:
             BoneMatrixEditor(model: model, knob: knob)

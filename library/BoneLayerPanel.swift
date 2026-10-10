@@ -371,9 +371,9 @@ struct BoneLayerCard: View {
                     HStack(spacing: 6) {
                         label(.shadowOffset)
                         Text("x").font(.caption2)
-                        Slider(value: editor.shadowOffset(0), in: -50...50)
+                        BoneSlider(value: editor.shadowOffset(0), in: -50...50)
                         Text("y").font(.caption2)
-                        Slider(value: editor.shadowOffset(1), in: -50...50)
+                        BoneSlider(value: editor.shadowOffset(1), in: -50...50)
                     }
                     section("Transform (about the centre)")
                     ForEach([LayerProperty.rotation, .rotationX, .rotationY, .scale, .scaleX, .scaleY,
@@ -439,7 +439,7 @@ struct BoneLayerCard: View {
                     .keyboardType(.numbersAndPunctuation)
                     .frame(width: 92)
             }
-            Slider(value: editor.number(p), in: BoneLayerEditor.range(p))
+            BoneSlider(value: editor.number(p), in: BoneLayerEditor.range(p))
         }
     }
 
@@ -458,7 +458,7 @@ struct BoneLayerCard: View {
                 Spacer()
                 Text(BoneSwiftLiteral.number(value.wrappedValue)).font(.caption.monospaced()).foregroundStyle(.secondary)
             }
-            Slider(value: value, in: range)
+            BoneSlider(value: value, in: range)
         }
     }
 

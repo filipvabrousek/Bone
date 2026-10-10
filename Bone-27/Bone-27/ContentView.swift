@@ -37,7 +37,10 @@ struct ContentView: View {
         //   -layers  any SwiftUI view: tune the layers it is drawn into
         //   -probe   which glass inputs change the rendering → captures/glass-probe.txt/.json/.png
         //   -list    List + NavigationStack: rows, controls, glass in rows, toolbar glass
-        if CommandLine.arguments.contains("-list") {
+        //   -menu    only the glass Menu (also first on the default screen), timeline bar open
+        if CommandLine.arguments.contains("-menu") {
+            MenuDemo()
+        } else if CommandLine.arguments.contains("-list") {
             ListDemo()
         } else if CommandLine.arguments.contains("-layers") {
             LayersDemo()
@@ -57,7 +60,9 @@ struct ContentView: View {
 /// (.boneInspector) edits any of them live.
 struct GlassDemo: View {
     var body: some View {
+        ScrollView {
         VStack(spacing: 18) {
+            MenuDemo()                                                 // glass Menu {} + .morphScrubber()
             TuneRow(title: "default") {
                 Button("Liquid"){}.font(.largeTitle).padding(20)
                     .glassEffect()
@@ -82,6 +87,8 @@ struct GlassDemo: View {
                     .glassEffect()
                     .tune(.flat)
             }
+        }
+        .padding(.bottom, 160)                                         // room above the timeline bar
         }
     }
 }
@@ -136,6 +143,25 @@ struct ListDemo: View {
                 Button("Edit") {}
                 Button {} label: { Image(systemName: "plus") }
             }
+        }
+    }
+}
+
+/// A glass button that morphs into its menu – AnimationKit's LiquidMorphAnimation,
+/// not a CAAnimation. The inspector's Timeline pauses, steps and records it.
+struct MenuDemo: View {
+    var body: some View {
+        TuneRow(title: "Menu {} · .morphScrubber()") {
+            Menu {
+                Button("Copy", systemImage: "doc.on.doc") {}
+                Button("Paste", systemImage: "doc.on.clipboard") {}
+                Button("Delete", systemImage: "trash", role: .destructive) {}
+            } label: {
+                Label("Options", systemImage: "ellipsis.circle").font(.title2).padding(8)
+            }
+            .buttonStyle(.glass)
+            .morphScrubber()          // opens by itself at launch: the morph is caught, recorded, then scrub 0.0–1.0
+                                      // (.morphTimeline() = the full bar: pause, step, speed, record)
         }
     }
 }
