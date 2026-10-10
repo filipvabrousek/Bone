@@ -38,7 +38,10 @@ struct ContentView: View {
         //   -probe   which glass inputs change the rendering → captures/glass-probe.txt/.json/.png
         //   -list    List + NavigationStack: rows, controls, glass in rows, toolbar glass
         //   -menu    only the glass Menu (also first on the default screen), timeline bar open
-        if CommandLine.arguments.contains("-menu") {
+        //   -liquid  only the .liquidMorph(to:isPresented:) row (add -autotoggle to flip it every 3 s)
+        if CommandLine.arguments.contains("-liquid") {
+            LiquidMorphDemo()
+        } else if CommandLine.arguments.contains("-menu") {
             MenuDemo()
         } else if CommandLine.arguments.contains("-list") {
             ListDemo()
@@ -63,6 +66,7 @@ struct GlassDemo: View {
         ScrollView {
         VStack(spacing: 18) {
             MenuDemo()                                                 // glass Menu {} + .dumpMorph()
+            LiquidMorphDemo()                                          // Text → green circle, Apple's glass morph
             TuneRow(title: "default") {
                 Button("Liquid"){}.font(.largeTitle).padding(20)
                     .glassEffect()
@@ -164,6 +168,29 @@ struct MenuDemo: View {
                                            // and its values frame by frame → captures/menu-morph.csv
                                            // (.morphScrubber() = the same without the CSV)
                                       // (.morphTimeline() = the full bar: pause, step, speed, record)
+        }
+    }
+}
+
+/// Apple's Liquid Glass morph (_UIMagicMorphAnimation) between two plain SwiftUI views.
+struct LiquidMorphDemo: View {
+    @State private var on = false
+    var body: some View {
+        TuneRow(title: ".liquidMorph(to:isPresented:)") {
+            HStack(spacing: 30) {
+                Text("Hello")
+                    .font(.title.bold())
+                    .liquidMorph(to: Circle().foregroundStyle(.green).frame(width: 30, height: 30), isPresented: $on)
+                Button(on ? "Back" : "Morph") { on.toggle() }
+                    .buttonStyle(.borderedProminent)
+            }
+        }
+        .task {
+            guard CommandLine.arguments.contains("-autotoggle") else { return }
+            while !Task.isCancelled {
+                try? await Task.sleep(nanoseconds: 3_000_000_000)
+                on.toggle()
+            }
         }
     }
 }

@@ -231,6 +231,21 @@ render server: the blob's `bounds` and `position` springing out, its `cornerRadi
 size1…size4), the lensing layer's `filters.displacementMap.inputAmount` and
 `filters.gaussianBlur.inputRadius`, the lens container's `sublayerTransform` (m11…m44).
 
+`.liquidMorph(to:isPresented:)` runs Apple's own Liquid Glass morph between any two views:
+
+```swift
+Text("Hello")
+    .liquidMorph(to: Circle().foregroundStyle(.green).frame(width: 30, height: 30), isPresented: $on)
+```
+
+Both ends sit in public glass (`UIVisualEffectView` + `UIGlassEffect`, capsule corners); toggling
+`isPresented` morphs one into the other with UIKit's `_UIMagicMorphAnimation` – the AnimationKit
+morph of the floating tab bar and search field – through its Objective-C door,
+`morphTo:(UITargetedPreview)` once for the source, once for the target. The menu's own
+`LiquidMorphAnimation` (with the drop step) has only a Swift API whose arguments are values of
+AnimationKit's private protocols, so it is not reachable from outside. Launch with `-liquid` for
+the demo row alone (`-autotoggle` flips it every 3 s).
+
 The demo's first row is that menu (`-menu` shows only it). On a device the screen reads back
 black, so a take keeps system snapshot views (glass included, scrubbed instantly; Save is
 simulator-only).
