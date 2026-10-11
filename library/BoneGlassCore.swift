@@ -231,6 +231,7 @@ enum BoneGlassJSON {
 #if canImport(UIKit)
 
 enum BoneScreen {
+    static let method = "_UICreateScreenUIImage"
 
     /// The composited screen – every window, backdrop and filter – via UIKit's
     /// private _UICreateScreenUIImage. (drawHierarchy does not reproduce Liquid
@@ -251,6 +252,37 @@ enum BoneScreen {
 }
 
 /// RGBA pixels of a region, for counting what changed.
+
+#endif
+
+#if os(macOS)
+import ScreenCaptureKit
+
+enum BoneScreen {
+    static let method = "ScreenCaptureKit captureImage(in:)"
+
+    /// The composited screen in `rect` (global points, top-left origin) – needs Screen Recording.
+    static func capture(in rect: CGRect) async -> CGImage? {
+        await withCheckedContinuation { c in
+            SCScreenshotManager.captureImage(in: rect) { image, _ in c.resume(returning: image) }
+        }
+    }
+
+    /// A layer's frame in global screen points with a top-left origin (ScreenCaptureKit's space).
+    static func globalRect(of layer: CALayer, in window: NSWindow) -> CGRect {
+        guard let root = window.contentView?.superview?.layer ?? window.contentView?.layer else { return .null }
+        var r = layer.convert(layer.bounds, to: root)
+        if !root.isGeometryFlipped { r.origin.y = root.bounds.height - r.maxY }       // to top-left
+        let frame = window.frame                                                       // bottom-left, global
+        let mainHeight = NSScreen.screens.first?.frame.height ?? frame.maxY
+        let windowTopFromTop = mainHeight - frame.maxY
+        return CGRect(x: frame.minX + r.minX, y: windowTopFromTop + r.minY, width: r.width, height: r.height)
+    }
+}
+#endif
+
+// MARK: - Pixels
+
 struct BonePixels {
     let width: Int
     let height: Int
@@ -298,7 +330,17 @@ struct BonePixels {
     }
 }
 
-#endif
+/// "iOS 27.0" / "macOS 27.0" for report headers.
+enum BoneOS {
+    static var line: String {
+        #if canImport(UIKit)
+        return "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
+        #else
+        let v = ProcessInfo().operatingSystemVersion
+        return "macOS \(v.majorVersion).\(v.minorVersion)"
+        #endif
+    }
+}
 
 // MARK: - Swift literals for Copy Swift
 

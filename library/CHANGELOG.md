@@ -14,6 +14,8 @@ Nothing yet.
 ## 2026-10-11
 
 ### Added
+- `.probeGlass(_:after:)` on **macOS**, capturing with ScreenCaptureKit (needs Screen Recording). macOS 27
+  run (`captures/mac-glass-probe.*`): the iOS hidden aberration inputs, plus `inputBackColor0/1` live.
 - `.tuneLayers(_:where:)` and `.dumpLayers(_:)` on **macOS** (`BoneMac.swift`), acting on the layers
   inside the modified view. Verified on macOS 27 (`captures/mac-tunelayers.txt`, `mac-layers.txt`).
 - `.dumpLayers(_:)` on **watchOS** through the Objective-C runtime (`captures/watch-dumplayers.txt`).
@@ -38,6 +40,8 @@ Nothing yet.
   label. ([4d4159a](https://github.com/filipvabrousek/Bone/commit/4d4159a))
 
 ### Changed
+- `BoneGlassProbe.swift` builds on macOS: async capture, a Core Graphics/AppKit contact sheet;
+  `BonePixels` and a shared `BoneOS.line` moved out of the iOS-only part of `BoneGlassCore.swift`.
 - `BoneGlassCore.swift`, `BoneLayerTune.swift`, `BoneShaderDump.swift` and `BoneFilterInputNames.swift`
   build on macOS; `BoneSwiftLiteral` moved from the panel into `BoneGlassCore.swift`; a macOS
   `NSValue(cgSize:)` / `cgSizeValue` shim keeps the shared code identical.

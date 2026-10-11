@@ -18,7 +18,8 @@ animates the glass. Copy this folder into your project and add it to all targets
 | Liquid Glass `.tune` · `.dumpGlass` | ✓ | ✓ | | ✓ |
 | `.dumpLayers` | ✓ | ✓ | | ✓ |
 | `.tuneLayers` · `.dumpShaders` | ✓ | | | ✓ |
-| `.probeGlass` · `.boneInspector` (3D view) | ✓ | | | |
+| `.probeGlass` | ✓ | | | ✓ |
+| `.boneInspector` (3D view) | ✓ | | | |
 | Timeline · `.morphScrubber` · `.dumpMorph` · `.liquidMorph` · `.glassFlex` | ✓ | | | |
 
 Built with Xcode 27; tested on iOS 27 (simulator and iPhone 14 Pro), watchOS 27 (simulator), visionOS 27 and macOS.

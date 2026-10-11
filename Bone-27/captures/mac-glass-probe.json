@@ -1,0 +1,8631 @@
+{
+  "liveThreshold" : 50,
+  "noisePixels" : 0,
+  "os" : "macOS 27.0",
+  "pass2Context" : [
+    "aberrationAmount = 50",
+    "inputBackColor0 = green",
+    "inputBackColor1 = green"
+  ],
+  "regionPixels" : 67200,
+  "results" : [
+    {
+      "best" : "50",
+      "bestChangedPixels" : 9945,
+      "filter" : "glassBackground",
+      "key" : "inputAberrationAmount",
+      "kind" : "number",
+      "live" : true,
+      "name" : "aberrationAmount",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 387,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 5744,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 9945,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 5744,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "10",
+      "bestChangedPixels" : 10325,
+      "filter" : "glassBackground",
+      "key" : "inputAberrationAngle",
+      "kind" : "number",
+      "live" : true,
+      "name" : "aberrationAngle",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "0 +ctx"
+        },
+        {
+          "changedPixels" : 9256,
+          "value" : "1 +ctx"
+        },
+        {
+          "changedPixels" : 10325,
+          "value" : "10 +ctx"
+        },
+        {
+          "changedPixels" : 3501,
+          "value" : "50 +ctx"
+        },
+        {
+          "changedPixels" : 10036,
+          "value" : "-10 +ctx"
+        }
+      ]
+    },
+    {
+      "best" : "-10",
+      "bestChangedPixels" : 16643,
+      "filter" : "glassBackground",
+      "key" : "inputAberrationHeight",
+      "kind" : "number",
+      "live" : true,
+      "name" : "aberrationHeight",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        },
+        {
+          "changedPixels" : 9906,
+          "value" : "0 +ctx"
+        },
+        {
+          "changedPixels" : 9927,
+          "value" : "1 +ctx"
+        },
+        {
+          "changedPixels" : 9264,
+          "value" : "10 +ctx"
+        },
+        {
+          "changedPixels" : 15610,
+          "value" : "50 +ctx"
+        },
+        {
+          "changedPixels" : 16643,
+          "value" : "-10 +ctx"
+        }
+      ]
+    },
+    {
+      "best" : "50",
+      "bestChangedPixels" : 16632,
+      "filter" : "glassBackground",
+      "key" : "inputAberrationOffset",
+      "kind" : "number",
+      "live" : true,
+      "name" : "aberrationOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "0 +ctx"
+        },
+        {
+          "changedPixels" : 4832,
+          "value" : "1 +ctx"
+        },
+        {
+          "changedPixels" : 14499,
+          "value" : "10 +ctx"
+        },
+        {
+          "changedPixels" : 16632,
+          "value" : "50 +ctx"
+        },
+        {
+          "changedPixels" : 10141,
+          "value" : "-10 +ctx"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputAdaptive",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputAdaptive",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1 +ctx"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputAddWhite",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputAddWhite",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "0 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10 +ctx"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputAllowsGroup",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputAllowsGroup",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1 +ctx"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputAlphaValues",
+      "kind" : "array",
+      "live" : false,
+      "name" : "inputAlphaValues",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "array value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "0 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10 +ctx"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputAngle",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputAngle",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "0 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10 +ctx"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputAspectRatio",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputAspectRatio",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "0 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10 +ctx"
+        }
+      ]
+    },
+    {
+      "best" : "green",
+      "bestChangedPixels" : 59217,
+      "filter" : "glassBackground",
+      "key" : "inputBackColor0",
+      "kind" : "color",
+      "live" : true,
+      "name" : "inputBackColor0",
+      "pass2" : false,
+      "restoreDriftPixels" : 25473,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 59217,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "green",
+      "bestChangedPixels" : 25471,
+      "filter" : "glassBackground",
+      "key" : "inputBackColor1",
+      "kind" : "color",
+      "live" : true,
+      "name" : "inputBackColor1",
+      "pass2" : false,
+      "restoreDriftPixels" : 25473,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 6888,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 25471,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBackEnabled",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputBackEnabled",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1 +ctx"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBackdropAware",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputBackdropAware",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1 +ctx"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBias",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputBias",
+      "pass2" : true,
+      "restoreDriftPixels" : 67200,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "0 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50 +ctx"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10 +ctx"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBleedAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBleedBlurRadius",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedBlurRadius",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBleedColorMatrixBlack",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedColorMatrixBlack",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBleedColorMatrixFillColor",
+      "kind" : "color",
+      "live" : false,
+      "name" : "bleedColorMatrixFillColor",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBleedColorMatrixSaturation",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedColorMatrixSaturation",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBleedColorMatrixWhite",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedColorMatrixWhite",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBleedDarkenBlend",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedDarkenBlend",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBleedDistance0",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedDistance0",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBleedDistance1",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedDistance1",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBleedHeight",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedHeight",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBleedOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputBleedOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "10",
+      "bestChangedPixels" : 67200,
+      "filter" : "glassBackground",
+      "key" : "inputBleedOpacity",
+      "kind" : "number",
+      "live" : true,
+      "name" : "bleedOpacity",
+      "pass2" : false,
+      "restoreDriftPixels" : 67200,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 13271,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 67200,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 67200,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 67200,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBleedSaturation",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputBleedSaturation",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBlueOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputBlueOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBlueValues",
+      "kind" : "array",
+      "live" : false,
+      "name" : "inputBlueValues",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "array value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBlurDistance0",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurDistance0",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 8854,
+      "filter" : "glassBackground",
+      "key" : "inputBlurDistance1",
+      "kind" : "number",
+      "live" : true,
+      "name" : "blurDistance1",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 8854,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 8854,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 8854,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "-10",
+      "bestChangedPixels" : 8854,
+      "filter" : "glassBackground",
+      "key" : "inputBlurDistance2",
+      "kind" : "number",
+      "live" : true,
+      "name" : "blurDistance2",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 8854,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBlurDistance3",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurDistance3",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBlurDistance4",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputBlurDistance4",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 22001,
+      "filter" : "glassBackground",
+      "key" : "inputBlurFillBlurRadius",
+      "kind" : "number",
+      "live" : true,
+      "name" : "blurFillBlurRadius",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 22001,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 21472,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 3110,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 5742,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 22001,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 9104,
+      "filter" : "glassBackground",
+      "key" : "inputBlurFillDarkenOpacity",
+      "kind" : "number",
+      "live" : true,
+      "name" : "blurFillDarkenOpacity",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 9104,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 54,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 54,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 54,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 9104,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 15500,
+      "filter" : "glassBackground",
+      "key" : "inputBlurFillLightenOpacity",
+      "kind" : "number",
+      "live" : true,
+      "name" : "blurFillLightenOpacity",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 15500,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 15500,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 15500,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 9573,
+      "filter" : "glassBackground",
+      "key" : "inputBlurFillNormalOpacity",
+      "kind" : "number",
+      "live" : true,
+      "name" : "blurFillNormalOpacity",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 9573,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 9430,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 9430,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 9430,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 9573,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "10",
+      "bestChangedPixels" : 9696,
+      "filter" : "glassBackground",
+      "key" : "inputBlurOpacity0",
+      "kind" : "number",
+      "live" : true,
+      "name" : "blurOpacity0",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 8884,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 8854,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 9696,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 9692,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 8884,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 92,
+      "filter" : "glassBackground",
+      "key" : "inputBlurOpacity1",
+      "kind" : "number",
+      "live" : true,
+      "name" : "blurOpacity1",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 92,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 92,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 92,
+      "filter" : "glassBackground",
+      "key" : "inputBlurOpacity2",
+      "kind" : "number",
+      "live" : true,
+      "name" : "blurOpacity2",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 92,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 92,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 92,
+      "filter" : "glassBackground",
+      "key" : "inputBlurOpacity3",
+      "kind" : "number",
+      "live" : true,
+      "name" : "blurOpacity3",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 92,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 92,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBlurOpacity4",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputBlurOpacity4",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "50",
+      "bestChangedPixels" : 9720,
+      "filter" : "glassBackground",
+      "key" : "inputBlurRadius",
+      "kind" : "number",
+      "live" : true,
+      "name" : "blurRadius",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 8884,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 8532,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 8267,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 9720,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 8884,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputBounds",
+      "kind" : "rect",
+      "live" : false,
+      "name" : "inputBounds",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "rect value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputClamp",
+      "kind" : "number",
+      "live" : false,
+      "name" : "clamp",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputClampPreserveHue",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "clampPreserveHue",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputColor",
+      "kind" : "color",
+      "live" : false,
+      "name" : "inputColor",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputColor0",
+      "kind" : "color",
+      "live" : false,
+      "name" : "inputColor0",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputColor1",
+      "kind" : "color",
+      "live" : false,
+      "name" : "inputColor1",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputColorMap",
+      "kind" : "image",
+      "live" : false,
+      "name" : "inputColorMap",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "image value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "swapRedBlue",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputColorMatrix",
+      "kind" : "matrix",
+      "live" : false,
+      "name" : "inputColorMatrix",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "swapRedBlue"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "invert"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputDither",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputDither",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputEdgeEnd",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputEdgeEnd",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputEdgeOpacityEnd",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputEdgeOpacityEnd",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputEdgeOpacityStart",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputEdgeOpacityStart",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputEdgeStart",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputEdgeStart",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputEnd",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputEnd",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputEndAngle",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputEndAngle",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputExtendEdges",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputExtendEdges",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "-10",
+      "bestChangedPixels" : 22453,
+      "filter" : "glassBackground",
+      "key" : "inputFaceColorMatrixBlack",
+      "kind" : "number",
+      "live" : true,
+      "name" : "faceColorMatrixBlack",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 21653,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 22278,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 22305,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 22309,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 22453,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "green",
+      "bestChangedPixels" : 22345,
+      "filter" : "glassBackground",
+      "key" : "inputFaceColorMatrixFillColor",
+      "kind" : "color",
+      "live" : true,
+      "name" : "faceColorMatrixFillColor",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 22336,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 22345,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputFaceColorMatrixMaxLuma",
+      "kind" : "number",
+      "live" : false,
+      "name" : "faceColorMatrixMaxLuma",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 21586,
+      "filter" : "glassBackground",
+      "key" : "inputFaceColorMatrixMaxLumaSDR",
+      "kind" : "number",
+      "live" : true,
+      "name" : "faceColorMatrixMaxLumaSDR",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 21586,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 17527,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 17527,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 17527,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 21586,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "-10",
+      "bestChangedPixels" : 22409,
+      "filter" : "glassBackground",
+      "key" : "inputFaceColorMatrixSaturation",
+      "kind" : "number",
+      "live" : true,
+      "name" : "faceColorMatrixSaturation",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 22215,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 21724,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 22236,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 22284,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 22409,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "-10",
+      "bestChangedPixels" : 22339,
+      "filter" : "glassBackground",
+      "key" : "inputFaceColorMatrixWhite",
+      "kind" : "number",
+      "live" : true,
+      "name" : "faceColorMatrixWhite",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 22295,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 19012,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 22301,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 22305,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 22339,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 18755,
+      "filter" : "glassBackground",
+      "key" : "inputFaceOpacity",
+      "kind" : "number",
+      "live" : true,
+      "name" : "faceOpacity",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 18755,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 18755,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputFade",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputFade",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputFrontColor",
+      "kind" : "color",
+      "live" : false,
+      "name" : "inputFrontColor",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputFrontEnabled",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputFrontEnabled",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputGreenOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputGreenOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputGreenValues",
+      "kind" : "array",
+      "live" : false,
+      "name" : "inputGreenValues",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "array value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputHSVSpace",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputHSVSpace",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputHardEdges",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputHardEdges",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "50",
+      "bestChangedPixels" : 4824,
+      "filter" : "glassBackground",
+      "key" : "inputInnerRefractionAmount",
+      "kind" : "number",
+      "live" : true,
+      "name" : "innerRefractionAmount",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 4286,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 4316,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 4730,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 4824,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 3584,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "-10",
+      "bestChangedPixels" : 9210,
+      "filter" : "glassBackground",
+      "key" : "inputInnerRefractionHeight",
+      "kind" : "number",
+      "live" : true,
+      "name" : "innerRefractionHeight",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 4232,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 4102,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 2468,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 5048,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 9210,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputIntermediateBitDepth",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputIntermediateBitDepth",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "50",
+      "bestChangedPixels" : 996,
+      "filter" : "glassBackground",
+      "key" : "inputKeyFillHighlightAmount",
+      "kind" : "number",
+      "live" : true,
+      "name" : "keyFillHighlightAmount",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 640,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 910,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 994,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 996,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 996,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 332,
+      "filter" : "glassBackground",
+      "key" : "inputKeyFillHighlightAngle",
+      "kind" : "number",
+      "live" : true,
+      "name" : "keyFillHighlightAngle",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 332,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 98,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 254,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 312,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 254,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "50",
+      "bestChangedPixels" : 1170,
+      "filter" : "glassBackground",
+      "key" : "inputKeyFillHighlightColorBias",
+      "kind" : "number",
+      "live" : true,
+      "name" : "keyFillHighlightColorBias",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 796,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 1076,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 1156,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 1170,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 892,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 1238,
+      "filter" : "glassBackground",
+      "key" : "inputKeyFillHighlightEffectOffset",
+      "kind" : "number",
+      "live" : true,
+      "name" : "keyFillHighlightEffectOffset",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 756,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 1238,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 1110,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 640,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 762,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "50",
+      "bestChangedPixels" : 21783,
+      "filter" : "glassBackground",
+      "key" : "inputKeyFillHighlightHeight",
+      "kind" : "number",
+      "live" : true,
+      "name" : "keyFillHighlightHeight",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 640,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 342,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 9186,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 21783,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 640,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputKeyFillHighlightSpread",
+      "kind" : "number",
+      "live" : false,
+      "name" : "keyFillHighlightSpread",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 640,
+      "filter" : "glassBackground",
+      "key" : "inputKeyFillHighlightSpreadSDR",
+      "kind" : "number",
+      "live" : true,
+      "name" : "keyFillHighlightSpreadSDR",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 640,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 414,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 212,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 598,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 212,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputLinear",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputLinear",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputMaskImage",
+      "kind" : "image",
+      "live" : false,
+      "name" : "inputMaskImage",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "image value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputMaxHeadroom",
+      "kind" : "number",
+      "live" : false,
+      "name" : "maxHeadroom",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputNormalizeEdges",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputNormalizeEdges",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputOuterRefractionAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "outerRefractionAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputOuterRefractionHeight",
+      "kind" : "number",
+      "live" : false,
+      "name" : "outerRefractionHeight",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputOverlayOpacity",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputOverlayOpacity",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputPremultipliedValues",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputPremultipliedValues",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputQuality",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputQuality",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputRadius",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputRadius",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputRedOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputRedOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputRedValues",
+      "kind" : "array",
+      "live" : false,
+      "name" : "inputRedValues",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "array value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputRefractionAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputRefractionAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputRefractionDistance0",
+      "kind" : "number",
+      "live" : false,
+      "name" : "refractionDistance0",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputRefractionDistance1",
+      "kind" : "number",
+      "live" : false,
+      "name" : "refractionDistance1",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputRefractionHeight",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputRefractionHeight",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputRefractionOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputRefractionOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 67200,
+      "filter" : "glassBackground",
+      "key" : "inputRefractionOpacity",
+      "kind" : "number",
+      "live" : true,
+      "name" : "refractionOpacity",
+      "pass2" : false,
+      "restoreDriftPixels" : 67200,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 67200,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 67200,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 67200,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 67200,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputReversed",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputReversed",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "50",
+      "bestChangedPixels" : 67200,
+      "filter" : "glassBackground",
+      "key" : "inputRingShadowBlurRadius",
+      "kind" : "number",
+      "live" : true,
+      "name" : "ringShadowBlurRadius",
+      "pass2" : false,
+      "restoreDriftPixels" : 67200,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 67200,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 67200,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputRingShadowMask",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "ringShadowMask",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputRingShadowOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "ringShadowOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "50",
+      "bestChangedPixels" : 10202,
+      "filter" : "glassBackground",
+      "key" : "inputRingShadowOpacity",
+      "kind" : "number",
+      "live" : true,
+      "name" : "ringShadowOpacity",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 10201,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 10201,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 10202,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputRingShadowStrokeWidth",
+      "kind" : "number",
+      "live" : false,
+      "name" : "ringShadowStrokeWidth",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputSDRGradientDistance0",
+      "kind" : "number",
+      "live" : false,
+      "name" : "sdrGradientDistance0",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputSDRGradientDistance1",
+      "kind" : "number",
+      "live" : false,
+      "name" : "sdrGradientDistance1",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputSDRHoldingToneEnabled",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "sdrHoldingToneEnabled",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputSDRHoldingToneWhite",
+      "kind" : "number",
+      "live" : false,
+      "name" : "sdrHoldingToneWhite",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputSDRShadowOpacity",
+      "kind" : "number",
+      "live" : false,
+      "name" : "sdrShadowOpacity",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputScale",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputScale",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowBlurRadius",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowBlurRadius",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowBounds",
+      "kind" : "rect",
+      "live" : false,
+      "name" : "inputShadowBounds",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "rect value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowColor",
+      "kind" : "color",
+      "live" : false,
+      "name" : "inputShadowColor",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowColorMatrixBlack",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowColorMatrixBlack",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowColorMatrixFillColor",
+      "kind" : "color",
+      "live" : false,
+      "name" : "shadowColorMatrixFillColor",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowColorMatrixSaturation",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowColorMatrixSaturation",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowColorMatrixWhite",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowColorMatrixWhite",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowDistanceOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowDistanceOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowHeight",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowHeight",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "size(0, 0)",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowOffset",
+      "kind" : "size",
+      "live" : false,
+      "name" : "shadowOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "size(0, 0)"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "size(20, 20)"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 1690,
+      "filter" : "glassBackground",
+      "key" : "inputShadowOpacity",
+      "kind" : "number",
+      "live" : true,
+      "name" : "shadowOpacity",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 1690,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 1690,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 1690,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowRadius",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowRadius",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputShadowVibrancyContribution",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowVibrancyContribution",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputStart",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputStart",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputStartAngle",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputStartAngle",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputTime",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputTime",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "glassBackground",
+      "key" : "inputValues",
+      "kind" : "array",
+      "live" : false,
+      "name" : "inputValues",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "array value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputAberrationAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "aberrationAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputAberrationAngle",
+      "kind" : "number",
+      "live" : false,
+      "name" : "aberrationAngle",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputAberrationHeight",
+      "kind" : "number",
+      "live" : false,
+      "name" : "aberrationHeight",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputAberrationOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "aberrationOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputAdaptive",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputAdaptive",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputAddWhite",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputAddWhite",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputAllowsGroup",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputAllowsGroup",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputAlphaValues",
+      "kind" : "array",
+      "live" : false,
+      "name" : "inputAlphaValues",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "array value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputAngle",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputAngle",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputAspectRatio",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputAspectRatio",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBackColor0",
+      "kind" : "color",
+      "live" : false,
+      "name" : "inputBackColor0",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBackColor1",
+      "kind" : "color",
+      "live" : false,
+      "name" : "inputBackColor1",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBackEnabled",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputBackEnabled",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBackdropAware",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputBackdropAware",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBias",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputBias",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedBlurRadius",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedBlurRadius",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedColorMatrixBlack",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedColorMatrixBlack",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedColorMatrixFillColor",
+      "kind" : "color",
+      "live" : false,
+      "name" : "bleedColorMatrixFillColor",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedColorMatrixSaturation",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedColorMatrixSaturation",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedColorMatrixWhite",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedColorMatrixWhite",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedDarkenBlend",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedDarkenBlend",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedDistance0",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedDistance0",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedDistance1",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedDistance1",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedHeight",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedHeight",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputBleedOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedOpacity",
+      "kind" : "number",
+      "live" : false,
+      "name" : "bleedOpacity",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBleedSaturation",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputBleedSaturation",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlueOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputBlueOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlueValues",
+      "kind" : "array",
+      "live" : false,
+      "name" : "inputBlueValues",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "array value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurDistance0",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurDistance0",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurDistance1",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurDistance1",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurDistance2",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurDistance2",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurDistance3",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurDistance3",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurDistance4",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputBlurDistance4",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurFillBlurRadius",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurFillBlurRadius",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurFillDarkenOpacity",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurFillDarkenOpacity",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurFillLightenOpacity",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurFillLightenOpacity",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurFillNormalOpacity",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurFillNormalOpacity",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurOpacity0",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurOpacity0",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurOpacity1",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurOpacity1",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurOpacity2",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurOpacity2",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurOpacity3",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurOpacity3",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurOpacity4",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputBlurOpacity4",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBlurRadius",
+      "kind" : "number",
+      "live" : false,
+      "name" : "blurRadius",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputBounds",
+      "kind" : "rect",
+      "live" : false,
+      "name" : "inputBounds",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "rect value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputClamp",
+      "kind" : "number",
+      "live" : false,
+      "name" : "clamp",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputClampPreserveHue",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "clampPreserveHue",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputColor",
+      "kind" : "color",
+      "live" : false,
+      "name" : "inputColor",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputColor0",
+      "kind" : "color",
+      "live" : false,
+      "name" : "inputColor0",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputColor1",
+      "kind" : "color",
+      "live" : false,
+      "name" : "inputColor1",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputColorMap",
+      "kind" : "image",
+      "live" : false,
+      "name" : "inputColorMap",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "image value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "swapRedBlue",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputColorMatrix",
+      "kind" : "matrix",
+      "live" : false,
+      "name" : "inputColorMatrix",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : true,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "swapRedBlue"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "invert"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputDither",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputDither",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputEdgeEnd",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputEdgeEnd",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputEdgeOpacityEnd",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputEdgeOpacityEnd",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputEdgeOpacityStart",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputEdgeOpacityStart",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputEdgeStart",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputEdgeStart",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputEnd",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputEnd",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputEndAngle",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputEndAngle",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputExtendEdges",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputExtendEdges",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputFaceColorMatrixBlack",
+      "kind" : "number",
+      "live" : false,
+      "name" : "faceColorMatrixBlack",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputFaceColorMatrixFillColor",
+      "kind" : "color",
+      "live" : false,
+      "name" : "faceColorMatrixFillColor",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputFaceColorMatrixMaxLuma",
+      "kind" : "number",
+      "live" : false,
+      "name" : "faceColorMatrixMaxLuma",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputFaceColorMatrixMaxLumaSDR",
+      "kind" : "number",
+      "live" : false,
+      "name" : "faceColorMatrixMaxLumaSDR",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputFaceColorMatrixSaturation",
+      "kind" : "number",
+      "live" : false,
+      "name" : "faceColorMatrixSaturation",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputFaceColorMatrixWhite",
+      "kind" : "number",
+      "live" : false,
+      "name" : "faceColorMatrixWhite",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputFaceOpacity",
+      "kind" : "number",
+      "live" : false,
+      "name" : "faceOpacity",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputFade",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputFade",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputFrontColor",
+      "kind" : "color",
+      "live" : false,
+      "name" : "inputFrontColor",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputFrontEnabled",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputFrontEnabled",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputGreenOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputGreenOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputGreenValues",
+      "kind" : "array",
+      "live" : false,
+      "name" : "inputGreenValues",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "array value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputHSVSpace",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputHSVSpace",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputHardEdges",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputHardEdges",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputInnerRefractionAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "innerRefractionAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputInnerRefractionHeight",
+      "kind" : "number",
+      "live" : false,
+      "name" : "innerRefractionHeight",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputIntermediateBitDepth",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputIntermediateBitDepth",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputKeyFillHighlightAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "keyFillHighlightAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputKeyFillHighlightAngle",
+      "kind" : "number",
+      "live" : false,
+      "name" : "keyFillHighlightAngle",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputKeyFillHighlightColorBias",
+      "kind" : "number",
+      "live" : false,
+      "name" : "keyFillHighlightColorBias",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputKeyFillHighlightEffectOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "keyFillHighlightEffectOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputKeyFillHighlightHeight",
+      "kind" : "number",
+      "live" : false,
+      "name" : "keyFillHighlightHeight",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputKeyFillHighlightSpread",
+      "kind" : "number",
+      "live" : false,
+      "name" : "keyFillHighlightSpread",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputKeyFillHighlightSpreadSDR",
+      "kind" : "number",
+      "live" : false,
+      "name" : "keyFillHighlightSpreadSDR",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputLinear",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputLinear",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputMaskImage",
+      "kind" : "image",
+      "live" : false,
+      "name" : "inputMaskImage",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "image value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputMaxHeadroom",
+      "kind" : "number",
+      "live" : false,
+      "name" : "maxHeadroom",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputNormalizeEdges",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputNormalizeEdges",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputOuterRefractionAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "outerRefractionAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputOuterRefractionHeight",
+      "kind" : "number",
+      "live" : false,
+      "name" : "outerRefractionHeight",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputOverlayOpacity",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputOverlayOpacity",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputPremultipliedValues",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputPremultipliedValues",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputQuality",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputQuality",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRadius",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputRadius",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRedOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputRedOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRedValues",
+      "kind" : "array",
+      "live" : false,
+      "name" : "inputRedValues",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "array value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRefractionAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputRefractionAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRefractionDistance0",
+      "kind" : "number",
+      "live" : false,
+      "name" : "refractionDistance0",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRefractionDistance1",
+      "kind" : "number",
+      "live" : false,
+      "name" : "refractionDistance1",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRefractionHeight",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputRefractionHeight",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRefractionOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputRefractionOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRefractionOpacity",
+      "kind" : "number",
+      "live" : false,
+      "name" : "refractionOpacity",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputReversed",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "inputReversed",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRingShadowBlurRadius",
+      "kind" : "number",
+      "live" : false,
+      "name" : "ringShadowBlurRadius",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRingShadowMask",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "ringShadowMask",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRingShadowOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "ringShadowOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRingShadowOpacity",
+      "kind" : "number",
+      "live" : false,
+      "name" : "ringShadowOpacity",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputRingShadowStrokeWidth",
+      "kind" : "number",
+      "live" : false,
+      "name" : "ringShadowStrokeWidth",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputSDRGradientDistance0",
+      "kind" : "number",
+      "live" : false,
+      "name" : "sdrGradientDistance0",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputSDRGradientDistance1",
+      "kind" : "number",
+      "live" : false,
+      "name" : "sdrGradientDistance1",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "1",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputSDRHoldingToneEnabled",
+      "kind" : "toggle",
+      "live" : false,
+      "name" : "sdrHoldingToneEnabled",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputSDRHoldingToneWhite",
+      "kind" : "number",
+      "live" : false,
+      "name" : "sdrHoldingToneWhite",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputSDRShadowOpacity",
+      "kind" : "number",
+      "live" : false,
+      "name" : "sdrShadowOpacity",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputScale",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputScale",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowAmount",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowAmount",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowBlurRadius",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowBlurRadius",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowBounds",
+      "kind" : "rect",
+      "live" : false,
+      "name" : "inputShadowBounds",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "rect value – not tried",
+      "trials" : [
+
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowColor",
+      "kind" : "color",
+      "live" : false,
+      "name" : "inputShadowColor",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowColorMatrixBlack",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowColorMatrixBlack",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "red",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowColorMatrixFillColor",
+      "kind" : "color",
+      "live" : false,
+      "name" : "shadowColorMatrixFillColor",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "red"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "green"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowColorMatrixSaturation",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowColorMatrixSaturation",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowColorMatrixWhite",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowColorMatrixWhite",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowDistanceOffset",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowDistanceOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowHeight",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowHeight",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "size(0, 0)",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowOffset",
+      "kind" : "size",
+      "live" : false,
+      "name" : "shadowOffset",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "size(0, 0)"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "size(20, 20)"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowOpacity",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowOpacity",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowRadius",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowRadius",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputShadowVibrancyContribution",
+      "kind" : "number",
+      "live" : false,
+      "name" : "shadowVibrancyContribution",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputStart",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputStart",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputStartAngle",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputStartAngle",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "0",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputTime",
+      "kind" : "number",
+      "live" : false,
+      "name" : "inputTime",
+      "pass2" : true,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : null,
+      "trials" : [
+        {
+          "changedPixels" : 0,
+          "value" : "0"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "1"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "10"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "50"
+        },
+        {
+          "changedPixels" : 0,
+          "value" : "-10"
+        }
+      ]
+    },
+    {
+      "best" : "",
+      "bestChangedPixels" : 0,
+      "filter" : "vibrantColorMatrix",
+      "key" : "inputValues",
+      "kind" : "array",
+      "live" : false,
+      "name" : "inputValues",
+      "pass2" : false,
+      "restoreDriftPixels" : 0,
+      "sdkConstant" : true,
+      "setBySwiftUI" : false,
+      "skipped" : "array value – not tried",
+      "trials" : [
+
+      ]
+    }
+  ]
+}

@@ -109,7 +109,7 @@ watchOS has no public UIKit, but the watch's glass is the iPhone's – a `CABack
 runtime and the same key paths. Both act on the glass inside the modified view's frame; `.tune`
 re-applies 8× a second. On macOS 27 the same tuning changed 10 inputs of a `.glassEffect()` panel
 (`captures/mac-tune.txt`) while the stock button beside it kept its values (`captures/mac-glass.txt`).
-`.tune(file:)` and `.probeGlass` are iOS-only for now.
+`.tune(file:)` is iOS-only for now.
 
 A glass button on the watchOS 27 simulator (`captures/watch-glass.txt`), next to the iOS 27 demo
 button (`captures/glass-default.txt`; a larger button, and refraction scales with the shape):
@@ -156,6 +156,15 @@ Glass button over black/yellow stripes, two runs, identical verdicts for all 270
 - **Only with aberration on:** `inputAberrationHeight`, `inputAberrationOffset`, `inputAberrationAngle`.
 - 44 of the inputs SwiftUI sets change the image; the rest of the 136 names do nothing on this
   filter (they belong to other Core Animation filters).
+
+### On macOS
+
+`.probeGlass` runs on the Mac too (`BoneMac.swift`), capturing the glass region with ScreenCaptureKit –
+the app needs **Screen Recording** permission (System Settings ▸ Privacy & Security). macOS 27, glass
+button over stripes (`captures/mac-glass-probe.*`, 252 inputs, 3.5 min): the same hidden aberration
+inputs as on iOS, plus two the iOS run did not flag – `inputBackColor0` and `inputBackColor1` change
+the rendering (88% and 38% of pixels), though SwiftUI never sets them. On watchOS the prober is not
+available: its capture, flush and drawing are built on APIs the watchOS SDK hides.
 
 ### How it measures
 

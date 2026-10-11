@@ -130,6 +130,28 @@ extension View {
     }
 }
 
+// MARK: - Glass: .probeGlass
+
+extension View {
+
+    /// Which glass inputs change the rendered pixels (macOS), like .probeGlass on iOS.
+    /// Captures with ScreenCaptureKit – the app needs Screen Recording permission.
+    func probeGlass(_ fileName: String = "glass-probe.txt", after delay: Double = 2) -> some View {
+        background(BoneMacAnchor { anchor in
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak anchor] in
+                guard let anchor, let window = anchor.window,
+                      let glass = BoneMac.layers(in: anchor).first(where: { BoneGlassLayers.filters(on: $0).contains(where: \.isGlass) }) else {
+                    BoneCapture.writeData(Data("BONE · probeGlass\n(no glass found – is a glass style applied and rendered?)\n".utf8), fileName: fileName)
+                    return
+                }
+                let element = BoneGlassLayers.element(of: glass)
+                BoneGlassProber(element: element, window: window, filters: BoneGlassLayers.filterRefs(inElement: element))
+                    .run { $0.write(fileName: fileName) }
+            }
+        })
+    }
+}
+
 final class BoneMacLayerTuner: BoneStoppable {
     private weak var anchor: BoneMacAnchorView?
     private let tuning: LayerTuning

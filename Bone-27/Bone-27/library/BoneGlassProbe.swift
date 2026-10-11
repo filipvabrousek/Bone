@@ -21,10 +21,18 @@
 //  Research / simulator use only — private API, never ship it.
 //
 
-#if canImport(UIKit) && !os(watchOS)
+#if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
+typealias BonePlatformWindow = UIWindow
+#else
+import AppKit
+typealias BonePlatformWindow = NSWindow
+#endif
+
+#if canImport(UIKit)
 
 extension View {
 
@@ -77,6 +85,8 @@ struct BoneGlassProbeHost<Content: View>: UIViewControllerRepresentable {
         uiViewController.sizeThatFits(in: CGSize(width: proposal.width ?? .infinity, height: proposal.height ?? .infinity))
     }
 }
+
+#endif
 
 // MARK: - Report
 
@@ -135,7 +145,7 @@ final class BoneGlassProber {
     }
 
     let element: CALayer
-    let window: UIWindow
+    let window: BonePlatformWindow
     let filters: [BoneFilterRef]
     /// (done, total, input) – called before each input.
     var progress: ((Int, Int, String) -> Void)?
@@ -154,7 +164,7 @@ final class BoneGlassProber {
     private var unsettled = 0               // captures that never agreed twice in a row
     private var startedAt = Date()
 
-    init(element: CALayer, window: UIWindow, filters: [BoneFilterRef]) {
+    init(element: CALayer, window: BonePlatformWindow, filters: [BoneFilterRef]) {
         self.element = element
         self.window = window
         self.filters = filters
@@ -171,6 +181,7 @@ final class BoneGlassProber {
     private func probeAll() async -> BoneGlassProbeReport {
         startedAt = Date()
         CATransaction.flush()
+        #if canImport(UIKit)
         guard let shot = BoneScreen.capture() else {
             return makeReport(error: "screen capture unavailable (_UICreateScreenUIImage)")
         }
@@ -181,6 +192,14 @@ final class BoneGlassProber {
             .insetBy(dx: -Self.margin, dy: -Self.margin).intersection(screen)
         crop = CGRect(x: region.minX * scale, y: region.minY * scale,
                       width: region.width * scale, height: region.height * scale).integral
+        #else
+        // ScreenCaptureKit captures just the region; the crop is the whole image
+        region = BoneScreen.globalRect(of: element, in: window).insetBy(dx: -Self.margin, dy: -Self.margin)
+        guard let shot = await BoneScreen.capture(in: region) else {
+            return makeReport(error: "screen capture failed – grant Screen Recording to this app (System Settings ▸ Privacy & Security)")
+        }
+        crop = CGRect(x: 0, y: 0, width: shot.width, height: shot.height)
+        #endif
 
         // copies of every filter list of the element – the last-resort restore
         var seen = Set<String>()
@@ -282,11 +301,16 @@ final class BoneGlassProber {
 
     // MARK: Helpers
 
-    private func grab() -> BonePixels? {
-        autoreleasepool {
+    private func grab() async -> BonePixels? {
+        #if canImport(UIKit)
+        return autoreleasepool {
             guard let shot = BoneScreen.capture() else { return nil }
             return BonePixels(shot, crop: crop)
         }
+        #else
+        guard let shot = await BoneScreen.capture(in: region) else { return nil }
+        return BonePixels(shot, crop: crop)
+        #endif
     }
 
     /// A capture taken after the render server has caught up: wait two frames,
@@ -294,9 +318,9 @@ final class BoneGlassProber {
     /// CATransaction.flush() the screen sometimes still shows the previous commit.)
     private func settledGrab() async -> BonePixels? {
         try? await Task.sleep(nanoseconds: 34_000_000)
-        guard var last = grab() else { return nil }
+        guard var last = await grab() else { return nil }
         for _ in 0..<10 {
-            guard let next = grab() else { return last }
+            guard let next = await grab() else { return last }
             if next.changed(from: last) == 0 { return next }
             last = next
             try? await Task.sleep(nanoseconds: 17_000_000)
@@ -346,7 +370,7 @@ final class BoneGlassProber {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         var t = "BONE · probeGlass\n"
-        t += "OS: \(UIDevice.current.systemName) \(UIDevice.current.systemVersion) · captured: \(df.string(from: Date()))"
+        t += "OS: \(BoneOS.line) · captured: \(df.string(from: Date()))"
         t += String(format: " · %.1f s\n", Date().timeIntervalSince(startedAt))
         if let error {
             t += "ERROR: \(error)\n"
@@ -357,7 +381,7 @@ final class BoneGlassProber {
 
         t += "element: \(type(of: element)) · region \(Int(region.minX)),\(Int(region.minY)) \(Int(region.width))×\(Int(region.height)) pt"
         t += " (element ±\(Int(Self.margin)) pt) = \(pixels) px\n"
-        t += "capture: _UICreateScreenUIImage, settled (2 frames, then two identical captures in a row) · noise \(noise) px"
+        t += "capture: \(BoneScreen.method), settled (2 frames, then two identical captures in a row) · noise \(noise) px"
         t += unsettled > 0 ? " · \(unsettled) captures never settled" : ""
         t += " · restores in place (nil removes a key)"
         t += " · LIVE = ≥ \(Self.liveThreshold) px changed (channel difference > 8)\n"
@@ -414,7 +438,7 @@ final class BoneGlassProber {
             "trials": r.trials.map { ["value": $0.label, "changedPixels": $0.changed] },
         ] }
         let json = try? JSONSerialization.data(withJSONObject: [
-            "os": "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)",
+            "os": "\(BoneOS.line)",
             "regionPixels": pixels, "liveThreshold": Self.liveThreshold, "noisePixels": noise,
             "pass2Context": contextUsed, "results": rows,
         ], options: [.prettyPrinted, .sortedKeys])
@@ -428,6 +452,7 @@ final class BoneGlassProber {
         return BoneGlassProbeReport(text: t, json: json, sheet: Self.sheet(tiles), summary: summary, liveHidden: liveHidden)
     }
 
+    #if canImport(UIKit)
     private static func sheet(_ tiles: [(String, String, CGImage?)]) -> Data? {
         guard let first = tiles.compactMap({ $0.2 }).first else { return nil }
         let tileW: CGFloat = 300, gap: CGFloat = 14, cols = 5
@@ -452,6 +477,45 @@ final class BoneGlassProber {
         }
         return image.pngData()
     }
+    #else
+    private static func sheet(_ tiles: [(String, String, CGImage?)]) -> Data? {
+        guard let first = tiles.compactMap({ $0.2 }).first else { return nil }
+        let tileW: CGFloat = 300, gap: CGFloat = 14, cols = 5
+        let imgH = tileW * CGFloat(first.height) / CGFloat(first.width)
+        let tileH = imgH + 42
+        let rows = (tiles.count + cols - 1) / cols
+        let size = CGSize(width: CGFloat(cols) * (tileW + gap) + gap, height: CGFloat(rows) * (tileH + gap) + gap)
+        guard let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: Int(size.width), pixelsHigh: Int(size.height),
+                                         bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
+                                         colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0),
+              let ctx = NSGraphicsContext(bitmapImageRep: rep) else { return nil }
+        let flipped = NSGraphicsContext(cgContext: ctx.cgContext, flipped: true)
+        NSGraphicsContext.saveGraphicsState()
+        NSGraphicsContext.current = flipped
+        flipped.cgContext.translateBy(x: 0, y: size.height)
+        flipped.cgContext.scaleBy(x: 1, y: -1)
+        NSColor.white.setFill()
+        NSRect(origin: .zero, size: size).fill()
+        let bold: [NSAttributedString.Key: Any] = [.font: NSFont.monospacedSystemFont(ofSize: 13, weight: .bold)]
+        let small: [NSAttributedString.Key: Any] = [.font: NSFont.monospacedSystemFont(ofSize: 11, weight: .regular),
+                                                     .foregroundColor: NSColor.darkGray]
+        for (i, tile) in tiles.enumerated() {
+            let x = gap + CGFloat(i % cols) * (tileW + gap), y = gap + CGFloat(i / cols) * (tileH + gap)
+            (tile.0 as NSString).draw(in: CGRect(x: x, y: y, width: tileW, height: 18), withAttributes: bold)
+            (tile.1 as NSString).draw(in: CGRect(x: x, y: y + 19, width: tileW, height: 16), withAttributes: small)
+            if let cg = tile.2 {
+                let r = CGRect(x: x, y: y + 40, width: tileW, height: imgH)
+                flipped.cgContext.saveGState()
+                flipped.cgContext.translateBy(x: 0, y: r.maxY + r.minY)
+                flipped.cgContext.scaleBy(x: 1, y: -1)
+                flipped.cgContext.draw(cg, in: r)
+                flipped.cgContext.restoreGState()
+            }
+        }
+        NSGraphicsContext.restoreGraphicsState()
+        return rep.representation(using: .png, properties: [:])
+    }
+    #endif
 }
 
 #endif
