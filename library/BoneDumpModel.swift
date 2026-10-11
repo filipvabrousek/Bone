@@ -52,6 +52,11 @@ enum BoneDumpStore {
     #else
     static var idx = 0
     #endif
+    #if os(macOS)
+    /// How deep the macOS walk reads each view's `dump` (BoneDump.swift): deep enough for every
+    /// contents and layer line, shallow enough that a List takes seconds, not minutes.
+    static let dumpDepth = 16
+    #endif
     /// One colour per view, in walk order (views past the 16th get no item and no border on iOS).
     static let colors = ["#3498DB", "#FF4500", "#BDB76B", "#DDA0DD", "#FF00FF", "#7B68EE", "#ADFF2F", "#90EE90",
                          "#00FA9A", "#228B22", "#66CDAA", "#20B2AA", "#008080", "#AFEEEE", "#7FFFD4", "#48D1CC"]

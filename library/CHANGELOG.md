@@ -11,6 +11,15 @@ Research / simulator use only – Bone uses private API and never belongs in an 
 
 Nothing yet.
 
+## 2026-10-12
+
+### Fixed
+- `.bone(into:)` on **macOS** crashed (index out of range) on any view tree of 16 or more views – a
+  `List` – and before that ran for minutes: it named views from a full `dump` of each one. Colours
+  now repeat on long view trees, and the dump is read to 16 levels, which keeps every contents and
+  layer line. A `List` on macOS 27 now takes 11 s (a full dump alone took 175 s); small views write
+  the same file as before.
+
 ## 2026-10-11
 
 ### Added
@@ -107,7 +116,7 @@ Nothing yet.
 
 ### Known issues
 - `.bone(into:)` on macOS can run for minutes on a large view (it names views from Swift's `dump`);
-  on macOS 27 a `List` did not finish within 7 minutes.
+  on macOS 27 a `List` did not finish within 7 minutes. (Fixed 2026-10-12.)
 
 ## 2026-10-10
 

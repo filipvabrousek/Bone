@@ -469,16 +469,19 @@ struct BoneDumpHost<Content: View>: View {
 
 extension NSView {
 
-    /// Walks the view tree depth-first. Names come from Swift's `dump` of each view –
-    /// slow for big SwiftUI hosting views (their environment dumps at length).
+    /// Walks the view tree depth-first. Names come from the start of Swift's `dump` of each view.
     func boneDumpSubviews(_ depth: Int = 0) {
         BoneDumpStore.idx += 1
         BoneDumpStore.formatted += "\n \n \n"
         for _ in 0..<depth { BoneDumpStore.formatted += "-" }
         if depth > 0 { BoneDumpStore.formatted += ">" }
 
+        // The names come from near the top of the dump: the superclass from level 1, contents and
+        // layers from what SwiftUI drew (level 8 and below). Further down, SwiftUI's values print
+        // at great length – a List took 175 s on macOS 27 – so the dump stops at level `dumpDepth`
+        // (16: every contents and layer line of the full dump, in 9 s).
         var dumped = String()
-        dump(self, to: &dumped)
+        dump(self, to: &dumped, maxDepth: BoneDumpStore.dumpDepth)
 
         var superclass = "empty"
         if dumped.range(of: "baseClass =") != nil {
@@ -507,8 +510,10 @@ extension NSView {
         var layerName = layerDump
         if layerName.count > 8 { layerName.removeFirst(8) }
 
+        // colours repeat on long view trees (iOS colours only the first 16 views; the Mac lists every one)
+        let color = BoneDumpStore.colors[BoneDumpStore.idx % BoneDumpStore.colors.count]
         BoneDumpStore.items.append(BoneDumpItem(name: String(describing: type(of: self)),
-                                                color: BoneDumpStore.colors[BoneDumpStore.idx],
+                                                color: color,
                                                 superclass: superclass,
                                                 layer: layerName,
                                                 sublayers: layer?.sublayers,
@@ -516,7 +521,7 @@ extension NSView {
 
         wantsLayer = true
         layer?.borderWidth = 0.5
-        layer?.borderColor = BoneDumpStore.colors[BoneDumpStore.idx].cgColor
+        layer?.borderColor = color.cgColor
 
         if let sublayers = layer?.sublayers {
             BoneDumpStore.formatted += "Sublayers: " + sublayers.map(\.description).joined()

@@ -91,3 +91,28 @@ struct DumpTextTests {
         #expect(BoneDumpStore.colors.count == 16)
     }
 }
+
+#if os(macOS)
+import AppKit
+
+@Suite("macOS hierarchy walk", .serialized)
+@MainActor
+struct MacDumpWalkTests {
+
+    @Test("16 views or more: colours repeat instead of running off the palette")
+    func manyViews() {
+        BoneDumpStore.items = []
+        BoneDumpStore.formatted = ""
+        BoneDumpStore.idx = 0
+        let root = NSView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        for _ in 0..<20 { root.addSubview(NSView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))) }
+        root.boneDumpSubviews()
+        #expect(BoneDumpStore.items.count == 21)
+        // the index counts up before each view, so item k has colour k + 1
+        #expect(BoneDumpStore.items[17].color == BoneDumpStore.colors[18 % BoneDumpStore.colors.count])
+        // the superclass is the word after "super:" in the dump (it keeps the line break after it)
+        #expect(BoneDumpStore.items.allSatisfy { $0.superclass.trimmingCharacters(in: .whitespacesAndNewlines) == "NSResponder" })
+        #expect(BoneDumpStore.formatted.contains("->NSView: NSResponder"))
+    }
+}
+#endif
