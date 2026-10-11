@@ -26,6 +26,8 @@
 //  Research / simulator use only — private API, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if canImport(UIKit) && !os(visionOS) && !os(watchOS)
 
 import SwiftUI
@@ -35,7 +37,7 @@ extension View {
 
     /// Morphs this view into `target` (and back) with UIKit's Liquid Glass morph when
     /// `isPresented` changes. Both ends are shown in glass capsules.
-    func liquidMorph<Target: View>(to target: Target, isPresented: Binding<Bool>,
+    public func liquidMorph<Target: View>(to target: Target, isPresented: Binding<Bool>,
                                    padding: EdgeInsets = EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16),
                                    targetPadding: EdgeInsets = EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6)) -> some View {
         BoneLiquidMorphHost(source: self, target: target, presented: isPresented.wrappedValue,
@@ -195,3 +197,5 @@ final class BoneLiquidMorphView: UIView {
 }
 
 #endif
+
+#endif   // DEBUG

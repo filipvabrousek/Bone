@@ -11,47 +11,52 @@
 //  Research / simulator use only — private Core Animation keys, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if canImport(UIKit) || canImport(AppKit)
 
 #if canImport(UIKit)
 import UIKit
-typealias BonePlatformColor = UIColor
+public typealias BonePlatformColor = UIColor
 #else
 import AppKit
-typealias BonePlatformColor = NSColor
+public typealias BonePlatformColor = NSColor
 #endif
 
-#if os(macOS)
-/// UIKit's NSValue names on macOS, so the shared glass code reads the same on both.
+/// One spelling for size values on every platform (UIKit: `cgSize`, AppKit: `size`).
 extension NSValue {
-    convenience init(cgSize: CGSize) { self.init(size: cgSize) }
-    var cgSizeValue: CGSize { sizeValue }
+    #if os(macOS)
+    static func bone(size: CGSize) -> NSValue { NSValue(size: size) }
+    var boneSize: CGSize { sizeValue }
+    #else
+    static func bone(size: CGSize) -> NSValue { NSValue(cgSize: size) }
+    var boneSize: CGSize { cgSizeValue }
+    #endif
 }
-#endif
 
 // MARK: - Typed tuning (dictionary + presets)
 
 /// A value for a glass input: write plain literals (`0`, `0.4`, `true`)
 /// or `.color(...)` / `.size(...)` for the few non-numeric inputs.
-enum GlassValue: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, ExpressibleByBooleanLiteral {
+public enum GlassValue: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, ExpressibleByBooleanLiteral {
     case number(Double)
     case color(CGColor)
     case size(CGSize)
 
-    init(floatLiteral v: Double) { self = .number(v) }
-    init(integerLiteral v: Int) { self = .number(Double(v)) }
-    init(booleanLiteral v: Bool) { self = .number(v ? 1 : 0) }
-    static func color(_ c: BonePlatformColor) -> GlassValue { .color(c.cgColor) }
-    static func size(_ w: Double, _ h: Double) -> GlassValue { .size(CGSize(width: w, height: h)) }
+    public init(floatLiteral v: Double) { self = .number(v) }
+    public init(integerLiteral v: Int) { self = .number(Double(v)) }
+    public init(booleanLiteral v: Bool) { self = .number(v ? 1 : 0) }
+    public static func color(_ c: BonePlatformColor) -> GlassValue { .color(c.cgColor) }
+    public static func size(_ w: Double, _ h: Double) -> GlassValue { .size(CGSize(width: w, height: h)) }
 
     /// What Core Animation expects for -setValue:forKeyPath:.
-    var object: Any {
+    public var object: Any {
         switch self {
         case .number(let d): return NSNumber(value: d)
         case .color(let c):  return c
         case .size(let s):
             #if canImport(UIKit)
-            return NSValue(cgSize: s)
+            return NSValue.bone(size: s)
             #else
             return NSValue(size: s)
             #endif
@@ -65,40 +70,40 @@ enum GlassValue: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Express
 ///     .tune([.blurRadius: 0, .faceOpacity: 0.3])
 ///     .tune(.noShadow + .noLensing)
 ///     .tune(.noShadow + [.keyFillHighlightAmount: 1, .keyFillHighlightAngle: 0.8])
-struct GlassTuning: ExpressibleByDictionaryLiteral {
-    var values: [GlassInput: GlassValue] = [:]
+public struct GlassTuning: ExpressibleByDictionaryLiteral {
+    public var values: [GlassInput: GlassValue] = [:]
     /// Keys not (yet) in GlassInput – e.g. inputs that appear in a newer OS.
-    var raw: [String: Any] = [:]
+    public var raw: [String: Any] = [:]
 
-    init(dictionaryLiteral elements: (GlassInput, GlassValue)...) {
+    public init(dictionaryLiteral elements: (GlassInput, GlassValue)...) {
         for (k, v) in elements { values[k] = v }
     }
-    init(values: [GlassInput: GlassValue] = [:], raw: [String: Any] = [:]) {
+    public init(values: [GlassInput: GlassValue] = [:], raw: [String: Any] = [:]) {
         self.values = values
         self.raw = raw
     }
 
-    static func + (l: GlassTuning, r: GlassTuning) -> GlassTuning {
+    public static func + (l: GlassTuning, r: GlassTuning) -> GlassTuning {
         GlassTuning(values: l.values.merging(r.values) { _, new in new },
                     raw: l.raw.merging(r.raw) { _, new in new })
     }
 
     /// Escape hatch: Core Animation key names as strings.
-    static func raw(_ d: [String: Any]) -> GlassTuning { GlassTuning(raw: d) }
+    public static func raw(_ d: [String: Any]) -> GlassTuning { GlassTuning(raw: d) }
 
     // Presets
-    static let noShadow: GlassTuning = [.shadowOpacity: 0, .shadowAmount: 0, .sdrShadowOpacity: 0, .ringShadowOpacity: 0]
-    static let noLensing: GlassTuning = [.innerRefractionAmount: 0, .outerRefractionAmount: 0, .refractionOpacity: 0]
-    static let noBlur: GlassTuning = [.blurRadius: 0, .blurFillBlurRadius: 0]
-    static let noHighlight: GlassTuning = [.keyFillHighlightAmount: 0]
-    static let noBleed: GlassTuning = [.bleedOpacity: 0, .bleedAmount: 0]
+    public static let noShadow: GlassTuning = [.shadowOpacity: 0, .shadowAmount: 0, .sdrShadowOpacity: 0, .ringShadowOpacity: 0]
+    public static let noLensing: GlassTuning = [.innerRefractionAmount: 0, .outerRefractionAmount: 0, .refractionOpacity: 0]
+    public static let noBlur: GlassTuning = [.blurRadius: 0, .blurFillBlurRadius: 0]
+    public static let noHighlight: GlassTuning = [.keyFillHighlightAmount: 0]
+    public static let noBleed: GlassTuning = [.bleedOpacity: 0, .bleedAmount: 0]
     /// Hidden input SwiftUI never sets: chromatic dispersion (rainbow fringes).
-    static let aberration: GlassTuning = [.aberrationAmount: 12, .aberrationHeight: 20]
+    public static let aberration: GlassTuning = [.aberrationAmount: 12, .aberrationHeight: 20]
     /// Everything off: a flat, clear pane – handy as a baseline.
-    static let flat: GlassTuning = .noShadow + .noLensing + .noBlur + .noHighlight + .noBleed
+    public static let flat: GlassTuning = .noShadow + .noLensing + .noBlur + .noHighlight + .noBleed
 
     /// Flattened to Core Animation keys.
-    var caValues: [String: Any] {
+    public var caValues: [String: Any] {
         var d = raw
         for (k, v) in values { d[k.rawValue] = v.object }
         return d
@@ -141,6 +146,77 @@ extension GlassInput {
     var caseName: String { String(describing: self) }
 }
 
+// MARK: - Reports shared by every platform's glass engine
+
+/// One filter, as the .dumpGlass report lists it.
+struct BoneGlassFilterRow {
+    var path: String                       // "CALayer ▹ [0]SDFLayer ▹ [1]CALayer ▹ [0]CABackdropLayer"
+    var slot: String                       // "filters" or "backgroundFilters"
+    var type: String                       // "glassBackground", "vibrantColorMatrix", …
+    var inputs: [(key: String, value: Any?)]
+    var isGlass: Bool { type.lowercased().contains("glass") }
+}
+
+/// The text of .dumpGlass and of .tune's log, and the rules .tune applies values by –
+/// the same on iOS, macOS (BoneGlassEngine.swift) and watchOS (BoneGlassRuntime.swift).
+enum BoneGlassReport {
+
+    static func dump(_ rows: [BoneGlassFilterRow], only: [GlassInput]?, os: String) -> String {
+        let df = DateFormatter(); df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        var t = "BONE · dumpGlass\n"
+        t += "OS: \(os) · captured: \(df.string(from: Date()))\n"
+        t += "inputs: " + (only.map { $0.map(\.caseName).joined(separator: ", ") } ?? "all") + "\n"
+        let glass = rows.filter(\.isGlass)
+        t += "glass filters: \(glass.count)\n"
+        if glass.isEmpty {
+            t += "\n(no glass filter found – is .glassEffect() / a glass style applied, and has it rendered?)\n"
+        }
+        let wanted = only.map { Set($0.map(\.rawValue)) }
+        func label(_ key: String) -> String { GlassInput(rawValue: key).map { "\($0.caseName)  (\(key))" } ?? key }
+        for (i, f) in rows.enumerated() where f.isGlass || wanted == nil {
+            t += "\n===== [\(i)] \(f.type)  (\(f.slot) on \(f.path)) =====\n"
+            let inputs = f.inputs.filter { wanted == nil || wanted!.contains($0.key) }
+            if inputs.isEmpty { t += "   (none of the requested inputs)\n"; continue }
+            let width = inputs.map { label($0.key).count }.max() ?? 0
+            for r in inputs {
+                let l = label(r.key)
+                t += "   " + l + String(repeating: " ", count: width - l.count) + " = " + BoneGlassFormat.value(r.value) + "\n"
+            }
+        }
+        return t
+    }
+
+    /// One line of .tune's log.
+    static func change(layer: String, path: String, from current: Any?, to value: Any) -> String {
+        "\(layer) \(path): \(BoneGlassFormat.value(current)) → \(BoneGlassFormat.value(value))"
+    }
+
+    static func tuneLog(values: [String: Any], changes: [String], os: String) -> String {
+        "BONE · tune\nOS: \(os)\n"
+            + "requested: \(values.keys.sorted().map { "\($0)=\(BoneGlassFormat.value(values[$0]))" }.joined(separator: ", "))\n\n"
+            + changes.joined(separator: "\n") + "\n"
+    }
+
+    /// "inputBlurRadius" → every glass filter; "vibrantColorMatrix.inputColorMatrix" → that filter only.
+    static func input(_ key: String, name: String, type: String) -> String? {
+        if let dot = key.firstIndex(of: ".") {
+            let target = key[..<dot]
+            return target == name || target == type ? String(key[key.index(after: dot)...]) : nil
+        }
+        return type.lowercased().contains("glass") ? key : nil
+    }
+
+    /// Whether an input already holds a value (numbers by value, colours with CFEqual).
+    static func same(_ a: Any, _ b: Any) -> Bool {
+        if let x = a as? NSNumber, let y = b as? NSNumber { return abs(x.doubleValue - y.doubleValue) < 1e-9 }
+        if CFGetTypeID(a as CFTypeRef) == CGColor.typeID, CFGetTypeID(b as CFTypeRef) == CGColor.typeID {
+            return CFEqual(a as CFTypeRef, b as CFTypeRef)
+        }
+        if let x = a as? NSObject, let y = b as? NSObject { return x.isEqual(y) }
+        return false
+    }
+}
+
 // MARK: - Formatting input values
 
 enum BoneGlassFormat {
@@ -158,7 +234,7 @@ enum BoneGlassFormat {
         }
         if let val = v as? NSValue, String(cString: val.objCType).contains("CGSize") {
             #if canImport(UIKit)
-            let s = val.cgSizeValue
+            let s = val.boneSize
             #else
             let s = val.sizeValue
             #endif
@@ -190,3 +266,5 @@ enum BoneGlassFormat {
 }
 
 #endif
+
+#endif   // DEBUG

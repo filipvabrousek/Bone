@@ -22,6 +22,8 @@ import Playgrounds
     }
 }
 
+#if DEBUG   // the demos call Bone, which only exists in Debug builds
+
 struct ContentView: View {
     var body: some View {
        /* Button("Bone"){ // 235715 , 235739 cool!!!
@@ -250,3 +252,11 @@ struct TuneRow<Content: View>: View {
     _ = 1 + 2
 }
  
+
+#else
+
+struct ContentView: View {
+    var body: some View { Text("The Bone demo needs a Debug build.") }
+}
+
+#endif

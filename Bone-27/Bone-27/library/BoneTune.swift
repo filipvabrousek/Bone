@@ -2,7 +2,7 @@
 //  BoneTune.swift
 //  Bone-27
 //
-//  Manual tuning of Liquid Glass internals.
+//  Manual tuning of Liquid Glass internals (iOS and macOS; watchOS: BoneWatch.swift).
 //
 //      Button("Liquid") {}
 //          .glassEffect()
@@ -27,14 +27,21 @@
 //  inputs through the layer's key path "filters.<name>.<input>".
 //  SwiftUI rebuilds the filter on updates (hover, press, state changes), so
 //  the values are re-applied a few times per second while the view is alive.
+//  The engine is BoneGlassEngine.swift.
 //
 //  Research / simulator use only — private Core Animation keys, never ship it.
 //
 
-#if canImport(UIKit) && !os(watchOS)
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
+#if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 extension View {
 
@@ -44,22 +51,22 @@ extension View {
     ///     Button("Liquid") {}.glassEffect().tune(.noShadow + .noLensing)
     ///
     /// - Parameter log: optional file name; writes what changed (before → after) once.
-    func tune(_ tuning: GlassTuning, log: String? = nil) -> some View {
-        BoneTuneHost(values: tuning.caValues, log: log) { self }
+    public func tune(_ tuning: GlassTuning, log: String? = nil) -> some View {
+        BoneTuneHost(values: tuning.caValues, log: log, file: nil) { self }
     }
 
     /// Overrides from a JSON file – the format `.glassPanel()` saves:
     /// `{"glassBackground": {"blurRadius": 0}, "vibrantColorMatrix": {"inputColorMatrix": {"matrix": [...]}}}`.
-    /// In the simulator the file is `<project>/captures/<fileName>` and is re-read
-    /// whenever it changes, so you can edit it on the Mac and watch the glass.
+    /// In the simulator and on the Mac the file is `<project>/captures/<fileName>` and is re-read
+    /// whenever it changes, so you can edit it and watch the glass.
     /// (A key you delete keeps its last value until SwiftUI rebuilds the glass.)
-    func tune(file fileName: String, log: String? = nil) -> some View {
+    public func tune(file fileName: String, log: String? = nil) -> some View {
         BoneTuneHost(values: [:], log: log, file: fileName) { self }
     }
 
     /// Shortcut kept for the first version of the API:
     /// `.tune(excludeShadow: true, contentLensing: false)` == `.tune(.noShadow + .noLensing)`.
-    func tune(excludeShadow: Bool = false,
+    public func tune(excludeShadow: Bool = false,
               contentLensing: Bool = true,
               overrides: [String: Any] = [:],
               log: String? = nil) -> some View {
@@ -70,7 +77,9 @@ extension View {
     }
 }
 
-// MARK: - Hosting wrapper
+#if canImport(UIKit)
+
+// MARK: - Hosting wrapper (iOS): the glass is everything under the hosting view
 
 struct BoneTuneHost<Content: View>: UIViewControllerRepresentable {
     let values: [String: Any]
@@ -78,24 +87,32 @@ struct BoneTuneHost<Content: View>: UIViewControllerRepresentable {
     let file: String?
     let content: Content
 
-    init(values: [String: Any], log: String?, file: String? = nil, @ViewBuilder content: () -> Content) {
+    init(values: [String: Any], log: String?, file: String?, @ViewBuilder content: () -> Content) {
         self.values = values
         self.log = log
         self.file = file
         self.content = content()
     }
 
+    final class Coordinator {
+        var tuner: BoneGlassTuner?
+    }
+
     func makeUIViewController(context: Context) -> UIHostingController<Content> {
         let hosting = UIHostingController(rootView: content)
         hosting.view.backgroundColor = .clear
         hosting.sizingOptions = [.intrinsicContentSize]
-        context.coordinator.start(on: hosting.view, values: values, log: log, file: file)
+        let tuner = BoneGlassTuner(values: values, log: log, file: file) { [weak view = hosting.view] in
+            view.map { BoneGlassEngine.found(under: $0.layer) }
+        }
+        context.coordinator.tuner = tuner
+        tuner.start()
         return hosting
     }
 
     func updateUIViewController(_ hosting: UIHostingController<Content>, context: Context) {
         hosting.rootView = content
-        if file == nil { context.coordinator.values = values }
+        if file == nil { context.coordinator.tuner?.values = values }
     }
 
     /// Size of the content, not of the space offered (keeps stacks tight).
@@ -103,98 +120,43 @@ struct BoneTuneHost<Content: View>: UIViewControllerRepresentable {
         uiViewController.sizeThatFits(in: CGSize(width: proposal.width ?? .infinity, height: proposal.height ?? .infinity))
     }
 
-    func makeCoordinator() -> BoneGlassTuner { BoneGlassTuner() }
+    func makeCoordinator() -> Coordinator { Coordinator() }
 
-    static func dismantleUIViewController(_ vc: UIHostingController<Content>, coordinator: BoneGlassTuner) {
-        coordinator.stop()
+    static func dismantleUIViewController(_ vc: UIHostingController<Content>, coordinator: Coordinator) {
+        coordinator.tuner?.stop()
     }
 }
 
-// MARK: - Tuner
+#else
 
-final class BoneGlassTuner: NSObject {
+// MARK: - Host (macOS): the glass whose centre lies inside the modified view
 
-    var values: [String: Any] = [:]
-    private weak var root: UIView?
-    private var link: CADisplayLink?
-    private var log: String?
-    private var logged = false
-    private var fileURL: URL?
-    private var fileStamp: Date?
-    private var ticks = 0
-    private(set) var appliedCount = 0
+struct BoneTuneHost<Content: View>: View {
+    let values: [String: Any]
+    let log: String?
+    let file: String?
+    let content: Content
 
-    func start(on view: UIView, values: [String: Any], log: String?, file: String? = nil) {
-        self.root = view
+    init(values: [String: Any], log: String?, file: String?, @ViewBuilder content: () -> Content) {
         self.values = values
         self.log = log
-        if let file {
-            fileURL = BoneCapture.readableURL(for: file)
-            reloadIfChanged()
-        }
-        guard !values.isEmpty || fileURL != nil else { return }
-        let l = CADisplayLink(target: self, selector: #selector(tick))
-        l.preferredFrameRateRange = CAFrameRateRange(minimum: 4, maximum: 10, preferred: 8)
-        l.add(to: .main, forMode: .common)
-        link = l
+        self.file = file
+        self.content = content()
     }
 
-    func stop() {
-        link?.invalidate()
-        link = nil
-    }
-
-    /// `.tune(file:)`: re-reads the JSON when its modification date changes.
-    private func reloadIfChanged() {
-        guard let url = fileURL else { return }
-        let stamp = (try? FileManager.default.attributesOfItem(atPath: url.path))?[.modificationDate] as? Date
-        guard stamp != fileStamp else { return }
-        fileStamp = stamp
-        guard let data = try? Data(contentsOf: url), let v = BoneGlassJSON.tunerValues(from: data) else { return }
-        values = v
-        logged = false
-    }
-
-    @objc private func tick() {
-        guard let root else { stop(); return }
-        ticks += 1
-        if fileURL != nil, ticks % 4 == 0 { reloadIfChanged() }
-        var changes: [String] = []
-        apply(to: root.layer, changes: &changes)
-        if !changes.isEmpty { appliedCount += 1 }
-        if let log, !logged, !changes.isEmpty {
-            logged = true
-            let text = "BONE · tune\nOS: \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)\n"
-                + "requested: \(values.keys.sorted().map { "\($0)=\(values[$0]!)" }.joined(separator: ", "))\n\n"
-                + changes.joined(separator: "\n") + "\n"
-            BoneCapture.writeData(Data(text.utf8), fileName: log)
-        }
-    }
-
-    /// Walks the whole layer tree and patches every glass filter it finds.
-    private func apply(to layer: CALayer, changes: inout [String]) {
-        for ref in BoneGlassLayers.filters(on: layer) {
-            for (key, newValue) in values {
-                guard let input = Self.input(key, for: ref) else { continue }
-                if BoneGlassPanelModel.shared.holds(layer, filter: ref.name, key: input) { continue }
-                let path = ref.path(input)
-                let current = layer.value(forKeyPath: path)
-                if let current, BoneGlassLayers.same(current, newValue) { continue }
-                layer.setValue(newValue, forKeyPath: path)
-                changes.append("\(type(of: layer)) \(path): \(current.map { "\($0)" } ?? "nil") → \(newValue)")
+    var body: some View {
+        content.background(BoneMacAnchor { anchor in
+            let tuner = BoneGlassTuner(values: values, log: log, file: file) { [weak anchor] in
+                anchor.map(BoneMac.glassLayers(in:))
             }
-        }
-        for sub in layer.sublayers ?? [] { apply(to: sub, changes: &changes) }
-    }
-
-    /// "inputBlurRadius" → every glass filter; "vibrantColorMatrix.inputColorMatrix" → that filter only.
-    static func input(_ key: String, for ref: BoneFilterRef) -> String? {
-        if let dot = key.firstIndex(of: ".") {
-            let target = key[..<dot]
-            return target == ref.name || target == ref.type ? String(key[key.index(after: dot)...]) : nil
-        }
-        return ref.isGlass ? key : nil
+            anchor.keepAlive = tuner
+            tuner.start()
+        })
     }
 }
 
 #endif
+
+#endif
+
+#endif   // DEBUG

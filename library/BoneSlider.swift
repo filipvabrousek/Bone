@@ -7,6 +7,8 @@
 //  Also the small text-field modifiers that only exist on iOS.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import SwiftUI
@@ -75,3 +77,5 @@ extension View {
 }
 
 #endif
+
+#endif   // DEBUG

@@ -2,11 +2,28 @@
 
 ## Install
 
-Copy every file in `library/` into a folder of your project and add them to all targets. There is
-no package yet.
+**Swift package.** In Xcode: File ▸ Add Package Dependencies…, enter
+`https://github.com/filipvabrousek/Bone`, pick the `main` branch, add the **Bone** library to your
+app target, then `import Bone`. Or in a `Package.swift`:
 
-> **Research / simulator use only.** Never ship Bone in an App Store build. Wrap its modifiers in
-> `#if DEBUG` if they live in an app you also release.
+```swift
+.package(url: "https://github.com/filipvabrousek/Bone", branch: "main")
+```
+
+**Or copy the files:** every file in `library/` into a folder of your project, added to all targets
+(no `import` needed then).
+
+> **Research / simulator use only.** Bone compiles only in **Debug** builds: in Release every file
+> is empty, so an app that ships contains none of its private API. Wrap your Bone calls in
+> `#if DEBUG` too – a call left ungated fails the Release build instead of shipping.
+>
+> ```swift
+> #if DEBUG
+> ContentView().boneInspector()
+> #else
+> ContentView()
+> #endif
+> ```
 
 ```swift
 List {
@@ -24,6 +41,7 @@ This writes the UIKit hierarchy behind the list to `output.txt` and shows it as 
 | Hierarchy dump `.bone(into:)` | ✓ | ✓ | ✓ | ✓ |
 | 3D hierarchy `.bone3D` · `.bone3DFrom` | | | ✓ | |
 | Liquid Glass `.tune` · `.dumpGlass` | ✓ | ✓ | | ✓ |
+| `.tune(file:)` · `.dumpGlass(full: true)` | ✓ | | | ✓ |
 | `.dumpLayers` | ✓ | ✓ | | ✓ |
 | `.tuneLayers` · `.dumpShaders` | ✓ | | | ✓ |
 | `.probeGlass` | ✓ | | | ✓ |
@@ -41,8 +59,9 @@ This writes the UIKit hierarchy behind the list to `output.txt` and shows it as 
   [Glass tuning](glass-tuning.md#on-watchos-and-macos)).
 - **visionOS** has no SwiftUI Liquid Glass (`glassEffect` is unavailable there). The inspector and
   layer tools compile on visionOS but are untested; the timeline and morph tools are iOS and macOS only.
-- **macOS** draws Liquid Glass like iOS (the same SDF layers and `glassBackground` filter), so
-  `.boneInspector()`, `.tune`, `.dumpGlass`, `.probeGlass` (with Screen Recording permission),
+- **macOS** draws Liquid Glass like iOS (the same SDF layers and `glassBackground` filter) and runs
+  the same glass engine, so `.boneInspector()`, `.tune` (and `.tune(file:)`), `.dumpGlass` (and
+  `full: true`), `.probeGlass` (with Screen Recording permission),
   `.tuneLayers`, `.dumpLayers` and `.dumpShaders` work there, plus the hierarchy dump. The inspector's
   timeline has a Mac bar (pause, speed, recorded takes; no frame step, see
   [Timeline on macOS](timeline.md#on-macos)); its 3D view is iOS-only. Captures need App Sandbox disabled.
@@ -66,6 +85,13 @@ row:
 
 On a device, pass arguments after `--`:
 `xcrun devicectl device process launch --device <id> <bundle-id> -- -flex`.
+
+## Tests
+
+`swift test` runs the unit tests on macOS – GlassInput, the presets, the value and JSON formats,
+the brief dump, the layer maths and the timeline's contact sheet, checked against real captures
+from iOS 27, macOS 27 and watchOS 27 (`Tests/BoneTests/Fixtures`). `Tests/run.sh` also runs them on
+an iOS simulator and builds the package and the demos for every platform, Debug and Release.
 
 ## Where files land
 

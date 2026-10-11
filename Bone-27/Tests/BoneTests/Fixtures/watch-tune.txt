@@ -1,0 +1,14 @@
+BONE · tune
+OS: watchOS 27.0
+requested: inputBleedAmount=0, inputBleedOpacity=0, inputBlurFillBlurRadius=0, inputBlurRadius=0, inputFaceOpacity=0.6000, inputInnerRefractionAmount=0, inputKeyFillHighlightAmount=0, inputOuterRefractionAmount=0, inputRefractionOpacity=0, inputRingShadowOpacity=0, inputSDRShadowOpacity=0, inputShadowAmount=0, inputShadowOpacity=0
+
+CABackdropLayer filters.glassBackground.inputShadowOpacity: 0.0625 → 0
+CABackdropLayer filters.glassBackground.inputFaceOpacity: 1 → 0.6000
+CABackdropLayer filters.glassBackground.inputBlurRadius: 5 → 0
+CABackdropLayer filters.glassBackground.inputOuterRefractionAmount: 16 → 0
+CABackdropLayer filters.glassBackground.inputRingShadowOpacity: 0.0600 → 0
+CABackdropLayer filters.glassBackground.inputInnerRefractionAmount: -26.2500 → 0
+CABackdropLayer filters.glassBackground.inputBleedAmount: 18.3750 → 0
+CABackdropLayer filters.glassBackground.inputRefractionOpacity: 0.6000 → 0
+CABackdropLayer filters.glassBackground.inputKeyFillHighlightAmount: 0.4000 → 0
+CABackdropLayer filters.glassBackground.inputBlurFillBlurRadius: 8 → 0

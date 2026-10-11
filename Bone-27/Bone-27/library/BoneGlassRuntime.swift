@@ -2,20 +2,20 @@
 //  BoneGlassRuntime.swift
 //  Bone-27
 //
-//  .dumpGlass and .tune for the platforms where Bone reaches Liquid Glass
-//  through the Objective-C runtime instead of UIKit: watchOS (UIKit and
-//  CALayer exist but are hidden from the SDK) and macOS (AppKit hosts the same
-//  SwiftUI glass). On all three platforms a glass shape is the same tree –
-//  SDFLayer → CABackdropLayer with a glassBackground filter → CASDFElementLayer –
-//  so one engine walks it: find the layers carrying filters, read every input,
-//  write overrides through "filters.<name>.<input>". The platform files decide
-//  which windows to walk and which layers lie in the modified view
-//  (BoneWatch.swift, BoneMac.swift).
+//  .dumpGlass and .tune on watchOS, where UIKit and CALayer exist but are
+//  hidden from the SDK, so Bone reaches Liquid Glass through the Objective-C
+//  runtime. The glass is the same tree as on iOS and macOS – SDFLayer →
+//  CABackdropLayer with a glassBackground filter → CASDFElementLayer – and the
+//  report, the log and the rules for applying values are shared with their
+//  engine (BoneGlassReport in BoneGlassTuning.swift; BoneGlassEngine.swift).
+//  BoneWatch.swift decides which layers lie in the modified view.
 //
 //  Research / simulator use only — private Core Animation keys, never ship it.
 //
 
-#if os(watchOS) || os(macOS)
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
+#if os(watchOS)
 
 import Foundation
 import ObjectiveC
@@ -77,43 +77,19 @@ enum BoneGlassRuntime {
 
     static var osLine: String {
         let os = ProcessInfo().operatingSystemVersion
-        #if os(watchOS)
-        let name = "watchOS"
-        #else
-        let name = "macOS"
-        #endif
-        return "\(name) \(os.majorVersion).\(os.minorVersion)"
+        return "watchOS \(os.majorVersion).\(os.minorVersion)"
     }
 
     /// The .dumpGlass report, in the iOS format.
     static func dumpGlass(_ layers: [Found], only: [GlassInput]?) -> String {
-        struct Row { var path: String; var slot: String; var type: String; var isGlass: Bool; var inputs: [(String, Any?)] }
-        var found: [Row] = []
+        var rows: [BoneGlassFilterRow] = []
         for (layer, path) in layers {
             for f in filters(on: layer) {
-                found.append(Row(path: path, slot: f.slot, type: f.type, isGlass: f.type.lowercased().contains("glass"),
-                                 inputs: BoneFilterInputs.keys(of: f.filter).map { ($0, f.filter.value(forKey: $0)) }))
+                rows.append(BoneGlassFilterRow(path: path, slot: f.slot, type: f.type,
+                                               inputs: BoneFilterInputs.keys(of: f.filter).map { ($0, f.filter.value(forKey: $0)) }))
             }
         }
-        let df = DateFormatter(); df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        var t = "BONE · dumpGlass\nOS: \(osLine) · captured: \(df.string(from: Date()))\n"
-        t += "inputs: " + (only.map { $0.map(\.caseName).joined(separator: ", ") } ?? "all") + "\n"
-        let glass = found.filter(\.isGlass)
-        t += "glass filters: \(glass.count)\n"
-        if glass.isEmpty { t += "\n(no glass filter found – is a glass style applied, and has it rendered?)\n" }
-        let wanted = only.map { Set($0.map(\.rawValue)) }
-        func label(_ key: String) -> String { GlassInput(rawValue: key).map { "\($0.caseName)  (\(key))" } ?? key }
-        for (i, f) in found.enumerated() where f.isGlass || wanted == nil {
-            t += "\n===== [\(i)] \(f.type)  (\(f.slot) on \(f.path)) =====\n"
-            let rows = f.inputs.filter { wanted == nil || wanted!.contains($0.0) }
-            if rows.isEmpty { t += "   (none of the requested inputs)\n"; continue }
-            let width = rows.map { label($0.0).count }.max() ?? 0
-            for (key, value) in rows {
-                let l = label(key)
-                t += "   " + l + String(repeating: " ", count: width - l.count) + " = " + BoneGlassFormat.value(value) + "\n"
-            }
-        }
-        return t
+        return BoneGlassReport.dump(rows, only: only, os: osLine)
     }
 
     /// Writes `values` into every matching filter input; returns what changed.
@@ -122,35 +98,16 @@ enum BoneGlassRuntime {
         for (layer, _) in layers {
             for f in filters(on: layer) {
                 for (key, newValue) in values {
-                    guard let input = input(key, name: f.name, type: f.type) else { continue }
+                    guard let input = BoneGlassReport.input(key, name: f.name, type: f.type) else { continue }
                     let path = "\(f.slot).\(f.name).\(input)"
                     let current = layer.value(forKeyPath: path)
-                    if let current, same(current, newValue) { continue }
+                    if let current, BoneGlassReport.same(current, newValue) { continue }
                     layer.setValue(newValue, forKeyPath: path)
-                    changes.append("\(className(layer)) \(path): \(current.map { BoneGlassFormat.value($0) } ?? "nil") → \(BoneGlassFormat.value(newValue))")
+                    changes.append(BoneGlassReport.change(layer: className(layer), path: path, from: current, to: newValue))
                 }
             }
         }
         return changes
-    }
-
-    /// "inputBlurRadius" → every glass filter; "vibrantColorMatrix.inputColorMatrix" → that filter only.
-    static func input(_ key: String, name: String, type: String) -> String? {
-        if let dot = key.firstIndex(of: ".") {
-            let target = key[..<dot]
-            return target == name || target == type ? String(key[key.index(after: dot)...]) : nil
-        }
-        return type.lowercased().contains("glass") ? key : nil
-    }
-
-    /// Whether a filter input already holds a value (numbers by value, colours with CFEqual).
-    static func same(_ a: Any, _ b: Any) -> Bool {
-        if let x = a as? NSNumber, let y = b as? NSNumber { return abs(x.doubleValue - y.doubleValue) < 1e-9 }
-        if CFGetTypeID(a as CFTypeRef) == CGColor.typeID, CFGetTypeID(b as CFTypeRef) == CGColor.typeID {
-            return CFEqual(a as CFTypeRef, b as CFTypeRef)
-        }
-        if let x = a as? NSObject, let y = b as? NSObject { return x.isEqual(y) }
-        return false
     }
 }
 
@@ -184,11 +141,10 @@ final class BoneGlassRuntimeTuner {
         let changes = BoneGlassRuntime.apply(values, to: collect())
         guard let log, !logged, !changes.isEmpty else { return }
         logged = true
-        let text = "BONE · tune\nOS: \(BoneGlassRuntime.osLine)\n"
-            + "requested: \(values.keys.sorted().map { "\($0)=\(BoneGlassFormat.value(values[$0]))" }.joined(separator: ", "))\n\n"
-            + changes.joined(separator: "\n") + "\n"
-        write(text, log)
+        write(BoneGlassReport.tuneLog(values: values, changes: changes, os: BoneGlassRuntime.osLine), log)
     }
 }
 
 #endif
+
+#endif   // DEBUG

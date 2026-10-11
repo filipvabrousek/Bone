@@ -11,12 +11,14 @@
 //  Research / simulator use only – private Core Animation keys.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if canImport(UIKit) || canImport(AppKit)
 
 import Foundation
 
 /// A tunable input of the Liquid Glass filter. `rawValue` is the Core Animation key.
-enum GlassInput: String, CaseIterable, Hashable {
+public enum GlassInput: String, CaseIterable, Hashable {
 
     // MARK: Bleed – colour bleed of the content into the glass edge
     /// number · iOS 27 button: 11.66666666666668
@@ -212,3 +214,5 @@ extension GlassInput {
 }
 
 #endif
+
+#endif   // DEBUG

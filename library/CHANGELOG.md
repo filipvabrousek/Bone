@@ -14,6 +14,14 @@ Nothing yet.
 ## 2026-10-11
 
 ### Added
+- **Swift package** (`Package.swift`): the same library folder for iOS, macOS, watchOS and visionOS,
+  with the documented modifiers and types made `public`.
+- **Tests**: 34 unit tests (`swift test`) on GlassInput, the presets, the value and JSON formats, the
+  brief dump, the layer maths and the timeline's contact sheet, checked against real captures from
+  iOS 27, macOS 27 and watchOS 27. `Tests/run.sh` also runs them on an iOS simulator and builds the
+  package and the demos for every platform, Debug and Release.
+- `.dumpGlass(_:only:after:full:)` with `full: true` and `.tune(file:)` (with live reload) on
+  **macOS** (`captures/mac-glass-full.txt`).
 - The inspector's **timeline bar on macOS** (`BoneMacTimeline.swift`). ⏸ holds the app window's
   frame by skipping its hosting view's `-layout`, since SwiftUI draws Mac glass morphs itself: no
   AnimationKit ticks, no CAAnimations. Speed slows animations started under `.boneInspector()` through
@@ -50,6 +58,22 @@ Nothing yet.
   label. ([4d4159a](https://github.com/filipvabrousek/Bone/commit/4d4159a))
 
 ### Changed
+- **Bone compiles only in Debug builds.** Every library file is empty in Release, so a shipped app
+  carries none of its private API; a Bone call left outside `#if DEBUG` fails the Release build.
+- **One glass engine for iOS and macOS** (`BoneGlassEngine.swift`); `BoneGlassRuntime.swift` is now
+  watchOS-only. The report, the `.tune` log and the rules for applying values are shared by all three
+  platforms (`BoneGlassReport`). Values dumped are unchanged; Mac paths now read like iOS ones
+  (`SDFLayer`, `CGDrawingLayer`), the iOS `.tune` log formats its values (colours as
+  `CGColor(r, g, b, a)`), and on the Mac the inspector now wins over `.tune` for the inputs it holds.
+- The legacy hierarchy dump is rewritten as `BoneDump.swift` / `BoneDumpModel.swift` with
+  Bone-prefixed names (`BoneDumpStore`, `BoneDumpItem`, `BoneDumpOverlay`, …); commented-out code,
+  debug prints and unused views are gone, and no type or `String`/`UIColor`/`NSValue` extension
+  collides with the host app any more. Output verified identical on iOS 27 and macOS 27.
+- Dump-node and visionOS types are prefixed (`BoneDumpNode`, `BoneBriefDumpParser`,
+  `BoneHierarchyBuilder`, `BoneVisionModel`, …).
+- The inspector is split into `BoneGlassPanel.swift` (modifiers, windows),
+  `BoneGlassPanelModel.swift` and `BoneGlassPanelViews.swift`; the iOS and macOS timelines share
+  `BoneTimelineKit.swift` (speeds, change detection, contact sheet, take row).
 - `BoneGlassPanel.swift`, `BoneLayerPanel.swift` and `BoneSlider.swift` build on macOS. Shared helpers
   in `BoneGlassCore.swift`: `BonePlatformWindow`, `BoneWindows` (root layer, frames, attachment),
   `BoneTicker` (display link / timer), `BonePasteboard`; `BoneLinkTarget` moved there. The layer
@@ -80,6 +104,10 @@ Nothing yet.
 ### Removed
 - The root-level `watchOSSpecific.swift` (a regex over `dump()`), replaced by `BoneWatch.swift`.
   ([e508c56](https://github.com/filipvabrousek/Bone/commit/e508c56))
+
+### Known issues
+- `.bone(into:)` on macOS can run for minutes on a large view (it names views from Swift's `dump`);
+  on macOS 27 a `List` did not finish within 7 minutes.
 
 ## 2026-10-10
 

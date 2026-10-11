@@ -37,6 +37,8 @@
 //  Research / simulator use only — private API, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if canImport(UIKit) && !os(visionOS) && !os(watchOS)
 
 import SwiftUI
@@ -46,7 +48,7 @@ extension View {
 
     /// Exaggerates the glass flex of the glass controls in this view: `stretch` multiplies
     /// the swell and the drag stretch (1 = stock), `follow` the shift toward the finger.
-    func glassFlex(stretch: CGFloat = 6, follow: CGFloat = 12) -> some View {
+    public func glassFlex(stretch: CGFloat = 6, follow: CGFloat = 12) -> some View {
         background(BoneGlassFlexAnchor(stretch: stretch, follow: follow))
     }
 }
@@ -336,3 +338,5 @@ enum BoneGlassFlex {
 }
 
 #endif
+
+#endif   // DEBUG

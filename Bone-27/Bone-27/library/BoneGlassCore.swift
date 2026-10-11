@@ -9,6 +9,8 @@
 //  Research / simulator use only — private Core Animation keys, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 #if canImport(UIKit)
@@ -191,10 +193,7 @@ enum BoneGlassLayers {
     }
     #endif
 
-    static func same(_ a: Any, _ b: Any) -> Bool {
-        if let x = a as? NSNumber, let y = b as? NSNumber { return x.doubleValue == y.doubleValue }
-        return (a as AnyObject).isEqual(b)
-    }
+    static func same(_ a: Any, _ b: Any) -> Bool { BoneGlassReport.same(a, b) }
 }
 
 // MARK: - Value kinds
@@ -243,20 +242,20 @@ enum BoneValueKind: String {
 // MARK: - Colour matrix
 
 /// CAColorMatrix: 4 rows (R, G, B, A out) × 5 (r, g, b, a, bias), boxed in an NSValue.
-enum BoneColorMatrix {
-    static let objCType = "{CAColorMatrix=ffffffffffffffffffff}"
-    static let identity: [Float] = [1, 0, 0, 0, 0,  0, 1, 0, 0, 0,  0, 0, 1, 0, 0,  0, 0, 0, 1, 0]
-    static let grayscale: [Float] = [0.2126, 0.7152, 0.0722, 0, 0,  0.2126, 0.7152, 0.0722, 0, 0,
+public enum BoneColorMatrix {
+    public static let objCType = "{CAColorMatrix=ffffffffffffffffffff}"
+    public static let identity: [Float] = [1, 0, 0, 0, 0,  0, 1, 0, 0, 0,  0, 0, 1, 0, 0,  0, 0, 0, 1, 0]
+    public static let grayscale: [Float] = [0.2126, 0.7152, 0.0722, 0, 0,  0.2126, 0.7152, 0.0722, 0, 0,
                                      0.2126, 0.7152, 0.0722, 0, 0,  0, 0, 0, 1, 0]
-    static let invert: [Float] = [-1, 0, 0, 0, 1,  0, -1, 0, 0, 1,  0, 0, -1, 0, 1,  0, 0, 0, 1, 0]
-    static let swapRedBlue: [Float] = [0, 0, 1, 0, 0,  0, 1, 0, 0, 0,  1, 0, 0, 0, 0,  0, 0, 0, 1, 0]
+    public static let invert: [Float] = [-1, 0, 0, 0, 1,  0, -1, 0, 0, 1,  0, 0, -1, 0, 1,  0, 0, 0, 1, 0]
+    public static let swapRedBlue: [Float] = [0, 0, 1, 0, 0,  0, 1, 0, 0, 0,  1, 0, 0, 0, 0,  0, 0, 0, 1, 0]
 
-    static func value(_ m: [Float]) -> NSValue {
+    public static func value(_ m: [Float]) -> NSValue {
         let f = Array((m + Array(repeating: 0, count: 20)).prefix(20))
         return f.withUnsafeBytes { NSValue(bytes: $0.baseAddress!, objCType: objCType) }
     }
 
-    static func floats(from v: Any) -> [Float]? {
+    public static func floats(from v: Any) -> [Float]? {
         guard let val = v as? NSValue, !(v is NSNumber),
               String(cString: val.objCType).hasPrefix("{CAColorMatrix=") else { return nil }
         var f = [Float](repeating: 0, count: 20)
@@ -280,7 +279,7 @@ enum BoneGlassJSON {
         }
         if let m = BoneColorMatrix.floats(from: v) { return ["matrix": m.map { Double($0) }] }
         if let val = v as? NSValue, String(cString: val.objCType).contains("CGSize") {
-            return ["size": [Double(val.cgSizeValue.width), Double(val.cgSizeValue.height)]]
+            return ["size": [Double(val.boneSize.width), Double(val.boneSize.height)]]
         }
         return nil
     }
@@ -292,7 +291,7 @@ enum BoneGlassJSON {
             return CGColor(srgbRed: c[0], green: c[1], blue: c[2], alpha: c.count > 3 ? c[3] : 1)
         }
         if let s = (d["size"] as? [NSNumber])?.map(\.doubleValue), s.count == 2 {
-            return NSValue(cgSize: CGSize(width: s[0], height: s[1]))
+            return NSValue.bone(size: CGSize(width: s[0], height: s[1]))
         }
         if let m = (d["matrix"] as? [NSNumber])?.map(\.floatValue), m.count == 20 {
             return BoneColorMatrix.value(m)
@@ -462,7 +461,7 @@ enum BoneSwiftLiteral {
         if let n = v as? NSNumber { return number(n.doubleValue) }
         if CFGetTypeID(v as CFTypeRef) == CGColor.typeID { return ".color(\(uiColor(v as! CGColor)))" }
         if let val = v as? NSValue, String(cString: val.objCType).contains("CGSize") {
-            return ".size(\(number(Double(val.cgSizeValue.width))), \(number(Double(val.cgSizeValue.height))))"
+            return ".size(\(number(Double(val.boneSize.width))), \(number(Double(val.boneSize.height))))"
         }
         return nil
     }
@@ -475,7 +474,7 @@ enum BoneSwiftLiteral {
             return "BoneColorMatrix.value([\(m.map { number(Double($0)) }.joined(separator: ", "))])"
         }
         if let val = v as? NSValue, String(cString: val.objCType).contains("CGSize") {
-            return "NSValue(cgSize: CGSize(width: \(number(Double(val.cgSizeValue.width))), height: \(number(Double(val.cgSizeValue.height)))))"
+            return "NSValue(cgSize: CGSize(width: \(number(Double(val.boneSize.width))), height: \(number(Double(val.boneSize.height)))))"
         }
         return nil
     }
@@ -501,3 +500,5 @@ extension GlassInput {
 }
 
 #endif
+
+#endif   // DEBUG

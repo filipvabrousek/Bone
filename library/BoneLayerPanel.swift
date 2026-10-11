@@ -10,6 +10,8 @@
 //  Research / simulator use only — private Core Animation filters, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import Combine
@@ -477,3 +479,5 @@ struct BoneLayerCard: View {
 }
 
 #endif
+
+#endif   // DEBUG

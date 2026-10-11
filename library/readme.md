@@ -2,12 +2,16 @@
 
 Research toolkit for looking underneath SwiftUI: the UIKit views and Core Animation layers it
 renders into, the private Liquid Glass filter and its shaders, and the AnimationKit engine that
-animates the glass. Copy this folder into your project and add it to all targets.
+animates the glass.
+
+**Install:** add the Swift package `https://github.com/filipvabrousek/Bone` (branch `main`) and
+`import Bone` – or copy this folder into your project and add it to all targets.
 
 ![The system's glass button stretched 6× by .glassFlex while dragged, stock on the left](https://raw.githubusercontent.com/filipvabrousek/Bone/main/Bone-27/captures/glass-flex.png)
 
 > **Research / simulator use only.** Bone uses private classes, selectors, ivars and Core Animation
 > keys. Never ship it in an App Store build; names change between OS releases.
+> It compiles only in Debug builds (empty in Release), so wrap your Bone calls in `#if DEBUG`.
 
 **Platforms**
 
@@ -16,6 +20,7 @@ animates the glass. Copy this folder into your project and add it to all targets
 | Hierarchy dump `.bone(into:)` | ✓ | ✓ | ✓ | ✓ |
 | 3D hierarchy `.bone3D` · `.bone3DFrom` | | | ✓ | |
 | Liquid Glass `.tune` · `.dumpGlass` | ✓ | ✓ | | ✓ |
+| `.tune(file:)` · `.dumpGlass(full: true)` | ✓ | | | ✓ |
 | `.dumpLayers` | ✓ | ✓ | | ✓ |
 | `.tuneLayers` · `.dumpShaders` | ✓ | | | ✓ |
 | `.probeGlass` | ✓ | | | ✓ |

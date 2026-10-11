@@ -3,12 +3,14 @@
 //  Bone library (visionOS)
 //
 //  Reusable SwiftUI cards for the volumetric hierarchy viewer:
-//  - ToolbarCard: loaded-dump info + file picker menu
-//  - InfoCard:    detail panel for the tapped node
+//  - BoneToolbarCard: loaded-dump info + file picker menu
+//  - BoneInfoCard:    detail panel for the tapped node
 //
-//  Both bind to VisionModel and are typically placed as RealityView
+//  Both bind to BoneVisionModel and are typically placed as RealityView
 //  attachments (see Bone-vision/ContentView.swift).
 //
+
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
 
 #if os(visionOS)
 
@@ -16,8 +18,8 @@ import SwiftUI
 
 // MARK: - Floating toolbar
 
-struct ToolbarCard: View {
-    var model: VisionModel
+struct BoneToolbarCard: View {
+    var model: BoneVisionModel
 
     var body: some View {
         HStack(spacing: 16) {
@@ -54,8 +56,8 @@ struct ToolbarCard: View {
 
 // MARK: - Detail card
 
-struct InfoCard: View {
-    var model: VisionModel
+struct BoneInfoCard: View {
+    var model: BoneVisionModel
 
     var body: some View {
         Group {
@@ -122,3 +124,5 @@ struct InfoCard: View {
 }
 
 #endif
+
+#endif   // DEBUG

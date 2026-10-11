@@ -20,6 +20,8 @@
 //  Research / simulator use only — private Core Animation filters, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import SwiftUI
@@ -32,7 +34,7 @@ import AppKit
 // MARK: - Properties and values
 
 /// What `.tuneLayers` can change on a layer.
-enum LayerProperty: String, CaseIterable, Hashable {
+public enum LayerProperty: String, CaseIterable, Hashable {
     case opacity, hidden, cornerRadius, masksToBounds, backgroundColor, borderWidth, borderColor
     case shadowOpacity, shadowRadius, shadowOffset, shadowColor
     /// Degrees around the layer's centre; rotationX/Y tilt in 3D (see `perspective`).
@@ -47,11 +49,11 @@ enum LayerProperty: String, CaseIterable, Hashable {
     case contents
     case contentsGravity
 
-    static let transformProperties: Set<LayerProperty> =
+    public static let transformProperties: Set<LayerProperty> =
         [.rotation, .rotationX, .rotationY, .scale, .scaleX, .scaleY, .translationX, .translationY, .perspective]
 
     /// The plain Core Animation key, for the properties that map 1:1.
-    var key: String? {
+    public var key: String? {
         switch self {
         case .opacity, .hidden, .cornerRadius, .masksToBounds, .backgroundColor, .borderWidth, .borderColor,
              .shadowOpacity, .shadowRadius, .shadowOffset, .shadowColor, .contents, .contentsGravity:
@@ -62,7 +64,7 @@ enum LayerProperty: String, CaseIterable, Hashable {
     }
 }
 
-enum LayerValue: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, ExpressibleByBooleanLiteral {
+public enum LayerValue: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, ExpressibleByBooleanLiteral {
     case number(Double)
     case color(CGColor)
     case size(CGSize)
@@ -71,36 +73,36 @@ enum LayerValue: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Express
     case filters([BoneFilter])
     case gravity(CALayerContentsGravity)
 
-    init(floatLiteral v: Double) { self = .number(v) }
-    init(integerLiteral v: Int) { self = .number(Double(v)) }
-    init(booleanLiteral v: Bool) { self = .number(v ? 1 : 0) }
-    static func color(_ c: BonePlatformColor) -> LayerValue { .color(c.cgColor) }
-    static func size(_ w: Double, _ h: Double) -> LayerValue { .size(CGSize(width: w, height: h)) }
+    public init(floatLiteral v: Double) { self = .number(v) }
+    public init(integerLiteral v: Int) { self = .number(Double(v)) }
+    public init(booleanLiteral v: Bool) { self = .number(v ? 1 : 0) }
+    public static func color(_ c: BonePlatformColor) -> LayerValue { .color(c.cgColor) }
+    public static func size(_ w: Double, _ h: Double) -> LayerValue { .size(CGSize(width: w, height: h)) }
     #if canImport(UIKit)
     /// Any UIImage, SF Symbols included (rasterised when it has no bitmap).
-    static func image(_ i: UIImage) -> LayerValue {
+    public static func image(_ i: UIImage) -> LayerValue {
         if let cg = i.cgImage { return .image(cg) }
         let r = UIGraphicsImageRenderer(size: i.size).image { _ in i.draw(at: .zero) }
         return r.cgImage.map { .image($0) } ?? .number(0)
     }
     #else
     /// Any NSImage, SF Symbols included.
-    static func image(_ i: NSImage) -> LayerValue {
+    public static func image(_ i: NSImage) -> LayerValue {
         var r = CGRect(origin: .zero, size: i.size)
         return i.cgImage(forProposedRect: &r, context: nil, hints: nil).map { .image($0) } ?? .number(0)
     }
     #endif
 
-    var number: Double? { if case .number(let d) = self { return d }; return nil }
+    public var number: Double? { if case .number(let d) = self { return d }; return nil }
 
     /// What Core Animation expects for -setValue:forKey:.
-    var object: Any? {
+    public var object: Any? {
         switch self {
         case .number(let d): return NSNumber(value: d)
         case .color(let c): return c
         case .size(let s):
             #if canImport(UIKit)
-            return NSValue(cgSize: s)
+            return NSValue.bone(size: s)
             #else
             return NSValue(size: s)
             #endif
@@ -113,16 +115,16 @@ enum LayerValue: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Express
 }
 
 /// Blend modes for `.blendMode` (Core Animation's *BlendMode compositing filters).
-enum LayerBlend: String, CaseIterable {
+public enum LayerBlend: String, CaseIterable {
     case normal, multiply, screen, overlay, darken, lighten, colorDodge, colorBurn, softLight, hardLight,
          difference, exclusion, hue, saturation, color, luminosity, linearBurn, linearDodge, linearLight,
          pinLight, subtract, divide
 
-    var filterType: String { BoneFilterTypes.resolve(rawValue.prefix(1).uppercased() + rawValue.dropFirst() + "BlendMode") }
+    public var filterType: String { BoneFilterTypes.resolve(rawValue.prefix(1).uppercased() + rawValue.dropFirst() + "BlendMode") }
 }
 
 /// Core Animation filters for `.filters([...])`.
-enum BoneFilter {
+public enum BoneFilter {
     case gaussianBlur(Double)                       // radius
     case colorMatrix([Float])                       // 4×5, see BoneColorMatrix
     case colorInvert
@@ -136,7 +138,7 @@ enum BoneFilter {
     /// Any filter type the SDK exports (kCAFilter…), e.g. .raw("chromaticAberration", ["inputAmount": 4]).
     case raw(String, [String: Any] = [:])
 
-    var type: String {
+    public var type: String {
         switch self {
         case .gaussianBlur: return BoneFilterTypes.resolve("GaussianBlur")
         case .colorMatrix: return BoneFilterTypes.resolve("ColorMatrix")
@@ -152,7 +154,7 @@ enum BoneFilter {
         }
     }
 
-    var inputs: [String: Any] {
+    public var inputs: [String: Any] {
         switch self {
         case .gaussianBlur(let r): return ["inputRadius": r]
         case .colorMatrix(let m): return ["inputColorMatrix": BoneColorMatrix.value(m)]
@@ -166,7 +168,7 @@ enum BoneFilter {
     }
 
     /// A new CAFilter, named so Bone can find its own filters again.
-    func make(name: String) -> NSObject? {
+    public func make(name: String) -> NSObject? {
         guard let f = BoneFilterTypes.filter(type: type) else { return nil }
         f.setValue(name, forKey: "name")
         for (k, v) in inputs { f.setValue(v, forKey: k) }
@@ -174,7 +176,7 @@ enum BoneFilter {
     }
 
     /// Swift source, for the panel's Copy Swift.
-    var swift: String {
+    public var swift: String {
         let n = BoneSwiftLiteral.number
         switch self {
         case .gaussianBlur(let r): return ".gaussianBlur(\(n(r)))"
@@ -215,34 +217,34 @@ enum BoneFilterTypes {
 ///
 ///     .tuneLayers([.rotation: 10, .blendMode: .blend(.multiply)], where: .text)
 ///     .tuneLayers(.outline + [.opacity: 0.6])
-struct LayerTuning: ExpressibleByDictionaryLiteral {
-    var values: [LayerProperty: LayerValue] = [:]
+public struct LayerTuning: ExpressibleByDictionaryLiteral {
+    public var values: [LayerProperty: LayerValue] = [:]
     /// Any other layer key or key path, e.g. "cornerCurve" or "filters.gaussianBlur.inputRadius".
-    var raw: [String: Any] = [:]
+    public var raw: [String: Any] = [:]
 
-    init(dictionaryLiteral elements: (LayerProperty, LayerValue)...) {
+    public init(dictionaryLiteral elements: (LayerProperty, LayerValue)...) {
         for (k, v) in elements { values[k] = v }
     }
-    init(values: [LayerProperty: LayerValue] = [:], raw: [String: Any] = [:]) {
+    public init(values: [LayerProperty: LayerValue] = [:], raw: [String: Any] = [:]) {
         self.values = values
         self.raw = raw
     }
 
-    static func + (l: LayerTuning, r: LayerTuning) -> LayerTuning {
+    public static func + (l: LayerTuning, r: LayerTuning) -> LayerTuning {
         LayerTuning(values: l.values.merging(r.values) { _, new in new }, raw: l.raw.merging(r.raw) { _, new in new })
     }
-    static func raw(_ d: [String: Any]) -> LayerTuning { LayerTuning(raw: d) }
+    public static func raw(_ d: [String: Any]) -> LayerTuning { LayerTuning(raw: d) }
 
     /// A pink border on every targeted layer – shows where SwiftUI's layers are.
-    static let outline: LayerTuning = [.borderWidth: 1, .borderColor: .color(.systemPink)]
+    public static let outline: LayerTuning = [.borderWidth: 1, .borderColor: .color(.systemPink)]
 
-    var isEmpty: Bool { values.isEmpty && raw.isEmpty }
-    var hasTransform: Bool { !LayerProperty.transformProperties.isDisjoint(with: values.keys) }
+    public var isEmpty: Bool { values.isEmpty && raw.isEmpty }
+    public var hasTransform: Bool { !LayerProperty.transformProperties.isDisjoint(with: values.keys) }
 
-    func number(_ p: LayerProperty, _ fallback: Double) -> Double { values[p]?.number ?? fallback }
+    public func number(_ p: LayerProperty, _ fallback: Double) -> Double { values[p]?.number ?? fallback }
 
     /// Rotation/scale/translation about the layer's centre, whatever its anchor point.
-    func transform(for layer: CALayer) -> CATransform3D {
+    public func transform(for layer: CALayer) -> CATransform3D {
         let rad = Double.pi / 180
         let s = number(.scale, 1)
         let cx = (0.5 - layer.anchorPoint.x) * layer.bounds.width
@@ -259,33 +261,33 @@ struct LayerTuning: ExpressibleByDictionaryLiteral {
 }
 
 /// Which layers `.tuneLayers` changes. Matched on the layer's class name.
-struct LayerTarget {
-    let name: String
-    let matches: (CALayer) -> Bool
+public struct LayerTarget {
+    public let name: String
+    public let matches: (CALayer) -> Bool
 
     /// Layers without sublayers that have a size – every drawn element (default).
-    static let leaves = LayerTarget(name: ".leaves") { ($0.sublayers ?? []).isEmpty && $0.bounds.width > 0 && $0.bounds.height > 0 }
-    static let all = LayerTarget(name: ".all") { _ in true }
+    public static let leaves = LayerTarget(name: ".leaves") { ($0.sublayers ?? []).isEmpty && $0.bounds.width > 0 && $0.bounds.height > 0 }
+    public static let all = LayerTarget(name: ".all") { _ in true }
     /// CGDrawingLayer – Text, button labels, anything SwiftUI draws with Core Graphics.
-    static let text = className("CGDrawingLayer", name: ".text")
+    public static let text = className("CGDrawingLayer", name: ".text")
     /// ColorShapeLayer & co – SF Symbols, filled shapes.
-    static let shape = className("ShapeLayer", name: ".shape")
-    static let gradient = className("GradientLayer", name: ".gradient")
+    public static let shape = className("ShapeLayer", name: ".shape")
+    public static let gradient = className("GradientLayer", name: ".gradient")
     /// The Liquid Glass backdrop (use .tune for its filter inputs).
-    static let glass = LayerTarget(name: ".glass") { BoneGlassLayers.filters(on: $0).contains(where: \.isGlass) }
+    public static let glass = LayerTarget(name: ".glass") { BoneGlassLayers.filters(on: $0).contains(where: \.isGlass) }
 
-    static func className(_ fragment: String, name: String? = nil) -> LayerTarget {
+    public static func className(_ fragment: String, name: String? = nil) -> LayerTarget {
         LayerTarget(name: name ?? ".className(\"\(fragment)\")") { String(describing: type(of: $0)).contains(fragment) }
     }
-    static func custom(_ name: String, _ matches: @escaping (CALayer) -> Bool) -> LayerTarget {
+    public static func custom(_ name: String, _ matches: @escaping (CALayer) -> Bool) -> LayerTarget {
         LayerTarget(name: name, matches: matches)
     }
-    static func || (a: LayerTarget, b: LayerTarget) -> LayerTarget {
+    public static func || (a: LayerTarget, b: LayerTarget) -> LayerTarget {
         LayerTarget(name: "\(a.name) || \(b.name)") { a.matches($0) || b.matches($0) }
     }
 
     /// The narrowest preset that matches a layer (for Copy Swift).
-    static func preset(for layer: CALayer) -> LayerTarget {
+    public static func preset(for layer: CALayer) -> LayerTarget {
         for t in [text, shape, gradient, glass] where t.matches(layer) { return t }
         return className(String(describing: type(of: layer)))
     }
@@ -370,12 +372,12 @@ extension View {
     /// - Parameters:
     ///   - target: which layers – `.leaves` (default), `.text`, `.shape`, `.gradient`, `.glass`, `.all`, `.className("…")`.
     ///   - log: optional file name; writes what changed, once.
-    func tuneLayers(_ tuning: LayerTuning, where target: LayerTarget = .leaves, log: String? = nil) -> some View {
+    public func tuneLayers(_ tuning: LayerTuning, where target: LayerTarget = .leaves, log: String? = nil) -> some View {
         BoneLayerTuneHost(tuning: tuning, target: target, log: log) { self }
     }
 
     /// Writes the layer tree of this view – classes, frames, filters, which targets match.
-    func dumpLayers(_ fileName: String, after delay: Double = 1.5) -> some View {
+    public func dumpLayers(_ fileName: String, after delay: Double = 1.5) -> some View {
         BoneLayerDumpHost(fileName: fileName, delay: delay) { self }
     }
 }
@@ -547,3 +549,5 @@ enum BoneLayerDump {
 }
 
 #endif
+
+#endif   // DEBUG

@@ -22,6 +22,8 @@
 //  project captures/ folder (simulator), then the app's Documents folder.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if os(visionOS)
 
 import SwiftUI
@@ -55,8 +57,8 @@ public extension View {
 enum Bone3DDumpWriter {
 
     /// Brief text dump (classic format) of the captured tree.
-    static func writeBrief(roots: [DumpNode], to name: String) {
-        var text = DumpSerializer.briefText(roots: roots)
+    static func writeBrief(roots: [BoneDumpNode], to name: String) {
+        var text = BoneDumpSerializer.briefText(roots: roots)
         text += "-------------------------\n"
         text += "OS: \(UIDevice.current.systemName):\(ProcessInfo().operatingSystemVersion.majorVersion)\n"
         writeData(Data(text.utf8), to: name)
@@ -90,7 +92,7 @@ enum Bone3DDumpWriter {
 private struct Bone3DCaptureHost<Content: View>: UIViewRepresentable {
     let content: Content
     var dumpFile: String?
-    let onCapture: ([DumpNode]) -> Void
+    let onCapture: ([BoneDumpNode]) -> Void
 
     func makeCoordinator() -> Coordinator { Coordinator() }
 
@@ -179,13 +181,13 @@ enum Bone3DFileResolver {
 
 @Observable
 final class Bone3DModel {
-    var selected: DumpNode?
+    var selected: BoneDumpNode?
     var treeRoot: Entity?
-    private var registry: [String: (node: DumpNode, entity: ModelEntity)] = [:]
+    private var registry: [String: (node: BoneDumpNode, entity: ModelEntity)] = [:]
     private var selectedEntity: ModelEntity?
-    private var roots: [DumpNode] = []
+    private var roots: [BoneDumpNode] = []
 
-    func set(roots: [DumpNode]) {
+    func set(roots: [BoneDumpNode]) {
         self.roots = roots
         rebuild()
     }
@@ -199,7 +201,7 @@ final class Bone3DModel {
         guard !roots.isEmpty else { return }
 
         // Unbounded volumetric fit (matches the volumetric demo windows).
-        let built = HierarchyBuilder.buildTree(roots: roots, fit: [1.3, 0.8, 0.5])
+        let built = BoneHierarchyBuilder.buildTree(roots: roots, fit: [1.3, 0.8, 0.5])
         registry = built.registry
         treeRoot.addChild(built.container)
     }
@@ -221,7 +223,7 @@ final class Bone3DModel {
 // MARK: - Unbounded volumetric graph (tree floats free, cards as attachments)
 
 private struct Bone3DVolumeView<Header: View>: View {
-    var roots: [DumpNode]
+    var roots: [BoneDumpNode]
     @ViewBuilder var header: () -> Header
     @State private var model = Bone3DModel()
 
@@ -326,7 +328,7 @@ private struct Bone3DInfoCard: View {
 private struct Bone3DLiveContainer<Content: View>: View {
     let content: Content
     var dumpFile: String?
-    @State private var roots: [DumpNode] = []
+    @State private var roots: [BoneDumpNode] = []
 
     var body: some View {
         Bone3DVolumeView(roots: roots) {
@@ -350,7 +352,7 @@ private struct Bone3DLiveContainer<Content: View>: View {
 private struct Bone3DFileContainer<Content: View>: View {
     let content: Content
     let file: String
-    @State private var roots: [DumpNode] = []
+    @State private var roots: [BoneDumpNode] = []
     @State private var loadError: String?
 
     var body: some View {
@@ -382,7 +384,7 @@ private struct Bone3DFileContainer<Content: View>: View {
                 // of output_capture_*.json and .bone(into: "*.json").
                 if let deep = try? JSONDecoder().decode(BoneDump.self, from: data) {
                     roots = deep.dumpRoots()
-                } else if let legacy = try? DumpSerializer.rootsFromJSON(data) {
+                } else if let legacy = try? BoneDumpSerializer.rootsFromJSON(data) {
                     roots = legacy
                 } else {
                     loadError = "Not a Bone JSON dump: \(url.lastPathComponent)"
@@ -392,10 +394,12 @@ private struct Bone3DFileContainer<Content: View>: View {
                     loadError = "Could not read: \(url.lastPathComponent)"
                     return
                 }
-                roots = BriefDumpParser.parse(text).roots
+                roots = BoneBriefDumpParser.parse(text).roots
             }
         }
     }
 }
 
 #endif
+
+#endif   // DEBUG

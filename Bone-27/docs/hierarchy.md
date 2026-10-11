@@ -51,6 +51,10 @@ Not on watchOS: `_UIMagicMorphAnimation` and `_UILiquidMorphAnimation` (no conte
 `.liquidMorph` and the menu-morph timeline do not apply. The older `wbone(name:)` still works as a
 deprecated alias.
 
+**On macOS** the walk names each view from Swift's `dump` of it, which is slow for big SwiftUI
+hosting views: a small view takes seconds, but on macOS 27 a `List` did not finish within
+7 minutes (the dump of SwiftUI's environment runs at 100% CPU).
+
 ## `.bone3D(into:)` — visionOS
 
 ```swift

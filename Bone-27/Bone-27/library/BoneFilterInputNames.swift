@@ -9,6 +9,8 @@
 //  Research / simulator use only – private Core Animation keys.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import Foundation
@@ -165,3 +167,5 @@ enum BoneFilterInputNames {
 }
 
 #endif
+
+#endif   // DEBUG

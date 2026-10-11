@@ -36,6 +36,8 @@
 //  Research / simulator use only — private API, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if os(watchOS)
 
 import SwiftUI
@@ -45,12 +47,12 @@ import ObjectiveC
 extension View {
 
     /// Dumps the UIKit view tree behind this view (watchOS) to `into` and shows it as an overlay.
-    func bone(into name: String, after delay: Double = 1.5) -> some View {
+    public func bone(into name: String, after delay: Double = 1.5) -> some View {
         modifier(BoneWatchModifier(name: name, delay: delay))
     }
 
     @available(*, deprecated, renamed: "bone(into:)")
-    func wbone(name: String) -> some View { bone(into: name) }
+    public func wbone(name: String) -> some View { bone(into: name) }
 }
 
 struct BoneWatchModifier: ViewModifier {
@@ -225,7 +227,7 @@ enum BoneWatch {
 extension View {
 
     /// Writes the glass filter inputs of the glass in this view (watchOS), like .dumpGlass on iOS.
-    func dumpGlass(_ fileName: String, only: [GlassInput]? = nil, after delay: Double = 1.5) -> some View {
+    public func dumpGlass(_ fileName: String, only: [GlassInput]? = nil, after delay: Double = 1.5) -> some View {
         modifier(BoneWatchAreaModifier { area in
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 BoneWatch.write(BoneGlassRuntime.dumpGlass(BoneWatch.filterLayers(in: area.frame), only: only), fileName)
@@ -234,7 +236,7 @@ extension View {
     }
 
     /// Overrides Liquid Glass filter inputs of the glass in this view (watchOS), like .tune on iOS.
-    func tune(_ tuning: GlassTuning, log: String? = nil) -> some View {
+    public func tune(_ tuning: GlassTuning, log: String? = nil) -> some View {
         modifier(BoneWatchAreaModifier { area in
             let tuner = BoneGlassRuntimeTuner(values: tuning.caValues, log: log,
                                               collect: { [weak area] in BoneWatch.filterLayers(in: area?.frame ?? .null) },
@@ -289,7 +291,7 @@ extension View {
 
     /// Writes the layers SwiftUI draws this view into (watchOS), in the iOS .dumpLayers format.
     /// (.tuneLayers is iOS and macOS only: CALayer and CATransform3D are unavailable on watchOS.)
-    func dumpLayers(_ fileName: String, after delay: Double = 1.5) -> some View {
+    public func dumpLayers(_ fileName: String, after delay: Double = 1.5) -> some View {
         modifier(BoneWatchAreaModifier { area in
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 BoneWatch.write(BoneWatch.dumpLayers(in: area.frame), fileName)
@@ -347,3 +349,5 @@ extension BoneWatch {
 }
 
 #endif
+
+#endif   // DEBUG

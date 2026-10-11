@@ -22,6 +22,8 @@
 //  Research / simulator use only — private API, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if canImport(UIKit) && !os(visionOS) && !os(watchOS)
 
 import SwiftUI
@@ -35,7 +37,7 @@ extension View {
     ///     Menu { … } label: { … }
     ///         .buttonStyle(.glass)
     ///         .dumpMorph("menu-morph.csv")
-    func dumpMorph(_ fileName: String = "morph-values.csv", trigger: Bool = true) -> some View {
+    public func dumpMorph(_ fileName: String = "morph-values.csv", trigger: Bool = true) -> some View {
         background(BoneTimelineAnchor(speed: 1, scrubber: true, trigger: trigger, csv: fileName))
     }
 }
@@ -116,7 +118,7 @@ enum BoneMorphValues {
                 return [("x", f(r.minX)), ("y", f(r.minY)), ("width", f(r.width)), ("height", f(r.height))]
             }
             if type.hasPrefix("{CGPoint") { let p = v.cgPointValue; return [("x", f(p.x)), ("y", f(p.y))] }
-            if type.hasPrefix("{CGSize") { let s = v.cgSizeValue; return [("width", f(s.width)), ("height", f(s.height))] }
+            if type.hasPrefix("{CGSize") { let s = v.boneSize; return [("width", f(s.width)), ("height", f(s.height))] }
             if type.hasPrefix("{CATransform3D") { return transform(doubles(of: v.caTransform3DValue)) }
             // any other struct of doubles (cornerRadii: {CACornerRadii={CGSize=dd}{CGSize=dd}{CGSize=dd}{CGSize=dd}})
             if let d = structDoubles(v, type) { return labelled(d, type) }
@@ -186,3 +188,5 @@ enum BoneMorphValues {
 }
 
 #endif
+
+#endif   // DEBUG

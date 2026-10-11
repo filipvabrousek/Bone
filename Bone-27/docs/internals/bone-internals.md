@@ -170,7 +170,7 @@ dump** (`output.txt`, depth encoded by leading `-`). With iOS 27 it also runs `B
   no ivar list shows: the ViewGraph, renderer, preference bridges;
 - a `Codable` node tree → `<name>_capture.json` / `.txt`.
 
-On visionOS `.bone3D()` turns the same walk into RealityKit slabs (`HierarchyBuilder`), and
+On visionOS `.bone3D()` turns the same walk into RealityKit slabs (`BoneHierarchyBuilder`), and
 `.bone3DFrom(_:)` rebuilds the graph from a brief dump made on another OS – the basis of the
 cross-OS diffing.
 

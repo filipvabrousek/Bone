@@ -5,7 +5,7 @@ Liquid Glass is drawn by a Core Animation filter of type `glassBackground` on a
 face colour matrix, key-light highlight, bleed, HDR headroom – are the real parameters. These
 modifiers write, read and probe them on the system's own glass.
 
-## `.tune(_:)` — iOS
+## `.tune(_:)` — iOS, macOS, watchOS
 
 ```swift
 Button("Liquid") {}.glassEffect().tune(.noShadow + .noLensing)
@@ -43,7 +43,7 @@ file is `<project>/captures/<name>` and is re-read whenever it changes: edit it 
 the glass, no rebuild. Keys are `GlassInput` case names or Core Animation keys; non-numbers are
 tagged: `{"color": [r, g, b, a]}`, `{"size": [w, h]}`, `{"matrix": [20 numbers]}`.
 
-## `.dumpGlass(_:only:after:)` — iOS
+## `.dumpGlass(_:only:after:)` — iOS, macOS, watchOS
 
 ```swift
 Button("Liquid") {}.glassEffect().dumpGlass("glass.txt")                                  // all inputs
@@ -94,9 +94,11 @@ with its SDF variant (16).
 
 ## On watchOS and macOS
 
-`.dumpGlass(_:only:after:)` and `.tune(_:log:)` work on Apple Watch and on the Mac too, with the
-same types and presets. One engine serves both (`BoneGlassRuntime.swift`); `BoneWatch.swift` and
-`BoneMac.swift` decide which windows to walk and which glass lies in the modified view:
+`.dumpGlass` and `.tune` work on the Mac and on Apple Watch too, with the same types and presets.
+The Mac runs the iOS engine (`BoneGlassEngine.swift`) – so `.tune(file:)` and
+`.dumpGlass(full: true)` work there as well (`captures/mac-glass-full.txt`). The watch reaches the
+same glass through the Objective-C runtime (`BoneGlassRuntime.swift`). All three write the same
+report and log; `BoneMac.swift` and `BoneWatch.swift` decide which glass lies in the modified view:
 
 ```swift
 Button("Glass") {}.buttonStyle(.glass).dumpGlass("watch-glass.txt")
@@ -109,7 +111,7 @@ watchOS has no public UIKit, but the watch's glass is the iPhone's – a `CABack
 runtime and the same key paths. Both act on the glass inside the modified view's frame; `.tune`
 re-applies 8× a second. On macOS 27 the same tuning changed 10 inputs of a `.glassEffect()` panel
 (`captures/mac-tune.txt`) while the stock button beside it kept its values (`captures/mac-glass.txt`).
-`.tune(file:)` is iOS-only for now.
+`.tune(file:)` reads `<project>/captures/<name>` on the Mac and reloads it when it changes.
 
 A glass button on the watchOS 27 simulator (`captures/watch-glass.txt`), next to the iOS 27 demo
 button (`captures/glass-default.txt`; a larger button, and refraction scales with the shape):

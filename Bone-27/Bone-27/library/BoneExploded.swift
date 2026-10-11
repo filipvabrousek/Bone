@@ -25,6 +25,8 @@
 //  Research / simulator use only — private API, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if canImport(UIKit) && !os(watchOS)
 
 import SwiftUI
@@ -460,3 +462,5 @@ struct BoneExplodedScreen: View {
 }
 
 #endif
+
+#endif   // DEBUG

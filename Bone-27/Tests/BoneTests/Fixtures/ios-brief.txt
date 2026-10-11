@@ -1,0 +1,244 @@
+ 
+ 
+_UIHostingView<Sample>:
+ superclass: UIView 
+ layer: <CALayer:0x1023b5bf0 
+ sublayers: <CALayer:0x1023b6f70
+ 
+ 
+->UIKitPlatformViewHost<ListRepresentable<CollectionViewListDataSource<Never>, SelectionManagerBox<Never>>>:
+ superclass: UICorePlatformViewHost<ListRepresentable<CollectionViewListDataSource<Never>,SelectionManagerBox<Never>>> 
+ layer: <CALayer:0x1023b6f70 
+ sublayers: <CALayer:0x1023b5e60
+ 
+ 
+-->UpdateCoalescingCollectionView:
+ superclass: UICollectionView 
+ layer: <CALayer:0x1023b5e60 
+ sublayers: <CALayer:0x104a120d0 / <CALayer:0x1023b7db0 / <CALayer:0x102200ab0 / <CALayer:0x1023b7e10 / <CALayer:0x104a11e00 / <CALayer:0x104a12550 / <CALayer:0x104a12580 / <CALayer:0x104a125b0 / <CALayer:0x1023b71e0
+ DataSource: SwiftUI.ShadowListDataSource<SwiftUI.CollectionViewListDataSource<Swift.Never>>
+Recorder: SwiftUI.ShadowListUpdateRecorder<SwiftUI.CollectionViewListDataSource<Swift.Never>>
+Base: SwiftUI.CollectionViewListDataSource<Swift.Never>
+Super: SwiftUI.UICollectionViewListCoordinatorBase<SwiftUI.CollectionViewListDataSource<Swift.Never>, 
+ 
+ 
+--->_UICollectionViewListLayoutSectionBackgroundColorDecorationView:
+ superclass: UICollectionReusableView 
+ layer: <CALayer:0x104a120d0
+ 
+ 
+--->ListCollectionViewCell:
+ superclass: ListCollectionViewCellBase<_ViewList_View> 
+ layer: <CALayer:0x1023b7db0 
+ sublayers: <CALayer:0x1023b7ed0 / <CALayer:0x1023b7d50
+ 
+ 
+---->_UISystemBackgroundView:
+ superclass: UIView 
+ layer: <CALayer:0x1023b7ed0 
+ sublayers: <CALayer:0x1023b7f00
+ 
+ 
+----->UIView:
+ superclass: UIResponder 
+ layer: <CALayer:0x1023b7f00
+ 
+ 
+---->_UICollectionViewListCellContentView:
+ superclass: UIView 
+ layer: <CALayer:0x1023b7d50 
+ sublayers: <CALayer:0x102203c90
+ 
+ 
+----->CellHostingView<ModifiedContent<_ViewList_View, CollectionViewCellModifier>>:
+ superclass: UIItemHostingView<ModifiedContent<_ViewList_View,CollectionViewCellModifier>> 
+ layer: <CALayer:0x102203c90 
+ sublayers: <_TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer:0x104a78a00
+ 
+ 
+--->ListCollectionViewCell:
+ superclass: ListCollectionViewCellBase<_ViewList_View> 
+ layer: <CALayer:0x102200ab0 
+ sublayers: <CALayer:0x1022028b0 / <CALayer:0x1022015f0
+ 
+ 
+---->_UISystemBackgroundView:
+ superclass: UIView 
+ layer: <CALayer:0x1022028b0 
+ sublayers: <CALayer:0x102200d50
+ 
+ 
+----->UIView:
+ superclass: UIResponder 
+ layer: <CALayer:0x102200d50
+ 
+ 
+---->_UICollectionViewListCellContentView:
+ superclass: UIView 
+ layer: <CALayer:0x1022015f0 
+ sublayers: <CALayer:0x102200db0
+ 
+ 
+----->CellHostingView<ModifiedContent<_ViewList_View, CollectionViewCellModifier>>:
+ superclass: UIItemHostingView<ModifiedContent<_ViewList_View,CollectionViewCellModifier>> 
+ layer: <CALayer:0x102200db0 
+ sublayers: <_TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer:0x104a78980
+ 
+ 
+--->ListCollectionViewCell:
+ superclass: ListCollectionViewCellBase<_ViewList_View> 
+ layer: <CALayer:0x1023b7e10 
+ sublayers: <CALayer:0x1023b7810 / <CALayer:0x1023b78d0
+ 
+ 
+---->_UISystemBackgroundView:
+ superclass: UIView 
+ layer: <CALayer:0x1023b7810 
+ sublayers: <CALayer:0x1023b7960
+ 
+ 
+----->UIView:
+ superclass: UIResponder 
+ layer: <CALayer:0x1023b7960
+ 
+ 
+---->_UICollectionViewListCellContentView:
+ superclass: UIView 
+ layer: <CALayer:0x1023b78d0 
+ sublayers: <CALayer:0x1023b7870
+ 
+ 
+----->CellHostingView<ModifiedContent<_ViewList_View, CollectionViewCellModifier>>:
+ superclass: UIItemHostingView<ModifiedContent<_ViewList_View,CollectionViewCellModifier>> 
+ layer: <CALayer:0x1023b7870 
+ sublayers: <_TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer:0x104a78a80 / <CALayer:0x104a11740
+ 
+ 
+------>UIKitPlatformViewHost<PlatformViewRepresentableAdaptor<Switch>>:
+ superclass: UICorePlatformViewHost<PlatformViewRepresentableAdaptor<Switch>> 
+ layer: <CALayer:0x104a11740 
+ sublayers: <CALayer:0x104a10030
+ 
+ 
+------->UISwitch:
+ superclass: UIControl 
+ layer: <CALayer:0x104a10030 
+ sublayers: <CALayer:0x104a10090
+ 
+ 
+-------->UISwitchModernVisualElement:
+ superclass: UISwitchVisualElement 
+ layer: <CALayer:0x104a10090 
+ sublayers: <CALayer:0x104a11c20 / <CALayer:0x104a11ce0 / <CALayer:0x104a110b0
+ 
+ 
+--------->UIView:
+ superclass: UIResponder 
+ layer: <CALayer:0x104a11c20
+ 
+ 
+--------->UIView:
+ superclass: UIResponder 
+ layer: <CALayer:0x104a11ce0 
+ sublayers: <CALayer:0x104a11b60 / <CALayer:0x104a126a0 
+ contents:<CGImage 0x10494fe80> (DP)
+	<<CGColorSpace 0x1013b2f40> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)>
+		headroom = 1.000000  
+		width = 1890, height = 3, bpc = 8, bpp = 32, row bytes = 7584, 
+		kCGImageAlphaPremultipliedLast | 0 (default byte order)  | kCGImagePixelFormatPacked 
+		is mask? No, has masking color? No, has soft mask? No, has matte? No, should interpolate? Yes / 
+ 
+ 
+---------->UIImageView:
+ superclass: UIView 
+ layer: <CALayer:0x104a11b60
+ 
+ 
+---------->UIView:
+ superclass: UIResponder 
+ layer: <CALayer:0x104a126a0 
+ sublayers: <CALayer:0x104a11ad0 / <CALayer:0x104a11b00
+ 
+ 
+----------->UIImageView:
+ superclass: UIView 
+ layer: <CALayer:0x104a11ad0
+ 
+ 
+----------->UIImageView:
+ superclass: UIView 
+ layer: <CALayer:0x104a11b00
+ 
+ 
+--------->_UILiquidLensView:
+ superclass: UIView 
+ layer: <CALayer:0x104a110b0 
+ sublayers: <CALayer:0x104a10d50
+ 
+ 
+---------->UIView:
+ superclass: UIResponder 
+ layer: <CALayer:0x104a10d50 
+ sublayers: <CALayer:0x104a11020
+ 
+ 
+----------->UIView:
+ superclass: UIResponder 
+ layer: <CALayer:0x104a11020
+ 
+ 
+--->ListCollectionViewCell:
+ superclass: ListCollectionViewCellBase<_ViewList_View> 
+ layer: <CALayer:0x104a11e00 
+ sublayers: <CALayer:0x104a11ef0 / <CALayer:0x104a11e60
+ 
+ 
+---->_UISystemBackgroundView:
+ superclass: UIView 
+ layer: <CALayer:0x104a11ef0 
+ sublayers: <CALayer:0x104a11f20
+ 
+ 
+----->UIView:
+ superclass: UIResponder 
+ layer: <CALayer:0x104a11f20
+ 
+ 
+---->_UICollectionViewListCellContentView:
+ superclass: UIView 
+ layer: <CALayer:0x104a11e60 
+ sublayers: <CALayer:0x104a12010
+ 
+ 
+----->CellHostingView<ModifiedContent<_ViewList_View, CollectionViewCellModifier>>:
+ superclass: UIItemHostingView<ModifiedContent<_ViewList_View,CollectionViewCellModifier>> 
+ layer: <CALayer:0x104a12010 
+ sublayers: <_TtC7SwiftUIP33_E19F490D25D5E0EC8A24903AF958E34115ColorShapeLayer:0x104a10000
+ 
+ 
+--->_UICollectionViewListSeparatorView:
+ superclass: UICollectionReusableView 
+ layer: <CALayer:0x104a12550
+ 
+ 
+--->_UICollectionViewListSeparatorView:
+ superclass: UICollectionReusableView 
+ layer: <CALayer:0x104a12580
+ 
+ 
+--->_UICollectionViewListSeparatorView:
+ superclass: UICollectionReusableView 
+ layer: <CALayer:0x104a125b0
+ 
+ 
+--->_UIScrollViewScrollIndicator:
+ superclass: UIView 
+ layer: <CALayer:0x1023b71e0 
+ sublayers: <CALayer:0x1023b7000
+ 
+ 
+---->UIView:
+ superclass: UIResponder 
+ layer: <CALayer:0x1023b7000
+-------------------------
+OS: iOS:27

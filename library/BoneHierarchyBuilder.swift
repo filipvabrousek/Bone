@@ -1,5 +1,5 @@
 //
-//  HierarchyBuilder.swift
+//  BoneHierarchyBuilder.swift
 //  Bone-vision
 //
 //  RealityKit entity factory for the 3D hierarchy: a colored slab per view
@@ -7,13 +7,15 @@
 //  connector struts between parent and child.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if os(visionOS)
 
 import SwiftUI
 import RealityKit
 import UIKit
 
-enum HierarchyBuilder {
+enum BoneHierarchyBuilder {
 
     /// Builds the full 3D tree for a set of dump roots: tidy-tree layout
     /// (leaves get sequential x slots, parents center over children, depth
@@ -21,18 +23,18 @@ enum HierarchyBuilder {
     /// and a registry mapping entity names (node UUIDs) back to nodes.
     /// `fit` is the bounding box (in meters) the tree is scaled into.
     static func buildTree(
-        roots: [DumpNode],
+        roots: [BoneDumpNode],
         fit: SIMD3<Float>
-    ) -> (container: Entity, registry: [String: (node: DumpNode, entity: ModelEntity)]) {
+    ) -> (container: Entity, registry: [String: (node: BoneDumpNode, entity: ModelEntity)]) {
 
         let container = Entity()
-        var registry: [String: (node: DumpNode, entity: ModelEntity)] = [:]
+        var registry: [String: (node: BoneDumpNode, entity: ModelEntity)] = [:]
         guard !roots.isEmpty else { return (container, registry) }
 
         var nextLeafX: Float = 0
         var positions: [UUID: SIMD3<Float>] = [:]
 
-        func layout(_ node: DumpNode) -> Float {
+        func layout(_ node: BoneDumpNode) -> Float {
             // Flat plane (z = 0): single-child chains form a perfectly
             // straight vertical line; siblings spread along x only.
             let y = -Float(node.depth) * 0.17
@@ -49,7 +51,7 @@ enum HierarchyBuilder {
         }
         roots.forEach { _ = layout($0) }
 
-        func place(_ node: DumpNode) {
+        func place(_ node: BoneDumpNode) {
             let pos = positions[node.id]!
             let entity = nodeEntity(for: node)
             entity.position = pos
@@ -83,7 +85,7 @@ enum HierarchyBuilder {
 
     /// One tappable slab + label for a dump node.
     /// The entity name carries the node's UUID for hit-test lookup.
-    static func nodeEntity(for node: DumpNode) -> ModelEntity {
+    static func nodeEntity(for node: BoneDumpNode) -> ModelEntity {
         let mesh = MeshResource.generateBox(
             width: 0.155, height: 0.05, depth: 0.014, cornerRadius: 0.008)
         let material = SimpleMaterial(
@@ -148,3 +150,5 @@ enum HierarchyBuilder {
 }
 
 #endif
+
+#endif   // DEBUG

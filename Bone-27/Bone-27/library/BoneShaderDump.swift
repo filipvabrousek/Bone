@@ -22,6 +22,8 @@
 //  Research / simulator use only — reads a private system library, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import Metal
@@ -37,7 +39,7 @@ extension View {
 
     /// Writes the parameters of QuartzCore's own shaders whose name contains `matching`.
     /// - Parameter reflectAll: reflect every variant, not one per family (slow – a pipeline compile each).
-    func dumpShaders(_ fileName: String = "shaders.txt", matching: String = "glass", reflectAll: Bool = false) -> some View {
+    public func dumpShaders(_ fileName: String = "shaders.txt", matching: String = "glass", reflectAll: Bool = false) -> some View {
         onAppear {
             BoneShaderDump.text(matching: matching, reflectAll: reflectAll) { text in
                 BoneCapture.writeData(Data(text.utf8), fileName: fileName)
@@ -346,3 +348,5 @@ enum BoneShaderDump {
 }
 
 #endif
+
+#endif   // DEBUG

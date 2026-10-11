@@ -1,5 +1,5 @@
 //
-//  VisionModel.swift
+//  BoneVisionModel.swift
 //  Bone-vision
 //
 //  Loads brief dumps (briefoutput.txt / output.txt) and turns them into a
@@ -10,6 +10,8 @@
 //  this source file's location at compile time.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if os(visionOS)
 
 import SwiftUI
@@ -17,18 +19,18 @@ import RealityKit
 import Observation
 
 @Observable
-final class VisionModel {
+final class BoneVisionModel {
 
     // Parsed data
-    var roots: [DumpNode] = []
+    var roots: [BoneDumpNode] = []
     var osInfo: String?
     var loadedName = "—"
     var availableFiles: [URL] = []
-    var selected: DumpNode?
+    var selected: BoneDumpNode?
 
     // RealityKit plumbing
     var treeRoot: Entity?
-    private var registry: [String: (node: DumpNode, entity: ModelEntity)] = [:]
+    private var registry: [String: (node: BoneDumpNode, entity: ModelEntity)] = [:]
     private var selectedEntity: ModelEntity?
 
     // MARK: Where the dumps live (simulator only)
@@ -67,11 +69,11 @@ final class VisionModel {
     }
 
     func loadSample() {
-        apply(text: SampleDump.text, name: "sample (List + Text, iOS 27)")
+        apply(text: BoneSampleDump.text, name: "sample (List + Text, iOS 27)")
     }
 
     private func apply(text: String, name: String) {
-        let parsed = BriefDumpParser.parse(text)
+        let parsed = BoneBriefDumpParser.parse(text)
         roots = parsed.roots
         osInfo = parsed.os
         loadedName = name
@@ -88,7 +90,7 @@ final class VisionModel {
         selectedEntity = nil
         guard !roots.isEmpty else { return }
 
-        let built = HierarchyBuilder.buildTree(roots: roots, fit: [1.7, 1.0, 0.5])
+        let built = BoneHierarchyBuilder.buildTree(roots: roots, fit: [1.7, 1.0, 0.5])
         registry = built.registry
         treeRoot.addChild(built.container)
     }
@@ -117,3 +119,5 @@ final class VisionModel {
 }
 
 #endif
+
+#endif   // DEBUG

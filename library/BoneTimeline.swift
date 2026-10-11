@@ -17,6 +17,8 @@
 //  The clock: BoneAnimationClock.swift. Research / simulator use only.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if canImport(UIKit) && !os(visionOS) && !os(watchOS)
 
 import SwiftUI
@@ -34,7 +36,7 @@ extension View {
     ///
     /// Pause, tap the menu, then step or record. The pink drop in the bar inspects
     /// the frozen glass; × closes the bar (back to the inspector's drop).
-    func morphTimeline(speed: Double = 1) -> some View {
+    public func morphTimeline(speed: Double = 1) -> some View {
         background(BoneTimelineAnchor(speed: speed, scrubber: false, trigger: false))
     }
 
@@ -46,7 +48,7 @@ extension View {
     ///     Menu { … } label: { … }
     ///         .buttonStyle(.glass)
     ///         .morphScrubber()
-    func morphScrubber(trigger: Bool = true) -> some View {
+    public func morphScrubber(trigger: Bool = true) -> some View {
         background(BoneTimelineAnchor(speed: 1, scrubber: true, trigger: trigger))
     }
 }
@@ -136,7 +138,6 @@ struct BoneTake {
 
 final class BoneTimeline: ObservableObject {
 
-    static let speeds: [(label: String, value: Double)] = [("1×", 1), ("½", 0.5), ("¼", 0.25), ("⅒", 0.1), ("1⁄20", 0.05)]
     static let frameStep = 1.0 / 60
     static let maxFrames = 180               // 3 s of animation
     static let maxSnapshotFrames = 90        // snapshot views hold full-screen surfaces
@@ -222,7 +223,7 @@ final class BoneTimeline: ObservableObject {
         before = nil
         capturing = true
         try? await Task.sleep(nanoseconds: 60_000_000)          // the bar gone from the screen
-        if let shot = BoneScreen.capture(), Self.mean(Self.thumbnail(shot)) > 0.5 {
+        if let shot = BoneScreen.capture(), BoneTimelineKit.mean(BoneTimelineKit.thumbnail(shot, divisor: 6)) > 0.5 {
             before = (shot, nil)
         } else if let screen = windows.first?.windowScene?.screen {
             before = (nil, screen.snapshotView(afterScreenUpdates: false))   // a device: pixels read back black
@@ -311,8 +312,8 @@ final class BoneTimeline: ObservableObject {
     // MARK: Live
 
     func nextSpeed() {
-        let i = Self.speeds.firstIndex { $0.value == speed } ?? 0
-        speed = Self.speeds[(i + 1) % Self.speeds.count].value
+        let i = BoneTimelineKit.speeds.firstIndex { $0.value == speed } ?? 0
+        speed = BoneTimelineKit.speeds[(i + 1) % BoneTimelineKit.speeds.count].value
     }
 
     func togglePause() {
@@ -363,7 +364,7 @@ final class BoneTimeline: ObservableObject {
             try? await Task.sleep(nanoseconds: 120_000_000)        // panel gone from the screen
             // On a device the screen reads back black: keep system snapshot views instead
             // (render-server copies – glass included, shown instantly, but no pixels to save).
-            let readable = BoneScreen.capture().map { Self.mean(Self.thumbnail($0)) > 0.5 } ?? false
+            let readable = BoneScreen.capture().map { BoneTimelineKit.mean(BoneTimelineKit.thumbnail($0, divisor: 6)) > 0.5 } ?? false
             // one take = one morph: it ends when UIKit removes the morph's own layers
             let morph = morphLayerCount() > 0
             clock.setAutoStep(false)
@@ -395,9 +396,9 @@ final class BoneTimeline: ObservableObject {
                 if !fingerprint.isEmpty, fingerprint == lastValues { valuesStill += 1 } else { valuesStill = 0 }
                 lastValues = fingerprint
                 let stillBefore = still
-                if let p = previous, Self.same(p, thumb) { still += 1 } else { still = 0 }
+                if let p = previous, BoneTimelineKit.same(p, thumb) { still += 1 } else { still = 0 }
                 let morphLayers = morphLayerCount()
-                log += String(format: "frame %d: mean %.1f still %d morph layers %d clock %.4f ticks %d\n", i, Self.mean(thumb), still,
+                log += String(format: "frame %d: mean %.1f still %d morph layers %d clock %.4f ticks %d\n", i, BoneTimelineKit.mean(thumb), still,
                               morphLayers, clock.now, clock.tickCount)
                 previous = thumb
                 if morph && valuesStill >= 8 {
@@ -453,7 +454,7 @@ final class BoneTimeline: ObservableObject {
             }
             wlog += "  bar rect \(model?.timelineRect ?? .zero) · frameView \(frameView.map { "\(type(of: $0))" } ?? "nil")\n"
             BoneCapture.writeData(Data((log + wlog).utf8), fileName: "timeline-diag.txt")
-            status = "\(take!.count) frames · \(Self.seconds(take!.duration)) · recorded in \(String(format: "%.1f s", CACurrentMediaTime() - started))" + csvNote
+            status = "\(take!.count) frames · \(BoneTimelineKit.seconds(take!.duration)) · recorded in \(String(format: "%.1f s", CACurrentMediaTime() - started))" + csvNote
         }
     }
 
@@ -462,12 +463,12 @@ final class BoneTimeline: ObservableObject {
     private func settledCapture() async -> (CGImage, [UInt8])? {
         try? await Task.sleep(nanoseconds: 34_000_000)                 // two frames: the tick, then the render
         guard var last = BoneScreen.capture() else { return nil }
-        var lastThumb = Self.thumbnail(last)
+        var lastThumb = BoneTimelineKit.thumbnail(last, divisor: 6)
         for _ in 0..<6 {
             try? await Task.sleep(nanoseconds: 17_000_000)
             guard let next = BoneScreen.capture() else { return (last, lastThumb) }
-            let t = Self.thumbnail(next)
-            if Self.same(t, lastThumb) { return (next, t) }
+            let t = BoneTimelineKit.thumbnail(next, divisor: 6)
+            if BoneTimelineKit.same(t, lastThumb) { return (next, t) }
             last = next
             lastThumb = t
         }
@@ -573,36 +574,16 @@ final class BoneTimeline: ObservableObject {
     func saveTake() {
         guard let take else { return }
         guard !take.frames.isEmpty else { status = "Save needs the simulator: a device's screen pixels read back black"; return }
-        let count = min(12, take.frames.count)
-        let picks = (0..<count).map { k in count == 1 ? 0 : k * (take.count - 1) / (count - 1) }
-        let images = picks.compactMap { UIImage(data: take.frames[$0]) }
-        guard let first = images.first else { return }
-        let cols = min(6, images.count), rows = (images.count + cols - 1) / cols
-        let cell = CGSize(width: first.size.width / 3, height: first.size.height / 3)
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
-        let sheet = UIGraphicsImageRenderer(size: CGSize(width: cell.width * CGFloat(cols), height: (cell.height + 28) * CGFloat(rows)), format: format).image { _ in
-            UIColor.white.setFill()
-            UIRectFill(CGRect(x: 0, y: 0, width: cell.width * CGFloat(cols), height: (cell.height + 28) * CGFloat(rows)))
-            for (k, img) in images.enumerated() {
-                let x = CGFloat(k % cols) * cell.width, y = CGFloat(k / cols) * (cell.height + 28)
-                img.draw(in: CGRect(x: x, y: y + 28, width: cell.width, height: cell.height))
-                let label = "\(picks[k]) · \(Self.seconds(Double(picks[k]) * take.step))" as NSString
-                label.draw(at: CGPoint(x: x + 8, y: y + 4), withAttributes: [.font: UIFont.monospacedSystemFont(ofSize: 18, weight: .semibold)])
-            }
-        }
-        guard let png = sheet.pngData() else { return }
+        let sheet = BoneTimelineKit.contactSheet(count: take.frames.count,
+                                                 frame: { UIImage(data: take.frames[$0])?.cgImage },
+                                                 label: { "\($0) · \(BoneTimelineKit.seconds(Double($0) * take.step))" })
+        guard let png = sheet else { return }
         BoneCapture.writeData(png, fileName: "timeline-take.png")
         status = "saved \(BoneCapture.readableURL(for: "timeline-take.png").lastPathComponent)"
     }
 
     // MARK: Helpers
 
-    static func seconds(_ t: Double) -> String { String(format: "%.3f s", t) }
-
-    static func label(_ speed: Double) -> String {
-        speeds.first { $0.value == speed }?.label ?? String(format: "%g×", speed)
-    }
 
     /// Layers of an AnimationKit morph in progress (they are removed when it completes).
     private func morphLayerCount() -> Int {
@@ -623,36 +604,9 @@ final class BoneTimeline: ObservableObject {
         let image = UIGraphicsImageRenderer(bounds: first.bounds, format: format).image { _ in
             for w in windows where !w.isHidden { _ = w.drawHierarchy(in: w.frame, afterScreenUpdates: false) }
         }
-        return image.cgImage.map(Self.thumbnail) ?? []
+        return image.cgImage.map { BoneTimelineKit.thumbnail($0, divisor: 6) } ?? []
     }
 
-    /// 1/6-size RGBA copy for change detection.
-    private static func thumbnail(_ image: CGImage) -> [UInt8] {
-        let w = max(1, image.width / 6), h = max(1, image.height / 6)
-        var buf = [UInt8](repeating: 0, count: w * h * 4)
-        buf.withUnsafeMutableBytes { raw in
-            guard let ctx = CGContext(data: raw.baseAddress, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4,
-                                      space: CGColorSpaceCreateDeviceRGB(),
-                                      bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return }
-            ctx.interpolationQuality = .low
-            ctx.draw(image, in: CGRect(x: 0, y: 0, width: w, height: h))
-        }
-        return buf
-    }
-
-    private static func mean(_ a: [UInt8]) -> Double {
-        guard !a.isEmpty else { return 0 }
-        var sum = 0
-        for i in stride(from: 0, to: a.count, by: 4) { sum += Int(a[i]) + Int(a[i + 1]) + Int(a[i + 2]) }
-        return Double(sum) / Double(a.count / 4 * 3)
-    }
-
-    private static func same(_ a: [UInt8], _ b: [UInt8]) -> Bool {
-        guard a.count == b.count else { return false }
-        for i in stride(from: 0, to: a.count, by: 4) where abs(Int(a[i]) - Int(b[i])) > 3
-            || abs(Int(a[i + 1]) - Int(b[i + 1])) > 3 || abs(Int(a[i + 2]) - Int(b[i + 2])) > 3 { return false }
-        return true
-    }
 }
 
 // MARK: - Views
@@ -703,7 +657,7 @@ struct BoneScrubberBar: View {
                                           set: { timeline.frameIndex = Int(($0 * Double(max(take.count - 1, 0))).rounded()) }),
                            in: 0...1)
                 HStack {
-                    Text(String(format: "%.2f", timeline.progress) + " · \(BoneTimeline.seconds(timeline.frameTime)) of \(BoneTimeline.seconds(take.duration))")
+                    Text(String(format: "%.2f", timeline.progress) + " · \(BoneTimelineKit.seconds(timeline.frameTime)) of \(BoneTimelineKit.seconds(take.duration))")
                         .font(.caption.monospacedDigit())
                     Spacer()
                     Button("Again") { timeline.arm() }
@@ -751,7 +705,7 @@ struct BoneTimelineBar: View {
                 // a button, not a menu Picker: a UIKit menu is itself a glass morph, and one
                 // still closing (slowed down) makes UIKit finish the next menu at once
                 Button { timeline.nextSpeed() } label: {
-                    Text(BoneTimeline.label(timeline.speed))
+                    Text(BoneTimelineKit.label(timeline.speed))
                         .font(.headline.monospacedDigit())
                         .frame(minWidth: 44)
                 }
@@ -770,21 +724,13 @@ struct BoneTimelineBar: View {
             VStack(spacing: 4) {                                        // (a Group would give each row the height)
             if let take = timeline.take {
                 // 0.0 … 1.0 over the take: one morph, start to end
-                BoneSlider(value: Binding(get: { timeline.progress },
-                                          set: { timeline.frameIndex = Int(($0 * Double(max(take.count - 1, 0))).rounded()) }),
-                           in: 0...1)
-                HStack {
-                    Text(String(format: "%.2f", timeline.progress) + " · frame \(timeline.frameIndex)/\(take.count - 1) · \(BoneTimeline.seconds(timeline.frameTime))")
-                        .font(.caption.monospacedDigit())
-                    Spacer()
-                    Button("Save") { timeline.saveTake() }
-                    Button("Live") { timeline.leaveTake() }
-                }
-                .font(.caption.bold())
+                BoneTakeRow(count: take.count, frameIndex: $timeline.frameIndex,
+                            caption: String(format: "%.2f", timeline.progress) + " · frame \(timeline.frameIndex)/\(take.count - 1) · \(BoneTimelineKit.seconds(timeline.frameTime))",
+                            save: timeline.saveTake, live: timeline.leaveTake)
             } else {
                 // a spring only runs forward: scrubbing (both ways) is over a recorded take
                 HStack {
-                    Text("\(timeline.recording ? "recording" : timeline.paused ? "paused" : "live") · \(BoneTimeline.seconds(timeline.elapsed)) · \(BoneTimeline.label(timeline.speed))")
+                    Text("\(timeline.recording ? "recording" : timeline.paused ? "paused" : "live") · \(BoneTimelineKit.seconds(timeline.elapsed)) · \(BoneTimelineKit.label(timeline.speed))")
                         .font(.caption.monospacedDigit())
                     Spacer()
                     Text(timeline.paused ? "trigger the animation · step, or record it to scrub"
@@ -811,3 +757,5 @@ struct BoneTimelineBar: View {
 }
 
 #endif
+
+#endif   // DEBUG

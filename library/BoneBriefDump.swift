@@ -20,15 +20,17 @@
 //  Depth is encoded by the number of leading '-' before '>'.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 import Foundation
 
-final class DumpNode: Identifiable {
+final class BoneDumpNode: Identifiable {
     let id = UUID()
     let name: String
     let depth: Int
     var attributes: [(key: String, value: String)] = []
-    var children: [DumpNode] = []
-    weak var parent: DumpNode?
+    var children: [BoneDumpNode] = []
+    weak var parent: BoneDumpNode?
 
     init(name: String, depth: Int) {
         self.name = name
@@ -46,11 +48,11 @@ final class DumpNode: Identifiable {
     }
 }
 
-enum BriefDumpParser {
+enum BoneBriefDumpParser {
 
-    static func parse(_ text: String) -> (roots: [DumpNode], os: String?) {
-        var roots: [DumpNode] = []
-        var stack: [DumpNode] = []
+    static func parse(_ text: String) -> (roots: [BoneDumpNode], os: String?) {
+        var roots: [BoneDumpNode] = []
+        var stack: [BoneDumpNode] = []
         var os: String?
 
         for raw in text.split(separator: "\n", omittingEmptySubsequences: false) {
@@ -80,7 +82,7 @@ enum BriefDumpParser {
                 // first char). Guards against stray "contents:" lines.
                 if depth == 0, let f = name.first, f.isLowercase { continue }
 
-                let node = DumpNode(name: name, depth: depth)
+                let node = BoneDumpNode(name: name, depth: depth)
                 while let last = stack.last, last.depth >= depth { stack.removeLast() }
                 if let parentNode = stack.last {
                     node.parent = parentNode
@@ -108,28 +110,28 @@ enum BriefDumpParser {
 
 // MARK: - Serialization (JSON structure + brief text)
 
-/// Codable mirror of DumpNode — tuples aren't Codable, so attributes become
+/// Codable mirror of BoneDumpNode — tuples aren't Codable, so attributes become
 /// an ordered array of key/value pairs.
-struct DumpNodeJSON: Codable {
+struct BoneDumpNodeJSON: Codable {
     var name: String
     var depth: Int
     var attributes: [AttributePair]
-    var children: [DumpNodeJSON]
+    var children: [BoneDumpNodeJSON]
 
     struct AttributePair: Codable {
         var key: String
         var value: String
     }
 
-    init(_ node: DumpNode) {
+    init(_ node: BoneDumpNode) {
         name = node.name
         depth = node.depth
         attributes = node.attributes.map { .init(key: $0.key, value: $0.value) }
-        children = node.children.map(DumpNodeJSON.init)
+        children = node.children.map(BoneDumpNodeJSON.init)
     }
 
-    func toNode(parent: DumpNode? = nil) -> DumpNode {
-        let node = DumpNode(name: name, depth: depth)
+    func toNode(parent: BoneDumpNode? = nil) -> BoneDumpNode {
+        let node = BoneDumpNode(name: name, depth: depth)
         node.parent = parent
         node.attributes = attributes.map { ($0.key, $0.value) }
         node.children = children.map { $0.toNode(parent: node) }
@@ -137,24 +139,24 @@ struct DumpNodeJSON: Codable {
     }
 }
 
-enum DumpSerializer {
+enum BoneDumpSerializer {
 
     /// Pretty-printed JSON structure of the view tree.
-    static func json(roots: [DumpNode]) throws -> Data {
+    static func json(roots: [BoneDumpNode]) throws -> Data {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-        return try encoder.encode(roots.map(DumpNodeJSON.init))
+        return try encoder.encode(roots.map(BoneDumpNodeJSON.init))
     }
 
     /// Inverse of `json(roots:)` — used by .bone3DFrom("*.json").
-    static func rootsFromJSON(_ data: Data) throws -> [DumpNode] {
-        try JSONDecoder().decode([DumpNodeJSON].self, from: data).map { $0.toNode() }
+    static func rootsFromJSON(_ data: Data) throws -> [BoneDumpNode] {
+        try JSONDecoder().decode([BoneDumpNodeJSON].self, from: data).map { $0.toNode() }
     }
 
-    /// Classic brief dump text — same format BriefDumpParser reads.
-    static func briefText(roots: [DumpNode]) -> String {
+    /// Classic brief dump text — same format BoneBriefDumpParser reads.
+    static func briefText(roots: [BoneDumpNode]) -> String {
         var out = ""
-        func walk(_ node: DumpNode) {
+        func walk(_ node: BoneDumpNode) {
             out += " \n \n \n"
             if node.depth > 0 {
                 out += String(repeating: "-", count: node.depth) + ">"
@@ -170,15 +172,15 @@ enum DumpSerializer {
     }
 }
 
-// MARK: - Live walker: UIView -> DumpNode (iOS + visionOS)
+// MARK: - Live walker: UIView -> BoneDumpNode (iOS + visionOS)
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 extension UIView {
 
-    func boneNodeTree(depth: Int = 0) -> DumpNode {
-        let node = DumpNode(name: String(describing: type(of: self)), depth: depth)
+    func boneNodeTree(depth: Int = 0) -> BoneDumpNode {
+        let node = BoneDumpNode(name: String(describing: type(of: self)), depth: depth)
 
         if let sup = superclass {
             node.attributes.append(("superclass", String(describing: sup)))
@@ -207,7 +209,7 @@ extension UIView {
 
 // MARK: - Built-in sample (a real dump of `List { Text("WOW") }` on iOS 27)
 
-enum SampleDump {
+enum BoneSampleDump {
     static let text = """
     _UIHostingView<List<Never, Text>>:
      superclass: UIView
@@ -268,3 +270,5 @@ enum SampleDump {
     OS: iOS:27
     """
 }
+
+#endif   // DEBUG

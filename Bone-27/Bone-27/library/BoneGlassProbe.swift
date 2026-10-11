@@ -21,6 +21,8 @@
 //  Research / simulator use only — private API, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import SwiftUI
@@ -36,7 +38,7 @@ extension View {
 
     /// Probes the first Liquid Glass element in this view: which filter inputs change the rendering.
     /// - Parameter after: seconds to wait, so the glass has rendered.
-    func probeGlass(_ fileName: String = "glass-probe.txt", after delay: Double = 2) -> some View {
+    public func probeGlass(_ fileName: String = "glass-probe.txt", after delay: Double = 2) -> some View {
         BoneGlassProbeHost(fileName: fileName, delay: delay) { self }
     }
 }
@@ -349,7 +351,7 @@ final class BoneGlassProber {
             return [("red", CGColor(srgbRed: 1, green: 0, blue: 0, alpha: 1)),
                     ("green", CGColor(srgbRed: 0, green: 1, blue: 0, alpha: 1))]
         case .size:
-            return [("size(0, 0)", NSValue(cgSize: .zero)), ("size(20, 20)", NSValue(cgSize: CGSize(width: 20, height: 20)))]
+            return [("size(0, 0)", NSValue.bone(size: .zero)), ("size(20, 20)", NSValue.bone(size: CGSize(width: 20, height: 20)))]
         case .matrix:
             return [("swapRedBlue", BoneColorMatrix.value(BoneColorMatrix.swapRedBlue)),
                     ("invert", BoneColorMatrix.value(BoneColorMatrix.invert))]
@@ -517,3 +519,5 @@ final class BoneGlassProber {
 }
 
 #endif
+
+#endif   // DEBUG

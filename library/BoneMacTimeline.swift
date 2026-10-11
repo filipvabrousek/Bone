@@ -22,6 +22,8 @@
 //  sharingType = .none. Research use only – private behaviour, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if os(macOS)
 
 import AppKit
@@ -79,7 +81,6 @@ struct BoneMacTake {
 
 final class BoneMacTimeline: ObservableObject {
 
-    static let speeds: [(label: String, value: Double)] = [("1×", 1), ("½", 0.5), ("¼", 0.25), ("⅒", 0.1), ("1⁄20", 0.05)]
     static let maxFrames = 240               // 4 s of animation
 
     @Published var speed = 1.0 { didSet { BoneMacClock.speed = speed } }
@@ -115,8 +116,8 @@ final class BoneMacTimeline: ObservableObject {
     }
 
     func nextSpeed() {
-        let i = Self.speeds.firstIndex { $0.value == speed } ?? 0
-        speed = Self.speeds[(i + 1) % Self.speeds.count].value
+        let i = BoneTimelineKit.speeds.firstIndex { $0.value == speed } ?? 0
+        speed = BoneTimelineKit.speeds[(i + 1) % BoneTimelineKit.speeds.count].value
     }
 
     func togglePause() {
@@ -150,15 +151,15 @@ final class BoneMacTimeline: ObservableObject {
             }
             // waiting: up to 30 s for the window to differ from the baseline (not from the last
             // capture – slowed down, two captures in a row barely differ)
-            let baseline = Self.thumbnail(base)
+            let baseline = BoneTimelineKit.thumbnail(base, divisor: 8)
             var previous = baseline
             let before = base
             let deadline = CACurrentMediaTime() + 30
             var first: CGImage?
             while generation == id, CACurrentMediaTime() < deadline {
                 guard let shot = await source.capture() else { break }
-                let t = Self.thumbnail(shot)
-                if !Self.same(t, baseline) { first = shot; previous = t; break }
+                let t = BoneTimelineKit.thumbnail(shot, divisor: 8)
+                if !BoneTimelineKit.same(t, baseline) { first = shot; previous = t; break }
             }
             armed = false
             if first == nil { model?.panel?.sharingType = .readOnly }
@@ -177,8 +178,8 @@ final class BoneMacTimeline: ObservableObject {
                 if due > CACurrentMediaTime() { try? await Task.sleep(nanoseconds: UInt64((due - CACurrentMediaTime()) * 1e9)) }
                 guard let shot = await source.capture() else { break }
                 let now = CACurrentMediaTime()
-                let t = Self.thumbnail(shot)
-                still = Self.same(t, previous) ? still + 1 : 0
+                let t = BoneTimelineKit.thumbnail(shot, divisor: 8)
+                still = BoneTimelineKit.same(t, previous) ? still + 1 : 0
                 previous = t
                 frames.append(shot)
                 times.append((now - wall0) * speed)
@@ -193,39 +194,15 @@ final class BoneMacTimeline: ObservableObject {
             }
             take = BoneMacTake(frames: frames, times: times)
             frameIndex = 0
-            status = "\(frames.count) frames · \(BoneMacTimeline.seconds(times.last ?? 0)) of animation · \(BoneMacTimeline.seconds(CACurrentMediaTime() - start)) wall"
+            status = "\(frames.count) frames · \(BoneTimelineKit.seconds(times.last ?? 0)) of animation · \(BoneTimelineKit.seconds(CACurrentMediaTime() - start)) wall"
         }
     }
 
     /// Contact sheet of up to 12 frames, evenly spaced → timeline-take.png
     func saveTake() {
-        guard let take, !take.frames.isEmpty else { return }
-        let count = min(12, take.count)
-        let picks = (0..<count).map { k in count == 1 ? 0 : k * (take.count - 1) / (count - 1) }
-        let first = take.frames[0]
-        let cols = min(6, count), rows = (count + cols - 1) / cols
-        let cell = CGSize(width: CGFloat(first.width) / 3, height: CGFloat(first.height) / 3)
-        let label: CGFloat = 28
-        let size = CGSize(width: cell.width * CGFloat(cols), height: (cell.height + label) * CGFloat(rows))
-        guard let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: Int(size.width), pixelsHigh: Int(size.height),
-                                         bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
-                                         colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0),
-              let ctx = NSGraphicsContext(bitmapImageRep: rep) else { return }
-        NSGraphicsContext.saveGraphicsState()
-        NSGraphicsContext.current = ctx
-        NSColor.white.setFill()
-        NSRect(origin: .zero, size: size).fill()
-        for (k, i) in picks.enumerated() {
-            let x = CGFloat(k % cols) * cell.width
-            let top = CGFloat(k / cols) * (cell.height + label)            // from the top
-            let y = size.height - top - label - cell.height               // AppKit: bottom-left origin
-            ctx.cgContext.draw(take.frames[i], in: CGRect(x: x, y: y, width: cell.width, height: cell.height))
-            let text = "\(i) · \(BoneMacTimeline.seconds(take.times[i]))" as NSString
-            text.draw(at: CGPoint(x: x + 8, y: y + cell.height + 4),
-                      withAttributes: [.font: NSFont.monospacedSystemFont(ofSize: 18, weight: .semibold)])
-        }
-        NSGraphicsContext.restoreGraphicsState()
-        guard let png = rep.representation(using: .png, properties: [:]) else { return }
+        guard let take, !take.frames.isEmpty,
+              let png = BoneTimelineKit.contactSheet(count: take.count, frame: { take.frames[$0] },
+                                                     label: { "\($0) · \(BoneTimelineKit.seconds(take.times[$0]))" }) else { return }
         BoneCapture.writeData(png, fileName: "timeline-take.png")
         status = "saved \(BoneCapture.readableURL(for: "timeline-take.png").lastPathComponent)"
     }
@@ -243,30 +220,6 @@ final class BoneMacTimeline: ObservableObject {
         func capture() async -> CGImage? { await BoneScreen.capture(in: rect) }
     }
 
-    static func seconds(_ t: Double) -> String { String(format: "%.3f s", t) }
-
-    // MARK: Change detection
-
-    /// 1/8-size RGBA copy.
-    private static func thumbnail(_ image: CGImage) -> [UInt8] {
-        let w = max(1, image.width / 8), h = max(1, image.height / 8)
-        var buf = [UInt8](repeating: 0, count: w * h * 4)
-        buf.withUnsafeMutableBytes { raw in
-            guard let ctx = CGContext(data: raw.baseAddress, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4,
-                                      space: CGColorSpaceCreateDeviceRGB(),
-                                      bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return }
-            ctx.interpolationQuality = .low
-            ctx.draw(image, in: CGRect(x: 0, y: 0, width: w, height: h))
-        }
-        return buf
-    }
-
-    private static func same(_ a: [UInt8], _ b: [UInt8]) -> Bool {
-        guard a.count == b.count else { return false }
-        for i in stride(from: 0, to: a.count, by: 4) where abs(Int(a[i]) - Int(b[i])) > 3
-            || abs(Int(a[i + 1]) - Int(b[i + 1])) > 3 || abs(Int(a[i + 2]) - Int(b[i + 2])) > 3 { return false }
-        return true
-    }
 }
 
 // MARK: - Views
@@ -302,7 +255,7 @@ struct BoneMacTimelineBar: View {
                     Image(systemName: timeline.paused ? "play.fill" : "pause.fill")
                 }
                 Button { timeline.nextSpeed() } label: {
-                    Text(BoneMacTimeline.speeds.first { $0.value == timeline.speed }?.label ?? "\(timeline.speed)×")
+                    Text(BoneTimelineKit.label(timeline.speed))
                         .font(.headline.monospacedDigit())
                         .frame(minWidth: 44)
                 }
@@ -320,20 +273,12 @@ struct BoneMacTimelineBar: View {
 
             VStack(spacing: 4) {
                 if let take = timeline.take {
-                    BoneSlider(value: Binding(get: { timeline.progress },
-                                              set: { timeline.frameIndex = Int(($0 * Double(max(take.count - 1, 0))).rounded()) }),
-                               in: 0...1)
-                    HStack {
-                        Text(String(format: "%.2f", timeline.progress) + " · frame \(timeline.frameIndex)/\(take.count - 1) · \(BoneMacTimeline.seconds(timeline.frameTime))")
-                            .font(.caption.monospacedDigit())
-                        Spacer()
-                        Button("Save") { timeline.saveTake() }
-                        Button("Live") { timeline.leaveTake() }
-                    }
-                    .font(.caption.bold())
+                    BoneTakeRow(count: take.count, frameIndex: $timeline.frameIndex,
+                                caption: String(format: "%.2f", timeline.progress) + " · frame \(timeline.frameIndex)/\(take.count - 1) · \(BoneTimelineKit.seconds(timeline.frameTime))",
+                                save: timeline.saveTake, live: timeline.leaveTake)
                 } else {
                     HStack {
-                        Text("\(timeline.recording ? "recording" : timeline.armed ? "armed" : timeline.paused ? "paused" : "live") · \(BoneMacTimeline.speeds.first { $0.value == timeline.speed }?.label ?? "")")
+                        Text("\(timeline.recording ? "recording" : timeline.armed ? "armed" : timeline.paused ? "paused" : "live") · \(BoneTimelineKit.label(timeline.speed))")
                             .font(.caption.monospacedDigit())
                         Spacer()
                         Text(timeline.paused ? "the window holds its frame · ▶ jumps ahead"
@@ -361,3 +306,5 @@ struct BoneMacTimelineBar: View {
 }
 
 #endif
+
+#endif   // DEBUG

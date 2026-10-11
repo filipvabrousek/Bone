@@ -26,6 +26,8 @@
 //  Research / simulator use only — private API, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if canImport(UIKit) && !os(visionOS) && !os(watchOS)
 
 import UIKit
@@ -296,3 +298,5 @@ nonisolated final class BoneAnimationClock: @unchecked Sendable {
 }
 
 #endif
+
+#endif   // DEBUG

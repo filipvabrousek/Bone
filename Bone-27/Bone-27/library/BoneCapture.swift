@@ -17,6 +17,8 @@
 //  DEBUG-introspection API — do not ship them in an App Store build.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 import SwiftUI
 
 #if (canImport(UIKit) && !os(watchOS)) || canImport(AppKit)
@@ -57,28 +59,28 @@ struct BoneDump: Codable {
 
 // MARK: - Capture engine
 
-enum BoneCapture {
+public enum BoneCapture {
 
     /// Max chars of _ivarDescription stored per node (it can get huge).
-    static var maxIvarLength = 20_000
+    public static var maxIvarLength = 20_000
     /// Max recursion depth for Mirror dumps.
-    static var maxMirrorDepth = 7
+    public static var maxMirrorDepth = 7
 
     /// Master switches for the private-selector dumps. These are private
     /// debug methods and DO crash (EXC_BAD_ACCESS) on some class/OS
     /// combinations. When that happens the console shows the last
     /// "BONE introspecting ..." line — that's the culprit. Either add the
     /// class name to `ivarDenylist` or flip the corresponding switch off.
-    static var captureIvarDescriptions = true
-    static var captureRecursiveDescription = true
-    static var captureAutolayoutTrace = true
+    public static var captureIvarDescriptions = true
+    public static var captureRecursiveDescription = true
+    public static var captureAutolayoutTrace = true
 
     /// Class-name PREFIXES whose -_ivarDescription crashes (varies per OS
     /// release). Prefix matching, because generic Swift classes carry their
     /// type parameters in the mangled name (_TtGC7SwiftUI14_UIHostingViewG...
     /// differs for every root view type).
     /// The Mirror dump (hostingViewMirror) still covers skipped objects.
-    static var ivarDenylist: Set<String> = {
+    public static var ivarDenylist: Set<String> = {
         var list: Set<String> = []
         #if os(visionOS)
         // visionOS: -_ivarDescription on SwiftUI's Swift-generic classes
@@ -385,15 +387,15 @@ enum BoneCapture {
     }
 }
 
-// MARK: - BoneDump -> DumpNode (3D rendering of deep dumps via .bone3DFrom)
+// MARK: - BoneDump -> BoneDumpNode (3D rendering of deep dumps via .bone3DFrom)
 
 extension BoneDump {
 
     /// Converts the deep capture tree into DumpNodes for the 3D graph.
     /// The ivar dump is truncated for the detail card.
-    func dumpRoots() -> [DumpNode] {
-        func convert(_ b: BoneNode, depth: Int, parent: DumpNode?) -> DumpNode {
-            let node = DumpNode(name: b.className, depth: depth)
+    func dumpRoots() -> [BoneDumpNode] {
+        func convert(_ b: BoneNode, depth: Int, parent: BoneDumpNode?) -> BoneDumpNode {
+            let node = BoneDumpNode(name: b.className, depth: depth)
             node.parent = parent
 
             if !b.superclassChain.isEmpty {
@@ -427,3 +429,5 @@ extension BoneDump {
 }
 
 #endif
+
+#endif   // DEBUG

@@ -2,17 +2,18 @@
 //  BoneMac.swift
 //  Bone-27
 //
-//  .dumpGlass and .tune on macOS. SwiftUI on macOS 26+ draws Liquid Glass
-//  exactly as on iOS and watchOS – SDFLayer → CABackdropLayer with a
+//  What macOS needs on top of the shared code. SwiftUI on macOS 26+ draws
+//  Liquid Glass exactly as on iOS – SDFLayer → CABackdropLayer with a
 //  glassBackground filter → CASDFElementLayer – inside AppKit's layer-backed
-//  windows, so the shared runtime engine (BoneGlassRuntime.swift) works on it:
+//  windows, so .tune, .tune(file:) and .dumpGlass run on the iOS engine
+//  (BoneGlassEngine.swift, hosts in BoneTune.swift and BoneGlassDump.swift):
 //
-//      Button("Glass") {}.buttonStyle(.glass).dumpGlass("mac-glass.txt")
+//      Button("Glass") {}.buttonStyle(.glass).dumpGlass("mac-glass.txt", full: true)
 //      Text("Panel").padding().glassEffect().tune(.noShadow + [.blurRadius: 0])
 //
-//  .tuneLayers and .dumpLayers work too (the layer types are shared with iOS,
-//  BoneLayerTune.swift); here they act on the layers lying inside the modified
-//  view's frame:
+//  This file holds the anchor that marks the modified view, which layers lie
+//  inside it, and .tuneLayers, .dumpLayers and .probeGlass, which act on the
+//  layers lying inside the modified view's frame:
 //
 //      Text("Hello").tuneLayers([.rotation: -8, .shadowOpacity: 1], where: .text)
 //      VStack { … }.dumpLayers("mac-layers.txt")
@@ -25,35 +26,12 @@
 //  Research use only — private Core Animation keys, never ship it.
 //
 
+#if DEBUG   // Bone is private API: it compiles to nothing outside Debug builds
+
 #if os(macOS)
 
 import SwiftUI
 import AppKit
-
-extension View {
-
-    /// Writes the glass filter inputs of the glass in this view (macOS), like .dumpGlass on iOS.
-    func dumpGlass(_ fileName: String, only: [GlassInput]? = nil, after delay: Double = 1.5) -> some View {
-        background(BoneMacAnchor { anchor in
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak anchor] in
-                guard let anchor else { return }
-                let text = BoneGlassRuntime.dumpGlass(BoneMac.filterLayers(in: anchor), only: only)
-                BoneCapture.writeData(Data(text.utf8), fileName: fileName)
-            }
-        })
-    }
-
-    /// Overrides Liquid Glass filter inputs of the glass in this view (macOS), like .tune on iOS.
-    func tune(_ tuning: GlassTuning, log: String? = nil) -> some View {
-        background(BoneMacAnchor { anchor in
-            let tuner = BoneGlassRuntimeTuner(values: tuning.caValues, log: log,
-                                              collect: { [weak anchor] in anchor.map(BoneMac.filterLayers(in:)) ?? [] },
-                                              write: { BoneCapture.writeData(Data($0.utf8), fileName: $1) })
-            anchor.keepAlive = tuner
-            tuner.start()
-        })
-    }
-}
 
 /// A transparent, layer-backed view behind the modified content; `onWindow` runs once it is in a window.
 struct BoneMacAnchor: NSViewRepresentable {
@@ -96,14 +74,14 @@ final class BoneMacAnchorView: NSView {
 
 /// Something an anchor keeps alive and stops when its view goes away.
 protocol BoneStoppable: AnyObject { func stop() }
-extension BoneGlassRuntimeTuner: BoneStoppable {}
+extension BoneGlassTuner: BoneStoppable {}
 
 // MARK: - Layers: .tuneLayers and .dumpLayers
 
 extension View {
 
     /// Changes the layers SwiftUI draws this view into (macOS), like .tuneLayers on iOS.
-    func tuneLayers(_ tuning: LayerTuning, where target: LayerTarget = .leaves, log: String? = nil) -> some View {
+    public func tuneLayers(_ tuning: LayerTuning, where target: LayerTarget = .leaves, log: String? = nil) -> some View {
         background(BoneMacAnchor { anchor in
             let tuner = BoneMacLayerTuner(anchor: anchor, tuning: tuning, target: target, log: log)
             anchor.keepAlive = tuner
@@ -112,19 +90,11 @@ extension View {
     }
 
     /// Writes the layers SwiftUI draws this view into (macOS), like .dumpLayers on iOS.
-    func dumpLayers(_ fileName: String, after delay: Double = 1.5) -> some View {
+    public func dumpLayers(_ fileName: String, after delay: Double = 1.5) -> some View {
         background(BoneMacAnchor { anchor in
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak anchor] in
-                guard let anchor, let anchorLayer = anchor.layer else { return }
-                // every top-level layer inside the view, each with its subtree; frames in the view's space
-                var text = ""
-                for (i, top) in BoneMac.topLayers(in: anchor).enumerated() {
-                    let part = BoneLayerDump.text(for: top, os: BoneGlassRuntime.osLine) { l in
-                        l.convert(l.bounds, to: anchorLayer)
-                    }
-                    text += i == 0 ? part : part.components(separatedBy: "\n").dropFirst(4).joined(separator: "\n")
-                }
-                BoneCapture.writeData(Data(text.utf8), fileName: fileName)
+                guard let anchor else { return }
+                BoneCapture.writeData(Data(BoneMac.layerTree(in: anchor).utf8), fileName: fileName)
             }
         })
     }
@@ -136,7 +106,7 @@ extension View {
 
     /// Which glass inputs change the rendered pixels (macOS), like .probeGlass on iOS.
     /// Captures with ScreenCaptureKit – the app needs Screen Recording permission.
-    func probeGlass(_ fileName: String = "glass-probe.txt", after delay: Double = 2) -> some View {
+    public func probeGlass(_ fileName: String = "glass-probe.txt", after delay: Double = 2) -> some View {
         background(BoneMacAnchor { anchor in
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak anchor] in
                 guard let anchor, let window = anchor.window,
@@ -183,7 +153,7 @@ final class BoneMacLayerTuner: BoneStoppable {
         }
         if let log, !logged, !changes.isEmpty {
             logged = true
-            let text = "BONE · tuneLayers \(target.name)\nOS: \(BoneGlassRuntime.osLine)\n\n" + changes.joined(separator: "\n") + "\n"
+            let text = "BONE · tuneLayers \(target.name)\nOS: \(BoneOS.line)\n\n" + changes.joined(separator: "\n") + "\n"
             BoneCapture.writeData(Data(text.utf8), fileName: log)
         }
     }
@@ -222,15 +192,27 @@ enum BoneMac {
     }
 
     /// Layers carrying filters in the anchor's window whose centre lies inside the anchor.
-    static func filterLayers(in anchor: BoneMacAnchorView) -> [BoneGlassRuntime.Found] {
-        guard let window = anchor.window, let anchorLayer = anchor.layer,
-              let root = window.contentView?.superview?.layer ?? window.contentView?.layer else { return [] }
+    static func glassLayers(in anchor: BoneMacAnchorView) -> [BoneGlassFound] {
+        guard let anchorLayer = anchor.layer, let root = rootLayer(of: anchor) else { return [] }
         let area = anchor.bounds.insetBy(dx: -8, dy: -8)
-        return BoneGlassRuntime.filterLayers(roots: [root]) { layer, _ in
-            let r = BoneGlassRuntime.rect(of: layer, in: anchorLayer)
+        return BoneGlassEngine.found(under: root) { layer in
+            let r = layer.convert(layer.bounds, to: anchorLayer)
             return !r.isNull && area.contains(CGPoint(x: r.midX, y: r.midY))
         }
+    }
+
+    /// .dumpLayers text: every top-level layer inside the view, each with its subtree, frames in the view's space.
+    static func layerTree(in anchor: BoneMacAnchorView) -> String {
+        guard let anchorLayer = anchor.layer else { return "" }
+        var text = ""
+        for (i, top) in topLayers(in: anchor).enumerated() {
+            let part = BoneLayerDump.text(for: top, os: BoneOS.line) { l in l.convert(l.bounds, to: anchorLayer) }
+            text += i == 0 ? part : part.components(separatedBy: "\n").dropFirst(4).joined(separator: "\n")
+        }
+        return text
     }
 }
 
 #endif
+
+#endif   // DEBUG

@@ -20,9 +20,13 @@ import SwiftUI
 struct Bone_visionApp: App {
     var body: some Scene {
         WindowGroup {
+            #if DEBUG
             List {
                 Text("Hello")
             }.bone3D(into: "ssu.json")
+            #else
+            Text("The Bone demo needs a Debug build.")
+            #endif
            
             /*
              static func privateString(_ obj: NSObject, _ selectorName: String) -> String? {

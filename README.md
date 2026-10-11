@@ -13,10 +13,13 @@ reimplementation.
 
 > **Research / simulator use only.** Bone uses private classes, selectors, ivars and Core
 > Animation keys. Never ship it in an App Store build; names change between OS releases.
+> Bone compiles only in **Debug** builds (empty in Release), so wrap your Bone calls in `#if DEBUG`.
 
 ## Get started
 
-Copy every file in [`library/`](library) into a folder of your project and add them to all targets.
+Add the Swift package – in Xcode, File ▸ Add Package Dependencies… with
+`https://github.com/filipvabrousek/Bone`, branch `main` – and `import Bone`. Or copy every file in
+[`library/`](library) into a folder of your project and add them to all targets.
 
 ```swift
 List {
@@ -65,6 +68,7 @@ sublayers and superclasses.
 | Hierarchy dump `.bone(into:)` | ✓ | ✓ | ✓ | ✓ |
 | 3D hierarchy `.bone3D` · `.bone3DFrom` | | | ✓ | |
 | Liquid Glass `.tune` · `.dumpGlass` | ✓ | ✓ | | ✓ |
+| `.tune(file:)` · `.dumpGlass(full: true)` | ✓ | | | ✓ |
 | `.dumpLayers` | ✓ | ✓ | | ✓ |
 | `.tuneLayers` · `.dumpShaders` | ✓ | | | ✓ |
 | `.probeGlass` | ✓ | | | ✓ |
@@ -77,6 +81,7 @@ Built with Xcode 27; tested on iOS 27 (simulator and iPhone 14 Pro), watchOS 27 
 
 ## Documentation
 
+- [Tests](Bone-27/Tests/BoneTests): `swift test`, or `Bone-27/Tests/run.sh` for every platform.
 - [Guides](Bone-27/docs/index.md) – one page per topic, with examples, results and how each part works.
 - [Getting started](Bone-27/docs/getting-started.md) – demo launch arguments, where files land.
 - [Changelog](library/CHANGELOG.md) – what changed, by date, back to the first release in 2024.
