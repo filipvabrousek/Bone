@@ -21,6 +21,8 @@ re-drives the system's own Liquid Glass – in place, not a reimplementation.
 | [Liquid morph](liquid-morph.md) | `.liquidMorph(to:isPresented:)` |
 | [Glass stretch](glass-stretch.md) | `.glassFlex(stretch:follow:)` |
 
+Changes over time: [library changelog](../Bone-27/library/CHANGELOG.md).
+
 ## In depth
 
 - [Bone internals and novelty](internals/bone-internals.md) (also as [PDF](internals/bone-internals.pdf)) –

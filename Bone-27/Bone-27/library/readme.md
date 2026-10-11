@@ -23,3 +23,4 @@ animates the glass. Copy this folder into your project and add it to all targets
 | `.glassFlex(stretch:follow:)` | the glass button's press and drag stretch, much further | [glass stretch](https://github.com/filipvabrousek/Bone/blob/main/Bone-27/docs/glass-stretch.md) |
 
 Full documentation: [Bone-27/docs](https://github.com/filipvabrousek/Bone/blob/main/Bone-27/docs/index.md).
+What changed: [CHANGELOG.md](CHANGELOG.md).

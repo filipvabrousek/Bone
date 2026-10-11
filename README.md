@@ -62,5 +62,6 @@ sublayers and superclasses.
 
 - [Guides](Bone-27/docs/index.md) – one page per topic, with examples, results and how each part works.
 - [Getting started](Bone-27/docs/getting-started.md) – demo launch arguments, where files land.
+- [Changelog](library/CHANGELOG.md) – what changed, by date, back to the first release in 2024.
 - [Bone internals and novelty](Bone-27/docs/internals/bone-internals.md) – every mechanism at the
   level of layers, ivars and setters, with diagrams, and what is new compared with published work.

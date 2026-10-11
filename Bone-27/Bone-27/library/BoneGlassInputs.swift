@@ -11,7 +11,7 @@
 //  Research / simulator use only – private Core Animation keys.
 //
 
-#if canImport(UIKit) && !os(watchOS)
+#if canImport(UIKit)
 
 import UIKit
 

@@ -1,237 +1,180 @@
 UIWindow:
  superclass: UIView 
 
- layer: <UIWindowLayer: 0x1571bd000> 
- sublayers: <CALayer: 0x1571f9890>
+ layer: <UIWindowLayer: 0x1569c0c00> 
+ sublayers: <CALayer: 0x1569be460>
 
 ->UIView:
  superclass: UIResponder 
 
- layer: <CALayer: 0x1571f9890> 
- sublayers: <CALayer: 0x1571fb7b0>
+ layer: <CALayer: 0x1569be460> 
+ sublayers: <CALayer: 0x156bd4300>
 
 -->_TtGC7SwiftUI14_UIHostingViewVS_7AnyView_:
  superclass: UIView 
 
- layer: <CALayer: 0x1571fb7b0> 
- sublayers: <CALayer: 0x1573f8d50>
+ layer: <CALayer: 0x156bd4300> 
+ sublayers: <CALayer: 0x1569f70c0>
 
---->_TtGC7SwiftUI21UIKitPlatformViewHostGVS_42PlatformViewControllerRepresentableAdaptorVS_P10$10c6256d428NavigationStackRepresentable__:
- superclass: _TtGC5UIKit22UICorePlatformViewHostGV7SwiftUI42PlatformViewControllerRepresentableAdaptorVS1_P10$10c6256d428NavigationStackRepresentable__ 
+--->_TtGC7SwiftUI21UIKitPlatformViewHostGVS_42PlatformViewControllerRepresentableAdaptorVS_P10$10c16d6d428NavigationStackRepresentable__:
+ superclass: _TtGC5UIKit22UICorePlatformViewHostGV7SwiftUI42PlatformViewControllerRepresentableAdaptorVS1_P10$10c16d6d428NavigationStackRepresentable__ 
 
- layer: <CALayer: 0x1573f8d50> 
- sublayers: <CALayer: 0x15c407690>
+ layer: <CALayer: 0x1569f70c0> 
+ sublayers: <CALayer: 0x15c0176f0>
 
 ---->UILayoutContainerView:
  superclass: UIView 
 
- layer: <CALayer: 0x15c407690> 
- sublayers: <CALayer: 0x15c4077e0> / <CALayer: 0x15c406580>
+ layer: <CALayer: 0x15c0176f0> 
+ sublayers: <CALayer: 0x15c017840> / <CALayer: 0x15c016610>
 
 ----->UINavigationTransitionView:
  superclass: UIView 
 
- layer: <CALayer: 0x15c4077e0> 
- sublayers: <CALayer: 0x15c581320>
+ layer: <CALayer: 0x15c017840> 
+ sublayers: <CALayer: 0x15c2f8b10>
 
 ------>UIViewControllerWrapperView:
  superclass: UIView 
 
- layer: <CALayer: 0x15c581320> 
- sublayers: <CALayer: 0x15c4063a0>
+ layer: <CALayer: 0x15c2f8b10> 
+ sublayers: <CALayer: 0x15c016430>
 
-------->_TtCGC7SwiftUI32NavigationStackHostingControllerVS_7AnyView_P10$10c6254b411HostingView:
+------->_TtCGC7SwiftUI32NavigationStackHostingControllerVS_7AnyView_P10$10c16d4b411HostingView:
  superclass: _TtGC7SwiftUI14_UIHostingViewVS_7AnyView_ 
 
- layer: <CALayer: 0x15c4063a0> 
- sublayers: <CALayer: 0x15c5807b0>
+ layer: <CALayer: 0x15c016430> 
+ sublayers: <SwiftUI.GradientLayer: 0x15c2fa460> / <CALayer: 0x15c2fa490>
 
--------->_TtGC7SwiftUI21UIKitPlatformViewHostGVS_P10$10c62a3c017ListRepresentableGVS_28CollectionViewListDataSourceOs5Never_GOS_19SelectionManagerBoxS3____:
- superclass: _TtGC5UIKit22UICorePlatformViewHostGV7SwiftUIP10$10c62a3c017ListRepresentableGVS1_28CollectionViewListDataSourceOs5Never_GOS1_19SelectionManagerBoxS4____ 
+-------->_TtCC7SwiftUI17HostingScrollView17PlatformContainer:
+ superclass: UIView 
 
- layer: <CALayer: 0x15c5807b0> 
- sublayers: <CALayer: 0x1573fb960>
+ layer: <CALayer: 0x15c2fa490> 
+ sublayers: <CALayer: 0x15c1a0b10>
 
---------->SwiftUI.UpdateCoalescingCollectionView:
- superclass: PUICListCollectionView 
+--------->SwiftUI.HostingScrollView:
+ superclass: UIKitScrollViewBase 
 
- layer: <CALayer: 0x1573fb960> 
- sublayers: <CALayer: 0x1573f84e0> / <CALayer: 0x15c6d2d60> / <CALayer: 0x15c63e400> / <CALayer: 0x15c72c630> / <CALayer: 0x1573f83f0>
+ layer: <CALayer: 0x15c1a0b10> 
+ sublayers: <CALayer: 0x15c1a0b40> / <CALayer: 0x15c1a0ae0> / <CALayer: 0x15c1a0b70>
 
 ---------->_UITouchPassthroughView:
  superclass: UIView 
 
- layer: <CALayer: 0x1573f84e0> 
- sublayers: <CABackdropLayer: 0x15c78fe00>
+ layer: <CALayer: 0x15c1a0b40> 
+ sublayers: <CABackdropLayer: 0x15c35a500>
 
 ----------->_TtCC5UIKit20ScrollEdgeEffectView12BackdropView:
  superclass: UIView 
 
- layer: <CABackdropLayer: 0x15c78fe00>
+ layer: <CABackdropLayer: 0x15c35a500>
 
----------->SwiftUI.ListCollectionViewCell:
- superclass: _TtGC7SwiftUI26ListCollectionViewCellBaseVS_14_ViewList_View_ 
-
- layer: <CALayer: 0x15c6d2d60> 
- sublayers: <CALayer: 0x15c6d2e80> / <CALayer: 0x15c6d2d90>
-
------------>PUICPlatterCellContainerView:
+---------->_TtCC7SwiftUI17HostingScrollView22PlatformGroupContainer:
  superclass: UIView 
 
- layer: <CALayer: 0x15c6d2e80> 
- sublayers: <CALayer: 0x15c6d2ee0>
+ layer: <CALayer: 0x15c1a0ae0> 
+ sublayers: <CALayer: 0x15c355170> / <CALayer: 0x15c3559b0>
 
------------->PUICCollectionViewPlatterBackgroundView:
- superclass: PUICPlatterBackgroundView 
+----------->SwiftUI._UIInheritedView:
+ superclass: SwiftUI._UIGraphicsView 
 
- layer: <CALayer: 0x15c6d2ee0>
+ layer: <CALayer: 0x15c355170> 
+ sublayers: <SwiftUI.SDFLayer: 0x15c26b0c0>
 
------------>PUICPlatterCellContainerView:
- superclass: UIView 
+------------>SwiftUI._UIInheritedView:
+ superclass: SwiftUI._UIGraphicsView 
 
- layer: <CALayer: 0x15c6d2d90> 
- sublayers: <CALayer: 0x15c6d3480>
-
------------->_TtGC7SwiftUI15CellHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVS_26CollectionViewCellModifier__:
- superclass: _TtGC7SwiftUI17UIItemHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVS_26CollectionViewCellModifier__ 
-
- layer: <CALayer: 0x15c6d3480> 
- sublayers: <_TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer: 0x15c6e3480>
-
----------->SwiftUI.ListCollectionViewCell:
- superclass: _TtGC7SwiftUI26ListCollectionViewCellBaseVS_14_ViewList_View_ 
-
- layer: <CALayer: 0x15c63e400> 
- sublayers: <CALayer: 0x15c63f7e0> / <CALayer: 0x15c63e040>
-
------------>PUICPlatterCellContainerView:
- superclass: UIView 
-
- layer: <CALayer: 0x15c63f7e0> 
- sublayers: <CALayer: 0x15c63f390>
-
------------->PUICCollectionViewPlatterBackgroundView:
- superclass: PUICPlatterBackgroundView 
-
- layer: <CALayer: 0x15c63f390>
-
------------>PUICPlatterCellContainerView:
- superclass: UIView 
-
- layer: <CALayer: 0x15c63e040> 
- sublayers: <CALayer: 0x15c6d2b20>
-
------------->_TtGC7SwiftUI15CellHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVS_26CollectionViewCellModifier__:
- superclass: _TtGC7SwiftUI17UIItemHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVS_26CollectionViewCellModifier__ 
-
- layer: <CALayer: 0x15c6d2b20> 
- sublayers: <CALayer: 0x15c7bdf80>
+ layer: <SwiftUI.SDFLayer: 0x15c26b0c0> 
+ sublayers: <CALayer: 0x15c3551d0> / <CALayer: 0x15c355230>
 
 ------------->SwiftUI._UIInheritedView:
  superclass: SwiftUI._UIGraphicsView 
 
- layer: <CALayer: 0x15c7bdf80> 
- sublayers: <SwiftUI.SDFLayer: 0x15c69b900>
+ layer: <CALayer: 0x15c3551d0> 
+ sublayers: <CALayer: 0x15c2faa30>
 
--------------->SwiftUI._UIInheritedView:
- superclass: SwiftUI._UIGraphicsView 
-
- layer: <SwiftUI.SDFLayer: 0x15c69b900> 
- sublayers: <CALayer: 0x15c7bdfe0> / <CALayer: 0x15c7be040>
-
---------------->SwiftUI._UIInheritedView:
- superclass: SwiftUI._UIGraphicsView 
-
- layer: <CALayer: 0x15c7bdfe0> 
- sublayers: <CALayer: 0x15c7bde00>
-
----------------->_TtC5UIKitP33_F83AB3ECBB2C378B4FCEB681A4D7DB7430UIPlatformGlassInteractionView:
+-------------->_TtC5UIKitP33_F83AB3ECBB2C378B4FCEB681A4D7DB7430UIPlatformGlassInteractionView:
  superclass: UIKit.UICoreGraphicsView 
 
- layer: <CALayer: 0x15c7bde00> 
- sublayers: <CALayer: 0x15c7be6a0>
+ layer: <CALayer: 0x15c2faa30> 
+ sublayers: <CALayer: 0x15c355890>
 
----------->SwiftUI.ListCollectionViewCell:
- superclass: _TtGC7SwiftUI26ListCollectionViewCellBaseVS_14_ViewList_View_ 
+----------->SwiftUI._UIInheritedView:
+ superclass: SwiftUI._UIGraphicsView 
 
- layer: <CALayer: 0x15c72c630> 
- sublayers: <CALayer: 0x15c72c750> / <CALayer: 0x15c72c660>
+ layer: <CALayer: 0x15c3559b0> 
+ sublayers: <SwiftUI.SDFLayer: 0x1568d24c0>
 
------------>PUICPlatterCellContainerView:
- superclass: UIView 
+------------>SwiftUI._UIInheritedView:
+ superclass: SwiftUI._UIGraphicsView 
 
- layer: <CALayer: 0x15c72c750> 
- sublayers: <CALayer: 0x15c72c7b0>
+ layer: <SwiftUI.SDFLayer: 0x1568d24c0> 
+ sublayers: <CALayer: 0x15c3559e0> / <CALayer: 0x15c355a40>
 
------------->PUICCollectionViewPlatterBackgroundView:
- superclass: PUICPlatterBackgroundView 
+------------->SwiftUI._UIInheritedView:
+ superclass: SwiftUI._UIGraphicsView 
 
- layer: <CALayer: 0x15c72c7b0>
+ layer: <CALayer: 0x15c3559e0> 
+ sublayers: <CALayer: 0x15c2fb000>
 
------------>PUICPlatterCellContainerView:
- superclass: UIView 
+-------------->_TtC5UIKitP33_F83AB3ECBB2C378B4FCEB681A4D7DB7430UIPlatformGlassInteractionView:
+ superclass: UIKit.UICoreGraphicsView 
 
- layer: <CALayer: 0x15c72c660> 
- sublayers: <CALayer: 0x15c72cc60>
-
------------->_TtGC7SwiftUI15CellHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVS_26CollectionViewCellModifier__:
- superclass: _TtGC7SwiftUI17UIItemHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVS_26CollectionViewCellModifier__ 
-
- layer: <CALayer: 0x15c72cc60> 
- sublayers: <SwiftUI.ImageLayer: 0x15c7bc2d0> / <_TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer: 0x15c7a5780>
+ layer: <CALayer: 0x15c2fb000> 
+ sublayers: <CALayer: 0x15c355fb0>
 
 ---------->_UITouchPassthroughView:
  superclass: UIView 
 
- layer: <CALayer: 0x1573f83f0> 
- sublayers: <CALayer: 0x15c6d0c30>
+ layer: <CALayer: 0x15c1a0b70> 
+ sublayers: <CALayer: 0x15c357300>
 
 ----------->UIKit.ScrollEdgeEffectView:
  superclass: UIView 
 
- layer: <CALayer: 0x15c6d0c30> 
- sublayers: <CALayer: 0x15c6d0a80>
+ layer: <CALayer: 0x15c357300> 
+ sublayers: <CALayer: 0x15c357330>
 
 ----->PUICStackedNavigationBar:
  superclass: PUICNavigationBar 
 
- layer: <CALayer: 0x15c406580> 
- sublayers: <CALayer: 0x15c406a60>
+ layer: <CALayer: 0x15c016610> 
+ sublayers: <CALayer: 0x15c016a00>
 
 ------>SaltUICore.NavigationBarHostingView:
  superclass: _TtGC10SaltUICore15CoreHostingViewVS_17NavigationBarView_ 
 
- layer: <CALayer: 0x15c406a60> 
- sublayers: <CALayer: 0x15c63ddd0> / <CALayer: 0x15c63df50> / <_TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer: 0x15c6ace00>
+ layer: <CALayer: 0x15c016a00> 
+ sublayers: <CALayer: 0x15c2f9b00> / <CALayer: 0x156bd54a0> / <_TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer: 0x15c2bb600>
 
-------->_TtGC5UIKitP10$1269b2fac21UICoreInteractionViewV10SaltUICore36ScrollPocketInteractionRepresentable_:
+------->_TtGC5UIKitP10$1264cafac21UICoreInteractionViewV10SaltUICore36ScrollPocketInteractionRepresentable_:
  superclass: UIKit.UICoreGraphicsView 
 
- layer: <CALayer: 0x15c63ddd0> 
- sublayers: <CALayer: 0x15c63fba0>
+ layer: <CALayer: 0x15c2f9b00> 
+ sublayers: <CALayer: 0x15c2f89f0>
 
-------->_TtGC5UIKitP10$1269b2fac21UICoreInteractionViewV10SaltUICore36ScrollPocketInteractionRepresentable_:
+------->_TtGC5UIKitP10$1264cafac21UICoreInteractionViewV10SaltUICore36ScrollPocketInteractionRepresentable_:
  superclass: UIKit.UICoreGraphicsView 
 
- layer: <CALayer: 0x15c63df50> 
- sublayers: <CALayer: 0x15c63de30>
+ layer: <CALayer: 0x156bd54a0> 
+ sublayers: <CALayer: 0x15c246100>
 
 -------->SwiftUI._UIInheritedView:
  superclass: SwiftUI._UIGraphicsView 
 
- layer: <CALayer: 0x15c63de30> 
- sublayers: <CALayer: 0x1573f9b90>
+ layer: <CALayer: 0x15c246100> 
+ sublayers: <CALayer: 0x15c247480>
 
 --------->_TtGC5UIKit22UICorePlatformViewHostGVS_32PlatformViewRepresentableAdaptorV10SaltUICore25MarqueeLabelRepresentable__:
  superclass: _UIConstraintBasedLayoutHostingView 
 
- layer: <CALayer: 0x1573f9b90> 
- sublayers: <_UILabelLayer: 0x15c5f5c80>
+ layer: <CALayer: 0x15c247480> 
+ sublayers: <_UILabelLayer: 0x15c2b8d80>
 
 ---------->UILabel:
  superclass: UIView 
 
- layer: <_UILabelLayer: 0x15c5f5c80>
+ layer: <_UILabelLayer: 0x15c2b8d80>
 
 -------------------------
 OS: watchOS:27
