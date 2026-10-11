@@ -444,7 +444,7 @@ struct BoneDumpHost<Content: View>: View {
 
                 var lines = BoneDumpStore.formatted.split(whereSeparator: \.isNewline)
                 lines.append("-------------------------")
-                lines.append("OS: iOS\(ProcessInfo().operatingSystemVersion.majorVersion)")
+                lines.append("OS: macOS:\(ProcessInfo().operatingSystemVersion.majorVersion)")   // as iOS writes it: "<system>:<major>"
                 let result = lines.joined(separator: "\n")
 
                 let filename = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]

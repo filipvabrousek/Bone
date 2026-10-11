@@ -14,6 +14,8 @@ Nothing yet.
 ## 2026-10-12
 
 ### Fixed
+- `.bone(into:)` on **macOS** wrote `OS: iOS27` at the end of the brief dump; it now writes
+  `OS: macOS:27`, the `<system>:<major>` form iOS writes.
 - `.bone(into:)` on **macOS** crashed (index out of range) on any view tree of 16 or more views – a
   `List` – and before that ran for minutes: it named views from a full `dump` of each one. Colours
   now repeat on long view trees, and the dump is read to 16 levels, which keeps every contents and
