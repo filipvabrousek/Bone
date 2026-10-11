@@ -8,6 +8,7 @@ You can expand overlay to see layers, sublayers and superclasses of the views.
 It is also possible to output the code into text file.  
 It can also tune (`.tune`), dump (`.dumpGlass`), probe (`.probeGlass`) and live-edit Liquid Glass with a visual inspector (`.boneInspector`, incl. a 3D exploded view),
 dump the glass shaders' own parameters (`.dumpGlass(full: true)`),  
+stretch the glass button's press and drag flex much further (`.glassFlex`),  
 and tune the layers of any SwiftUI view – Text, shapes, buttons (`.tuneLayers`).  
 To get started, just copy/paste all files in library into folder in your project and add it to all targets.
 
@@ -233,6 +234,26 @@ panel wins for the inputs it holds.
 - **Copy Swift** – `.tune([...])` code for the current changes, to the clipboard.
 - **Save JSON** – `captures/glass-panel.json`, for `.tune(file:)`.
 - presets, Reset all, per-input reset, move the panel up/down.
+
+### `.glassFlex(stretch:follow:)` — glass stretch, iOS
+
+![stock and .glassFlex(stretch: 6, follow: 12) while dragged, iPhone 14 Pro](Bone-27/captures/glass-flex.png)
+
+```swift
+Button("Glass") {}.buttonStyle(.glass).glassFlex(stretch: 6, follow: 12)
+```
+
+Stretches the system glass button's own flex – the swell when pressed and the stretch toward
+the finger while held and dragged – and the glass outline grows with the label. `stretch`
+multiplies the swell and the drag stretch, `follow` the shift toward the finger (1 = stock for
+both; defaults 6 and 12). Only glass controls inside the modified view are affected.
+
+It maps the two layer branches SwiftUI's flex interaction drives every frame: the content
+(`UIPlatformGlassInteractionView`: scale and position) and the glass outline (the layers under
+SwiftUI's `SDFLayer`: backdrop, SDF and portal layers). The shape element is a rounded rectangle
+while held and a distance-field bitmap of the stretched blob while dragged; it is scaled about the
+shape, so the glass keeps its form. iPhone 14 Pro at (6, 12): 164×106 pt pressed, stock 77×50.
+Details in [library/readme.md](library/readme.md); demo: launch argument `-flex`.
 
 ## Any SwiftUI view
 

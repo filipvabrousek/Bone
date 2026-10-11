@@ -246,36 +246,6 @@ morph of the floating tab bar and search field – through its Objective-C door,
 AnimationKit's private protocols, so it is not reachable from outside. Launch with `-liquid` for
 the demo row alone (`-autotoggle` flips it every 3 s).
 
-`.glassFlex(stretch:follow:)` exaggerates the glass button's flex – the swell when pressed and
-the stretch toward the finger while held and dragged:
-
-```swift
-Button("Glass") {}.buttonStyle(.glass).glassFlex(stretch: 6, follow: 12)
-```
-
-SwiftUI's flex interaction (`UIPlatformGlassFlexInteraction`) drives two layer branches every
-frame, and `.glassFlex` maps both so the glass grows with its label:
-
-- the content – the layer of `UIPlatformGlassInteractionView`: a scale (`setTransform:` /
-  `setAffineTransform:`, from the top-left corner) and a position (recentring plus a small shift
-  toward the finger). The scale becomes 1 + stretch·(s − 1), the position is recentred and the
-  finger shift multiplied by `follow`.
-- the glass outline – every layer under SwiftUI's `SDFLayer` host (container, `CABackdropLayer`,
-  `CASDFLayer`, `SDFPortalLayer`) gets the shape's bounds and position (61×39 → 78×50 pressed);
-  the size grows by the same rule, the bounds origin (which mirrors the position) is mapped too.
-  The shape element (`CASDFElementLayer`) is a rounded rectangle with its own corner radius while
-  held (19.7 → 25.2) and switches to a distance-field bitmap of the stretched blob, ~9.5 pt larger
-  than the shape, while dragged; it is scaled about the shape, so a capsule stays a capsule and
-  the blob lands on the amplified outline.
-
-On release UIKit stops setting the content for ~1 s while the outline still springs back frame by
-frame; the content then follows the outline. `SDFLayer` is a Swift class (`NSClassFromString`
-does not find it – matched by name). CALayer's setters are swapped once; only layers of a glass
-button inside a `.glassFlex` view are changed, each value mapped once (nested setter calls pass
-through). Stock: press 1.19×, drag 1.23 × 1.13, shift +4 pt. Measured on an iPhone 14 Pro at
-(6, 12): pressed 164×106 pt glass and label together (stock 77×50), dragged ~150×105 following
-the finger. `-flex` shows the demo row.
-
 The demo's first row is that menu (`-menu` shows only it). On a device the screen reads back
 black, so a take keeps system snapshot views (glass included, scrubbed instantly; Save is
 simulator-only).
@@ -304,6 +274,45 @@ panel wins for the inputs it holds.
 - **Copy Swift** – `.tune([...])` code for the current changes, to the clipboard.
 - **Save JSON** – `captures/glass-panel.json`, for `.tune(file:)`.
 - presets, Reset all, per-input reset, move the panel up/down.
+
+### `.glassFlex(stretch:follow:)` — glass stretch, iOS
+
+![stock and .glassFlex(stretch: 6, follow: 12) while dragged, iPhone 14 Pro](https://raw.githubusercontent.com/filipvabrousek/Bone/main/Bone-27/captures/glass-flex.png)
+
+`.glassFlex(stretch:follow:)` stretches the glass button's flex much further – the swell when
+pressed and the stretch toward the finger while held and dragged. The glass outline grows with the
+label:
+
+```swift
+Button("Glass") {}.buttonStyle(.glass).glassFlex(stretch: 6, follow: 12)
+```
+
+`stretch` multiplies the swell and the drag stretch, `follow` the shift toward the finger (1 = stock
+for both; defaults 6 and 12). It applies to the glass controls inside the modified view – the rest
+keep the stock flex.
+
+SwiftUI's flex interaction (`UIPlatformGlassFlexInteraction`) drives two layer branches every
+frame, and `.glassFlex` maps both:
+
+- the content – the layer of `UIPlatformGlassInteractionView`: a scale (`setTransform:` /
+  `setAffineTransform:`, from the top-left corner) and a position (recentring plus a small shift
+  toward the finger). The scale becomes 1 + stretch·(s − 1), the position is recentred and the
+  finger shift multiplied by `follow`.
+- the glass outline – every layer under SwiftUI's `SDFLayer` host (container, `CABackdropLayer`,
+  `CASDFLayer`, `SDFPortalLayer`) gets the shape's bounds and position (61×39 → 78×50 pressed);
+  the size grows by the same rule, the bounds origin (which mirrors the position) is mapped too.
+  The shape element (`CASDFElementLayer`) is a rounded rectangle with its own corner radius while
+  held (19.7 → 25.2) and switches to a distance-field bitmap of the stretched blob, ~9.5 pt larger
+  than the shape, while dragged; it is scaled about the shape, so a capsule stays a capsule and
+  the blob lands on the amplified outline.
+
+On release UIKit stops setting the content for ~1 s while the outline still springs back frame by
+frame; the content then follows the outline. `SDFLayer` is a Swift class (`NSClassFromString`
+does not find it – matched by name). CALayer's setters are swapped once; only layers of a glass
+button inside a `.glassFlex` view are changed, each value mapped once (nested setter calls pass
+through). Stock: press 1.19×, drag 1.23 × 1.13, shift +4 pt. Measured on an iPhone 14 Pro at
+(6, 12): pressed 164×106 pt glass and label together (stock 77×50), dragged ~150×105 following
+the finger. `-flex` shows the demo row.
 
 ### `.tuneLayers(_:where:)` / `.dumpLayers(_:)` — any SwiftUI view, iOS
 
