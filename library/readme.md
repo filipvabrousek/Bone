@@ -9,6 +9,18 @@ animates the glass. Copy this folder into your project and add it to all targets
 > **Research / simulator use only.** Bone uses private classes, selectors, ivars and Core Animation
 > keys. Never ship it in an App Store build; names change between OS releases.
 
+**Platforms**
+
+| | iOS | watchOS | visionOS | macOS |
+|---|:-:|:-:|:-:|:-:|
+| Hierarchy dump `.bone(into:)` | ✓ | ✓ | ✓ | ✓ |
+| 3D hierarchy `.bone3D` · `.bone3DFrom` | | | ✓ | |
+| Liquid Glass `.tune` · `.dumpGlass` | ✓ | ✓ | | ✓ |
+| `.probeGlass` · `.dumpShaders` · `.boneInspector` (3D view) · `.tuneLayers` | ✓ | | | |
+| Timeline · `.morphScrubber` · `.dumpMorph` · `.liquidMorph` · `.glassFlex` | ✓ | | | |
+
+Built with Xcode 27; tested on iOS 27 (simulator and iPhone 14 Pro), watchOS 27 (simulator), visionOS 27 and macOS.
+
 | Modifier | What it does | Docs |
 |---|---|---|
 | `.bone(into:)` | UIKit hierarchy behind a SwiftUI view → overlay + text/JSON dump (iOS, macOS, visionOS, watchOS) | [hierarchy](https://github.com/filipvabrousek/Bone/blob/main/Bone-27/docs/hierarchy.md) |

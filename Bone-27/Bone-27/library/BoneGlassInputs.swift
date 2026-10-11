@@ -11,9 +11,9 @@
 //  Research / simulator use only – private Core Animation keys.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) || canImport(AppKit)
 
-import UIKit
+import Foundation
 
 /// A tunable input of the Liquid Glass filter. `rawValue` is the Core Animation key.
 enum GlassInput: String, CaseIterable, Hashable {

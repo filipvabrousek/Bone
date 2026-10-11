@@ -17,6 +17,29 @@ List {
 
 This writes the UIKit hierarchy behind the list to `output.txt` and shows it as an overlay.
 
+## Platforms
+
+| | iOS | watchOS | visionOS | macOS |
+|---|:-:|:-:|:-:|:-:|
+| Hierarchy dump `.bone(into:)` | ✓ | ✓ | ✓ | ✓ |
+| 3D hierarchy `.bone3D` · `.bone3DFrom` | | | ✓ | |
+| Liquid Glass `.tune` · `.dumpGlass` | ✓ | ✓ | | ✓ |
+| `.probeGlass` · `.dumpShaders` · `.boneInspector` (3D view) · `.tuneLayers` | ✓ | | | |
+| Timeline · `.morphScrubber` · `.dumpMorph` · `.liquidMorph` · `.glassFlex` | ✓ | | | |
+
+- **Tested:** iOS 27 – simulator and an iPhone 14 Pro; watchOS 27 – simulator; visionOS 27; macOS.
+  Built with Xcode 27. Deployment targets: iOS, watchOS and visionOS 27.0, macOS 26.5.
+- **Liquid Glass** arrived with iOS 26, but the glass tools were only measured on iOS 27 – private
+  names and filter inputs change between releases.
+- **watchOS** has no public UIKit; Bone reaches the watch's UIKit and Core Animation through the
+  Objective-C runtime (see [Hierarchy dumps](hierarchy.md#boneinto-on-watchos) and
+  [Glass tuning](glass-tuning.md#on-watchos-and-macos)).
+- **visionOS** has no SwiftUI Liquid Glass (`glassEffect` is unavailable there). The inspector and
+  layer tools compile on visionOS but are untested; the timeline and morph tools are iOS-only, as
+  they drive iOS's AnimationKit morphs.
+- **macOS** draws Liquid Glass like iOS (the same SDF layers and `glassBackground` filter), so
+  `.tune` and `.dumpGlass` work there; plus the hierarchy dump. Captures need App Sandbox disabled.
+
 ## Demo app
 
 The `Bone-27` project shows every feature. Launch arguments (Edit Scheme ▸ Arguments) pick one

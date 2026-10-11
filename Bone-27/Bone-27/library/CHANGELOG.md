@@ -14,6 +14,11 @@ Nothing yet.
 ## 2026-10-11
 
 ### Added
+- `.dumpGlass(_:only:after:)` and `.tune(_:log:)` on **macOS** (`BoneMac.swift`): macOS 26+ draws Liquid
+  Glass with the same SDF layers and `glassBackground` filter as iOS. Verified on macOS 27
+  (`captures/mac-*.txt`).
+- A **Platforms** table in the readmes and on the getting-started page: which modifier runs on iOS,
+  watchOS, visionOS and macOS, and what was tested.
 - `.dumpGlass(_:only:after:)` and `.tune(_:log:)` on **watchOS**, with the same types as on iOS
   (`GlassInput`, `GlassTuning`, presets). They act on the glass inside the modified view's frame,
   found through the Objective-C runtime; `.tune` re-applies 8× a second. Verified on the watchOS 27
@@ -28,6 +33,8 @@ Nothing yet.
   label. ([4d4159a](https://github.com/filipvabrousek/Bone/commit/4d4159a))
 
 ### Changed
+- The watchOS glass engine became `BoneGlassRuntime.swift`, shared by watchOS and macOS; the shared
+  glass types (`BoneGlassTuning.swift`, `BoneGlassInputs.swift`) build on macOS too.
 - `GlassValue`, `GlassTuning`, `BoneFilterInputs` and the input-value formatter moved into the
   shared `BoneGlassTuning.swift`; `GlassInput` (`BoneGlassInputs.swift`) now compiles on watchOS too.
 - Every library file is excluded on watchOS (`canImport(UIKit) && !os(watchOS)`; the AppKit branches
@@ -37,6 +44,9 @@ Nothing yet.
   `Bone-27/docs/internals/`. ([bbf667a](https://github.com/filipvabrousek/Bone/commit/bbf667a))
 
 ### Fixed
+- The library builds for **visionOS** again. Since the timeline (2026-10-10) the inspector panel
+  referred to `BoneTimeline` and `BoneSlider`, which are not built on visionOS; the timeline parts of
+  the panel are now iOS-only and `BoneSlider` has its own file (`BoneSlider.swift`).
 - Timeline on a 120 Hz device: every animation manager is caught up when the clock pauses, and a
   take ends when the morph's own values settle, so a take no longer keeps retargeting.
   ([4d4159a](https://github.com/filipvabrousek/Bone/commit/4d4159a))

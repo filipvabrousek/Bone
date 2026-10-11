@@ -5,11 +5,11 @@ BONE · watchOS 27.0 · 1 window(s), 30 views
 UIWindowLayer (0.0, 0.0, 208.0, 248.0) delegate UIWindow
   CALayer (0.0, 0.0, 208.0, 248.0) delegate UIView
     CALayer (0.0, 0.0, 208.0, 248.0) delegate _TtGC7SwiftUI14_UIHostingViewVS_7AnyView_
-      CALayer (0.0, 0.0, 208.0, 248.0) delegate _TtGC7SwiftUI21UIKitPlatformViewHostGVS_42PlatformViewControllerRepresentableAdaptorVS_P10$10c16d6d428NavigationStackRepresentable__
+      CALayer (0.0, 0.0, 208.0, 248.0) delegate _TtGC7SwiftUI21UIKitPlatformViewHostGVS_42PlatformViewControllerRepresentableAdaptorVS_P10$10a8bd6d428NavigationStackRepresentable__
         CALayer (0.0, 0.0, 208.0, 248.0) delegate UILayoutContainerView
           CALayer (0.0, 0.0, 208.0, 248.0) delegate UINavigationTransitionView
             CALayer (0.0, 0.0, 208.0, 248.0) delegate UIViewControllerWrapperView
-              CALayer (0.0, 0.0, 208.0, 248.0) delegate _TtCGC7SwiftUI32NavigationStackHostingControllerVS_7AnyView_P10$10c16d4b411HostingView
+              CALayer (0.0, 0.0, 208.0, 248.0) delegate _TtCGC7SwiftUI32NavigationStackHostingControllerVS_7AnyView_P10$10a8bd4b411HostingView
                 SwiftUI.GradientLayer (15.0, 0.0, 178.0, 248.0) delegate _SwiftUILayerDelegate
                 CALayer (15.0, 0.0, 178.0, 248.0) delegate _TtCC7SwiftUI17HostingScrollView17PlatformContainer
                   CALayer (0.0, 0.0, 178.0, 248.0) delegate SwiftUI.HostingScrollView
@@ -67,9 +67,9 @@ UIWindowLayer (0.0, 0.0, 208.0, 248.0) delegate UIWindow
                           CALayer (0.0, 0.0, 0.0, 0.0) delegate _UIScrollEdgeEffectLayerDelegate
           CALayer (0.0, 0.0, 208.0, 62.0) delegate PUICStackedNavigationBar
             CALayer (0.0, 0.0, 208.0, 62.0) delegate SaltUICore.NavigationBarHostingView
-              CALayer (15.0, 18.0, 178.0, 17.5) delegate _TtGC5UIKitP10$1264cafac21UICoreInteractionViewV10SaltUICore36ScrollPocketInteractionRepresentable_
+              CALayer (15.0, 18.0, 178.0, 17.5) delegate _TtGC5UIKitP10$124afafac21UICoreInteractionViewV10SaltUICore36ScrollPocketInteractionRepresentable_
                 CALayer (0.0, 0.0, 178.0, 17.5) delegate _SwiftUILayerDelegate
-              CALayer (153.0, 35.5, 40.0, 20.5) delegate _TtGC5UIKitP10$1264cafac21UICoreInteractionViewV10SaltUICore36ScrollPocketInteractionRepresentable_
+              CALayer (153.0, 35.5, 40.0, 20.5) delegate _TtGC5UIKitP10$124afafac21UICoreInteractionViewV10SaltUICore36ScrollPocketInteractionRepresentable_
                 CALayer (0.0, 10.0, 40.0, 20.5) delegate SwiftUI._UIInheritedView
                   filters: gaussianBlur – 3 inputs: inputDither, inputNormalizeEdges, inputRadius
                   CALayer (0.0, 0.0, 40.0, 20.5) delegate _TtGC5UIKit22UICorePlatformViewHostGVS_32PlatformViewRepresentableAdaptorV10SaltUICore25MarqueeLabelRepresentable__

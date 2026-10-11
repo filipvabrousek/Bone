@@ -143,7 +143,9 @@ final class BoneGlassPanelModel: ObservableObject {
     private var explodeShot: CGImage?
     /// Timeline bar (BoneTimeline.swift): pause, slow down, step and scrub animations.
     @Published var timelineOpen = false
+    #if !os(visionOS)
     let timeline = BoneTimeline()
+    #endif
     @Published var isOpen = false
     @Published var probing = false
     @Published var atTop = false
@@ -161,7 +163,13 @@ final class BoneGlassPanelModel: ObservableObject {
     var cardRect: CGRect = .zero
     var timelineRect: CGRect = .zero
     /// A take on screen covers the app: the window takes every touch.
-    var timelineCovers: Bool { timelineOpen && !isOpen && !picking && !exploded && timeline.showsFrame }
+    var timelineCovers: Bool {
+        #if os(visionOS)
+        false        // the timeline drives iOS's AnimationKit morphs – not built on visionOS
+        #else
+        timelineOpen && !isOpen && !picking && !exploded && timeline.showsFrame
+        #endif
+    }
 
     /// The app's own windows (everything but the panel).
     var appWindows: [UIWindow] { scene?.windows.filter { $0 !== panelWindow } ?? [] }
@@ -197,11 +205,14 @@ final class BoneGlassPanelModel: ObservableObject {
         w.isHidden = false
         panelWindow = w
         self.scene = scene
+        #if !os(visionOS)
         timeline.model = self
+        #endif
     }
 
     // MARK: Timeline
 
+    #if !os(visionOS)
     func openTimeline() {
         picking = false
         code = nil
@@ -217,6 +228,7 @@ final class BoneGlassPanelModel: ObservableObject {
         timelineRect = .zero
         previousKey?.makeKey()
     }
+    #endif
 
     // MARK: Picking
 
@@ -759,8 +771,10 @@ struct BoneGlassPanelView: View {
                     HStack {
                         Button { model.openExploded() } label: { Label("3D", systemImage: "square.3.layers.3d") }
                             .buttonStyle(.bordered)
+                        #if !os(visionOS)
                         Button { model.openTimeline() } label: { Label("Timeline", systemImage: "timeline.selection") }
                             .buttonStyle(.bordered)
+                        #endif
                         Button("Cancel") { model.cancelPicking() }.buttonStyle(.borderedProminent).tint(.pink)
                     }
                 }
@@ -790,7 +804,9 @@ struct BoneGlassPanelView: View {
                 }
                 .padding(.horizontal, 8)
             } else if model.timelineOpen {
+                #if !os(visionOS)
                 BoneTimelineScreen(model: model, timeline: model.timeline)
+                #endif
             } else {
                 Button { model.startPicking() } label: {
                     Image(systemName: "drop.halffull")

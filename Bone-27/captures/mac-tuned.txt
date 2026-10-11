@@ -1,0 +1,10 @@
+BONE · dumpGlass
+OS: macOS 27.0 · captured: 2026-10-11 15:31:15
+inputs: blurRadius, faceOpacity, shadowOpacity, innerRefractionAmount
+glass filters: 1
+
+===== [1] glassBackground  (filters on NSViewBackingLayer ▹ [3]NSViewBackingLayer ▹ [6]CALayer ▹ [0]SwiftUI.SDFLayer ▹ [1]CALayer ▹ [0]CABackdropLayer) =====
+   blurRadius  (inputBlurRadius)                       = 0
+   faceOpacity  (inputFaceOpacity)                     = 0.6000
+   innerRefractionAmount  (inputInnerRefractionAmount) = 0
+   shadowOpacity  (inputShadowOpacity)                 = 0

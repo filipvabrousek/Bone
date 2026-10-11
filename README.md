@@ -58,6 +58,18 @@ sublayers and superclasses.
 | `.liquidMorph(to:isPresented:)` | Apple's glass morph between any two views | [Liquid morph](Bone-27/docs/liquid-morph.md) |
 | `.glassFlex(stretch:follow:)` | the glass button's press and drag stretch, much further | [Glass stretch](Bone-27/docs/glass-stretch.md) |
 
+## Platforms
+
+| | iOS | watchOS | visionOS | macOS |
+|---|:-:|:-:|:-:|:-:|
+| Hierarchy dump `.bone(into:)` | ✓ | ✓ | ✓ | ✓ |
+| 3D hierarchy `.bone3D` · `.bone3DFrom` | | | ✓ | |
+| Liquid Glass `.tune` · `.dumpGlass` | ✓ | ✓ | | ✓ |
+| `.probeGlass` · `.dumpShaders` · `.boneInspector` (3D view) · `.tuneLayers` | ✓ | | | |
+| Timeline · `.morphScrubber` · `.dumpMorph` · `.liquidMorph` · `.glassFlex` | ✓ | | | |
+
+Built with Xcode 27; tested on iOS 27 (simulator and iPhone 14 Pro), watchOS 27 (simulator), visionOS 27 and macOS. Details in [Getting started](Bone-27/docs/getting-started.md#platforms).
+
 ## Documentation
 
 - [Guides](Bone-27/docs/index.md) – one page per topic, with examples, results and how each part works.

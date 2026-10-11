@@ -89,10 +89,11 @@ Five structs on iOS 27: `glassBackground` (63 fields), its SDF variant (66), the
 block (`u_ext`: `preserve_hue`, `stroke_mode`, `highlight_extension`, …), and `glassForeground` (13)
 with its SDF variant (16).
 
-## On watchOS
+## On watchOS and macOS
 
-`.dumpGlass(_:only:after:)` and `.tune(_:log:)` work on Apple Watch too, with the same types and
-presets (`BoneWatch.swift`; the shared types are in `BoneGlassTuning.swift`):
+`.dumpGlass(_:only:after:)` and `.tune(_:log:)` work on Apple Watch and on the Mac too, with the
+same types and presets. One engine serves both (`BoneGlassRuntime.swift`); `BoneWatch.swift` and
+`BoneMac.swift` decide which windows to walk and which glass lies in the modified view:
 
 ```swift
 Button("Glass") {}.buttonStyle(.glass).dumpGlass("watch-glass.txt")
@@ -103,7 +104,9 @@ Button("Glass") {}.buttonStyle(.glass)
 watchOS has no public UIKit, but the watch's glass is the iPhone's – a `CABackdropLayer` with a
 `glassBackground` filter under SwiftUI's `SDFLayer` – so Bone reaches it through the Objective-C
 runtime and the same key paths. Both act on the glass inside the modified view's frame; `.tune`
-re-applies 8× a second. `.tune(file:)`, `.probeGlass` and `.dumpShaders` are iOS-only for now.
+re-applies 8× a second. On macOS 27 the same tuning changed 10 inputs of a `.glassEffect()` panel
+(`captures/mac-tune.txt`) while the stock button beside it kept its values (`captures/mac-glass.txt`).
+`.tune(file:)`, `.probeGlass` and `.dumpShaders` are iOS-only for now.
 
 A glass button on the watchOS 27 simulator (`captures/watch-glass.txt`), next to the iOS 27 demo
 button (`captures/glass-default.txt`; a larger button, and refraction scales with the shape):

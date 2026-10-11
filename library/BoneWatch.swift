@@ -220,7 +220,7 @@ enum BoneWatch {
     }
 }
 
-// MARK: - Liquid Glass: .dumpGlass and .tune
+// MARK: - Liquid Glass: .dumpGlass and .tune (engine: BoneGlassRuntime.swift)
 
 extension View {
 
@@ -228,7 +228,7 @@ extension View {
     func dumpGlass(_ fileName: String, only: [GlassInput]? = nil, after delay: Double = 1.5) -> some View {
         modifier(BoneWatchAreaModifier { area in
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                BoneWatch.write(BoneWatch.dumpGlass(in: area.frame, only: only), fileName)
+                BoneWatch.write(BoneGlassRuntime.dumpGlass(BoneWatch.filterLayers(in: area.frame), only: only), fileName)
             }
         })
     }
@@ -236,7 +236,9 @@ extension View {
     /// Overrides Liquid Glass filter inputs of the glass in this view (watchOS), like .tune on iOS.
     func tune(_ tuning: GlassTuning, log: String? = nil) -> some View {
         modifier(BoneWatchAreaModifier { area in
-            let tuner = BoneWatchTuner(values: tuning.caValues, log: log, area: area)
+            let tuner = BoneGlassRuntimeTuner(values: tuning.caValues, log: log,
+                                              collect: { [weak area] in BoneWatch.filterLayers(in: area?.frame ?? .null) },
+                                              write: { BoneWatch.write($0, $1) })
             area.keepAlive = tuner
             tuner.start()
         })
@@ -263,155 +265,21 @@ struct BoneWatchAreaModifier: ViewModifier {
                 }
                 .onChange(of: g.frame(in: .global)) { _, f in area.frame = f }
         })
-        .onDisappear { (area.keepAlive as? BoneWatchTuner)?.stop() }
-    }
-}
-
-final class BoneWatchTuner {
-    let values: [String: Any]
-    let log: String?
-    let area: BoneWatchArea
-    private var timer: Timer?
-    private var logged = false
-
-    init(values: [String: Any], log: String?, area: BoneWatchArea) {
-        self.values = values
-        self.log = log
-        self.area = area
-    }
-
-    func start() {
-        guard !values.isEmpty else { return }
-        timer = Timer.scheduledTimer(withTimeInterval: 0.125, repeats: true) { [weak self] _ in
-            MainActor.assumeIsolated { self?.tick() }
-        }
-    }
-
-    func stop() { timer?.invalidate(); timer = nil }
-
-    private func tick() {
-        var changes: [String] = []
-        for found in BoneWatch.filterLayers(in: area.frame) {
-            for (slot, _, name, type) in BoneWatch.filters(on: found.layer) {
-                for (key, newValue) in values {
-                    guard let input = Self.input(key, name: name, type: type) else { continue }
-                    let path = "\(slot).\(name).\(input)"
-                    let current = found.layer.value(forKeyPath: path)
-                    if let current, BoneWatch.same(current, newValue) { continue }
-                    found.layer.setValue(newValue, forKeyPath: path)
-                    changes.append("\(BoneWatch.className(found.layer)) \(path): \(current.map { BoneGlassFormat.value($0) } ?? "nil") → \(BoneGlassFormat.value(newValue))")
-                }
-            }
-        }
-        if let log, !logged, !changes.isEmpty {
-            logged = true
-            let os = ProcessInfo().operatingSystemVersion
-            let text = "BONE · tune\nOS: watchOS \(os.majorVersion).\(os.minorVersion)\n"
-                + "requested: \(values.keys.sorted().map { "\($0)=\(BoneGlassFormat.value(values[$0]))" }.joined(separator: ", "))\n\n"
-                + changes.joined(separator: "\n") + "\n"
-            BoneWatch.write(text, log)
-        }
-    }
-
-    /// "inputBlurRadius" → every glass filter; "vibrantColorMatrix.inputColorMatrix" → that filter only.
-    static func input(_ key: String, name: String, type: String) -> String? {
-        if let dot = key.firstIndex(of: ".") {
-            let target = key[..<dot]
-            return target == name || target == type ? String(key[key.index(after: dot)...]) : nil
-        }
-        return type.lowercased().contains("glass") ? key : nil
+        .onDisappear { (area.keepAlive as? BoneGlassRuntimeTuner)?.stop() }
     }
 }
 
 extension BoneWatch {
 
-    /// Layers carrying filters whose window frame centre lies in `area` (any, if `area` is null),
-    /// with a path like the iOS dump ("UIWindowLayer ▹ [0]CALayer ▹ …").
-    static func filterLayers(in area: CGRect) -> [(layer: NSObject, path: String)] {
+    /// Layers carrying filters whose window frame centre lies in `area` (any, if `area` is null).
+    static func filterLayers(in area: CGRect) -> [BoneGlassRuntime.Found] {
         var notes: [String] = []
-        var out: [(NSObject, String)] = []
-        for w in findWindows(&notes) {
-            guard let root = get(w, "layer") else { continue }
-            func walk(_ layer: NSObject, _ path: String, _ depth: Int) {
-                guard depth < 60 else { return }
-                if !filters(on: layer).isEmpty {
-                    let r = windowRect(layer, root: root)
-                    if area.isNull || area.insetBy(dx: -8, dy: -8).contains(CGPoint(x: r.midX, y: r.midY)) {
-                        out.append((layer, path))
-                    }
-                }
-                for (i, sub) in ((get(layer, "sublayers") as? [NSObject]) ?? []).enumerated() {
-                    walk(sub, "\(path) ▹ [\(i)]\(className(sub))", depth + 1)
-                }
-            }
-            walk(root, className(root), 0)
+        let roots = findWindows(&notes).compactMap { get($0, "layer") }
+        return BoneGlassRuntime.filterLayers(roots: roots) { layer, root in
+            guard !area.isNull else { return true }
+            let r = BoneGlassRuntime.rect(of: layer, in: root)
+            return area.insetBy(dx: -8, dy: -8).contains(CGPoint(x: r.midX, y: r.midY))
         }
-        return out
-    }
-
-    /// (slot, filter, name, type) for every filter on a layer.
-    static func filters(on layer: NSObject) -> [(String, NSObject, String, String)] {
-        var out: [(String, NSObject, String, String)] = []
-        for slot in ["filters", "backgroundFilters"] {
-            for f in (get(layer, slot) as? [NSObject]) ?? [] {
-                let type = (get(f, "type") as? String) ?? className(f)
-                out.append((slot, f, (get(f, "name") as? String) ?? type, type))
-            }
-        }
-        return out
-    }
-
-    /// The layer's bounds in its window, through CALayer's own -convertRect:toLayer:.
-    static func windowRect(_ layer: NSObject, root: NSObject) -> CGRect {
-        typealias Convert = @convention(c) (NSObject, Selector, CGRect, NSObject?) -> CGRect
-        let sel = NSSelectorFromString("convertRect:toLayer:")
-        guard let cls = object_getClass(layer), let m = class_getInstanceMethod(cls, sel),
-              let v = get(layer, "bounds") as? NSValue, String(cString: v.objCType).hasPrefix("{CGRect") else { return .null }
-        var bounds = CGRect.zero
-        v.getValue(&bounds, size: MemoryLayout<CGRect>.size)
-        return unsafeBitCast(method_getImplementation(m), to: Convert.self)(layer, sel, bounds, root)
-    }
-
-    /// The .dumpGlass report, in the iOS format.
-    static func dumpGlass(in area: CGRect, only: [GlassInput]?) -> String {
-        struct Found { var path: String; var slot: String; var type: String; var isGlass: Bool; var inputs: [(String, Any?)] }
-        var found: [Found] = []
-        for (layer, path) in filterLayers(in: area) {
-            for (slot, f, _, type) in filters(on: layer) {
-                found.append(Found(path: path, slot: slot, type: type, isGlass: type.lowercased().contains("glass"),
-                                   inputs: BoneFilterInputs.keys(of: f).map { ($0, f.value(forKey: $0)) }))
-            }
-        }
-        let df = DateFormatter(); df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let os = ProcessInfo().operatingSystemVersion
-        var t = "BONE · dumpGlass\nOS: watchOS \(os.majorVersion).\(os.minorVersion) · captured: \(df.string(from: Date()))\n"
-        t += "inputs: " + (only.map { $0.map(\.caseName).joined(separator: ", ") } ?? "all") + "\n"
-        let glass = found.filter(\.isGlass)
-        t += "glass filters: \(glass.count)\n"
-        if glass.isEmpty { t += "\n(no glass filter found – is a glass style applied, and has it rendered?)\n" }
-        let wanted = only.map { Set($0.map(\.rawValue)) }
-        func label(_ key: String) -> String { GlassInput(rawValue: key).map { "\($0.caseName)  (\(key))" } ?? key }
-        for (i, f) in found.enumerated() where f.isGlass || wanted == nil {
-            t += "\n===== [\(i)] \(f.type)  (\(f.slot) on \(f.path)) =====\n"
-            let rows = f.inputs.filter { wanted == nil || wanted!.contains($0.0) }
-            if rows.isEmpty { t += "   (none of the requested inputs)\n"; continue }
-            let width = rows.map { label($0.0).count }.max() ?? 0
-            for (key, value) in rows {
-                let l = label(key)
-                t += "   " + l + String(repeating: " ", count: width - l.count) + " = " + BoneGlassFormat.value(value) + "\n"
-            }
-        }
-        return t
-    }
-
-    /// Whether a filter input already holds a value (numbers by value, colours with CFEqual).
-    static func same(_ a: Any, _ b: Any) -> Bool {
-        if let x = a as? NSNumber, let y = b as? NSNumber { return abs(x.doubleValue - y.doubleValue) < 1e-9 }
-        if CFGetTypeID(a as CFTypeRef) == CGColor.typeID, CFGetTypeID(b as CFTypeRef) == CGColor.typeID {
-            return CFEqual(a as CFTypeRef, b as CFTypeRef)
-        }
-        if let x = a as? NSObject, let y = b as? NSObject { return x.isEqual(y) }
-        return false
     }
 }
 

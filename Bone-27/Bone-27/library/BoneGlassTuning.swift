@@ -11,9 +11,15 @@
 //  Research / simulator use only — private Core Animation keys, never ship it.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) || canImport(AppKit)
 
+#if canImport(UIKit)
 import UIKit
+typealias BonePlatformColor = UIColor
+#else
+import AppKit
+typealias BonePlatformColor = NSColor
+#endif
 
 // MARK: - Typed tuning (dictionary + presets)
 
@@ -27,7 +33,7 @@ enum GlassValue: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Express
     init(floatLiteral v: Double) { self = .number(v) }
     init(integerLiteral v: Int) { self = .number(Double(v)) }
     init(booleanLiteral v: Bool) { self = .number(v ? 1 : 0) }
-    static func color(_ c: UIColor) -> GlassValue { .color(c.cgColor) }
+    static func color(_ c: BonePlatformColor) -> GlassValue { .color(c.cgColor) }
     static func size(_ w: Double, _ h: Double) -> GlassValue { .size(CGSize(width: w, height: h)) }
 
     /// What Core Animation expects for -setValue:forKeyPath:.
@@ -35,7 +41,12 @@ enum GlassValue: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Express
         switch self {
         case .number(let d): return NSNumber(value: d)
         case .color(let c):  return c
-        case .size(let s):   return NSValue(cgSize: s)
+        case .size(let s):
+            #if canImport(UIKit)
+            return NSValue(cgSize: s)
+            #else
+            return NSValue(size: s)
+            #endif
         }
     }
 }
@@ -138,7 +149,11 @@ enum BoneGlassFormat {
             return "CGColor(\(comps))"
         }
         if let val = v as? NSValue, String(cString: val.objCType).contains("CGSize") {
+            #if canImport(UIKit)
             let s = val.cgSizeValue
+            #else
+            let s = val.sizeValue
+            #endif
             return "size(\(s.width), \(s.height))"
         }
         // struct of floats, e.g. CAColorMatrix "{CAColorMatrix=ffff…}" (4 rows × 5)
