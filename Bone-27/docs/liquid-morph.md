@@ -9,6 +9,8 @@ Text("Hello")
     .liquidMorph(to: Circle().foregroundStyle(.green).frame(width: 30, height: 30), isPresented: $on)
 ```
 
+![Text morphing into a glass panel, frame by frame](../captures/magic-morph-text.png)
+
 Both ends sit in public glass (`UIVisualEffectView` + `UIGlassEffect`, capsule corners). Toggling
 `isPresented` morphs one into the other with UIKit's `_UIMagicMorphAnimation` – the AnimationKit
 morph of the floating tab bar and the search field: the glass stretches between the two shapes, the

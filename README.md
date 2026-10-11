@@ -6,6 +6,11 @@ Bone looks underneath SwiftUI. It dumps the UIKit views behind any SwiftUI view,
 tunes, freezes, records and re-drives the system's own Liquid Glass – in place, not a
 reimplementation.
 
+<p align="center">
+  <img src="Bone-27/captures/glass-flex.png" width="640" alt="A stock glass button next to one stretched by .glassFlex, mid-drag, on an iPhone 14 Pro">
+  <br><sub>The system's own glass button, stretched 6× by <code>.glassFlex</code> while dragged – stock on the left. <a href="Bone-27/docs/glass-stretch.md">Glass stretch</a></sub>
+</p>
+
 > **Research / simulator use only.** Bone uses private classes, selectors, ivars and Core
 > Animation keys. Never ship it in an App Store build; names change between OS releases.
 
@@ -24,6 +29,19 @@ The hierarchy is written to `output.txt` and shown as an overlay you can expand 
 sublayers and superclasses.
 
 <img width="1304" height="736" alt="Bone overlay and 3D hierarchy" src="https://github.com/user-attachments/assets/1ebb7a79-d039-4a48-ad88-6ff5f5b5fc7c" />
+
+## A look
+
+<table>
+  <tr>
+    <td width="50%"><img src="Bone-27/captures/menu-morph-slowmo.png" alt="The glass Menu morph frozen frame by frame"><br><sub>The glass <code>Menu</code> morph, paused and stepped frame by frame. <a href="Bone-27/docs/timeline.md">Timeline and morphs</a></sub></td>
+    <td width="50%"><img src="Bone-27/captures/magic-morph-text.png" alt="Text morphing into a glass panel"><br><sub>Apple's own glass morph between any two views: <code>.liquidMorph</code>. <a href="Bone-27/docs/liquid-morph.md">Liquid morph</a></sub></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center"><img src="Bone-27/captures/tune-comparison.jpg" height="420" alt="Liquid Glass with four different tunings"><br><sub>One glass button, four <code>.tune</code> settings. <a href="Bone-27/docs/glass-tuning.md">Glass tuning</a></sub></td>
+    <td width="50%" align="center"><img src="Bone-27/captures/layers-demo.jpg" height="420" alt="Text, a button, a star and a gradient with layer effects"><br><sub>3D, glow, blur and colour filters on the layers of any view: <code>.tuneLayers</code>. <a href="Bone-27/docs/layers.md">Layers</a></sub></td>
+  </tr>
+</table>
 
 ## What's in it
 

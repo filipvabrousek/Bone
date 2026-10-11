@@ -3,6 +3,8 @@
 Pause, slow down and step the app's animations – the Liquid Glass morphs included – record a take
 and scrub it, or dump its values.
 
+![The glass Menu morph, paused and stepped frame by frame](../captures/menu-morph-slowmo.png)
+
 ## Timeline bar
 
 Open it from the inspector's pick hint (**Timeline**), or with `.morphTimeline()` on any view:
@@ -21,6 +23,8 @@ Menu { Button("Copy") {} } label: { Label("Options", systemImage: "ellipsis.circ
   animation frame by frame, captures the screen after each step and stops once the morph has
   settled; the slider then scrubs the take both ways. **Save** writes a contact sheet
   (`timeline-take.png`, simulator only).
+
+![A recorded take as a contact sheet, frame number and time on each frame](../captures/timeline-take.png)
 
 Pause first, then trigger the animation. On a device the screen reads back black, so a take keeps
 system snapshot views (glass included, scrubbed instantly).

@@ -4,6 +4,8 @@ Research toolkit for looking underneath SwiftUI: the UIKit views and Core Animat
 renders into, the private Liquid Glass filter and its shaders, and the AnimationKit engine that
 animates the glass. Copy this folder into your project and add it to all targets.
 
+![The system's glass button stretched 6× by .glassFlex while dragged, stock on the left](https://raw.githubusercontent.com/filipvabrousek/Bone/main/Bone-27/captures/glass-flex.png)
+
 > **Research / simulator use only.** Bone uses private classes, selectors, ivars and Core Animation
 > keys. Never ship it in an App Store build; names change between OS releases.
 
