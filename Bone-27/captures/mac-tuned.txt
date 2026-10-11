@@ -1,5 +1,5 @@
 BONE · dumpGlass
-OS: macOS 27.0 · captured: 2026-10-11 15:31:15
+OS: macOS 27.0 · captured: 2026-10-11 16:05:35
 inputs: blurRadius, faceOpacity, shadowOpacity, innerRefractionAmount
 glass filters: 1
 

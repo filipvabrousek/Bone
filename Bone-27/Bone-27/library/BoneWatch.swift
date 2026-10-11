@@ -283,4 +283,67 @@ extension BoneWatch {
     }
 }
 
+// MARK: - Layers: .dumpLayers
+
+extension View {
+
+    /// Writes the layers SwiftUI draws this view into (watchOS), in the iOS .dumpLayers format.
+    /// (.tuneLayers is iOS and macOS only: CALayer and CATransform3D are unavailable on watchOS.)
+    func dumpLayers(_ fileName: String, after delay: Double = 1.5) -> some View {
+        modifier(BoneWatchAreaModifier { area in
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                BoneWatch.write(BoneWatch.dumpLayers(in: area.frame), fileName)
+            }
+        })
+    }
+}
+
+extension BoneWatch {
+
+    /// The layers inside `area` (centre inside, not much larger), as subtrees under their top layers.
+    static func dumpLayers(in area: CGRect) -> String {
+        typealias R = BoneGlassRuntime
+        var t = "BONE · dumpLayers\nOS: \(R.osLine)\n"
+        t += "targets: .text = CGDrawingLayer · .shape = *ShapeLayer · .gradient = GradientLayer · .glass · leaf = no sublayers\n\n"
+        var notes: [String] = []
+        for w in findWindows(&notes) {
+            guard let root = get(w, "layer") else { continue }
+            func inside(_ l: NSObject) -> Bool {
+                let r = R.rect(of: l, in: root)
+                return r.width > 0 && r.height > 0 && area.insetBy(dx: -2, dy: -2).contains(CGPoint(x: r.midX, y: r.midY))
+                    && r.width <= area.width * 1.25 + 4 && r.height <= area.height * 1.25 + 4
+            }
+            func line(_ l: NSObject, _ depth: Int) {
+                let r = R.rect(of: l, in: root)
+                let cls = className(l)
+                let subs = (get(l, "sublayers") as? [NSObject]) ?? []
+                var parts = [cls]
+                if let d = get(l, "delegate") { parts.append("delegate=\(className(d))") }
+                parts.append("\(Int(r.minX - area.minX)),\(Int(r.minY - area.minY)) \(Int(r.width))×\(Int(r.height))")
+                if let o = get(l, "opacity") as? NSNumber, o.doubleValue < 1 { parts.append("opacity=\(o)") }
+                if let h = get(l, "isHidden") as? NSNumber, h.boolValue { parts.append("hidden") }
+                if let c = get(l, "cornerRadius") as? NSNumber, c.doubleValue > 0 { parts.append("cornerRadius=\(c)") }
+                let fs = R.filters(on: l)
+                if !fs.isEmpty { parts.append("filters=[\(fs.map(\.type).joined(separator: ", "))]") }
+                var targets: [String] = []
+                if cls.contains("CGDrawingLayer") { targets.append(".text") }
+                if cls.contains("ShapeLayer") { targets.append(".shape") }
+                if cls.contains("GradientLayer") { targets.append(".gradient") }
+                if fs.contains(where: { $0.type.lowercased().contains("glass") }) { targets.append(".glass") }
+                if subs.isEmpty, r.width > 0, r.height > 0 { targets.append(".leaves") }
+                if !targets.isEmpty { parts.append("→ " + targets.joined(separator: " ")) }
+                t += String(repeating: "  ", count: depth) + parts.joined(separator: "  ") + "\n"
+                subs.forEach { line($0, depth + 1) }
+            }
+            func walk(_ l: NSObject, parentInside: Bool) {
+                let me = inside(l)
+                if me && !parentInside { line(l, 0); return }
+                for sub in (get(l, "sublayers") as? [NSObject]) ?? [] { walk(sub, parentInside: me) }
+            }
+            walk(root, parentInside: false)
+        }
+        return t
+    }
+}
+
 #endif

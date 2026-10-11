@@ -22,12 +22,16 @@
 //  Research / simulator use only — reads a private system library, never ship it.
 //
 
-#if canImport(UIKit) && !os(watchOS)
+#if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import Metal
 import QuartzCore
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 extension View {
 

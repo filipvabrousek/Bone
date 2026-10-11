@@ -85,6 +85,9 @@ struct the shader reads – field, byte offset, type – and which filter input 
      32      refraction_threshold0       float     –        (no input – set by the render server)
 ```
 
+On **macOS** `.dumpShaders` works the same way (`captures/mac-shaders.txt`: 240 functions, 36 glass,
+the same structs on an M1 Pro).
+
 Five structs on iOS 27: `glassBackground` (63 fields), its SDF variant (66), the shared extension
 block (`u_ext`: `preserve_hue`, `stroke_mode`, `highlight_extension`, …), and `glassForeground` (13)
 with its SDF variant (16).
@@ -106,7 +109,7 @@ watchOS has no public UIKit, but the watch's glass is the iPhone's – a `CABack
 runtime and the same key paths. Both act on the glass inside the modified view's frame; `.tune`
 re-applies 8× a second. On macOS 27 the same tuning changed 10 inputs of a `.glassEffect()` panel
 (`captures/mac-tune.txt`) while the stock button beside it kept its values (`captures/mac-glass.txt`).
-`.tune(file:)`, `.probeGlass` and `.dumpShaders` are iOS-only for now.
+`.tune(file:)` and `.probeGlass` are iOS-only for now.
 
 A glass button on the watchOS 27 simulator (`captures/watch-glass.txt`), next to the iOS 27 demo
 button (`captures/glass-default.txt`; a larger button, and refraction scales with the shape):

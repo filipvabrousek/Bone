@@ -20,10 +20,14 @@
 //  Research / simulator use only — private Core Animation filters, never ship it.
 //
 
-#if canImport(UIKit) && !os(watchOS)
+#if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 // MARK: - Properties and values
 
@@ -70,14 +74,22 @@ enum LayerValue: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Express
     init(floatLiteral v: Double) { self = .number(v) }
     init(integerLiteral v: Int) { self = .number(Double(v)) }
     init(booleanLiteral v: Bool) { self = .number(v ? 1 : 0) }
-    static func color(_ c: UIColor) -> LayerValue { .color(c.cgColor) }
+    static func color(_ c: BonePlatformColor) -> LayerValue { .color(c.cgColor) }
     static func size(_ w: Double, _ h: Double) -> LayerValue { .size(CGSize(width: w, height: h)) }
+    #if canImport(UIKit)
     /// Any UIImage, SF Symbols included (rasterised when it has no bitmap).
     static func image(_ i: UIImage) -> LayerValue {
         if let cg = i.cgImage { return .image(cg) }
         let r = UIGraphicsImageRenderer(size: i.size).image { _ in i.draw(at: .zero) }
         return r.cgImage.map { .image($0) } ?? .number(0)
     }
+    #else
+    /// Any NSImage, SF Symbols included.
+    static func image(_ i: NSImage) -> LayerValue {
+        var r = CGRect(origin: .zero, size: i.size)
+        return i.cgImage(forProposedRect: &r, context: nil, hints: nil).map { .image($0) } ?? .number(0)
+    }
+    #endif
 
     var number: Double? { if case .number(let d) = self { return d }; return nil }
 
@@ -86,7 +98,12 @@ enum LayerValue: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, Express
         switch self {
         case .number(let d): return NSNumber(value: d)
         case .color(let c): return c
-        case .size(let s): return NSValue(cgSize: s)
+        case .size(let s):
+            #if canImport(UIKit)
+            return NSValue(cgSize: s)
+            #else
+            return NSValue(size: s)
+            #endif
         case .image(let i): return i
         case .blend(let b): return b.filterType
         case .gravity(let g): return g.rawValue
@@ -113,8 +130,8 @@ enum BoneFilter {
     case colorHueRotate(Double)                     // radians
     case colorBrightness(Double)                    // 0 = unchanged
     case colorContrast(Double)                      // 1 = unchanged
-    case colorMonochrome(UIColor, amount: Double = 1)
-    case multiplyColor(UIColor)
+    case colorMonochrome(BonePlatformColor, amount: Double = 1)
+    case multiplyColor(BonePlatformColor)
     case luminanceToAlpha
     /// Any filter type the SDK exports (kCAFilter…), e.g. .raw("chromaticAberration", ["inputAmount": 4]).
     case raw(String, [String: Any] = [:])
@@ -343,7 +360,9 @@ enum BoneLayerApplier {
     }
 }
 
-// MARK: - Modifier
+// MARK: - Modifier (iOS; macOS: BoneMac.swift)
+
+#if canImport(UIKit)
 
 extension View {
 
@@ -485,12 +504,23 @@ struct BoneLayerDumpHost<Content: View>: UIViewControllerRepresentable {
     }
 }
 
+#endif
+
 enum BoneLayerDump {
+    #if canImport(UIKit)
     static func text(for root: CALayer, in window: UIWindow?) -> String {
-        var t = "BONE · dumpLayers\nOS: \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)\n"
+        text(for: root, os: "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)") { l in
+            window.map { BoneGlassLayers.screenFrame(of: l, in: $0) } ?? l.frame
+        }
+    }
+    #endif
+
+    /// `frame` gives each layer's frame in whatever space the caller wants (screen, window, anchor).
+    static func text(for root: CALayer, os: String, frame: (CALayer) -> CGRect) -> String {
+        var t = "BONE · dumpLayers\nOS: \(os)\n"
         t += "targets: .text = CGDrawingLayer · .shape = *ShapeLayer · .gradient = GradientLayer · .glass · leaf = no sublayers\n\n"
         func line(_ l: CALayer, _ depth: Int) {
-            let r = window.map { BoneGlassLayers.screenFrame(of: l, in: $0) } ?? l.frame
+            let r = frame(l)
             var parts = ["\(type(of: l))"]
             if let d = l.delegate { parts.append("delegate=\(type(of: d))") }
             parts.append("\(Int(r.minX)),\(Int(r.minY)) \(Int(r.width))×\(Int(r.height))")

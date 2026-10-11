@@ -701,50 +701,6 @@ final class BoneGlassPanelModel: ObservableObject {
     }
 }
 
-// MARK: - Swift literals for Copy Swift
-
-enum BoneSwiftLiteral {
-
-    static func number(_ d: Double) -> String {
-        if d == d.rounded(), abs(d) < 1e9 { return String(Int(d)) }
-        var s = String(format: "%.4f", d)
-        while s.hasSuffix("0") { s.removeLast() }
-        if s.hasSuffix(".") { s.removeLast() }
-        return s == "-0" ? "0" : s
-    }
-
-    static func uiColor(_ c: CGColor) -> String {
-        let s = c.converted(to: CGColorSpace(name: CGColorSpace.sRGB)!, intent: .defaultIntent, options: nil) ?? c
-        var v = (s.components ?? [0, 0, 0, 1]).map { number(Double($0)) }
-        if v.count == 2 { v = [v[0], v[0], v[0], v[1]] }
-        while v.count < 4 { v.append("1") }
-        return "UIColor(red: \(v[0]), green: \(v[1]), blue: \(v[2]), alpha: \(v[3]))"
-    }
-
-    /// A GlassValue for `.tune([.input: …])`.
-    static func glassValue(_ v: Any) -> String? {
-        if let n = v as? NSNumber { return number(n.doubleValue) }
-        if CFGetTypeID(v as CFTypeRef) == CGColor.typeID { return ".color(\(uiColor(v as! CGColor)))" }
-        if let val = v as? NSValue, String(cString: val.objCType).contains("CGSize") {
-            return ".size(\(number(Double(val.cgSizeValue.width))), \(number(Double(val.cgSizeValue.height))))"
-        }
-        return nil
-    }
-
-    /// A Core Animation value for `.tune(.raw([...]))`.
-    static func object(_ v: Any) -> String? {
-        if let n = v as? NSNumber { return number(n.doubleValue) }
-        if CFGetTypeID(v as CFTypeRef) == CGColor.typeID { return "\(uiColor(v as! CGColor)).cgColor" }
-        if let m = BoneColorMatrix.floats(from: v) {
-            return "BoneColorMatrix.value([\(m.map { number(Double($0)) }.joined(separator: ", "))])"
-        }
-        if let val = v as? NSValue, String(cString: val.objCType).contains("CGSize") {
-            return "NSValue(cgSize: CGSize(width: \(number(Double(val.cgSizeValue.width))), height: \(number(Double(val.cgSizeValue.height)))))"
-        }
-        return nil
-    }
-}
-
 // MARK: - Views
 
 struct BoneGlassPanelView: View {

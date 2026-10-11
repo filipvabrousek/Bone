@@ -21,6 +21,14 @@ import AppKit
 typealias BonePlatformColor = NSColor
 #endif
 
+#if os(macOS)
+/// UIKit's NSValue names on macOS, so the shared glass code reads the same on both.
+extension NSValue {
+    convenience init(cgSize: CGSize) { self.init(size: cgSize) }
+    var cgSizeValue: CGSize { sizeValue }
+}
+#endif
+
 // MARK: - Typed tuning (dictionary + presets)
 
 /// A value for a glass input: write plain literals (`0`, `0.4`, `true`)

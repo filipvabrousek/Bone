@@ -1,0 +1,15 @@
+BONE · tuneLayers .text || .shape
+OS: macOS 27.0
+
+CGDrawingLayer shadowRadius: 3 → 6
+CGDrawingLayer shadowOpacity: 0 → 1
+CGDrawingLayer transform
+CGDrawingLayer filters: .colorHueRotate(2.2)
+ColorShapeLayer shadowRadius: 3 → 6
+ColorShapeLayer shadowOpacity: 0 → 1
+ColorShapeLayer transform
+ColorShapeLayer filters: .colorHueRotate(2.2)
+CAShapeLayer shadowRadius: 3 → 6
+CAShapeLayer shadowOpacity: 0 → 1
+CAShapeLayer transform
+CAShapeLayer filters: .colorHueRotate(2.2)

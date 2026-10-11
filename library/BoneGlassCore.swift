@@ -9,9 +9,13 @@
 //  Research / simulator use only — private Core Animation keys, never ship it.
 //
 
-#if canImport(UIKit) && !os(watchOS)
+#if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 // MARK: - Filters on a layer
 
@@ -79,6 +83,7 @@ enum BoneGlassLayers {
         return all.filter(\.isGlass) + all.filter { !$0.isGlass }
     }
 
+    #if canImport(UIKit)
     /// Frame of a layer in screen points.
     static func screenFrame(of layer: CALayer, in window: UIWindow) -> CGRect {
         layer.convert(layer.bounds, to: window.layer).offsetBy(dx: window.frame.minX, dy: window.frame.minY)
@@ -89,6 +94,7 @@ enum BoneGlassLayers {
         while let c = l { if c === window.layer { return true }; l = c.superlayer }
         return false
     }
+    #endif
 
     static func same(_ a: Any, _ b: Any) -> Bool {
         if let x = a as? NSNumber, let y = b as? NSNumber { return x.doubleValue == y.doubleValue }
@@ -222,6 +228,8 @@ enum BoneGlassJSON {
 
 // MARK: - Screen capture
 
+#if canImport(UIKit)
+
 enum BoneScreen {
 
     /// The composited screen – every window, backdrop and filter – via UIKit's
@@ -287,6 +295,52 @@ struct BonePixels {
                        space: CGColorSpaceCreateDeviceRGB(),
                        bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue),
                        provider: provider, decode: nil, shouldInterpolate: true, intent: .defaultIntent)
+    }
+}
+
+#endif
+
+// MARK: - Swift literals for Copy Swift
+
+enum BoneSwiftLiteral {
+
+    static func number(_ d: Double) -> String {
+        if d == d.rounded(), abs(d) < 1e9 { return String(Int(d)) }
+        var s = String(format: "%.4f", d)
+        while s.hasSuffix("0") { s.removeLast() }
+        if s.hasSuffix(".") { s.removeLast() }
+        return s == "-0" ? "0" : s
+    }
+
+    static func uiColor(_ c: CGColor) -> String {
+        let s = c.converted(to: CGColorSpace(name: CGColorSpace.sRGB)!, intent: .defaultIntent, options: nil) ?? c
+        var v = (s.components ?? [0, 0, 0, 1]).map { number(Double($0)) }
+        if v.count == 2 { v = [v[0], v[0], v[0], v[1]] }
+        while v.count < 4 { v.append("1") }
+        return "UIColor(red: \(v[0]), green: \(v[1]), blue: \(v[2]), alpha: \(v[3]))"
+    }
+
+    /// A GlassValue for `.tune([.input: …])`.
+    static func glassValue(_ v: Any) -> String? {
+        if let n = v as? NSNumber { return number(n.doubleValue) }
+        if CFGetTypeID(v as CFTypeRef) == CGColor.typeID { return ".color(\(uiColor(v as! CGColor)))" }
+        if let val = v as? NSValue, String(cString: val.objCType).contains("CGSize") {
+            return ".size(\(number(Double(val.cgSizeValue.width))), \(number(Double(val.cgSizeValue.height))))"
+        }
+        return nil
+    }
+
+    /// A Core Animation value for `.tune(.raw([...]))`.
+    static func object(_ v: Any) -> String? {
+        if let n = v as? NSNumber { return number(n.doubleValue) }
+        if CFGetTypeID(v as CFTypeRef) == CGColor.typeID { return "\(uiColor(v as! CGColor)).cgColor" }
+        if let m = BoneColorMatrix.floats(from: v) {
+            return "BoneColorMatrix.value([\(m.map { number(Double($0)) }.joined(separator: ", "))])"
+        }
+        if let val = v as? NSValue, String(cString: val.objCType).contains("CGSize") {
+            return "NSValue(cgSize: CGSize(width: \(number(Double(val.cgSizeValue.width))), height: \(number(Double(val.cgSizeValue.height)))))"
+        }
+        return nil
     }
 }
 

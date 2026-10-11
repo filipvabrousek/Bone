@@ -1,5 +1,5 @@
 BONE · dumpGlass
-OS: watchOS 27.0 · captured: 2026-10-11 15:32:44
+OS: watchOS 27.0 · captured: 2026-10-11 16:05:06
 inputs: all
 glass filters: 1
 

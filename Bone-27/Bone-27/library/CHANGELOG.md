@@ -14,6 +14,11 @@ Nothing yet.
 ## 2026-10-11
 
 ### Added
+- `.tuneLayers(_:where:)` and `.dumpLayers(_:)` on **macOS** (`BoneMac.swift`), acting on the layers
+  inside the modified view. Verified on macOS 27 (`captures/mac-tunelayers.txt`, `mac-layers.txt`).
+- `.dumpLayers(_:)` on **watchOS** through the Objective-C runtime (`captures/watch-dumplayers.txt`).
+- `.dumpShaders(_:matching:)` on **macOS** – QuartzCore's `default.metallib` (240 functions, 36 glass
+  on an M1 Pro; `captures/mac-shaders.txt`).
 - `.dumpGlass(_:only:after:)` and `.tune(_:log:)` on **macOS** (`BoneMac.swift`): macOS 26+ draws Liquid
   Glass with the same SDF layers and `glassBackground` filter as iOS. Verified on macOS 27
   (`captures/mac-*.txt`).
@@ -33,6 +38,9 @@ Nothing yet.
   label. ([4d4159a](https://github.com/filipvabrousek/Bone/commit/4d4159a))
 
 ### Changed
+- `BoneGlassCore.swift`, `BoneLayerTune.swift`, `BoneShaderDump.swift` and `BoneFilterInputNames.swift`
+  build on macOS; `BoneSwiftLiteral` moved from the panel into `BoneGlassCore.swift`; a macOS
+  `NSValue(cgSize:)` / `cgSizeValue` shim keeps the shared code identical.
 - The watchOS glass engine became `BoneGlassRuntime.swift`, shared by watchOS and macOS; the shared
   glass types (`BoneGlassTuning.swift`, `BoneGlassInputs.swift`) build on macOS too.
 - `GlassValue`, `GlassTuning`, `BoneFilterInputs` and the input-value formatter moved into the

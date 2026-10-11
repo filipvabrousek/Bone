@@ -16,7 +16,9 @@ animates the glass. Copy this folder into your project and add it to all targets
 | Hierarchy dump `.bone(into:)` | ✓ | ✓ | ✓ | ✓ |
 | 3D hierarchy `.bone3D` · `.bone3DFrom` | | | ✓ | |
 | Liquid Glass `.tune` · `.dumpGlass` | ✓ | ✓ | | ✓ |
-| `.probeGlass` · `.dumpShaders` · `.boneInspector` (3D view) · `.tuneLayers` | ✓ | | | |
+| `.dumpLayers` | ✓ | ✓ | | ✓ |
+| `.tuneLayers` · `.dumpShaders` | ✓ | | | ✓ |
+| `.probeGlass` · `.boneInspector` (3D view) | ✓ | | | |
 | Timeline · `.morphScrubber` · `.dumpMorph` · `.liquidMorph` · `.glassFlex` | ✓ | | | |
 
 Built with Xcode 27; tested on iOS 27 (simulator and iPhone 14 Pro), watchOS 27 (simulator), visionOS 27 and macOS.

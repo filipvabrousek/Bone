@@ -1,0 +1,18 @@
+BONE · dumpLayers
+OS: watchOS 27.0
+targets: .text = CGDrawingLayer · .shape = *ShapeLayer · .gradient = GradientLayer · .glass · leaf = no sublayers
+
+CALayer  delegate=SwiftUI._UIInheritedView  0,0 178×52
+  SwiftUI.SDFLayer  delegate=SwiftUI._UIInheritedView  0,0 178×52
+    CALayer  delegate=SwiftUI._UIInheritedView  0,0 0×0
+      CALayer  delegate=_TtC5UIKitP33_F83AB3ECBB2C378B4FCEB681A4D7DB7430UIPlatformGlassInteractionView  0,0 178×52
+        CALayer  delegate=_SwiftUILayerDelegate  0,0 178×52
+          _TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer  delegate=_SwiftUILayerDelegate  65,19 47×15  filters=[vibrantColorMatrix]  → .text .leaves
+    CALayer  delegate=_NoAnimationDelegate  0,0 178×52
+      CABackdropLayer  delegate=SwiftUI.SDFLayer  0,0 178×52  filters=[glassBackground]  → .glass
+        CASDFLayer  delegate=_NoAnimationDelegate  0,0 178×52
+          CALayer  delegate=_NoAnimationDelegate  0,0 0×0
+            CASDFElementLayer  delegate=_SwiftUISDFLayerDelegate  0,0 178×52  cornerRadius=26.25  → .leaves
+      _TtC7SwiftUIP33_05C1F5BE6EE7940FED05100EA822F7B314SDFPortalLayer  delegate=_NoAnimationDelegate  0,0 178×52  → .leaves
+      CASDFLayer  delegate=_NoAnimationDelegate  0,0 178×52  filters=[vibrantColorMatrix]
+        _TtC7SwiftUIP33_05C1F5BE6EE7940FED05100EA822F7B314SDFPortalLayer  delegate=_NoAnimationDelegate  0,0 0×0

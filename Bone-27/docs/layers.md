@@ -1,6 +1,6 @@
 # Layers of any SwiftUI view
 
-## `.tuneLayers(_:where:)` / `.dumpLayers(_:)` — iOS
+## `.tuneLayers(_:where:)` / `.dumpLayers(_:)` — iOS, macOS (`.dumpLayers` also watchOS)
 
 ```swift
 Text("Hello").tuneLayers([.rotationY: 35, .shadowOpacity: 1, .shadowRadius: 8], where: .text)
@@ -35,3 +35,14 @@ not edit glyphs.
 
 The [inspector](inspector.md#layers) edits any layer you tap and gives the matching `.tuneLayers`
 line. The demo shows all of it when launched with `-layers`.
+
+## On macOS and watchOS
+
+On **macOS** both modifiers work with the same types (`BoneMac.swift`): SwiftUI on the Mac draws text
+as `CGDrawingLayer` and symbols as `ColorShapeLayer` too. They act on the layers inside the modified
+view's frame. On macOS 27, `[.rotation: -8, .shadowOpacity: 1, .filters: .filters([.colorHueRotate(2.2)])]`
+on a text and a star changed both layers (`captures/mac-tunelayers.txt`, `captures/mac-layers.txt`).
+
+On **watchOS** only `.dumpLayers` exists – the watch hides `CALayer` and `CATransform3D` from its SDK,
+so Bone reads the layers through the Objective-C runtime (`BoneWatch.swift`,
+`captures/watch-dumplayers.txt`).

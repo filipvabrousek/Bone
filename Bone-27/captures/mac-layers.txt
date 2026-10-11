@@ -1,0 +1,7 @@
+BONE · dumpLayers
+OS: macOS 27.0
+targets: .text = CGDrawingLayer · .shape = *ShapeLayer · .gradient = GradientLayer · .glass · leaf = no sublayers
+
+CGDrawingLayer  delegate=_SwiftUILayerDelegate  -1,33 104×39  transform  shadow=1.0  contents=CABackingStore  filters=[colorHueRotate]  → .text .leaves
+ColorShapeLayer  delegate=_SwiftUILayerDelegate  34,0 32×31  transform  shadow=1.0  filters=[colorHueRotate]  → .shape
+  CAShapeLayer  delegate=_NoAnimationDelegate  34,-2 32×36  transform  shadow=1.0  filters=[colorHueRotate]  → .shape .leaves
