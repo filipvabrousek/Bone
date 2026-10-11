@@ -5,12 +5,12 @@
 //  Created by Filip Vabroušek on 15.06.2022.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 #endif
 
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 extension UIColor {
     
  convenience init(hex: String) {

@@ -37,7 +37,7 @@
 //  Research / simulator use only — private API, never ship it.
 //
 
-#if canImport(UIKit) && !os(visionOS)
+#if canImport(UIKit) && !os(visionOS) && !os(watchOS)
 
 import SwiftUI
 import UIKit

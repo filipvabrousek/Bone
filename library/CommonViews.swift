@@ -5,6 +5,8 @@
 //  Created by Filip Vabroušek on 19.01.2024.
 //
 
+#if !os(watchOS)   // the iOS/macOS overlay views; watchOS has its own in BoneWatch.swift
+
 import SwiftUI
 
 
@@ -295,3 +297,5 @@ extension String {
         return superclass
     }
 }
+
+#endif

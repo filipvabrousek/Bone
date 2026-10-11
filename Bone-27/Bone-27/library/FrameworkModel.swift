@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 
@@ -59,7 +59,7 @@ class Storagea {
 
 
 
-#else
+#elseif canImport(AppKit)
 
 
 

@@ -9,7 +9,7 @@
 //  Research / simulator use only – private Core Animation keys.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 import Foundation
 

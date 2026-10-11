@@ -19,9 +19,9 @@
 
 import SwiftUI
 
-#if canImport(UIKit) || canImport(AppKit)
+#if (canImport(UIKit) && !os(watchOS)) || canImport(AppKit)
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 typealias BonePlatformView = UIView
 typealias BonePlatformViewController = UIViewController

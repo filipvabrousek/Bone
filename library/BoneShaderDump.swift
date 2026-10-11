@@ -22,7 +22,7 @@
 //  Research / simulator use only — reads a private system library, never ship it.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 import Metal
 import QuartzCore

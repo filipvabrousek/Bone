@@ -21,7 +21,7 @@
 //  Research / simulator use only — private API, never ship it.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 import SwiftUI
 import UIKit

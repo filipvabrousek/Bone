@@ -47,7 +47,7 @@ sublayers and superclasses.
 
 | Modifier | What it does | Docs |
 |---|---|---|
-| `.bone(into:)` | UIKit hierarchy behind a SwiftUI view → overlay + text/JSON dump | [Hierarchy dumps](Bone-27/docs/hierarchy.md) |
+| `.bone(into:)` | UIKit hierarchy behind a SwiftUI view → overlay + text/JSON dump (iOS, macOS, visionOS, watchOS) | [Hierarchy dumps](Bone-27/docs/hierarchy.md) |
 | `.bone3D(into:)` · `.bone3DFrom(_:)` | the hierarchy as a 3D tree (visionOS) | [Hierarchy dumps](Bone-27/docs/hierarchy.md) |
 | `.tune(_:)` | override any Liquid Glass parameter, presets, JSON hot reload | [Glass tuning](Bone-27/docs/glass-tuning.md) |
 | `.dumpGlass(_:)` · `.dumpShaders(_:)` | glass inputs and the glass shaders' own uniforms | [Glass tuning](Bone-27/docs/glass-tuning.md) |

@@ -1,0 +1,85 @@
+BONE · watchOS 27.0 · 1 window(s), 40 views
+# application: SPApplication
+# window UIWindow · root SPHostingViewController · frame (0.0, 0.0, 208.0, 248.0)
+
+UIWindowLayer (0.0, 0.0, 208.0, 248.0) delegate UIWindow
+  CALayer (0.0, 0.0, 208.0, 248.0) delegate UIView
+    CALayer (0.0, 0.0, 208.0, 248.0) delegate _TtGC7SwiftUI14_UIHostingViewVS_7AnyView_
+      CALayer (0.0, 0.0, 208.0, 248.0) delegate _TtGC7SwiftUI21UIKitPlatformViewHostGVS_42PlatformViewControllerRepresentableAdaptorVS_P10$10c6256d428NavigationStackRepresentable__
+        CALayer (0.0, 0.0, 208.0, 248.0) delegate UILayoutContainerView
+          CALayer (0.0, 0.0, 208.0, 248.0) delegate UINavigationTransitionView
+            CALayer (0.0, 0.0, 208.0, 248.0) delegate UIViewControllerWrapperView
+              CALayer (0.0, 0.0, 208.0, 248.0) delegate _TtCGC7SwiftUI32NavigationStackHostingControllerVS_7AnyView_P10$10c6254b411HostingView
+                CALayer (0.0, 0.0, 208.0, 248.0) delegate _TtGC7SwiftUI21UIKitPlatformViewHostGVS_P10$10c62a3c017ListRepresentableGVS_28CollectionViewListDataSourceOs5Never_GOS_19SelectionManagerBoxS3____
+                  CALayer (0.0, 0.0, 208.0, 248.0) delegate SwiftUI.UpdateCoalescingCollectionView
+                    CALayer (0.0, -62.0, 208.0, 248.0) delegate _UITouchPassthroughView
+                      CABackdropLayer (0.0, 0.0, 208.0, 86.0) delegate _TtCC5UIKit20ScrollEdgeEffectView12BackdropView
+                        filters: gaussianBlur – 3 inputs: inputDither, inputNormalizeEdges, inputRadius
+                    CALayer (2.0, 0.0, 204.0, 56.0) delegate SwiftUI.ListCollectionViewCell
+                      CALayer (0.0, 0.0, 204.0, 56.0) delegate PUICPlatterCellContainerView
+                        filters: multiplyColor – 1 inputs: inputColor
+                        CALayer (0.0, 0.0, 204.0, 56.0) delegate PUICCollectionViewPlatterBackgroundView
+                          filters: multiplyColor – 0 inputs: 
+                      CALayer (0.0, 0.0, 204.0, 56.0) delegate PUICPlatterCellContainerView
+                        filters: multiplyColor – 1 inputs: inputColor
+                        CALayer (0.0, 0.0, 204.0, 56.0) delegate _TtGC7SwiftUI15CellHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVS_26CollectionViewCellModifier__
+                          _TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer (13.0, 18.0, 94.5, 20.5) delegate _SwiftUILayerDelegate
+                    CALayer (2.0, 61.0, 204.0, 56.0) delegate SwiftUI.ListCollectionViewCell
+                      CALayer (0.0, 0.0, 204.0, 56.0) delegate PUICPlatterCellContainerView
+                        filters: multiplyColor – 1 inputs: inputColor
+                        CALayer (0.0, 0.0, 204.0, 56.0) delegate PUICCollectionViewPlatterBackgroundView
+                          filters: multiplyColor – 0 inputs: 
+                      CALayer (0.0, 0.0, 204.0, 56.0) delegate PUICPlatterCellContainerView
+                        filters: multiplyColor – 1 inputs: inputColor
+                        CALayer (0.0, 0.0, 204.0, 56.0) delegate _TtGC7SwiftUI15CellHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVS_26CollectionViewCellModifier__
+                          CALayer (13.0, 2.0, 178.0, 52.5) delegate SwiftUI._UIInheritedView
+                            SwiftUI.SDFLayer (0.0, 0.0, 178.0, 52.5) delegate SwiftUI._UIInheritedView
+                              CALayer (0.0, 0.0, 0.0, 0.0) delegate SwiftUI._UIInheritedView
+                                CALayer (0.0, 0.0, 178.0, 52.5) delegate _TtC5UIKitP33_F83AB3ECBB2C378B4FCEB681A4D7DB7430UIPlatformGlassInteractionView
+                                  CALayer (0.0, 0.0, 178.0, 52.5) delegate _SwiftUILayerDelegate
+                                    _TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer (67.5, 19.0, 43.0, 15.0) delegate _SwiftUILayerDelegate
+                                      filters: vibrantColorMatrix – 3 inputs: inputBackdropAware, inputClamp, inputColorMatrix
+                              CALayer (0.0, 0.0, 178.0, 52.5) delegate _NoAnimationDelegate
+                                CABackdropLayer (0.0, 0.0, 178.0, 52.5) delegate SwiftUI.SDFLayer
+                                  filters: glassBackground – 70 inputs: inputBleedAmount, inputBleedBlurRadius, inputBleedColorMatrixBlack, inputBleedColorMatrixSaturation, inputBleedColorMatrixWhite, inputBleedDarkenBlend, inputBleedDistance0, inputBleedDistance1, inputBleedHeight, inputBleedOpacity, inputBlurDistance0, inputBlurDistance1, inputBlurDistance2, inputBlurDistance3, inputBlurFillBlurRadius, inputBlurFillDarkenOpacity, inputBlurFillLightenOpacity, inputBlurFillNormalOpacity, inputBlurOpacity0, inputBlurOpacity1, inputBlurOpacity2, inputBlurOpacity3, inputBlurRadius, inputClamp, inputClampPreserveHue, inputFaceColorMatrixBlack, inputFaceColorMatrixFillColor, inputFaceColorMatrixMaxLuma, inputFaceColorMatrixMaxLumaSDR, inputFaceColorMatrixSaturation, inputFaceColorMatrixWhite, inputFaceOpacity, inputInnerRefractionAmount, inputInnerRefractionHeight, inputKeyFillHighlightAmount, inputKeyFillHighlightAngle, inputKeyFillHighlightColorBias, inputKeyFillHighlightEffectOffset, inputKeyFillHighlightHeight, inputKeyFillHighlightSpread, inputKeyFillHighlightSpreadSDR, inputMaxHeadroom, inputOuterRefractionAmount, inputOuterRefractionHeight, inputRefractionDistance0, inputRefractionDistance1, inputRefractionOpacity, inputRingShadowBlurRadius, inputRingShadowMask, inputRingShadowOffset, inputRingShadowOpacity, inputRingShadowStrokeWidth, inputSDRGradientDistance0, inputSDRGradientDistance1, inputSDRHoldingToneEnabled, inputSDRHoldingToneWhite, inputSDRShadowOpacity, inputShadowAmount, inputShadowBlurRadius, inputShadowColorMatrixBlack, inputShadowColorMatrixFillColor, inputShadowColorMatrixSaturation, inputShadowColorMatrixWhite, inputShadowDistanceOffset, inputShadowHeight, inputShadowOffset, inputShadowOpacity, inputShadowRadius, inputShadowVibrancyContribution, inputSourceSublayerName
+                                  CASDFLayer (0.0, 0.0, 178.0, 52.5) delegate _NoAnimationDelegate
+                                    CALayer (0.0, 0.0, 0.0, 0.0) delegate _NoAnimationDelegate
+                                      CASDFElementLayer (0.0, 0.0, 178.0, 52.5) delegate _SwiftUISDFLayerDelegate
+                                _TtC7SwiftUIP33_05C1F5BE6EE7940FED05100EA822F7B314SDFPortalLayer (0.0, 0.0, 178.0, 52.5) delegate _NoAnimationDelegate
+                                CASDFLayer (0.0, 0.0, 178.0, 52.5) delegate _NoAnimationDelegate
+                                  filters: vibrantColorMatrix – 2 inputs: inputClamp, inputColorMatrix
+                                  _TtC7SwiftUIP33_05C1F5BE6EE7940FED05100EA822F7B314SDFPortalLayer (0.0, 0.0, 0.0, 0.0) delegate _NoAnimationDelegate
+                    CALayer (2.0, 122.0, 204.0, 56.0) delegate SwiftUI.ListCollectionViewCell
+                      CALayer (0.0, 0.0, 204.0, 56.0) delegate PUICPlatterCellContainerView
+                        filters: multiplyColor – 1 inputs: inputColor
+                        CALayer (0.0, 0.0, 204.0, 56.0) delegate PUICCollectionViewPlatterBackgroundView
+                          filters: multiplyColor – 0 inputs: 
+                      CALayer (0.0, 0.0, 204.0, 56.0) delegate PUICPlatterCellContainerView
+                        filters: multiplyColor – 1 inputs: inputColor
+                        CALayer (0.0, 0.0, 204.0, 56.0) delegate _TtGC7SwiftUI15CellHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVS_26CollectionViewCellModifier__
+                          SwiftUI.ImageLayer (12.0, 19.0, 20.0, 18.5) delegate _SwiftUILayerDelegate
+                          _TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer (39.0, 17.0, 44.0, 20.5) delegate _SwiftUILayerDelegate
+                    CALayer (0.0, -62.0, 208.0, 248.0) delegate _UITouchPassthroughView
+                      CALayer (0.0, 0.0, 208.0, 86.0) delegate UIKit.ScrollEdgeEffectView
+                        CALayer (0.0, 0.0, 208.0, 86.0) delegate _UIScrollEdgeEffectLayerDelegate
+                          CABackdropLayer (0.0, 0.0, 0.0, 0.0) delegate _UIScrollEdgeEffectLayerDelegate
+                            CAGradientLayer (0.0, 0.0, 0.0, 0.0) delegate _UIScrollEdgeEffectLayerDelegate
+                          CABackdropLayer (0.0, 0.0, 208.0, 86.0) delegate _UIScrollEdgeEffectLayerDelegate
+                            filters: gaussianBlur – 3 inputs: inputDither, inputNormalizeEdges, inputRadius
+                            CAGradientLayer (0.0, 0.0, 208.0, 86.0) delegate _UIScrollEdgeEffectLayerDelegate
+                          CABackdropLayer (0.0, 0.0, 208.0, 66.0) delegate _TtCCVC5UIKit20ScrollEdgeEffectView2v812ScrollPocket11LumaTracker
+                            filters: variableBlur – 5 inputs: inputDither, inputFade, inputMaskImage, inputNormalizeEdges, inputRadius
+                            filters: colorMatrix – 0 inputs: 
+                            filters: sdrNormalize – 2 inputs: inputClamp, inputClampPreserveHue
+                          CALayer (0.0, 0.0, 0.0, 0.0) delegate _UIScrollEdgeEffectLayerDelegate
+                          CALayer (0.0, 0.0, 0.0, 0.0) delegate _UIScrollEdgeEffectLayerDelegate
+          CALayer (0.0, 0.0, 208.0, 62.0) delegate PUICStackedNavigationBar
+            CALayer (0.0, 0.0, 208.0, 62.0) delegate SaltUICore.NavigationBarHostingView
+              CALayer (15.0, 18.0, 178.0, 17.5) delegate _TtGC5UIKitP10$1269b2fac21UICoreInteractionViewV10SaltUICore36ScrollPocketInteractionRepresentable_
+                CALayer (0.0, 0.0, 178.0, 17.5) delegate _SwiftUILayerDelegate
+              CALayer (153.0, 35.5, 40.0, 20.5) delegate _TtGC5UIKitP10$1269b2fac21UICoreInteractionViewV10SaltUICore36ScrollPocketInteractionRepresentable_
+                CALayer (0.0, 10.0, 40.0, 20.5) delegate SwiftUI._UIInheritedView
+                  filters: gaussianBlur – 3 inputs: inputDither, inputNormalizeEdges, inputRadius
+                  CALayer (0.0, 0.0, 40.0, 20.5) delegate _TtGC5UIKit22UICorePlatformViewHostGVS_32PlatformViewRepresentableAdaptorV10SaltUICore25MarqueeLabelRepresentable__
+                    _UILabelLayer (0.0, 0.0, 40.0, 20.5) delegate UILabel
+              _TtC7SwiftUIP33_863CCF9D49B535DAEB1C7D61BEE53B5914CGDrawingLayer (15.0, 26.5, 57.5, 31.5) delegate _SwiftUILayerDelegate

@@ -11,7 +11,7 @@ animates the glass. Copy this folder into your project and add it to all targets
 
 | Modifier | What it does | Docs |
 |---|---|---|
-| `.bone(into:)` | UIKit hierarchy behind a SwiftUI view → overlay + text/JSON dump | [hierarchy](https://github.com/filipvabrousek/Bone/blob/main/Bone-27/docs/hierarchy.md) |
+| `.bone(into:)` | UIKit hierarchy behind a SwiftUI view → overlay + text/JSON dump (iOS, macOS, visionOS, watchOS) | [hierarchy](https://github.com/filipvabrousek/Bone/blob/main/Bone-27/docs/hierarchy.md) |
 | `.bone3D(into:)` · `.bone3DFrom(_:)` | the hierarchy as a 3D tree (visionOS) | [hierarchy](https://github.com/filipvabrousek/Bone/blob/main/Bone-27/docs/hierarchy.md) |
 | `.tune(_:)` | override any Liquid Glass parameter, presets, JSON hot reload | [glass tuning](https://github.com/filipvabrousek/Bone/blob/main/Bone-27/docs/glass-tuning.md) |
 | `.dumpGlass(_:)` · `.dumpShaders(_:)` | glass inputs and the glass shaders' own uniforms | [glass tuning](https://github.com/filipvabrousek/Bone/blob/main/Bone-27/docs/glass-tuning.md) |

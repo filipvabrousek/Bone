@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 
@@ -592,7 +592,7 @@ extension String {
 
 /*
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 typealias event = UIEvent?
 #else
 typealias event = NSEvent?
@@ -601,7 +601,7 @@ typealias event = NSEvent?
 
 
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 typealias color = UIColor
 typealias view = UIView
 typealias controller = UIHostingController
@@ -1200,7 +1200,7 @@ extension UIView {
 }
 }
 
-#else
+#elseif canImport(AppKit)
 
 
 

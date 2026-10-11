@@ -1,6 +1,6 @@
 # Hierarchy dumps
 
-## `.bone(into:)` — iOS, visionOS, macOS
+## `.bone(into:)` — iOS, visionOS, macOS, watchOS
 
 ```swift
 List { Text("WOW") }.bone(into: "output.txt")      // classic brief text dump
@@ -22,6 +22,34 @@ with `fromRoot: true`) and its `subviews` are walked recursively. The deep captu
 private introspection (`-_ivarDescription`, `-recursiveDescription`, `-_autolayoutTrace`) and
 `Mirror` of the SwiftUI root value and of `_UIHostingView` – Swift stored properties no ivar list
 shows.
+
+## `.bone(into:)` on watchOS
+
+```swift
+List { Text("Hello") }.bone(into: "watch.txt")
+```
+
+The same modifier works on Apple Watch (`BoneWatch.swift`). watchOS has no public UIKit – the SDK
+marks `UIView`, `UIWindow`, `UIApplication` and `CALayer` unavailable – but the watch runs the same
+UIKitCore and QuartzCore underneath, and SwiftUI hosts its views in `_UIHostingView` as on iOS. So
+the walk goes through the Objective-C runtime (classes by name, `respondsToSelector:` before every
+key-value read). It writes the brief dump (`watch.txt`, same format, `OS: watchOS:27`) and the layer
+tree with every filter's type and input keys (`watch-layers.txt`).
+
+What a watchOS 27 dump shows (simulator, `NavigationStack` + `List` + a glass button):
+
+- `SPApplication` → `UIWindow` → `SPHostingViewController` → `_UIHostingView`;
+- a `List` is the same `UpdateCoalescingCollectionView` as on iOS, its rows in watch-only
+  `PUICPlatterCellContainerView`s (PepperUICore); the navigation bar is
+  `PUICStackedNavigationBar` with `SaltUICore.NavigationBarHostingView`;
+- the glass button is a `UIPlatformGlassInteractionView` over `SwiftUI.SDFLayer` →
+  `CABackdropLayer` with **`glassBackground` (70 inputs)** and `vibrantColorMatrix`, `CASDFLayer` →
+  `CASDFElementLayer`, `SDFPortalLayer` – the iPhone's Liquid Glass structure;
+- the scroll edge effect is a `CABackdropLayer` with `variableBlur`, `gaussianBlur`, `sdrNormalize`.
+
+Not on watchOS: `_UIMagicMorphAnimation` and `_UILiquidMorphAnimation` (no context menus), so
+`.liquidMorph` and the menu-morph timeline do not apply. The older `wbone(name:)` still works as a
+deprecated alias.
 
 ## `.bone3D(into:)` — visionOS
 

@@ -10,7 +10,7 @@
 //  Research / simulator use only — private Core Animation filters, never ship it.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 import Combine
 import SwiftUI

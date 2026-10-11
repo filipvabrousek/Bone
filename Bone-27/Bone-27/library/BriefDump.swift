@@ -172,7 +172,7 @@ enum DumpSerializer {
 
 // MARK: - Live walker: UIView -> DumpNode (iOS + visionOS)
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 extension UIView {

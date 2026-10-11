@@ -17,7 +17,7 @@
 //  The clock: BoneAnimationClock.swift. Research / simulator use only.
 //
 
-#if canImport(UIKit) && !os(visionOS)
+#if canImport(UIKit) && !os(visionOS) && !os(watchOS)
 
 import SwiftUI
 import UIKit

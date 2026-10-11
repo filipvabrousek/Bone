@@ -31,7 +31,7 @@
 //  Research / simulator use only — private Core Animation keys, never ship it.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 import SwiftUI
 import UIKit
