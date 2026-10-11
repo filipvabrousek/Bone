@@ -14,6 +14,10 @@ Nothing yet.
 ## 2026-10-12
 
 ### Fixed
+- `.bone(into:)` on **macOS**: the superclass is the whole rest of the dump's first `super:` line.
+  It used to be the next space-separated word, which kept a trailing line break and cut generic
+  names at their first space (`SwiftUI.NSHostingView<SwiftUI.ModifiedContent<SwiftUI._ViewList_View,`
+  is now `…, SwiftUI.CellContentModifier>>`).
 - `.bone(into:)` on **macOS** wrote `OS: iOS27` at the end of the brief dump; it now writes
   `OS: macOS:27`, the `<system>:<major>` form iOS writes.
 - `.bone(into:)` on **macOS** crashed (index out of range) on any view tree of 16 or more views – a

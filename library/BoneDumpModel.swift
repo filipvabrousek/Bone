@@ -104,6 +104,13 @@ enum BoneDumpText {
         return found.filter { $0 != ";" }
     }
 
+    /// The rest of the line after the first `marker` (without the line break); nil if there is none.
+    static func rest(after marker: String, in text: String) -> String? {
+        guard let r = text.range(of: marker) else { return nil }
+        let line = text[r.upperBound...].prefix { !$0.isNewline }.trimmingCharacters(in: .whitespaces)
+        return line.isEmpty ? nil : line
+    }
+
     /// Every match of `pattern`, minus its first 7 characters ("layer: ") or 10 (anything else).
     static func matches(for pattern: String, in text: String) -> [String] {
         guard let regex = try? NSRegularExpression(pattern: pattern) else { return [] }

@@ -71,6 +71,15 @@ struct DumpTextTests {
         #expect(BoneDumpText.word(after: "base:", offset: 1, in: text, ifContains: "base:") == "")
     }
 
+    @Test("rest(after:) reads a whole line, generic names with spaces included")
+    func restAfter() {
+        // as dump writes it: "▿ super:" when the superclass has stored properties, "- super:" when not
+        let text = "▿ <CellHostingView: 0x1> #0\n  ▿ super: SwiftUI.NSHostingView<SwiftUI.ModifiedContent<A, B>>\n    - super: NSView\n"
+        #expect(BoneDumpText.rest(after: "super: ", in: text) == "SwiftUI.NSHostingView<SwiftUI.ModifiedContent<A, B>>")
+        #expect(BoneDumpText.rest(after: "baseClass = ", in: text) == nil)
+        #expect(BoneDumpText.rest(after: "super: ", in: "- super: \n") == nil)
+    }
+
     @Test("layerInfo finds SwiftUI layer classes")
     func layerInfo() {
         let info = BoneDumpText.layerInfo(in: "<SwiftUI.CGDrawingLayer: 0x1; delegate = SwiftUI.Host: 0x2>")
@@ -110,8 +119,8 @@ struct MacDumpWalkTests {
         #expect(BoneDumpStore.items.count == 21)
         // the index counts up before each view, so item k has colour k + 1
         #expect(BoneDumpStore.items[17].color == BoneDumpStore.colors[18 % BoneDumpStore.colors.count])
-        // the superclass is the word after "super:" in the dump (it keeps the line break after it)
-        #expect(BoneDumpStore.items.allSatisfy { $0.superclass.trimmingCharacters(in: .whitespacesAndNewlines) == "NSResponder" })
+        // the superclass: the first "super:" line of the view's dump
+        #expect(BoneDumpStore.items.allSatisfy { $0.superclass == "NSResponder" })
         #expect(BoneDumpStore.formatted.contains("->NSView: NSResponder"))
     }
 }

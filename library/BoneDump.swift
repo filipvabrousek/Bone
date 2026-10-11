@@ -483,14 +483,10 @@ extension NSView {
         var dumped = String()
         dump(self, to: &dumped, maxDepth: BoneDumpStore.dumpDepth)
 
-        var superclass = "empty"
-        if dumped.range(of: "baseClass =") != nil {
-            let words = dumped.split(separator: " ")
-            superclass = String(words[words.firstIndex(of: "baseClass")! + 2])
-        } else if dumped.range(of: "super:") != nil {
-            let words = dumped.split(separator: " ")
-            superclass = String(words[words.firstIndex(of: "super:")! + 1])
-        }
+        // the superclass: the rest of the first "baseClass = …" or "super: …" line
+        // (dump writes "- super: X", or "▿ super: X" when X has stored properties of its own)
+        let superclass = BoneDumpText.rest(after: "baseClass = ", in: dumped)
+            ?? BoneDumpText.rest(after: "super: ", in: dumped) ?? "empty"
 
         let layerDump = BoneDumpText.matchBetween(pattern: "layer: <(SwiftUI[^:]*)", in: dumped).first ?? "empty"
         let contentsDump = BoneDumpText.matches(for: "contents = <[a-zA-Z].*", in: dumped).first ?? "empty"
