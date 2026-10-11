@@ -39,7 +39,10 @@ struct ContentView: View {
         //   -list    List + NavigationStack: rows, controls, glass in rows, toolbar glass
         //   -menu    only the glass Menu (also first on the default screen), timeline bar open
         //   -liquid  only the .liquidMorph(to:isPresented:) row (add -autotoggle to flip it every 3 s)
-        if CommandLine.arguments.contains("-liquid") {
+        //   -flex    only the stock vs .glassFlex(stretch:follow:) row: press, hold, drag
+        if CommandLine.arguments.contains("-flex") {
+            GlassFlexDemo()
+        } else if CommandLine.arguments.contains("-liquid") {
             LiquidMorphDemo()
         } else if CommandLine.arguments.contains("-menu") {
             MenuDemo()
@@ -67,6 +70,7 @@ struct GlassDemo: View {
         VStack(spacing: 18) {
             MenuDemo()                                                 // glass Menu {} + .dumpMorph()
             LiquidMorphDemo()                                          // Text → green circle, Apple's glass morph
+            GlassFlexDemo()                                            // stock vs .glassFlex: press, hold, drag sideways
             TuneRow(title: "default") {
                 Button("Liquid"){}.font(.largeTitle).padding(20)
                     .glassEffect()
@@ -190,6 +194,19 @@ struct LiquidMorphDemo: View {
             while !Task.isCancelled {
                 try? await Task.sleep(nanoseconds: 3_000_000_000)
                 on.toggle()
+            }
+        }
+    }
+}
+
+/// The glass button's flex: stock next to .glassFlex. Press, hold and drag sideways.
+struct GlassFlexDemo: View {
+    var body: some View {
+        TuneRow(title: "stock · .glassFlex(stretch: 6, follow: 12)") {
+            HStack(spacing: 50) {
+                Button("Stock") {}.font(.title2).padding(8).buttonStyle(.glass)
+                Button("Flex") {}.font(.title2).padding(8).buttonStyle(.glass)
+                    .glassFlex(stretch: 6, follow: 12)
             }
         }
     }

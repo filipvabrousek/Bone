@@ -355,6 +355,8 @@ final class BoneTimeline: ObservableObject {
             var views: [UIView] = []
             var values: [BoneMorphFrame] = []                      // .dumpMorph: one per frame, trimmed with them
             var layerNames: [ObjectIdentifier: String] = [:]
+            var lastValues = ""                                    // the morph's own values, to see it settle
+            var valuesStill = 0
             var log = "record: \(UIDevice.current.model) iOS \(UIDevice.current.systemVersion)\nbefore:\n" + clock.diagnostics
             var still = 0
             var previous: [UInt8]?
@@ -385,13 +387,27 @@ final class BoneTimeline: ObservableObject {
                     views.append(screen.snapshotView(afterScreenUpdates: false))
                     thumb = drawnThumbnail()                          // no glass, but enough to see it settle
                 }
-                if csvFile != nil { values.append(BoneMorphValues.sample(windows, names: &layerNames)) }
+                let sample = BoneMorphValues.sample(windows, names: &layerNames)
+                if csvFile != nil { values.append(sample) }
+                // to 0.01: a spring creeps towards rest for a long time below that
+                let fingerprint = sample.values.map { v in Double(v.value).map { String(format: "%.2f", $0) } ?? v.value }
+                    .joined(separator: ",")
+                if !fingerprint.isEmpty, fingerprint == lastValues { valuesStill += 1 } else { valuesStill = 0 }
+                lastValues = fingerprint
                 let stillBefore = still
                 if let p = previous, Self.same(p, thumb) { still += 1 } else { still = 0 }
                 let morphLayers = morphLayerCount()
                 log += String(format: "frame %d: mean %.1f still %d morph layers %d clock %.4f ticks %d\n", i, Self.mean(thumb), still,
                               morphLayers, clock.now, clock.tickCount)
                 previous = thumb
+                if morph && valuesStill >= 8 {
+                    // the morph's values stopped moving: its first settle is the end of the take
+                    // (pixel-free, so it works on a device; and a morph kept alive afterwards –
+                    // retargeting again – is not recorded past it). Keep the first settled frame.
+                    if readable { shots.removeLast(valuesStill) } else { views.removeLast(valuesStill) }
+                    if values.count > valuesStill { values.removeLast(valuesStill) }
+                    break
+                }
                 if morph && morphLayers == 0 {
                     // the morph finished. UIKit keeps its layers a while after the last movement, then
                     // swaps in the real menu (a slightly different last frame): drop the still run before it

@@ -114,8 +114,21 @@ nonisolated final class BoneAnimationClock: @unchecked Sendable {
 
     func pause() {
         lock.lock()
-        if !paused { frozen = nowLocked(); paused = true; autoStepAvailable = true }
+        if !paused {
+            frozen = nowLocked()
+            paused = true
+            autoStepAvailable = true
+            settleAll(at: frozen)
+        }
         lock.unlock()
+    }
+
+    /// Every manager is caught up at the moment the clock pauses. From here on a manager
+    /// that idles between steps still gets each step when it ticks again – if it skipped
+    /// them, its half of a morph would fall behind the other manager's and the morph would
+    /// keep retargeting (a take on a device that never settled).
+    private func settleAll(at time: Double) {
+        for id in seen.keys { seen[id] = time }
     }
 
     func resume() {
@@ -175,14 +188,17 @@ nonisolated final class BoneAnimationClock: @unchecked Sendable {
         // the new animation fast. Waking up also means something new started.
         let woke = link.timestamp - (lastStamp[id] ?? -.infinity) > Self.idleGap
         lastStamp[id] = link.timestamp
-        if woke { seen[id] = nowLocked() }
+        if woke && !paused { seen[id] = nowLocked() }          // live: nothing to catch up
+        if seen[id] == nil { seen[id] = nowLocked() }          // first tick ever
         let entries = entryCount(manager)
         let grew = entries > (entryCounts[id] ?? entries)
         entryCounts[id] = entries
         if armed, !paused, woke || grew {
             // armed: stop on this tick, before the new animation advanced – plus one frame,
             // because a device draws an animated value only from a tick that advances
-            frozen = nowLocked() + Self.frame
+            let now = nowLocked()
+            settleAll(at: now)
+            frozen = now + Self.frame
             paused = true
             armed = false
             autoStepAvailable = true               // the morph may start a moment later (touch-up)
