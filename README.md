@@ -2,336 +2,47 @@
 
 ![250-bone](https://github.com/filipvabrousek/Bone/assets/18376136/857e695b-d1ee-410f-a13e-b6d4bc51580d)
 
-Swift library that dumps underlying UIKit views from SwiftUI views.
-The results are shown as overlay on the view.
-You can expand overlay to see layers, sublayers and superclasses of the views.
-It is also possible to output the code into text file.  
-It can also tune (`.tune`), dump (`.dumpGlass`), probe (`.probeGlass`) and live-edit Liquid Glass with a visual inspector (`.boneInspector`, incl. a 3D exploded view),
-dump the glass shaders' own parameters (`.dumpGlass(full: true)`),  
-stretch the glass button's press and drag flex much further (`.glassFlex`),  
-and tune the layers of any SwiftUI view – Text, shapes, buttons (`.tuneLayers`).  
-To get started, just copy/paste all files in library into folder in your project and add it to all targets.
+Bone looks underneath SwiftUI. It dumps the UIKit views behind any SwiftUI view, and it reads,
+tunes, freezes, records and re-drives the system's own Liquid Glass – in place, not a
+reimplementation.
 
-> Research / simulator use only: Bone uses private introspection selectors and private
-> Core Animation keys. Never ship it in an App Store build; names change between OS releases.
+> **Research / simulator use only.** Bone uses private classes, selectors, ivars and Core
+> Animation keys. Never ship it in an App Store build; names change between OS releases.
 
-<img width="1304" height="736" alt="image" src="https://github.com/user-attachments/assets/1ebb7a79-d039-4a48-ad88-6ff5f5b5fc7c" />
+## Get started
 
-The basic modifier:
+Copy every file in [`library/`](library) into a folder of your project and add them to all targets.
 
 ```swift
- List {
-  Text("Bone")
+List {
+    Text("Bone")
 }
 .bone(into: "output.txt")
 ```
 
-The dump of view above will be dumped into ```output.txt``` file, and the overlay will be shown.
-<!--
-![image](https://github.com/filipvabrousek/Bone/assets/18376136/acf0014d-b594-4d50-b8f4-1d92489ded9e)--->
-
-## Modifiers
-
-### `.bone(into:)` — iOS, visionOS, macOS
-
-```swift
-List { Text("WOW") }.bone(into: "output.txt")      // classic brief text dump
-List { Text("WOW") }.bone(into: "structure.json")  // deep SwiftUI dump (JSON)
-```
-
-The **extension decides the format**:
-- `.txt` (or anything non-JSON) → classic brief dump: class, superclass, layer, sublayers per view
-- `.json` → deep dump: Mirror of the SwiftUI value tree, hosting view → ViewGraph/renderer,
-  `recursiveDescription`, `_autolayoutTrace`, and the full per-node tree with `_ivarDescription`
-
-Also adds colored debug borders + a tappable overlay inspector.
-On iOS 27+ each run additionally writes `briefoutput.txt` and timestamped
-deep captures (`<name>_capture_<OS>_<timestamp>.txt/.json`) to Documents
-**and** `<project>/captures/` (simulator).
-
-### `.bone3D(into:)` — visionOS
-
-```swift
-List { Text("Hello") }.bone3D()                    // live 3D hierarchy, no file
-List { Text("Hello") }.bone3D(into: "ssu.json")    // + deep JSON dump
-List { Text("Hello") }.bone3D(into: "dump.txt")    // + brief text dump
-```
-
-<img width="1304" height="736" alt="image" src="https://github.com/user-attachments/assets/1ebb7a79-d039-4a48-ad88-6ff5f5b5fc7c" />
-
-
-Captures the live UIKit hierarchy of the wrapped view and renders it as an
-unbounded 3D tree in a volumetric window. Tap a slab for details
-(superclass, layer, sublayers, ivars). Optional `into:` writes the dump
-(same extension rule as `.bone`).
-
-### `.bone3DFrom(_:)` — visionOS
-
-```swift
-List { Text("Hello") }.bone3DFrom("briefoutput.txt")   // brief text dump
-List { Text("Hello") }.bone3DFrom("structure.json")    // deep JSON dump
-```
-
-Builds the 3D graph from a dump file instead of a live capture — including
-the `output_capture_*.json` files. Resolution order: absolute path →
-`<project>/captures/` (simulator) → app Documents. Lets you view an
-iOS/macOS-captured hierarchy on visionOS and compare platforms.
-
-## Liquid Glass
-
-### `.tune(_:)` — iOS
-
-```swift
-Button("Liquid") {}.glassEffect().tune(.noShadow + .noLensing)
-Button("Liquid") {}.glassEffect().tune([.blurRadius: 0, .faceOpacity: 0.3, .keyFillHighlightAmount: 1])
-Button("Liquid") {}.glassEffect().tune(.flat)
-```
-
-Overrides inputs of the `glassBackground` filter that renders Liquid Glass.
-- **Typed keys:** `GlassInput` (generated in `BoneGlassInputs.swift`) lists the 69 inputs SwiftUI
-  sets – shadow, refraction (lensing), blur, face colour matrix, key-light highlight, bleed, HDR
-  headroom – with the values iOS 27 used, plus 5 hidden ones `.probeGlass` found live:
-  `.aberrationAmount` (chromatic dispersion), `.aberrationHeight/Offset/Angle`, `.bleedColorMatrixFillColor`.
-- **Presets**, combined with `+` (right side wins): `.noShadow`, `.noLensing`, `.noBlur`,
-  `.noHighlight`, `.noBleed`, `.flat`, `.aberration`.
-- **Values:** plain literals (`0`, `0.4`, `true`), `.color(UIColor)`, `.size(w, h)`;
-  `.raw(["inputSomethingNew": 1])` for any other key – prefix it to reach another filter of the
-  glass: `.raw(["vibrantColorMatrix.inputColorMatrix": BoneColorMatrix.value(BoneColorMatrix.invert)])`.
-- `log: "tune.txt"` writes what changed (before → after).
-- SwiftUI rebuilds the filter on every update, so the values are re-applied a few times per second.
-
-`.tune(excludeShadow: true, contentLensing: false)` still works as a shortcut for
-`.tune(.noShadow + .noLensing)`.
-
-![Liquid Glass tuning](Bone-27/captures/tune-comparison.jpg)
-
-```swift
-Button("Liquid") {}.glassEffect().tune(file: "glass-panel.json")
-```
-
-`.tune(file:)` loads overrides from JSON (what `.glassPanel` saves). In the simulator the file is
-`<project>/captures/<name>` and is re-read whenever it changes – edit it on the Mac and watch the
-glass, no rebuild.
-
-### `.dumpGlass(_:only:after:)` — iOS
-
-```swift
-Button("Liquid") {}.glassEffect().dumpGlass("glass.txt")                                  // all inputs
-Button("Liquid") {}.glassEffect().dumpGlass("glass.txt", only: [.blurRadius, .shadowOpacity])
-Button("Liquid") {}.glassEffect().tune(.noShadow).dumpGlass("tuned.txt", only: [.shadowOpacity])
-```
-
-Writes the current inputs of the glass filter to a text file, with the same `GlassInput` keys
-as `.tune`:
-
-```
-blurRadius  (inputBlurRadius)                       = 5
-faceColorMatrixFillColor  (inputFaceColorMatrixFillColor) = CGColor(1.000, 1.000, 1.000, 0.200)
-shadowOffset  (inputShadowOffset)                   = size(0.0, 8.0)
-```
-
-Without `only:` it writes every input, plus the other filters on the glass layers
-(e.g. `vibrantColorMatrix` with its 4×5 colour matrix). Put it after `.tune` to verify a
-tuning. `after:` (default 1.5 s) waits for the glass to render.
-
-**Full dump** – `.dumpGlass("glass-full.txt", full: true)` adds the glass element's layer tree
-and the **glass shaders' own parameters**, all in one text file (`captures/glass-full.txt`).
-`.dumpShaders("shaders.txt", matching: "glass")` writes just the shader part, for any
-QuartzCore shader family (`"blur"`, `"vibrant"`, …).
-
-Bone loads QuartzCore's `default.metallib` with Metal (228 functions on iOS 27, 36 glass), and
-reflects each glass shader by building a render pipeline with QuartzCore's own vertex function
-(the reflection-only API is not implemented in the simulator). One variant per family is
-reflected (`reflectAll: true` for all, slower); takes ~0.5 s. You get every buffer, texture and
-uniform struct the shader reads – field, byte offset, type – and which filter input feeds it:
-
-```
--- S1: 63 fields, 320 bytes · bound as u in glass_background_all_lpf.u
-     16      inner_refraction_amount     float     ← innerRefractionAmount
-     20      inner_refraction_inv_height float     ← 1 / innerRefractionHeight
-     80      face_cm0                    half4     ← faceColorMatrix{Black, FillColor, MaxLuma, …} (derived)
-     160     blur_alpha0                 float     ← blurOpacity0
-     312     aberration_dir              float2    ← aberrationAngle (as a direction)
-     32      refraction_threshold0       float     –        (no input – set by the render server)
-```
-
-Five structs on iOS 27: `glassBackground` (63 fields), its SDF variant (66), the shared
-extension block (`u_ext`: `preserve_hue`, `stroke_mode`, `highlight_extension`, …), and
-`glassForeground` (13) with its SDF variant (16).
-
-### `.probeGlass(_:after:)` — which glass inputs are live, iOS
-
-```swift
-Button("Liquid") {}.glassEffect().probeGlass("glass-probe.txt")
-```
-
-Finds out which filter inputs actually change the rendered glass. For every input
-name the SDK exports (`kCAFilterInput…`, 136 on iOS 27, list in
-`BoneFilterInputNames.swift`) and every key already on the filter, it sets test
-values (numbers 0, 1, 10, 50, −10; toggles; red/green; two colour matrices),
-captures the composited screen and counts changed pixels around the glass.
-Inputs that changed nothing are tried again with the live hidden inputs switched
-on (pass 2) – some only modulate another one. Writes `glass-probe.txt` (report),
-`glass-probe.json` and `glass-probe.png` (contact sheet of every live input).
-Takes ~3 min for both filters of a glass button. The demo runs it when launched
-with `-probe`. Use a structured backdrop: over a flat colour refraction, blur and
-aberration are invisible.
-
-![Probe contact sheet](Bone-27/captures/glass-probe.png)
-
-iOS 27 simulator, glass button over black/yellow stripes (`Bone-27/captures/glass-probe.*`),
-two runs, identical verdicts for all 270 inputs:
-![Hidden knobs](Bone-27/captures/hidden-knobs.png)
-
-- **hidden but live** (never set by SwiftUI): `inputAberrationAmount` – chromatic
-  dispersion –, `inputBleedColorMatrixFillColor` – a bleed tint; on
-  `vibrantColorMatrix`: `inputBackdropAware`, `inputClampPreserveHue` (tiny)
-- **only with aberration on**: `inputAberrationHeight`, `inputAberrationOffset`,
-  `inputAberrationAngle`
-- 44 of the inputs SwiftUI sets change the image; the rest of the 136 names do
-  nothing on this filter (they belong to other Core Animation filters)
-
-How it measures, and why:
-- `drawHierarchy` does not reproduce Liquid Glass; UIKit's private
-  `_UICreateScreenUIImage` matches `simctl io screenshot` pixel for pixel.
-- Right after `CATransaction.flush()` the screen sometimes still shows the previous
-  commit, so every capture waits two frames and must agree with the next one
-  (runs differ by ≤ 10 px of 201 075).
-- Inputs are restored in place – `setValue(nil, forKeyPath:)` removes a key. Putting
-  a filter object back takes the render server about a frame, so that is only the
-  fallback; every restore is checked against the baseline.
-
-### `.boneInspector()` / `.glassPanel()` — visual inspector, iOS
-
-```swift
-WindowGroup { ContentView().boneInspector() }   // same as .glassPanel()
-```
-
-Adds a floating pink drop. Tap it, then tap text, glass or any element – no mode to
-choose (Auto; Glass and Layer force one kind). Glass opens the glass inputs, anything
-else the layer it is drawn into, all on sliders. **Aa** on a glass card jumps to the
-text drawn on that glass, the **drop** on a layer card back to the glass around it.
-Auto outlines glass and text; every other element is still tappable.
-
-**3D** (button in the pick hint) – an exploded view of what SwiftUI drew: every drawn layer
-(text, shapes, gradients, glass) becomes a plane at its screen position, pushed back by its
-depth in the layer tree. Drag to orbit, two fingers to move, pinch to zoom, double-tap to
-reset, slider for the spacing. Tap a plane to tune that layer with the same sliders (glass
-planes open the glass inputs); the edit goes to the real layer and is previewed on the plane.
-Hold the eye to peek at the real app, ↻ to re-freeze it after tuning glass. Planes are Core
-Animation layers in a `CATransformLayer`; taps are picked by projecting each plane's corners.
-
-For glass – your own
-`.glassEffect()` views and system bars alike. Every input of the glass filters
-(`glassBackground`, `vibrantColorMatrix`) gets a control: slider plus typed value
-(⇔ widens the range), toggle, colour picker, size, 4×5 colour-matrix editor.
-Hidden inputs are listed first, in purple. Changes go to the real glass at once
-and are re-applied when SwiftUI rebuilds it; on a view that also has `.tune`, the
-panel wins for the inputs it holds.
-
-- **Probe** – `.probeGlass` on the picked glass and filter (the panel hides itself
-  meanwhile); inputs it finds live are added to the list.
-- **Copy Swift** – `.tune([...])` code for the current changes, to the clipboard.
-- **Save JSON** – `captures/glass-panel.json`, for `.tune(file:)`.
-- presets, Reset all, per-input reset, move the panel up/down.
-
-### `.glassFlex(stretch:follow:)` — glass stretch, iOS
-
-![stock and .glassFlex(stretch: 6, follow: 12) while dragged, iPhone 14 Pro](Bone-27/captures/glass-flex.png)
-
-```swift
-Button("Glass") {}.buttonStyle(.glass).glassFlex(stretch: 6, follow: 12)
-```
-
-Stretches the system glass button's own flex – the swell when pressed and the stretch toward
-the finger while held and dragged – and the glass outline grows with the label. `stretch`
-multiplies the swell and the drag stretch, `follow` the shift toward the finger (1 = stock for
-both; defaults 6 and 12). Only glass controls inside the modified view are affected.
-
-It maps the two layer branches SwiftUI's flex interaction drives every frame: the content
-(`UIPlatformGlassInteractionView`: scale and position) and the glass outline (the layers under
-SwiftUI's `SDFLayer`: backdrop, SDF and portal layers). The shape element is a rounded rectangle
-while held and a distance-field bitmap of the stretched blob while dragged; it is scaled about the
-shape, so the glass keeps its form. iPhone 14 Pro at (6, 12): 164×106 pt pressed, stock 77×50.
-Details in [library/readme.md](library/readme.md); demo: launch argument `-flex`.
-
-## Any SwiftUI view
-
-### `.tuneLayers(_:where:)` / `.dumpLayers(_:)` — iOS
-
-```swift
-Text("Hello").tuneLayers([.rotationY: 35, .shadowOpacity: 1, .shadowRadius: 8], where: .text)
-Button("Go") {}.buttonStyle(.borderedProminent).tuneLayers([.filters: .filters([.colorHueRotate(2.2)])])
-Image(systemName: "star.fill").tuneLayers([.blendMode: .blend(.difference)], where: .shape)
-Text("Hi").tuneLayers([.contents: .image(UIImage(named: "photo")!)], where: .text)
-VStack { … }.tuneLayers(.outline, where: .all)      // pink border on every layer
-VStack { … }.dumpLayers("layers.txt")                 // what is there, and which targets match
-```
-
-On iOS 27 SwiftUI draws most primitives into bare CALayers without a UIView
-(`Text("Hello").bone(into:)` → `_UIHostingView<Text>` › `CGDrawingLayer (layer)`):
-Text and button labels are `CGDrawingLayer` bitmaps, SF Symbols and filled shapes
-`ColorShapeLayer`, gradient fills `GradientLayer`; glass keeps real views. Every one
-of them takes:
-- `LayerProperty`: opacity, hidden, cornerRadius, masksToBounds, backgroundColor, border,
-  shadow, 3D transform about the centre (rotation, rotationX/Y + perspective, scale,
-  translation – composed with SwiftUI's own), `blendMode` (22 Core Animation blend
-  modes), `filters`, `contents` (replace the bitmap), `contentsGravity`; `.raw([...])`
-  for any other key or key path
-- `BoneFilter`: gaussianBlur, colorMatrix, colorInvert, colorSaturate, colorHueRotate,
-  colorBrightness, colorContrast, colorMonochrome, multiplyColor, luminanceToAlpha,
-  `.raw(type, inputs)` for any other `kCAFilter…` type – all verified on a Text layer
-  in the iOS 27 simulator; added after SwiftUI's own filters
-- `LayerTarget`: `.leaves` (default – every drawn element), `.text`, `.shape`,
-  `.gradient`, `.glass`, `.all`, `.className("…")`, `.custom`, combined with `||`
-
-Layers are SwiftUI's choice – it may merge or recreate them – so targets are layer
-kinds and values are re-applied a few times per second. Text stays a bitmap: you can
-filter, warp, mask or replace it, not edit glyphs.
-
-![Layer tuning](Bone-27/captures/layers-demo.jpg)
-
-The glass panel has a **Layer** mode (switch in the pick hint): tap any element, edit
-its layer live (sliders, colours, blend picker, filter controls, ↑/↓ to the parent or
-a sublayer), Copy Swift gives the `.tuneLayers` line. The demo shows all of it when
-launched with `-layers`.
-
-## Configuration
-
-```swift
-BoneCapture.maxIvarLength = 20_000              // chars of ivar dump per node
-BoneCapture.maxMirrorDepth = 7                  // Mirror recursion depth
-BoneCapture.captureIvarDescriptions = true
-BoneCapture.captureRecursiveDescription = true
-BoneCapture.captureAutolayoutTrace = true
-BoneCapture.ivarDenylist                        // class-name prefixes to skip
-```
-
-If a capture crashes (EXC_BAD_ACCESS in a private selector), the last
-`BONE introspecting …` console line names the class — add its prefix to
-`ivarDenylist`. Known broken: `_UIHostingView` on iOS 26, all
-`_TtGC7SwiftUI…` generic classes on visionOS 27 (defaults handle both).
-
-## Where files land
-
-- App's **Documents** folder (always; path printed as `OUTPUT FILE:`)
-- **`<project>/captures/`** — iOS/visionOS *simulator* and native macOS
-  (macOS needs App Sandbox disabled). Located via `#filePath`, so rebuild
-  after moving the project.
-
-## Cross-OS diffing
-
-```bash
-cd captures
-diff <(jq -S . output_capture_iOS26_0_*.json) <(jq -S . output_capture_iOS27_0_*.json)
-```
-
-Renamed private classes, hierarchy changes, and ivar-layout differences
-between OS releases fall out automatically.
-
-
-
-
-
-
-
+The hierarchy is written to `output.txt` and shown as an overlay you can expand to see layers,
+sublayers and superclasses.
+
+<img width="1304" height="736" alt="Bone overlay and 3D hierarchy" src="https://github.com/user-attachments/assets/1ebb7a79-d039-4a48-ad88-6ff5f5b5fc7c" />
+
+## What's in it
+
+| Modifier | What it does | Docs |
+|---|---|---|
+| `.bone(into:)` | UIKit hierarchy behind a SwiftUI view → overlay + text/JSON dump | [Hierarchy dumps](Bone-27/docs/hierarchy.md) |
+| `.bone3D(into:)` · `.bone3DFrom(_:)` | the hierarchy as a 3D tree (visionOS) | [Hierarchy dumps](Bone-27/docs/hierarchy.md) |
+| `.tune(_:)` | override any Liquid Glass parameter, presets, JSON hot reload | [Glass tuning](Bone-27/docs/glass-tuning.md) |
+| `.dumpGlass(_:)` · `.dumpShaders(_:)` | glass inputs and the glass shaders' own uniforms | [Glass tuning](Bone-27/docs/glass-tuning.md) |
+| `.probeGlass(_:)` | which glass inputs really change the pixels | [Glass tuning](Bone-27/docs/glass-tuning.md) |
+| `.boneInspector()` | tap any glass or layer and edit it live; 3D exploded view | [Inspector and 3D](Bone-27/docs/inspector.md) |
+| `.tuneLayers(_:where:)` · `.dumpLayers(_:)` | filters, blend modes, transforms on the layers of any view | [Layers](Bone-27/docs/layers.md) |
+| `.morphTimeline()` · `.morphScrubber()` · `.dumpMorph(_:)` | pause, step, scrub and dump the Liquid Glass morphs | [Timeline and morphs](Bone-27/docs/timeline.md) |
+| `.liquidMorph(to:isPresented:)` | Apple's glass morph between any two views | [Liquid morph](Bone-27/docs/liquid-morph.md) |
+| `.glassFlex(stretch:follow:)` | the glass button's press and drag stretch, much further | [Glass stretch](Bone-27/docs/glass-stretch.md) |
+
+## Documentation
+
+- [Guides](Bone-27/docs/index.md) – one page per topic, with examples, results and how each part works.
+- [Getting started](Bone-27/docs/getting-started.md) – demo launch arguments, where files land.
+- [Bone internals and novelty](Bone-27/docs/internals/bone-internals.pdf) – every mechanism at the
+  level of layers, ivars and setters, with diagrams, and what is new compared with published work.
