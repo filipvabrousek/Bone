@@ -26,10 +26,8 @@
 import SwiftUI
 #if canImport(UIKit)
 import UIKit
-typealias BonePlatformWindow = UIWindow
 #else
 import AppKit
-typealias BonePlatformWindow = NSWindow
 #endif
 
 #if canImport(UIKit)

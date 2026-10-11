@@ -22,11 +22,15 @@
 //  Research / simulator use only — private API, never ship it.
 //
 
-#if canImport(UIKit) && !os(watchOS)
+#if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import Combine
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 extension View {
 
@@ -42,6 +46,7 @@ extension View {
     }
 }
 
+#if canImport(UIKit)
 /// Finds the window scene and installs the panel's overlay window there.
 struct BoneGlassPanelAnchor: UIViewRepresentable {
     func makeUIView(context: Context) -> BonePanelAnchorView { BonePanelAnchorView() }
@@ -64,22 +69,71 @@ final class BonePanelWindow: UIWindow {
     weak var model: BoneGlassPanelModel?
 
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        guard let m = model else { return nil }
-        guard m.picking || m.exploded || m.buttonRect.contains(point) || m.cardRect.contains(point)
-              || m.timelineRect.contains(point) || m.timelineCovers else { return nil }
+        guard let m = model, m.takesPoint(point) else { return nil }
         if !isKeyWindow {
             m.rememberKeyWindow()
             makeKey()
         }
         return super.hitTest(point, with: event)
     }
+
+    func hideForCapture(_ hidden: Bool) { isHidden = hidden }
+}
+#else
+/// Finds the app window and attaches the panel's overlay window to it.
+struct BoneGlassPanelAnchor: NSViewRepresentable {
+    func makeNSView(context: Context) -> BonePanelAnchorView { BonePanelAnchorView() }
+    func updateNSView(_ view: BonePanelAnchorView, context: Context) {}
 }
 
-final class BoneLinkTarget: NSObject {
-    private let action: () -> Void
-    init(_ action: @escaping () -> Void) { self.action = action }
-    @objc func step() { action() }
+final class BonePanelAnchorView: NSView {
+    override func hitTest(_ point: NSPoint) -> NSView? { nil }
+    override func viewDidMoveToWindow() {
+        super.viewDidMoveToWindow()
+        if let w = window, !(w is BonePanelWindow) { BoneGlassPanelModel.shared.install(on: w) }
+    }
 }
+
+/// A transparent child window exactly over the app window. AppKit has no per-point pass-through,
+/// so a mouse monitor makes it ignore the mouse except over the drop button and the cards (and
+/// everywhere while picking) – the same rule as the iOS window's hitTest.
+final class BonePanelWindow: NSPanel {
+    weak var model: BoneGlassPanelModel?
+    private var monitor: Any?
+
+    init(over app: NSWindow) {
+        super.init(contentRect: app.frame, styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
+        isOpaque = false
+        backgroundColor = .clear
+        hasShadow = false
+        level = app.level
+        ignoresMouseEvents = true
+        acceptsMouseMovedEvents = true
+        app.acceptsMouseMovedEvents = true
+        app.addChildWindow(self, ordered: .above)
+        NotificationCenter.default.addObserver(forName: NSWindow.didResizeNotification, object: app, queue: .main) { [weak self] _ in
+            MainActor.assumeIsolated { self?.setFrame(app.frame, display: true) }
+        }
+        monitor = NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved, .leftMouseDown, .leftMouseDragged]) { [weak self] e in
+            MainActor.assumeIsolated { self?.track(e) }
+            return e
+        }
+    }
+
+    override var canBecomeKey: Bool { true }
+
+    /// The mouse in this window's points, top-left origin (SwiftUI's global space here).
+    private func track(_ e: NSEvent) {
+        guard let m = model else { return }
+        let screen = e.window.map { $0.convertPoint(toScreen: e.locationInWindow) } ?? NSEvent.mouseLocation
+        let p = convertPoint(fromScreen: screen)
+        let takes = m.takesPoint(CGPoint(x: p.x, y: frame.height - p.y))
+        if ignoresMouseEvents == takes { ignoresMouseEvents = !takes }
+    }
+
+    func hideForCapture(_ hidden: Bool) { alphaValue = hidden ? 0 : 1 }
+}
+#endif
 
 // MARK: - Model
 
@@ -139,11 +193,13 @@ final class BoneGlassPanelModel: ObservableObject {
     @Published var peeking = false
     @Published var explodeSpacing = 30.0
     @Published var explodeInfo = ""
+    #if canImport(UIKit)
     weak var explodedView: BoneExplodedView?
+    #endif
     private var explodeShot: CGImage?
     /// Timeline bar (BoneTimeline.swift): pause, slow down, step and scrub animations.
     @Published var timelineOpen = false
-    #if !os(visionOS)
+    #if canImport(UIKit) && !os(visionOS)
     let timeline = BoneTimeline()
     #endif
     @Published var isOpen = false
@@ -164,35 +220,53 @@ final class BoneGlassPanelModel: ObservableObject {
     var timelineRect: CGRect = .zero
     /// A take on screen covers the app: the window takes every touch.
     var timelineCovers: Bool {
-        #if os(visionOS)
-        false        // the timeline drives iOS's AnimationKit morphs – not built on visionOS
+        #if os(visionOS) || os(macOS)
+        false        // the timeline drives iOS's AnimationKit morphs – iOS only
         #else
         timelineOpen && !isOpen && !picking && !exploded && timeline.showsFrame
         #endif
     }
 
-    /// The app's own windows (everything but the panel).
-    var appWindows: [UIWindow] { scene?.windows.filter { $0 !== panelWindow } ?? [] }
-    var panel: UIWindow? { panelWindow }
+    /// The app's own windows (everything but the panel), back to front.
+    var appWindows: [BonePlatformWindow] {
+        #if canImport(UIKit)
+        return (scene?.windows ?? []).filter { $0 !== panelWindow && !$0.isHidden }
+            .sorted { $0.windowLevel.rawValue < $1.windowLevel.rawValue }
+        #else
+        return appWindow.map { [$0] } ?? []
+        #endif
+    }
+    var panel: BonePlatformWindow? { panelWindow }
+
+    /// Points the overlay window takes the touch / mouse at (everything else goes to the app).
+    func takesPoint(_ point: CGPoint) -> Bool {
+        picking || exploded || buttonRect.contains(point) || cardRect.contains(point)
+            || timelineRect.contains(point) || timelineCovers
+    }
 
     /// Layer mode: the CALayer being edited.
     let layerEditor = BoneLayerEditor()
 
     private(set) var filters: [BoneFilterRef] = []
     private weak var element: CALayer?
-    private weak var elementWindow: UIWindow?
+    private weak var elementWindow: BonePlatformWindow?
     private var center: CGPoint = .zero
     private var snapshots: [Int: NSObject] = [:]          // filter index → copy taken at selection
     private var originalKeys: [Int: Set<String>] = [:]    // inputs SwiftUI had set
     private var overrides: [Int: [String: Any]] = [:]     // filter index → input → value
     private var liveHidden: [Int: Set<String>] = [:]      // found by the probe
     private var panelWindow: BonePanelWindow?
+    #if canImport(UIKit)
     private weak var scene: UIWindowScene?
-    private weak var previousKey: UIWindow?
-    private var link: CADisplayLink?
+    #else
+    private weak var appWindow: NSWindow?
+    #endif
+    private weak var previousKey: BonePlatformWindow?
+    private var ticker: BoneTicker?
     private var ticks = 0
     private var prober: BoneGlassProber?
 
+    #if canImport(UIKit)
     func install(on scene: UIWindowScene) {
         if let w = panelWindow, w.windowScene === scene { return }
         let w = BonePanelWindow(windowScene: scene)
@@ -209,10 +283,24 @@ final class BoneGlassPanelModel: ObservableObject {
         timeline.model = self
         #endif
     }
+    #else
+    func install(on window: NSWindow) {
+        if panelWindow != nil, appWindow === window { return }
+        let w = BonePanelWindow(over: window)
+        w.model = self
+        let host = NSHostingView(rootView: BoneGlassPanelView(model: self))
+        host.frame = CGRect(origin: .zero, size: window.frame.size)
+        host.autoresizingMask = [.width, .height]
+        w.contentView = host
+        w.orderFront(nil)
+        panelWindow = w
+        appWindow = window
+    }
+    #endif
 
     // MARK: Timeline
 
-    #if !os(visionOS)
+    #if canImport(UIKit) && !os(visionOS)
     func openTimeline() {
         picking = false
         code = nil
@@ -232,14 +320,12 @@ final class BoneGlassPanelModel: ObservableObject {
 
     // MARK: Picking
 
-    private func candidates() -> [(layer: CALayer, frame: CGRect, window: UIWindow)] {
-        guard let scene else { return [] }
-        let windows = scene.windows.filter { $0 !== panelWindow && !$0.isHidden }
-            .sorted { $0.windowLevel.rawValue < $1.windowLevel.rawValue }
-        var out: [(layer: CALayer, frame: CGRect, window: UIWindow)] = []
-        for w in windows {
-            for l in BoneGlassLayers.glassLayers(in: w.layer) {
-                let f = BoneGlassLayers.screenFrame(of: l, in: w)
+    private func candidates() -> [(layer: CALayer, frame: CGRect, window: BonePlatformWindow)] {
+        var out: [(layer: CALayer, frame: CGRect, window: BonePlatformWindow)] = []
+        for w in appWindows {
+            guard let root = BoneWindows.root(w) else { continue }
+            for l in BoneGlassLayers.glassLayers(in: root) {
+                let f = BoneWindows.frame(of: l, in: w)
                 if f.width > 1, f.height > 1 { out.append((layer: l, frame: f, window: w)) }
             }
         }
@@ -254,7 +340,7 @@ final class BoneGlassPanelModel: ObservableObject {
 
     func refreshOutlines() {
         let glass = candidates().map { $0.frame }
-        let all = BoneLayerEditor.leaves(in: scene, excluding: panelWindow)
+        let all = BoneLayerEditor.leaves(in: appWindows)
         let leaves = all.map { $0.frame }
         switch mode {
         case .auto:   // outline what you most likely want; every element is still tappable
@@ -288,22 +374,23 @@ final class BoneGlassPanelModel: ObservableObject {
 
     /// The frontmost drawn layer at a point – text first, so a tap on a glass
     /// button's label finds the label.
-    private func leafAt(_ point: CGPoint) -> (layer: CALayer, frame: CGRect, window: UIWindow)? {
-        let hits = BoneLayerEditor.leaves(in: scene, excluding: panelWindow).filter { $0.frame.contains(point) }
+    private func leafAt(_ point: CGPoint) -> (layer: CALayer, frame: CGRect, window: BonePlatformWindow)? {
+        let hits = BoneLayerEditor.leaves(in: appWindows).filter { $0.frame.contains(point) }
         return hits.last(where: { LayerTarget.text.matches($0.layer) }) ?? hits.last
     }
 
-    private func showGlass(_ hit: (layer: CALayer, frame: CGRect, window: UIWindow)) {
+    private func showGlass(_ hit: (layer: CALayer, frame: CGRect, window: BonePlatformWindow)) {
         showing = .glass
         select(hit.layer, in: hit.window)
     }
 
-    private func showLayer(_ hit: (layer: CALayer, frame: CGRect, window: UIWindow)) {
+    private func showLayer(_ hit: (layer: CALayer, frame: CGRect, window: BonePlatformWindow)) {
         showing = .layer
-        layerEditor.select(hit.layer, in: hit.window, scene: scene, excluding: panelWindow)
+        layerEditor.select(hit.layer, in: hit.window) { [weak self] in self?.appWindows ?? [] }
         open()
     }
 
+    #if canImport(UIKit)
     // MARK: 3D exploded view
 
     /// Takes a screenshot without the panel (glass is cut from it), then opens the 3D view.
@@ -363,7 +450,7 @@ final class BoneGlassPanelModel: ObservableObject {
 
     private func captureWithoutPanel(_ done: @escaping (CGImage?) -> Void) {
         let glass = candidates().map { $0.frame }
-        let labels = BoneLayerEditor.leaves(in: scene, excluding: panelWindow)
+        let labels = BoneLayerEditor.leaves(in: appWindows)
             .filter { hit in LayerTarget.text.matches(hit.layer) && glass.contains { $0.contains(CGPoint(x: hit.frame.midX, y: hit.frame.midY)) } }
             .map { $0.layer }
         CATransaction.begin()
@@ -383,9 +470,11 @@ final class BoneGlassPanelModel: ObservableObject {
         }
     }
 
+    #endif
+
     /// Glass card → its label (the text drawn on the glass), else whatever is at its centre.
     func switchToLayer() {
-        let leaves = BoneLayerEditor.leaves(in: scene, excluding: panelWindow)
+        let leaves = BoneLayerEditor.leaves(in: appWindows)
         let label = leaves.last { LayerTarget.text.matches($0.layer) && selection.contains(CGPoint(x: $0.frame.midX, y: $0.frame.midY)) }
         if let hit = label ?? leafAt(CGPoint(x: selection.midX, y: selection.midY)) { showLayer(hit) }
     }
@@ -409,7 +498,7 @@ final class BoneGlassPanelModel: ObservableObject {
     }
 
     func rememberKeyWindow() {
-        if let k = scene?.windows.first(where: { $0.isKeyWindow && $0 !== panelWindow }) { previousKey = k }
+        if let k = appWindows.first(where: { $0.isKeyWindow }) { previousKey = k }
     }
 
     func cancelPicking() {
@@ -417,12 +506,12 @@ final class BoneGlassPanelModel: ObservableObject {
         if !isOpen { previousKey?.makeKey() }
     }
 
-    func select(_ glass: CALayer, in window: UIWindow) {
+    func select(_ glass: CALayer, in window: BonePlatformWindow) {
         let el = BoneGlassLayers.element(of: glass)
         element = el
         elementWindow = window
         filters = BoneGlassLayers.filterRefs(inElement: el)
-        let frame = BoneGlassLayers.screenFrame(of: glass, in: window)
+        let frame = BoneWindows.frame(of: glass, in: window)
         center = CGPoint(x: frame.midX, y: frame.midY)
         selection = frame
         snapshots = [:]
@@ -449,11 +538,8 @@ final class BoneGlassPanelModel: ObservableObject {
     // MARK: Keeping the values
 
     private func startLink() {
-        guard link == nil else { return }
-        let l = CADisplayLink(target: BoneLinkTarget { [weak self] in self?.tick() }, selector: #selector(BoneLinkTarget.step))
-        l.preferredFrameRateRange = CAFrameRateRange(minimum: 4, maximum: 10, preferred: 8)
-        l.add(to: .main, forMode: .common)
-        link = l
+        guard ticker == nil else { return }
+        ticker = BoneTicker { [weak self] in self?.tick() }
     }
 
     /// SwiftUI rebuilds the filter (and sometimes the layers) on updates –
@@ -461,7 +547,7 @@ final class BoneGlassPanelModel: ObservableObject {
     private func tick() {
         guard !probing else { return }
         ticks += 1
-        if let el = element, let win = elementWindow, BoneGlassLayers.isAttached(el, to: win) {
+        if let el = element, let win = elementWindow, BoneWindows.isAttached(el, to: win) {
             // still there
         } else if isOpen || !overrides.isEmpty {
             reacquire()
@@ -473,7 +559,7 @@ final class BoneGlassPanelModel: ObservableObject {
             }
         }
         if let glass = filters.first?.layer, let win = elementWindow {
-            let f = BoneGlassLayers.screenFrame(of: glass, in: win)
+            let f = BoneWindows.frame(of: glass, in: win)
             if f != selection {
                 selection = f
                 center = CGPoint(x: f.midX, y: f.midY)
@@ -644,7 +730,7 @@ final class BoneGlassPanelModel: ObservableObject {
 
     func copySwift() {
         let c = swiftCode()
-        UIPasteboard.general.string = c
+        BonePasteboard.copy(c)
         code = c
         status = "Copied to the clipboard."
     }
@@ -685,7 +771,7 @@ final class BoneGlassPanelModel: ObservableObject {
         let i = filterIndex
         probing = true
         status = "Probing \(filters[i].type)…"
-        panelWindow?.isHidden = true   // keep the panel out of the screen captures
+        panelWindow?.hideForCapture(true)   // keep the panel out of the screen captures
         let p = BoneGlassProber(element: el, window: win, filters: [filters[i]])
         prober = p
         p.run { [weak self] report in
@@ -694,7 +780,7 @@ final class BoneGlassPanelModel: ObservableObject {
             self.liveHidden[i] = Set(report.liveHidden[0] ?? [])
             self.prober = nil
             self.probing = false
-            self.panelWindow?.isHidden = false
+            self.panelWindow?.hideForCapture(false)
             self.status = report.summary + " → glass-probe-panel.txt"
             self.revision &+= 1
         }
@@ -709,7 +795,9 @@ struct BoneGlassPanelView: View {
     var body: some View {
         ZStack {
             if model.exploded {
+                #if canImport(UIKit)
                 BoneExplodedScreen(model: model)
+                #endif
             } else if model.picking {
                 Color.black.opacity(0.18)
                     .ignoresSafeArea()
@@ -725,9 +813,11 @@ struct BoneGlassPanelView: View {
                     .onChange(of: model.mode) { model.refreshOutlines() }
                     Text(model.status).font(.callout.bold())
                     HStack {
+                        #if canImport(UIKit)
                         Button { model.openExploded() } label: { Label("3D", systemImage: "square.3.layers.3d") }
                             .buttonStyle(.bordered)
-                        #if !os(visionOS)
+                        #endif
+                        #if canImport(UIKit) && !os(visionOS)
                         Button { model.openTimeline() } label: { Label("Timeline", systemImage: "timeline.selection") }
                             .buttonStyle(.bordered)
                         #endif
@@ -760,7 +850,7 @@ struct BoneGlassPanelView: View {
                 }
                 .padding(.horizontal, 8)
             } else if model.timelineOpen {
-                #if !os(visionOS)
+                #if canImport(UIKit) && !os(visionOS)
                 BoneTimelineScreen(model: model, timeline: model.timeline)
                 #endif
             } else {
@@ -830,7 +920,7 @@ struct BoneGlassCard: View {
                 .textFieldStyle(.roundedBorder)
                 .font(.caption)
                 .autocorrectionDisabled()
-                .textInputAutocapitalization(.never)
+                .boneNoAutocapitalization()
             if let code = model.code {
                 Text(code)
                     .font(.caption2.monospaced())
@@ -899,7 +989,7 @@ struct BoneKnobRow: View {
                 .font(.caption.monospaced())
                 .multilineTextAlignment(.trailing)
                 .textFieldStyle(.roundedBorder)
-                .keyboardType(.numbersAndPunctuation)
+                .boneDecimalKeyboard()
                 .frame(width: 92)
             Button { model.widen(knob) } label: { Image(systemName: "arrow.left.and.right.circle") }
                 .buttonStyle(.plain)
@@ -951,7 +1041,7 @@ struct BoneMatrixEditor: View {
                                 .font(.caption2.monospaced())
                                 .multilineTextAlignment(.trailing)
                                 .textFieldStyle(.roundedBorder)
-                                .keyboardType(.numbersAndPunctuation)
+                                .boneDecimalKeyboard()
                         }
                     }
                 }

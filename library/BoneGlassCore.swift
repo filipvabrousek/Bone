@@ -17,6 +17,101 @@ import UIKit
 import AppKit
 #endif
 
+// MARK: - Windows (the inspector and the prober, iOS and macOS)
+
+#if canImport(UIKit)
+typealias BonePlatformWindow = UIWindow
+#else
+typealias BonePlatformWindow = NSWindow
+#endif
+
+enum BoneWindows {
+
+    /// The layer frames are measured in: the window's own layer (iOS), the frame view's (macOS).
+    static func root(_ w: BonePlatformWindow) -> CALayer? {
+        #if canImport(UIKit)
+        return w.layer
+        #else
+        return w.contentView?.superview?.layer ?? w.contentView?.layer
+        #endif
+    }
+
+    /// A layer's frame in the inspector's space: screen points (iOS); the window's points with a
+    /// top-left origin (macOS – the inspector's overlay covers the window exactly).
+    static func frame(of layer: CALayer, in w: BonePlatformWindow) -> CGRect {
+        #if canImport(UIKit)
+        return BoneGlassLayers.screenFrame(of: layer, in: w)
+        #else
+        guard let root = root(w) else { return .null }
+        var r = layer.convert(layer.bounds, to: root)
+        if !root.isGeometryFlipped { r.origin.y = root.bounds.height - r.maxY }
+        return r
+        #endif
+    }
+
+    static func isAttached(_ layer: CALayer, to w: BonePlatformWindow) -> Bool {
+        guard let root = root(w) else { return false }
+        var l: CALayer? = layer
+        while let c = l { if c === root { return true }; l = c.superlayer }
+        return false
+    }
+
+    static func isVisible(_ w: BonePlatformWindow) -> Bool {
+        #if canImport(UIKit)
+        return !w.isHidden
+        #else
+        return w.isVisible
+        #endif
+    }
+}
+
+#if canImport(UIKit)
+final class BoneLinkTarget: NSObject {
+    private let action: () -> Void
+    init(_ action: @escaping () -> Void) { self.action = action }
+    @objc func step() { action() }
+}
+#endif
+
+/// Calls `action` about 8× a second: a display link (iOS), a timer (macOS).
+final class BoneTicker {
+    #if canImport(UIKit)
+    private var link: CADisplayLink?
+    #else
+    private var timer: Timer?
+    #endif
+
+    init(_ action: @escaping () -> Void) {
+        #if canImport(UIKit)
+        let l = CADisplayLink(target: BoneLinkTarget(action), selector: #selector(BoneLinkTarget.step))
+        l.preferredFrameRateRange = CAFrameRateRange(minimum: 4, maximum: 10, preferred: 8)
+        l.add(to: .main, forMode: .common)
+        link = l
+        #else
+        timer = Timer.scheduledTimer(withTimeInterval: 0.125, repeats: true) { _ in MainActor.assumeIsolated { action() } }
+        #endif
+    }
+
+    func stop() {
+        #if canImport(UIKit)
+        link?.invalidate(); link = nil
+        #else
+        timer?.invalidate(); timer = nil
+        #endif
+    }
+}
+
+enum BonePasteboard {
+    static func copy(_ s: String) {
+        #if canImport(UIKit)
+        UIPasteboard.general.string = s
+        #else
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(s, forType: .string)
+        #endif
+    }
+}
+
 // MARK: - Filters on a layer
 
 /// One Core Animation filter, addressed the way -setValue:forKeyPath: wants

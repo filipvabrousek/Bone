@@ -10,11 +10,15 @@
 //  Research / simulator use only — private Core Animation filters, never ship it.
 //
 
-#if canImport(UIKit) && !os(watchOS)
+#if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import Combine
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 enum BonePanelMode: String, CaseIterable {
     /// Glass under the finger → glass inputs, anything else → its layer.
@@ -54,14 +58,14 @@ final class BoneLayerEditor: ObservableObject {
     @Published private(set) var revision = 0
 
     private(set) weak var layer: CALayer?
-    private weak var window: UIWindow?
-    private weak var scene: UIWindowScene?
-    private weak var excluded: UIWindow?
+    private weak var window: BonePlatformWindow?
+    /// The app's windows, for finding a replaced layer again.
+    private var windows: () -> [BonePlatformWindow] = { [] }
     private var center = CGPoint.zero
     private var className = ""
     private var snapshot: [String: Any] = [:]
     private(set) var generation = 0
-    private var link: CADisplayLink?
+    private var ticker: BoneTicker?
     private var ticks = 0
 
     var title: String {
@@ -75,29 +79,27 @@ final class BoneLayerEditor: ObservableObject {
     // MARK: Picking
 
     /// Visible layers without sublayers, back to front, in every window but the panel's.
-    static func leaves(in scene: UIWindowScene?, excluding panel: UIWindow?) -> [(layer: CALayer, frame: CGRect, window: UIWindow)] {
-        guard let scene else { return [] }
-        var out: [(layer: CALayer, frame: CGRect, window: UIWindow)] = []
-        let windows = scene.windows.filter { $0 !== panel && !$0.isHidden }.sorted { $0.windowLevel.rawValue < $1.windowLevel.rawValue }
+    static func leaves(in windows: [BonePlatformWindow]) -> [(layer: CALayer, frame: CGRect, window: BonePlatformWindow)] {
+        var out: [(layer: CALayer, frame: CGRect, window: BonePlatformWindow)] = []
         for w in windows {
+            guard let root = BoneWindows.root(w) else { continue }
             func walk(_ l: CALayer) {
                 guard !l.isHidden, l.opacity > 0.01, !(l.delegate is BonePanelAnchorView) else { return }
-                if l !== w.layer, LayerTarget.leaves.matches(l) {
-                    let f = BoneGlassLayers.screenFrame(of: l, in: w)
+                if l !== root, LayerTarget.leaves.matches(l) {
+                    let f = BoneWindows.frame(of: l, in: w)
                     if f.width > 1, f.height > 1 { out.append((layer: l, frame: f, window: w)) }
                 }
                 l.sublayers?.forEach(walk)
             }
-            walk(w.layer)
+            walk(root)
         }
         return out
     }
 
-    func select(_ l: CALayer, in w: UIWindow, scene: UIWindowScene?, excluding panel: UIWindow?) {
+    func select(_ l: CALayer, in w: BonePlatformWindow, windows: @escaping () -> [BonePlatformWindow]) {
         layer = l
         window = w
-        self.scene = scene
-        excluded = panel
+        self.windows = windows
         className = String(describing: type(of: l))
         tuning = LayerTuning(values: [:])
         knobs = BoneFilterKnobs()
@@ -105,40 +107,37 @@ final class BoneLayerEditor: ObservableObject {
         for p in LayerProperty.allCases {
             if let key = p.key, let v = l.value(forKey: key) { snapshot[key] = v }
         }
-        frame = BoneGlassLayers.screenFrame(of: l, in: w)
+        frame = BoneWindows.frame(of: l, in: w)
         center = CGPoint(x: frame.midX, y: frame.midY)
         startLink()
         revision &+= 1
     }
 
     func up() {
-        guard let l = layer, let parent = l.superlayer, let w = window, parent !== w.layer else { return }
-        select(parent, in: w, scene: scene, excluding: excluded)
+        guard let l = layer, let parent = l.superlayer, let w = window, parent !== BoneWindows.root(w) else { return }
+        select(parent, in: w, windows: windows)
     }
 
     func down() {
         guard let l = layer, let w = window,
               let child = l.sublayers?.first(where: { $0.bounds.width > 0 && $0.bounds.height > 0 }) ?? l.sublayers?.first else { return }
-        select(child, in: w, scene: scene, excluding: excluded)
+        select(child, in: w, windows: windows)
     }
 
     // MARK: Keeping the values
 
     private func startLink() {
-        guard link == nil else { return }
-        let l = CADisplayLink(target: BoneLinkTarget { [weak self] in self?.tick() }, selector: #selector(BoneLinkTarget.step))
-        l.preferredFrameRateRange = CAFrameRateRange(minimum: 4, maximum: 10, preferred: 8)
-        l.add(to: .main, forMode: .common)
-        link = l
+        guard ticker == nil else { return }
+        ticker = BoneTicker { [weak self] in self?.tick() }
     }
 
     private func tick() {
         ticks += 1
-        if let l = layer, let w = window, BoneGlassLayers.isAttached(l, to: w) {
+        if let l = layer, let w = window, BoneWindows.isAttached(l, to: w) {
             // still there
         } else if layer != nil || !tuning.isEmpty {
             // SwiftUI replaced it – the same kind of layer at the same place
-            if let hit = Self.leaves(in: scene, excluding: excluded)
+            if let hit = Self.leaves(in: windows())
                 .last(where: { $0.frame.contains(center) && String(describing: type(of: $0.layer)) == className }) {
                 layer = hit.layer
                 window = hit.window
@@ -146,7 +145,7 @@ final class BoneLayerEditor: ObservableObject {
         }
         guard let l = layer, let w = window else { return }
         if !tuning.isEmpty { BoneLayerApplier.apply(tuning, to: l, generation: generation) }
-        let f = BoneGlassLayers.screenFrame(of: l, in: w)
+        let f = BoneWindows.frame(of: l, in: w)
         if f != frame { frame = f }
         if ticks % 3 == 0 { revision &+= 1 }
     }
@@ -336,7 +335,7 @@ struct BoneLayerCard: View {
                 HStack(spacing: 6) {
                     chip("Copy Swift", "doc.on.doc") {
                         let c = editor.swiftCode()
-                        UIPasteboard.general.string = c
+                        BonePasteboard.copy(c)
                         code = c
                     }
                     chip("Reset all", "arrow.uturn.backward") { editor.resetAll(); code = nil }
@@ -436,7 +435,7 @@ struct BoneLayerCard: View {
                     .font(.caption.monospaced())
                     .multilineTextAlignment(.trailing)
                     .textFieldStyle(.roundedBorder)
-                    .keyboardType(.numbersAndPunctuation)
+                    .boneDecimalKeyboard()
                     .frame(width: 92)
             }
             BoneSlider(value: editor.number(p), in: BoneLayerEditor.range(p))

@@ -14,6 +14,10 @@ Nothing yet.
 ## 2026-10-11
 
 ### Added
+- `.boneInspector()` / `.glassPanel()` on **macOS**: an overlay child window over the app window with
+  the same panel; a mouse monitor passes clicks through except over the panel. Picking, the glass and
+  layer cards, presets and Copy Swift verified on macOS 27 (Save JSON, the card's Probe and click
+  pass-through outside the panel not yet). The 3D view and timeline stay iOS-only.
 - `.probeGlass(_:after:)` on **macOS**, capturing with ScreenCaptureKit (needs Screen Recording). macOS 27
   run (`captures/mac-glass-probe.*`): the iOS hidden aberration inputs, plus `inputBackColor0/1` live.
 - `.tuneLayers(_:where:)` and `.dumpLayers(_:)` on **macOS** (`BoneMac.swift`), acting on the layers
@@ -40,6 +44,10 @@ Nothing yet.
   label. ([4d4159a](https://github.com/filipvabrousek/Bone/commit/4d4159a))
 
 ### Changed
+- `BoneGlassPanel.swift`, `BoneLayerPanel.swift` and `BoneSlider.swift` build on macOS. Shared helpers
+  in `BoneGlassCore.swift`: `BonePlatformWindow`, `BoneWindows` (root layer, frames, attachment),
+  `BoneTicker` (display link / timer), `BonePasteboard`; `BoneLinkTarget` moved there. The layer
+  editor takes a list of windows instead of a `UIWindowScene`.
 - `BoneGlassProbe.swift` builds on macOS: async capture, a Core Graphics/AppKit contact sheet;
   `BonePixels` and a shared `BoneOS.line` moved out of the iOS-only part of `BoneGlassCore.swift`.
 - `BoneGlassCore.swift`, `BoneLayerTune.swift`, `BoneShaderDump.swift` and `BoneFilterInputNames.swift`

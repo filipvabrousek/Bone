@@ -1,6 +1,6 @@
 # Inspector and the 3D exploded view
 
-## `.boneInspector()` / `.glassPanel()` — iOS
+## `.boneInspector()` / `.glassPanel()` — iOS, macOS
 
 ```swift
 WindowGroup { ContentView().boneInspector() }   // same as .glassPanel()
@@ -11,6 +11,14 @@ Glass and Layer force one kind). Glass opens the glass inputs, anything else the
 into, all on sliders. **Aa** on a glass card jumps to the text drawn on that glass, the **drop** on a
 layer card back to the glass around it. Auto outlines glass and text; every other element is still
 tappable.
+
+### On macOS
+
+The same inspector runs on the Mac: a transparent window attached above the app window hosts the
+same panel, and a mouse monitor lets clicks through except over the drop button and the cards (and
+everywhere while picking) – AppKit has no per-point pass-through like UIKit's `hitTest`. Click the
+drop, then click glass or any element; glass and layer cards, presets, Copy Swift, Save JSON and
+Probe work as on iOS (Probe needs Screen Recording). The 3D view and the timeline are iOS-only.
 
 ### Glass
 

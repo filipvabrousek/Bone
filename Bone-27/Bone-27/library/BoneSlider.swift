@@ -4,9 +4,10 @@
 //
 //  The slider every Bone panel uses (glass inputs, layer editor, 3D spacing,
 //  timeline scrubber) – plain SwiftUI, so it builds wherever the panels do.
+//  Also the small text-field modifiers that only exist on iOS.
 //
 
-#if canImport(UIKit) && !os(watchOS)
+#if (canImport(UIKit) && !os(watchOS)) || os(macOS)
 
 import SwiftUI
 
@@ -50,6 +51,26 @@ struct BoneSlider: View {
             })
         }
         .frame(height: 30)
+    }
+}
+
+extension View {
+    /// .keyboardType(.decimalPad) on iOS; nothing on macOS.
+    func boneDecimalKeyboard() -> some View {
+        #if canImport(UIKit)
+        keyboardType(.numbersAndPunctuation)
+        #else
+        self
+        #endif
+    }
+
+    /// .textInputAutocapitalization(.never) on iOS; nothing on macOS.
+    func boneNoAutocapitalization() -> some View {
+        #if canImport(UIKit)
+        textInputAutocapitalization(.never)
+        #else
+        self
+        #endif
     }
 }
 
