@@ -29,6 +29,30 @@ Menu { Button("Copy") {} } label: { Label("Options", systemImage: "ellipsis.circ
 Pause first, then trigger the animation. On a device the screen reads back black, so a take keeps
 system snapshot views (glass included, scrubbed instantly).
 
+## On macOS
+
+The inspector's **Timeline** opens a Mac bar too (`BoneMacTimeline.swift`), with ⏸, the speed
+button, ⏺ and the take slider; `.morphTimeline()`, `.morphScrubber()` and `.dumpMorph` stay iOS-only.
+The Mac works differently underneath: there are no AnimationKit ticks and no CAAnimations in a glass
+morph – SwiftUI computes every frame itself, in the app window hosting view's `-layout`, at the
+current time.
+
+- **⏸** skips that `-layout`: the window holds its frame, and the glass in it stays live for the
+  inspector. SwiftUI's clock keeps running underneath, so ▶ jumps to where the animation is by then,
+  and there is no ⏭.
+- **Speed** applies `Animation.speed` to every transaction under `.boneInspector()` (public API), so
+  animations started after you set it run 2–20× slower, glass morphs included.
+- **⏺** arms. The take starts when the window first differs from how it looked when armed, then
+  captures the window once per 1/60 s of animation (wall time × speed) until it settles. At 1×
+  that is as fast as ScreenCaptureKit allows (about 50 fps), so slow down first. The panel is left
+  out of the frames (`sharingType = .none`). **Save** writes `timeline-take.png`.
+
+![A glassEffectID morph on macOS 27, recorded at 1/20: 49 frames, 0.785 s of animation](../captures/mac-timeline-take.png)
+
+On macOS 27 (`captures/mac-timeline-test.txt`), ⏸ held a `glassEffectID` morph, at 1/20 the shrinking
+glass had moved 6 of its 40 pt after a second, and a take at 1/20 recorded the next morph in 49
+frames (0.785 s of animation) over 18.7 s.
+
 ## `.morphScrubber()`
 
 ```swift
@@ -67,7 +91,7 @@ the render server: the blob's `bounds` and `position` springing out, its `corner
 CGSizes: size1…size4), the lensing layer's `filters.displacementMap.inputAmount` and
 `filters.gaussianBlur.inputRadius`, and the lens container's `sublayerTransform` (m11…m44).
 
-## How the clock works
+## How the clock works (iOS)
 
 The morphs are not CAAnimations – `layer.speed` does nothing to them. AnimationKit's
 `LiquidMorphAnimation` and the other in-process animations are advanced inside the app by

@@ -14,10 +14,16 @@ Nothing yet.
 ## 2026-10-11
 
 ### Added
+- The inspector's **timeline bar on macOS** (`BoneMacTimeline.swift`). ⏸ holds the app window's
+  frame by skipping its hosting view's `-layout`, since SwiftUI draws Mac glass morphs itself: no
+  AnimationKit ticks, no CAAnimations. Speed slows animations started under `.boneInspector()` through
+  `Animation.speed` on the root transaction. ⏺ records a take of the window, one frame per 1/60 s of
+  animation, to scrub and save. Verified on macOS 27 (`captures/mac-timeline-test.txt`,
+  `mac-timeline-take.png`). There is no frame step: SwiftUI's clock keeps running while paused.
 - `.boneInspector()` / `.glassPanel()` on **macOS**: an overlay child window over the app window with
   the same panel; a mouse monitor passes clicks through except over the panel. Picking, the glass and
   layer cards, presets and Copy Swift verified on macOS 27 (Save JSON, the card's Probe and click
-  pass-through outside the panel not yet). The 3D view and timeline stay iOS-only.
+  pass-through outside the panel not yet). The 3D view stays iOS-only.
 - `.probeGlass(_:after:)` on **macOS**, capturing with ScreenCaptureKit (needs Screen Recording). macOS 27
   run (`captures/mac-glass-probe.*`): the iOS hidden aberration inputs, plus `inputBackColor0/1` live.
 - `.tuneLayers(_:where:)` and `.dumpLayers(_:)` on **macOS** (`BoneMac.swift`), acting on the layers

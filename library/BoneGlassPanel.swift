@@ -36,7 +36,15 @@ extension View {
 
     /// Adds the Liquid Glass panel: a floating button that edits any glass on screen.
     func glassPanel() -> some View {
+        #if os(macOS)
+        // the timeline's speed: animations started in here run slower (BoneMacTimeline.swift)
         background(BoneGlassPanelAnchor())
+            .transaction { t in
+                if BoneMacClock.speed != 1, let a = t.animation { t.animation = a.speed(BoneMacClock.speed) }
+            }
+        #else
+        background(BoneGlassPanelAnchor())
+        #endif
     }
 
     /// The visual inspector: tap the drop, then tap text, glass or any element
@@ -201,6 +209,8 @@ final class BoneGlassPanelModel: ObservableObject {
     @Published var timelineOpen = false
     #if canImport(UIKit) && !os(visionOS)
     let timeline = BoneTimeline()
+    #elseif os(macOS)
+    let macTimeline = BoneMacTimeline()
     #endif
     @Published var isOpen = false
     @Published var probing = false
@@ -220,8 +230,10 @@ final class BoneGlassPanelModel: ObservableObject {
     var timelineRect: CGRect = .zero
     /// A take on screen covers the app: the window takes every touch.
     var timelineCovers: Bool {
-        #if os(visionOS) || os(macOS)
-        false        // the timeline drives iOS's AnimationKit morphs – iOS only
+        #if os(visionOS)
+        false
+        #elseif os(macOS)
+        timelineOpen && !isOpen && !picking && macTimeline.take != nil
         #else
         timelineOpen && !isOpen && !picking && !exploded && timeline.showsFrame
         #endif
@@ -295,6 +307,7 @@ final class BoneGlassPanelModel: ObservableObject {
         w.orderFront(nil)
         panelWindow = w
         appWindow = window
+        macTimeline.model = self
     }
     #endif
 
@@ -315,6 +328,19 @@ final class BoneGlassPanelModel: ObservableObject {
         timelineOpen = false
         timelineRect = .zero
         previousKey?.makeKey()
+    }
+    #elseif os(macOS)
+    func openTimeline() {
+        picking = false
+        code = nil
+        timelineOpen = true
+        macTimeline.open()
+    }
+
+    func closeTimeline() {
+        macTimeline.close()
+        timelineOpen = false
+        timelineRect = .zero
     }
     #endif
 
@@ -817,7 +843,7 @@ struct BoneGlassPanelView: View {
                         Button { model.openExploded() } label: { Label("3D", systemImage: "square.3.layers.3d") }
                             .buttonStyle(.bordered)
                         #endif
-                        #if canImport(UIKit) && !os(visionOS)
+                        #if (canImport(UIKit) && !os(visionOS)) || os(macOS)
                         Button { model.openTimeline() } label: { Label("Timeline", systemImage: "timeline.selection") }
                             .buttonStyle(.bordered)
                         #endif
@@ -852,6 +878,8 @@ struct BoneGlassPanelView: View {
             } else if model.timelineOpen {
                 #if canImport(UIKit) && !os(visionOS)
                 BoneTimelineScreen(model: model, timeline: model.timeline)
+                #elseif os(macOS)
+                BoneMacTimelineScreen(model: model, timeline: model.macTimeline)
                 #endif
             } else {
                 Button { model.startPicking() } label: {

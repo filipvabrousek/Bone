@@ -18,7 +18,8 @@ The same inspector runs on the Mac: a transparent window attached above the app 
 same panel, and a mouse monitor lets clicks through except over the drop button and the cards (and
 everywhere while picking) – AppKit has no per-point pass-through like UIKit's `hitTest`. Click the
 drop, then click glass or any element; glass and layer cards, presets, Copy Swift, Save JSON and
-Probe work as on iOS (Probe needs Screen Recording). The 3D view and the timeline are iOS-only.
+Probe work as on iOS (Probe needs Screen Recording). The 3D view is iOS-only; the timeline has a Mac
+bar with pause, speed and recorded takes ([Timeline on macOS](timeline.md#on-macos)).
 
 ### Glass
 

@@ -21,7 +21,8 @@ animates the glass. Copy this folder into your project and add it to all targets
 | `.probeGlass` | ✓ | | | ✓ |
 | `.boneInspector()` | ✓ | | | ✓ |
 | 3D exploded view (in the inspector) | ✓ | | | |
-| Timeline · `.morphScrubber` · `.dumpMorph` · `.liquidMorph` · `.glassFlex` | ✓ | | | |
+| Timeline bar (in the inspector) | ✓ | | | ✓ |
+| `.morphTimeline` · `.morphScrubber` · `.dumpMorph` · `.liquidMorph` · `.glassFlex` | ✓ | | | |
 
 Built with Xcode 27; tested on iOS 27 (simulator and iPhone 14 Pro), watchOS 27 (simulator), visionOS 27 and macOS.
 

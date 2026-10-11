@@ -1,0 +1,16 @@
+213768.973 timeline open · preflight false
+213769.081 captureImage(in:) ok
+213769.492 toggle → true
+213769.504 paused · widths [50, 10]
+213770.123 paused +0.5 s · widths [50, 10] · skipped 1
+213770.124 resumed
+213770.333 resumed +0.1 s · widths [50, 48]
+213771.068 speed 1/20, toggle → false
+213772.118 1/20 +1 s · widths [50, 44]
+213784.198 record armed
+213785.245 toggle → true
+213817.791 take: 49 frames · 49 frames · 0.785 s of animation · 18.693 s wall
+213817.792 times ["0.0000", "0.0008", "0.0187", "0.0369", "0.0520", "0.0687"] … 0.785
+213817.963 save: saved timeline-take.png
+213817.963 covers true
+213821.992 closed · speed 1.0 paused false
