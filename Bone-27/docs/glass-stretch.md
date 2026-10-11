@@ -48,4 +48,4 @@ button inside a `.glassFlex` view are changed, each value mapped once (nested se
 through).
 
 The mapping formulas, the per-frame order of the setters, the shape element's geometry and the bugs
-found on the way: [Bone internals](internals/bone-internals.pdf), section 8.
+found on the way: [Bone internals – glass stretch in depth](internals/bone-internals.md#8-glass-stretch-glassflexstretchfollow-in-depth).

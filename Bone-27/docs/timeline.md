@@ -83,4 +83,4 @@ two halves of a morph stay in step. Scaling Core Animation time as well is opt-i
 (`timeline.scalesLayerTime`): slowing the window layer time down makes UIKit finish a morph at once.
 
 The demo's first row is a glass `Menu` with the timeline (`-menu` shows only it). More detail, with
-diagrams: [Bone internals](internals/bone-internals.pdf), section 6.
+diagrams: [Bone internals – the AnimationKit clock](internals/bone-internals.md#6-motion-the-animationkit-clock).

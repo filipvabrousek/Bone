@@ -23,7 +23,7 @@ re-drives the system's own Liquid Glass – in place, not a reimplementation.
 
 ## In depth
 
-- [Bone internals and novelty](internals/bone-internals.pdf) ([Typst source](internals/bone-internals.typ)) –
+- [Bone internals and novelty](internals/bone-internals.md) (also as [PDF](internals/bone-internals.pdf)) –
   how every part works at the level of layers, ivars and setters, with diagrams, and what is new
   compared with published work.
 - [The Liquid Glass system](internals/liquid-glass-system.pdf) ([Typst source](internals/liquid-glass-system.typ)) –
