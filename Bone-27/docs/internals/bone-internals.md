@@ -361,14 +361,14 @@ With $s$ the stock scale (content transform, or outline size ÷ resting size $r$
 $f$ = `follow`:
 
 $$
-s' = 1 + k\,(s - 1)
+s' = 1 + k (s - 1)
 $$
 
 $$
-\text{shift} = p + (s - 1)\,\frac{r}{2} \qquad p' = -(s' - 1)\,\frac{r}{2} + f \cdot \text{shift}
+\text{shift} = p + (s - 1) \frac{r}{2} \qquad p' = -(s' - 1) \frac{r}{2} + f \cdot \text{shift}
 $$
 
-The content's transform uses $s'$; its position $p'$. Every outline layer gets size $r\,s'$ and
+The content's transform uses $s'$; its position $p'$. Every outline layer gets size $r s'$ and
 position $p'$ – and its **bounds origin** too: the stock origin mirrors the position (children
 cancel it), so leaving it unmapped shifted the glass up-left by exactly the growth.
 
