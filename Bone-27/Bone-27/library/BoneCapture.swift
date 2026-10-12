@@ -186,9 +186,14 @@ public enum BoneCapture {
         let denied = ivarDenylist.contains { clsName.hasPrefix($0) }
         if captureIvarDescriptions && !denied {
             // Last "BONE introspecting" line in the console before a crash
-            // names the class (prefix) to add to `ivarDenylist`.
-            print("BONE introspecting \(clsName)")
-            ivars = privateString(view, "_ivarDescription").map { String($0.prefix(maxIvarLength)) }
+            // names the class (prefix) to add to `ivarDenylist`. stderr, because
+            // it is unbuffered: a piped stdout loses its last lines in the crash.
+            FileHandle.standardError.write(Data("BONE introspecting \(clsName)\n".utf8))
+            // UIKit's -_ivarDescription crashes on some Swift (SwiftUI) objects on iOS 27:
+            // those are described by Bone's own reader (BoneIvars.swift)
+            ivars = BoneIvars.hasSwiftLevel(view)
+                ? BoneIvars.describe(view, maxLength: maxIvarLength)
+                : privateString(view, "_ivarDescription").map { String($0.prefix(maxIvarLength)) }
         }
 
         return BoneNode(

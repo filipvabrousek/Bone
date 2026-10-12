@@ -14,6 +14,13 @@ Nothing yet.
 ## 2026-10-12
 
 ### Fixed
+- `.bone(into:)` on **iOS 27** crashed (`EXC_BAD_ACCESS`) on any view containing a SwiftUI
+  `ScrollView`, and on more SwiftUI classes once a whole window was captured (`fromRoot`): UIKit's
+  `-_ivarDescription` fails inside AttributeGraph on them. Views whose class chain includes a Swift
+  class are now described by Bone's own reader (`BoneIvars.swift`): Objective-C ivars by type
+  encoding, Swift fields by reflection. A `ScrollView` is fully inspectable – content size, offset,
+  insets, delegate and SwiftUI's fields. The "BONE introspecting" hint goes to stderr, so a crash no
+  longer swallows it.
 - `.bone(into:)` on **macOS**: the superclass is the whole rest of the dump's first `super:` line.
   It used to be the next space-separated word, which kept a trailing line break and cut generic
   names at their first space (`SwiftUI.NSHostingView<SwiftUI.ModifiedContent<SwiftUI._ViewList_View,`

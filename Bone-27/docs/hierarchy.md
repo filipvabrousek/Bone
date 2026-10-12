@@ -92,9 +92,18 @@ BoneCapture.captureAutolayoutTrace = true
 BoneCapture.ivarDenylist                        // class-name prefixes to skip
 ```
 
-If a capture crashes (`EXC_BAD_ACCESS` in a private selector), the last `BONE introspecting …`
-console line names the class – add its prefix to `ivarDenylist`. Known broken: `_UIHostingView`
-on iOS 26, all `_TtGC7SwiftUI…` generic classes on visionOS 27 (the defaults handle both).
+**Ivars of SwiftUI's own views.** UIKit's `-_ivarDescription` crashes on some SwiftUI objects
+on iOS 27 (`EXC_BAD_ACCESS` inside AttributeGraph) – first `SwiftUI.HostingScrollView`, the
+`UIScrollView` behind every `ScrollView`. So any view whose class chain includes a Swift class is
+described by Bone itself (`BoneIvars.swift`), in the same layout: the Objective-C levels
+(`UIScrollView`, `UIView`, …) ivar by ivar, read by type encoding, and the Swift levels from
+reflection – a `ScrollView` shows its content size and offset, insets, delegate and SwiftUI's own
+fields. Plain UIKit classes keep `-_ivarDescription`.
+
+If a capture still crashes in a private selector, the last `BONE introspecting …` line (on stderr,
+so a crash cannot swallow it) names the class – add its prefix to `ivarDenylist`. Known broken:
+`_UIHostingView` on iOS 26, all `_TtGC7SwiftUI…` generic classes on visionOS 27 (the defaults
+handle both).
 
 ## Cross-OS diffing
 
